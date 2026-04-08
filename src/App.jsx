@@ -2,10 +2,30 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   TrendingUp, Users, MousePointerClick, CheckCircle2, 
   ArrowRight, Star, Send, Award, PlayCircle, Image as ImageIcon,
-  ChevronRight, Phone, Mail, Instagram, MoveHorizontal, Monitor,
+  ChevronRight, Phone, Mail, MoveHorizontal, Monitor,
   Briefcase, GraduationCap, Tv, TerminalSquare, Menu, X, 
   Download, MessageCircle, Maximize2, Calculator, Calendar
 } from 'lucide-react';
+
+// Custom Instagram SVG component to bypass the missing export build error
+const InstagramIcon = ({ size = 24, className = "" }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+);
 
 // ============================================================================
 // 📊 DATA CONFIGURATION
@@ -187,7 +207,7 @@ const ROICalculator = () => {
       
       <div className="relative z-10 flex flex-col lg:flex-row gap-12 items-center">
         {/* Controls */}
-        <div className="w-full lg:w-1/2 space-y-8">
+        <div className="w-full lg:w-1/2 space-y-8 text-left">
           <div>
             <div className="flex justify-between mb-2">
               <label className="text-[#DDA15E] font-bold font-mono text-sm uppercase tracking-wider">Monthly Profile/Site Visitors</label>
@@ -300,7 +320,7 @@ export default function App() {
   useEffect(() => {
     document.title = activePage === 'home' ? FUNNEL_DATA.seo.title : "Mark Espinosa | CV";
     window.scrollTo(0, 0); 
-    const handleScroll = () => setIsScrolled(window.scrollY > 100);
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [activePage]);
@@ -326,8 +346,8 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#FAFAF9] text-[#432818] font-sans selection:bg-[#D97706] selection:text-white pb-20 md:pb-0 relative flex flex-col">
       
-      {/* 🧭 NAVIGATION */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled || activePage === 'about' ? 'bg-white/95 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
+      {/* 🧭 NAVIGATION: Sticky Desktop Menu & Mobile Hamburger */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled || activePage === 'about' ? 'bg-white/80 backdrop-blur-xl shadow-sm border-b border-[#F5F5F4] py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
           
           <div className="flex items-center gap-4">
@@ -341,14 +361,16 @@ export default function App() {
             </div>
           </div>
           
-          <div className="hidden md:flex items-center gap-6">
+          {/* DESKTOP MENU (Visible on PC/Tablet) */}
+          <div className="hidden md:flex items-center gap-8">
             <button onClick={() => navigateTo('home')} className={`font-bold transition-colors ${activePage === 'home' ? 'text-[#D97706]' : 'text-[#78350F] hover:text-[#D97706]'}`}>Works</button>
             <button onClick={() => navigateTo('about')} className={`font-bold transition-colors ${activePage === 'about' ? 'text-[#D97706]' : 'text-[#78350F] hover:text-[#D97706]'}`}>About & CV</button>
-            <button onClick={() => { navigateTo('home'); setTimeout(() => document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="flex items-center gap-2 bg-[#432818] text-white px-5 py-2 rounded-full font-bold hover:bg-[#D97706] transition-all shadow-[0_0_15px_rgba(217,119,6,0.3)] hover:shadow-[0_0_25px_rgba(217,119,6,0.5)]">
+            <button onClick={() => { navigateTo('home'); setTimeout(() => document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="flex items-center gap-2 bg-[#432818] text-white px-6 py-2.5 rounded-full font-bold hover:bg-[#D97706] transition-all shadow-[0_0_15px_rgba(217,119,6,0.3)] hover:shadow-[0_0_25px_rgba(217,119,6,0.5)]">
               Book Call <ArrowRight size={16} />
             </button>
           </div>
 
+          {/* MOBILE HAMBURGER ICON (Hidden on PC) */}
           <button className="md:hidden p-2 text-[#432818]" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle Menu">
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -409,19 +431,21 @@ export default function App() {
               </Reveal>
 
               <Reveal delay={100}>
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-[#432818] leading-[1.05] tracking-tight max-w-5xl mx-auto mb-8">
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-[#432818] leading-[1.05] tracking-tight max-w-5xl mx-auto mb-8 text-center">
                   {FUNNEL_DATA.brand.headline}
                 </h1>
               </Reveal>
               <Reveal delay={200}>
-                <p className="text-xl md:text-2xl text-[#78350F] font-medium max-w-3xl mx-auto mb-12 leading-relaxed">
+                <p className="text-xl md:text-2xl text-[#78350F] font-medium max-w-3xl mx-auto mb-12 leading-relaxed text-center">
                   {FUNNEL_DATA.brand.subheadline}
                 </p>
               </Reveal>
               <Reveal delay={300}>
-                <button onClick={() => document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'smooth' })} className="bg-[#432818] text-white px-10 py-5 rounded-full font-black text-lg hover:bg-[#D97706] transition-all duration-300 shadow-xl flex items-center gap-3">
-                  Start Your Project <ChevronRight size={20} />
-                </button>
+                <div className="flex justify-center">
+                  <button onClick={() => document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'smooth' })} className="bg-[#432818] text-white px-10 py-5 rounded-full font-black text-lg hover:bg-[#D97706] transition-all duration-300 shadow-xl flex items-center gap-3">
+                    Start Your Project <ChevronRight size={20} />
+                  </button>
+                </div>
               </Reveal>
             </section>
 
@@ -447,7 +471,7 @@ export default function App() {
               <div className="max-w-6xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
                   <span className="text-[#DDA15E] font-bold tracking-widest uppercase text-sm mb-4 block">Proven Results</span>
-                  <h2 className="text-4xl md:text-5xl font-black mb-6 max-w-3xl mx-auto leading-tight">{FUNNEL_DATA.caseStudy.hook}</h2>
+                  <h2 className="text-4xl md:text-5xl font-black mb-6 max-w-3xl mx-auto leading-tight text-center">{FUNNEL_DATA.caseStudy.hook}</h2>
                 </Reveal>
                 <div className="grid md:grid-cols-3 gap-8 mb-16">
                   {FUNNEL_DATA.caseStudy.metrics.map((metric, idx) => {
@@ -455,9 +479,11 @@ export default function App() {
                     return (
                       <Reveal key={idx} delay={idx * 150} className="bg-[#5c3a25] p-8 rounded-3xl border border-[#7a4e33] transform hover:-translate-y-2 transition-transform duration-300 shadow-lg relative overflow-hidden group">
                         <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D97706] to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <Icon className="text-[#DDA15E] mb-6" size={40} />
-                        <p className="text-5xl font-black text-white mb-2"><CountUp end={metric.value} prefix={metric.prefix} suffix={metric.suffix} decimals={metric.decimals} /></p>
-                        <p className="text-[#DDA15E] font-bold text-lg">{metric.label}</p>
+                        <div className="flex flex-col items-center">
+                          <Icon className="text-[#DDA15E] mb-6" size={40} />
+                          <p className="text-5xl font-black text-white mb-2"><CountUp end={metric.value} prefix={metric.prefix} suffix={metric.suffix} decimals={metric.decimals} /></p>
+                          <p className="text-[#DDA15E] font-bold text-lg">{metric.label}</p>
+                        </div>
                       </Reveal>
                     )
                   })}
@@ -495,7 +521,7 @@ export default function App() {
 
                 {/* Graphics */}
                 <div className="mb-24">
-                  <Reveal className="flex items-center gap-3 mb-8">
+                  <Reveal className="flex items-center gap-3 mb-8 justify-center md:justify-start">
                     <ImageIcon className="text-[#D97706]" size={28} />
                     <h3 className="text-2xl font-black text-[#432818]">Sample Graphics</h3>
                   </Reveal>
@@ -568,8 +594,8 @@ export default function App() {
                     <div className="p-8 md:p-12">
                       {contactMode === 'message' ? (
                         <form onSubmit={handleFormSubmit} className="space-y-6">
-                          <div><label className="block text-sm font-bold text-[#432818] mb-2">Name</label><input type="text" name="name" required className="w-full px-6 py-4 rounded-2xl bg-[#FAFAF9] focus:border-[#D97706] outline-none font-medium shadow-inner" placeholder="John Doe" /></div>
-                          <div><label className="block text-sm font-bold text-[#432818] mb-2">Email</label><input type="email" name="email" required className="w-full px-6 py-4 rounded-2xl bg-[#FAFAF9] focus:border-[#D97706] outline-none font-medium shadow-inner" placeholder="john@example.com" /></div>
+                          <div><label className="block text-sm font-bold text-[#432818] mb-2 text-left">Name</label><input type="text" name="name" required className="w-full px-6 py-4 rounded-2xl bg-[#FAFAF9] focus:border-[#D97706] outline-none font-medium shadow-inner" placeholder="John Doe" /></div>
+                          <div><label className="block text-sm font-bold text-[#432818] mb-2 text-left">Email</label><input type="email" name="email" required className="w-full px-6 py-4 rounded-2xl bg-[#FAFAF9] focus:border-[#D97706] outline-none font-medium shadow-inner" placeholder="john@example.com" /></div>
                           <button type="submit" disabled={formStatus === 'submitting'} className="w-full py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-2 bg-[#D97706] text-white hover:bg-[#B45309] shadow-lg hover:-translate-y-1 transition-all">
                             {formStatus === 'success' ? 'Sent!' : (formStatus === 'submitting' ? 'Sending...' : 'Send Request')}
                           </button>
@@ -606,16 +632,18 @@ export default function App() {
                 </div>
                 <div className="text-center md:text-left flex-1">
                   <h1 className="text-4xl md:text-6xl font-black mb-4">{CV_DATA.profile.name}</h1>
-                  <h2 className="text-xl md:text-2xl text-[#DDA15E] font-bold mb-6">{CV_DATA.profile.title}</h2>
+                  <h2 className="text-xl md:text-2xl text-[#DDA15E] font-bold mb-6 uppercase tracking-widest">{CV_DATA.profile.title}</h2>
                   <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-sm font-medium text-slate-300 justify-center md:justify-start mb-8">
                     <span className="flex items-center gap-2 justify-center"><Mail size={16} className="text-[#DDA15E]"/> {CV_DATA.profile.email}</span>
-                    <span className="flex items-center gap-2 justify-center"><Instagram size={16} className="text-[#DDA15E]"/> @markespinosa627</span>
+                    <span className="flex items-center gap-2 justify-center"><InstagramIcon size={16} className="text-[#DDA15E]"/> @markespinosa627</span>
                   </div>
                   
                   {/* CV DOWNLOAD BUTTON */}
-                  <a href={CV_DATA.profile.cvDownloadLink} download className="inline-flex items-center gap-3 bg-white text-[#432818] px-6 py-3 rounded-xl font-bold hover:bg-[#DDA15E] hover:text-white transition-all shadow-lg active:scale-95">
-                    <Download size={20} /> Download Full CV (PDF)
-                  </a>
+                  <div className="flex justify-center md:justify-start">
+                    <a href={CV_DATA.profile.cvDownloadLink} download className="inline-flex items-center gap-3 bg-white text-[#432818] px-6 py-3 rounded-xl font-bold hover:bg-[#DDA15E] hover:text-white transition-all shadow-lg active:scale-95">
+                      <Download size={20} /> Download Full CV (PDF)
+                    </a>
+                  </div>
                 </div>
               </Reveal>
             </section>
@@ -637,12 +665,12 @@ export default function App() {
                         
                         {/* Play Button Overlay */}
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-14 h-14 rounded-full bg-[#D97706] text-white flex items-center justify-center shadow-[0_0_20px_rgba(217,119,6,0.6)] group-hover:scale-110 transition-transform"><PlayCircle size={32} /></div>
+                          <div className="w-14 h-14 rounded-full bg-[#D97706] text-white flex items-center justify-center shadow-[0_0_20px_rgba(217,119,6,0.6)] group-hover:scale-100 transition-transform"><PlayCircle size={32} /></div>
                         </div>
 
                         <div className="absolute bottom-4 left-4 right-4 text-white">
-                          <p className="text-xs font-bold text-[#DDA15E] uppercase tracking-wider mb-1">{app.network}</p>
-                          <h4 className="font-black leading-tight line-clamp-2">{app.title}</h4>
+                          <p className="text-xs font-bold text-[#DDA15E] uppercase tracking-wider mb-1 text-left">{app.network}</p>
+                          <h4 className="font-black leading-tight line-clamp-2 text-left">{app.title}</h4>
                         </div>
                       </div>
                       <div className="p-4 bg-[#432818] text-white flex justify-between items-center">
@@ -658,7 +686,7 @@ export default function App() {
             {/* CV Details */}
             <section className="py-20 max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-16">
               <div className="md:col-span-7">
-                <Reveal className="flex items-center gap-3 mb-10">
+                <Reveal className="flex items-center gap-3 mb-10 justify-center md:justify-start">
                   <Briefcase className="text-[#D97706]" size={28} />
                   <h3 className="text-3xl font-black text-[#432818]">Work Experience</h3>
                 </Reveal>
@@ -666,7 +694,7 @@ export default function App() {
                   {CV_DATA.experience.map((job, idx) => (
                     <Reveal key={idx} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
                       <div className="flex items-center justify-center w-8 h-8 rounded-full border-4 border-white bg-[#D97706] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow"></div>
-                      <div className="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-sm border border-[#F5F5F4] hover:shadow-md hover:border-[#D97706] transition-all">
+                      <div className="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl shadow-sm border border-[#F5F5F4] hover:shadow-md hover:border-[#D97706] transition-all text-left">
                         <h4 className="font-black text-xl text-[#432818] mb-1">{job.role}</h4>
                         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-4">
                           <p className="text-[#78350F] font-bold text-sm">{job.company}</p>
@@ -682,11 +710,11 @@ export default function App() {
               <div className="md:col-span-5 space-y-16">
                 {/* Skills Summary */}
                 <Reveal>
-                  <div className="flex items-center gap-3 mb-8">
+                  <div className="flex items-center gap-3 mb-8 justify-center md:justify-start">
                     <TerminalSquare className="text-[#D97706]" size={24} />
                     <h3 className="text-2xl font-black text-[#432818]">Skills Summary</h3>
                   </div>
-                  <div className="space-y-6">
+                  <div className="space-y-6 text-left">
                     {CV_DATA.skills.map((skillGroup, idx) => (
                       <div key={idx}>
                         <h4 className="font-bold text-[#78350F] border-b-2 border-[#E5E5E5] pb-2 mb-3 uppercase text-sm tracking-wider">{skillGroup.category}</h4>
@@ -704,11 +732,11 @@ export default function App() {
 
                 {/* Education */}
                 <Reveal>
-                  <div className="flex items-center gap-3 mb-8">
+                  <div className="flex items-center gap-3 mb-8 justify-center md:justify-start">
                     <GraduationCap className="text-[#D97706]" size={24} />
                     <h3 className="text-2xl font-black text-[#432818]">Education</h3>
                   </div>
-                  <div className="space-y-6">
+                  <div className="space-y-6 text-left">
                     {CV_DATA.education.map((edu, idx) => (
                       <div key={idx} className="bg-white p-6 rounded-2xl shadow-sm border border-[#F5F5F4]">
                         <h4 className="font-black text-lg text-[#432818] mb-1 leading-tight">{edu.degree}</h4>
@@ -724,11 +752,11 @@ export default function App() {
 
                 {/* Certifications Map */}
                 <Reveal>
-                  <div className="flex items-center gap-3 mb-8">
+                  <div className="flex items-center gap-3 mb-8 justify-center md:justify-start">
                     <Award className="text-[#D97706]" size={24} />
                     <h3 className="text-2xl font-black text-[#432818]">Certifications</h3>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
                     {CV_DATA.certifications.map((cert, idx) => (
                       <div key={idx} className="bg-white p-4 rounded-xl border border-[#E5E5E5] hover:border-[#D97706] transition-colors flex gap-3 items-start">
                         <Award className="text-[#D97706] shrink-0 mt-1" size={16} />
@@ -751,7 +779,7 @@ export default function App() {
         <div className="font-black text-2xl tracking-tighter text-white/50 mb-4">
           ME<span className="text-[#DDA15E]/50">digital</span>
         </div>
-        <p className="text-[#DDA15E]/60 font-bold text-sm">© {new Date().getFullYear()} ME digital • Designed for Conversion.</p>
+        <p className="text-[#DDA15E]/60 font-bold text-sm">© {new Date().getFullYear()} Mark Joseph Espinosa • Designed for Conversion.</p>
       </footer>
     </div>
   );
