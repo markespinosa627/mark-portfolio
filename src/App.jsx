@@ -357,7 +357,7 @@ export default function App() {
             {/* Tech Status Badge */}
             <div className="hidden md:flex items-center gap-2 bg-green-100 border border-green-200 px-3 py-1 rounded-full">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-              <span className="text-[10px] text-green-700 font-mono tracking-widest uppercase font-bold">SYS: OPERATIONAL</span>
+              <span className="text-[10px] text-green-700 font-mono tracking-widest uppercase font-bold">Staus: Accepting Clients</span>
             </div>
           </div>
           
