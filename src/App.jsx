@@ -2,19 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   TrendingUp, Users, MousePointerClick, CheckCircle2, 
   ArrowRight, Star, Send, Award, PlayCircle, Image as ImageIcon,
-  ChevronRight, Phone, Mail, MoveHorizontal, Monitor,
+  ChevronRight, Phone, Mail, Instagram, MoveHorizontal, Monitor,
   Briefcase, GraduationCap, Tv, TerminalSquare, Menu, X, 
   Download, MessageCircle, Maximize2, Calculator, Calendar
 } from 'lucide-react';
-
-// Custom Instagram SVG to ensure perfect compilation
-const InstagramIcon = ({ size = 24, className = "" }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-  </svg>
-);
 
 // ============================================================================
 // 📊 DATA CONFIGURATION
@@ -179,6 +170,7 @@ const ROICalculator = () => {
   const [visitors, setVisitors] = useState(5000);
   const [orderValue, setOrderValue] = useState(150);
 
+  // Industry average vs ME digital optimized conversion rates
   const currentConvRate = 0.012; // 1.2%
   const optimizedConvRate = 0.035; // 3.5%
 
@@ -194,6 +186,7 @@ const ROICalculator = () => {
       <div className="absolute inset-0 opacity-10 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
       
       <div className="relative z-10 flex flex-col lg:flex-row gap-12 items-center">
+        {/* Controls */}
         <div className="w-full lg:w-1/2 space-y-8">
           <div>
             <div className="flex justify-between mb-2">
@@ -215,6 +208,7 @@ const ROICalculator = () => {
           </div>
         </div>
 
+        {/* Results Panel */}
         <div className="w-full lg:w-1/2 bg-[#2C1A0F] rounded-3xl p-8 border border-[#5c3a25] shadow-inner relative">
           <div className="absolute top-4 right-4 flex items-center gap-2">
              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
@@ -270,8 +264,8 @@ const BeforeAfterSlider = ({ beforeImage, afterImage }) => {
       tabIndex={0}
       role="slider"
       aria-valuenow={sliderPosition}
-      aria-valuemin={0}
-      aria-valuemax={100}
+      aria-valuemin="0"
+      aria-valuemax="100"
       aria-label="Image comparison slider. Use left and right arrow keys to adjust."
     >
       <img src={afterImage} alt="Final edited result showing nighttime transformation" className="absolute inset-0 w-full h-full object-cover pointer-events-none" loading="lazy" />
@@ -298,7 +292,7 @@ export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // Forms & Modals
-  const [contactMode, setContactMode] = useState('message');
+  const [contactMode, setContactMode] = useState('message'); // 'message' or 'calendar'
   const [formStatus, setFormStatus] = useState('idle');
   const [lightboxImg, setLightboxImg] = useState(null);
   const [videoUrl, setVideoUrl] = useState(null);
@@ -615,7 +609,7 @@ export default function App() {
                   <h2 className="text-xl md:text-2xl text-[#DDA15E] font-bold mb-6">{CV_DATA.profile.title}</h2>
                   <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-sm font-medium text-slate-300 justify-center md:justify-start mb-8">
                     <span className="flex items-center gap-2 justify-center"><Mail size={16} className="text-[#DDA15E]"/> {CV_DATA.profile.email}</span>
-                    <span className="flex items-center gap-2 justify-center"><InstagramIcon size={16} className="text-[#DDA15E]"/> @markespinosa627</span>
+                    <span className="flex items-center gap-2 justify-center"><Instagram size={16} className="text-[#DDA15E]"/> @markespinosa627</span>
                   </div>
                   
                   {/* CV DOWNLOAD BUTTON */}
