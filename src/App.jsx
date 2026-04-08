@@ -185,7 +185,7 @@ const WhatsAppWidget = () => {
           <button onClick={() => setStage('hidden')} className="absolute -top-2 -right-2 bg-[#432818] text-white p-1 rounded-full shadow-lg hover:scale-110 transition-transform"><X size={12}/></button>
           <div className="flex items-center gap-3 mb-3 text-left">
             <div className="w-10 h-10 rounded-full overflow-hidden bg-[#FDE6D5] flex items-center justify-center border-2 border-[#D97706]">
-              <img src="https://ibb.co/HTcxnxCn" alt="Supervisor" className="w-full h-full object-cover" />
+              <img src="<a href="https://ibb.co/HTcxnxCn"><img src="https://i.ibb.co/HTcxnxCn/IMG-6996.jpg" alt="IMG-6996" border="0"></a>" alt="Supervisor" className="w-full h-full object-cover" />
             </div>
             <div><p className="text-[10px] font-black uppercase text-[#D97706] tracking-widest">Mark's Supervisor 🐾</p><p className="text-[9px] text-green-500 font-bold flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Waiting for Treats</p></div>
           </div>
