@@ -44,7 +44,7 @@ const FUNNEL_DATA = {
       phone: "+63 920-906-2796",
       socialHandle: "@markespinosa627",
       whatsapp: "https://wa.me/639209062796", 
-      calendarUrl: "https://calendly.com/your-link" // Replace with your Calendly/Cal.com link
+      calendarUrl: "https://calendar.app.google/2aixwBAXDDJpNRxV8" // Replace with your Google Calendar link
     }
   },
   caseStudy: {
@@ -604,7 +604,7 @@ export default function App() {
                         <div className="text-center py-8">
                           <div className="w-20 h-20 bg-orange-100 text-[#D97706] rounded-full flex items-center justify-center mx-auto mb-6"><Calendar size={40} /></div>
                           <h3 className="text-2xl font-black text-[#432818] mb-4">Schedule a Strategy Session</h3>
-                          <p className="text-[#78350F] mb-8 font-medium">Find a time that works for you on my Cal.com schedule to discuss your project.</p>
+                          <p className="text-[#78350F] mb-8 font-medium">Find a time that works for you on my Google Calendar schedule to discuss your project.</p>
                           <a href={FUNNEL_DATA.brand.contact.calendarUrl} target="_blank" rel="noopener noreferrer" className="inline-flex py-5 px-8 rounded-2xl font-black text-lg items-center justify-center gap-2 bg-[#432818] text-white hover:bg-[#D97706] shadow-lg hover:-translate-y-1 transition-all">
                             Open Calendar <ArrowRight size={20}/>
                           </a>
@@ -779,7 +779,7 @@ export default function App() {
         <div className="font-black text-2xl tracking-tighter text-white/50 mb-4">
           ME<span className="text-[#DDA15E]/50">digital</span>
         </div>
-        <p className="text-[#DDA15E]/60 font-bold text-sm">© {new Date().getFullYear()} Mark Joseph Espinosa • Designed for Conversion.</p>
+        <p className="text-[#DDA15E]/60 font-bold text-sm">© {new Date().getFullYear()} Mark Joseph Espinosa.</p>
       </footer>
     </div>
   );
