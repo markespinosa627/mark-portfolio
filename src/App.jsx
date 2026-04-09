@@ -49,7 +49,7 @@ const FUNNEL_DATA = {
     }
   },
   brands: [
-    { name: "ZBNI", fb: "https://www.facebook.com/ZBNIofficial", logo: "/Users/mjespinosa/mark-portfolio/public/logos/zbni.webp/200x80/transparent/432818?text=ZBNI" },
+    { name: "ZBNI", fb: "https://www.facebook.com/ZBNIofficial", logo: "https://zbni.ph/wp-content/themes/zbni/assets/channel-logos/zbni.webp"/200x80/transparent/432818?text=ZBNI" },
     { name: "A2Z", fb: "https://www.facebook.com/A2ZChannel11", logo: "https://placehold.co/200x80/transparent/432818?text=A2Z" },
     { name: "Light TV", fb: "https://www.facebook.com/LightTVGodsChannelofBlessings", logo: "https://placehold.co/200x80/transparent/432818?text=Light+TV" },
     { name: "TOCA", fb: "https://www.facebook.com/TOCA", logo: "https://placehold.co/200x80/transparent/432818?text=TOCA" },
