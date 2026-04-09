@@ -7,7 +7,7 @@ import {
   Download, MessageCircle, Maximize2, Calculator, Calendar,
   Globe, Laptop, MonitorSmartphone, FileText, Newspaper,
   ShieldAlert, BarChart3, Smartphone, Film, ExternalLink,
-  BookOpen, Cpu, DownloadCloud
+  BookOpen, Cpu, DownloadCloud, Facebook, AtSign, Contact
 } from 'lucide-react';
 
 // ============================================================================
@@ -146,11 +146,17 @@ const CV_DATA = {
   profile: {
     name: "Mark Joseph Espinosa",
     title: "Digital Strategist and AI Engineer",
-    email: "markespinosaofficial@gmail.com",
+    email: "hello@markespinosa.com",
     phone: "+63 920 906 2796",
-    linkedin: "linkedin.com/in/markespinosa627",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800",
     cvDownloadLink: "https://drive.google.com/file/d/1g08_2g4dlGtmROYdyneFeJteoRXq7rPT/view"
+  },
+  socials: {
+    facebook: "https://facebook.com/markespinosa627",
+    instagram: "https://instagram.com/markespinosa627",
+    threads: "https://threads.com/markespinosa627",
+    linkedin: "https://www.linkedin.com/in/markespinosa627/",
+    blinq: "https://s.blinq.me/cmgufwl1g04was60m6q7mp208?bs=icl"
   },
   appearances: [
     { show: "THE 700 CLUB ASIA", title: "I WILL NEVER ABANDON YOU", network: "CBN ASIA / GMA", img: "/Interviews/700club.png", videoUrl: "https://www.youtube.com/embed/NXK8BjsB4x4" },
@@ -856,10 +862,10 @@ export default function App() {
                 </div>
                 <h1 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-stone-900">{CV_DATA.profile.name}</h1>
                 <h2 className="text-sm font-bold text-stone-500 mb-8 uppercase tracking-[0.2em]">{CV_DATA.profile.title}</h2>
-                <div className="flex flex-wrap justify-center gap-6 mb-10">
-                  <a href={`mailto:${CV_DATA.profile.email}`} className="flex items-center gap-2 text-stone-500 hover:text-amber-600 transition-colors font-medium text-sm"><Mail size={16} /> Email Me</a>
-                  <a href={`tel:${CV_DATA.profile.phone.replace(/\s+/g, '')}`} className="flex items-center gap-2 text-stone-500 hover:text-amber-600 transition-colors font-medium text-sm"><Phone size={16} /> {CV_DATA.profile.phone}</a>
-                  <a href={`https://${CV_DATA.profile.linkedin}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-stone-500 hover:text-amber-600 transition-colors font-medium text-sm"><LinkedInIcon size={16} /> LinkedIn</a>
+                <div className="flex flex-wrap justify-center gap-4 mb-10">
+                  <a href={`mailto:${CV_DATA.profile.email}`} className="flex items-center gap-2 bg-white px-6 py-3 rounded-full border border-stone-200 text-stone-600 hover:text-amber-600 hover:border-amber-600 transition-all font-bold text-xs uppercase tracking-widest shadow-sm"><Mail size={16} /> Email Me</a>
+                  <a href={CV_DATA.socials.blinq} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white px-6 py-3 rounded-full border border-stone-200 text-stone-600 hover:text-amber-600 hover:border-amber-600 transition-all font-bold text-xs uppercase tracking-widest shadow-sm"><Contact size={16} /> Digital Card</a>
+                  <a href={CV_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white px-6 py-3 rounded-full border border-stone-200 text-stone-600 hover:text-amber-600 hover:border-amber-600 transition-all font-bold text-xs uppercase tracking-widest shadow-sm"><LinkedInIcon size={16} /> LinkedIn</a>
                 </div>
                 <a href={CV_DATA.profile.cvDownloadLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-stone-900 text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 transition-all hover:-translate-y-1">
                   <DownloadCloud size={16} /> Download Full CV
@@ -930,30 +936,6 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* APPEARANCES */}
-                  <div className="mb-24">
-                    <Reveal className="mb-10 flex items-center gap-3">
-                      <Tv className="text-stone-300" size={32} />
-                      <h3 className="text-3xl font-black text-stone-900 tracking-tight">Interviews</h3>
-                    </Reveal>
-                    <div className="grid grid-cols-1 gap-6">
-                      {CV_DATA.appearances.map((item, i) => (
-                        <Reveal key={i} delay={i * 100} className="group cursor-pointer flex gap-4 items-center bg-white p-3 rounded-2xl border border-stone-100 shadow-sm hover:border-amber-600 transition-colors" onClick={() => setVideoUrl(item.videoUrl)}>
-                          <div className="w-24 aspect-[4/3] rounded-xl overflow-hidden shadow-sm border border-stone-200 relative bg-stone-900 shrink-0">
-                            <img src={item.img} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt={item.title} />
-                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                              <PlayCircle size={20} className="text-white drop-shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"/>
-                            </div>
-                          </div>
-                          <div>
-                            <h4 className="font-bold text-sm text-stone-900 group-hover:text-amber-600 transition-colors leading-tight mb-1.5">{item.title}</h4>
-                            <p className="text-[9px] text-stone-400 uppercase tracking-widest">{item.show} <br/> {item.network}</p>
-                          </div>
-                        </Reveal>
-                      ))}
-                    </div>
-                  </div>
-
                   {/* CERTIFICATIONS */}
                   <div className="mb-24">
                     <Reveal className="mb-10 flex items-center gap-3">
@@ -974,6 +956,37 @@ export default function App() {
                       ))}
                     </div>
                   </div>
+                </div>
+              </div>
+
+              {/* FULL-WIDTH APPEARANCES / INTERVIEWS SECTION */}
+              <div className="mt-12 pt-24 border-t border-stone-200">
+                <Reveal className="mb-16 flex flex-col items-center text-center">
+                  <Tv className="text-stone-300 mb-4" size={48} />
+                  <h3 className="text-4xl md:text-5xl font-black text-stone-900 tracking-tight mb-4">Interviews & Appearances</h3>
+                  <p className="text-stone-500 text-lg max-w-2xl">Media features and thought leadership across national television networks.</p>
+                </Reveal>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {CV_DATA.appearances.map((item, i) => (
+                    <Reveal key={i} delay={i * 100} className="group cursor-pointer bg-white rounded-[2rem] p-5 border border-stone-100 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] hover:border-amber-600 transition-all duration-500" onClick={() => setVideoUrl(item.videoUrl)}>
+                      <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-100 relative bg-stone-900 mb-6">
+                        <img src={item.img} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt={item.title} />
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                          <div className="bg-white/20 backdrop-blur-md p-4 rounded-full group-hover:bg-amber-600 group-hover:scale-110 transition-all duration-300 border border-white/30">
+                            <PlayCircle size={32} className="text-white drop-shadow-md"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="px-2 pb-2 text-center">
+                        <h4 className="font-black text-xl text-stone-900 group-hover:text-amber-600 transition-colors leading-tight mb-3">{item.title}</h4>
+                        <div className="inline-flex items-center gap-2 bg-stone-50 border border-stone-100 px-4 py-2 rounded-full">
+                          <div className="w-2 h-2 rounded-full bg-amber-500"></div>
+                          <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest">{item.show} • {item.network}</p>
+                        </div>
+                      </div>
+                    </Reveal>
+                  ))}
                 </div>
               </div>
 
@@ -1067,9 +1080,13 @@ export default function App() {
             <button onClick={() => navigateTo('ai-use')} className="hover:text-stone-900 transition-colors text-xs font-bold uppercase tracking-widest">AI Ethics & Usage</button>
           </div>
 
-          <div className="flex gap-6 mb-10 text-stone-400">
-            <a href="https://instagram.com/markespinosa627" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors"><InstagramIcon size={20} /></a>
-            <a href={`mailto:${CV_DATA.profile.email}`} className="hover:text-stone-900 transition-colors"><Mail size={20} /></a>
+          <div className="flex flex-wrap justify-center gap-6 mb-10 text-stone-400">
+            <a href={CV_DATA.socials.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="Facebook"><Facebook size={24} /></a>
+            <a href={CV_DATA.socials.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="Instagram"><InstagramIcon size={24} /></a>
+            <a href={CV_DATA.socials.threads} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="Threads"><AtSign size={24} /></a>
+            <a href={CV_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="LinkedIn"><LinkedInIcon size={24} /></a>
+            <a href={CV_DATA.socials.blinq} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="Digital Calling Card"><Contact size={24} /></a>
+            <a href={`mailto:${CV_DATA.profile.email}`} className="hover:text-stone-900 transition-colors" aria-label="Email"><Mail size={24} /></a>
           </div>
           <p className="font-semibold text-[10px] text-stone-400 uppercase tracking-[0.2em]">© {new Date().getFullYear()} Mark Joseph Espinosa • Engineered for Conversion</p>
         </div>
