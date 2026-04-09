@@ -60,7 +60,7 @@ const FUNNEL_DATA = {
     { name: "OMG Creamery", fb: "https://www.facebook.com/OMGCreamery", logo: "https://placehold.co/200x80/transparent/432818?text=OMG+Creamery" },
     { name: "Black Meta Agency", fb: "https://www.facebook.com/blackmetaagency", logo: "https://placehold.co/200x80/transparent/432818?text=Black+Meta" },
     { name: "The 216 Scoop", fb: "https://www.facebook.com/the216scoop", logo: "https://placehold.co/200x80/transparent/432818?text=The+216+Scoop" },
-    { name: "Americans Health", fb: "https://www.facebook.com/AmericansHealth", logo: "https://placehold.co/200x80/transparent/432818?text=Americans+Health" }
+    { name: "Americans Health", fb: "https://www.facebook.com/AmericansHealth", logo: "https://placehold.co/200x80/transparent/432818?text=Americans+Health" },
     { name: "Live Music In Cleveland", fb: "https://www.facebook.com/LMIC", logo: "https://placehold.co/200x80/transparent/432818?text=Americans+Health" }
   ],
   caseStudy: {
