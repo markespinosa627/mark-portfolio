@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import {
   TrendingUp, Users, MousePointerClick, CheckCircle2,
   ArrowRight, Star, Send, Award, PlayCircle, Image as ImageIcon,
@@ -1108,6 +1109,7 @@ export default function App() {
         </div>
       </footer>
 
+      <Analytics />
     </div>
   );
 }
