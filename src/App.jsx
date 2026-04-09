@@ -6,7 +6,7 @@ import {
   Briefcase, GraduationCap, Tv, TerminalSquare, Menu, X,
   Download, MessageCircle, Maximize2, Calculator, Calendar,
   Globe, Laptop, MonitorSmartphone, FileText, Newspaper,
-  ShieldAlert, BarChart3, Smartphone, Film
+  ShieldAlert, BarChart3, Smartphone, Film, ExternalLink
 } from 'lucide-react';
 
 // ============================================================================
@@ -73,12 +73,12 @@ const FUNNEL_DATA = {
   },
   portfolio: {
     graphics: [
-      "https://images.unsplash.com/photo-1557672172-298e090bd0f1?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1516382772782-959fb0a2eb75?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=1200",
+      "/Sample-Graphics/sample1.png",
+      "/Sample-Graphics/sample2.png",
+      "/Sample-Graphics/sample3.png",
+      "/Sample-Graphics/sample4.png",
+      "/Sample-Graphics/sample5.png",
+      "/Sample-Graphics/sample6.png",
     ],
     verticalVideos: [
       { title: "TikTok Campaign 1", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800" },
@@ -90,8 +90,8 @@ const FUNNEL_DATA = {
       { title: "YouTube Pre-Roll", img: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&q=80&w=1200" }
     ],
     websites: [
-      { title: "ZBNI Architecture", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" },
-      { title: "Kevin Paige E-Commerce", img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200" }
+      { title: "ZBNI Architecture", img: "/Websites/zbniwebsite.png", link: "https://www.zbni.ph" },
+      { title: "Kevin Paige E-Commerce", img: "/Websites/kevinpaigeartwebsite.png", link: "https://www.kevinpaigeart.com" }
     ],
     videoEditing: {
       before: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200",
@@ -203,7 +203,6 @@ const CountUp = ({ end, prefix = "", suffix = "", decimals = 0 }) => {
 // ============================================================================
 // 🚀 BRAND LOGO FALLBACK COMPONENT
 // ============================================================================
-// If an image URL is broken or missing, this ensures a clean text fallback is shown
 const BrandLogo = ({ client }) => {
   const [hasError, setHasError] = useState(false);
 
@@ -255,11 +254,11 @@ const WhatsAppWidget = () => {
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-full overflow-hidden bg-stone-100 flex items-center justify-center border border-stone-200 shrink-0">
               <img
-                src="/IMG_6996.jpg"
+                src="/WhatsappImage/Ichigo.JPG"
                 alt="Siamese Boss"
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  e.currentTarget.onerror = null; // Prevent infinite loop if fallback also fails
+                  e.currentTarget.onerror = null;
                   e.currentTarget.src = 'https://images.unsplash.com/photo-1513245533418-297f299b6190?auto=format&fit=crop&q=80&w=200';
                 }}
               />
@@ -709,11 +708,18 @@ export default function App() {
                   </div>
                   <div className="grid md:grid-cols-2 gap-12">
                     {FUNNEL_DATA.portfolio.websites.map((s, i) => (
-                      <Reveal key={i} className="group cursor-pointer" onClick={() => setLightboxImg(s.img)}>
+                      <Reveal key={i} className="group cursor-pointer text-left" onClick={() => setLightboxImg(s.img)}>
                         <div className="rounded-2xl overflow-hidden border border-stone-200 shadow-sm relative aspect-[4/3] bg-white">
                           <img src={s.img} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt={s.title} />
                         </div>
-                        <p className="font-bold text-lg mt-6 text-stone-900 group-hover:text-amber-600 transition-colors text-center">{s.title}</p>
+                        <div className="flex justify-between items-center mt-6">
+                           <p className="font-bold text-lg text-stone-900 group-hover:text-amber-600 transition-colors">{s.title}</p>
+                           {s.link && (
+                             <a href={s.link} target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-widest text-amber-600 hover:text-stone-900 flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
+                               Visit Site <ExternalLink size={12}/>
+                             </a>
+                           )}
+                        </div>
                       </Reveal>
                     ))}
                   </div>
