@@ -7,7 +7,8 @@ import {
   Download, MessageCircle, Maximize2, Calculator, Calendar,
   Globe, Laptop, MonitorSmartphone, FileText, Newspaper,
   ShieldAlert, BarChart3, Smartphone, Film, ExternalLink,
-  BookOpen, Cpu, DownloadCloud, AtSign, Contact
+  BookOpen, Cpu, DownloadCloud, AtSign, Contact,
+  Moon, Sun, ArrowLeft, Loader2
 } from 'lucide-react';
 
 // ============================================================================
@@ -39,13 +40,6 @@ const ShieldCheck = ({ size = 24, className = "" }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
     <path d="m9 12 2 2 4-4"></path>
-  </svg>
-);
-
-const Lock = ({ size = 24, className = "" }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
-    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
   </svg>
 );
 
@@ -139,6 +133,32 @@ const FUNNEL_DATA = {
       ]
     }
   },
+  insights: [
+    {
+      id: "storyboards-to-big-screen",
+      title: "From Storyboards to the Big Screen",
+      date: "March 2026", readTime: "4 min read",
+      snippet: "Anak TV Sinebata Workshop Batch 1 empowers children to declare 'Hear My Voice'...",
+      content: "Empowering the next generation of storytellers is paramount. In this immersive workshop, children were taught how to translate their raw imaginations into compelling visual storyboards, ultimately giving them the confidence to declare, 'Hear My Voice.' The integration of accessible digital tools proved that premium storytelling is no longer gatekept by high-end studio budgets.",
+      externalLink: "https://anaktv.ph/from-storyboards-to-the-big-screen-anak-tv-sinebata-workshop-batch-1-empowers-children-to-declare-hear-my-voice/"
+    },
+    {
+      id: "wage-hike-approved",
+      title: "₱200 Wage Hike Approved",
+      date: "June 2025", readTime: "3 min read",
+      snippet: "Kamara, inaprubahan ang wage hike para sa mga minimum wage earners...",
+      content: "In a pivotal legislative move, the chamber officially approved a ₱200 daily wage increase for minimum wage earners. This shift not only impacts the local economy but directly influences consumer purchasing power, changing how digital marketers must approach ad spend and targeting strategies in the coming fiscal year.",
+      externalLink: "https://zbni.ph/2025/06/04/%E2%82%B1200-na-dagdag-sahod-bawat-araw-kamara-inaprubahan-ang-wage-hike-para-sa-mga-minimum-wage-earners/"
+    },
+    {
+      id: "live-music-cleveland",
+      title: "Live Music in Cleveland",
+      date: "December 2025", readTime: "5 min read",
+      snippet: "Weekend Gig Guide: Dec 27th - 29th. The best live music events happening around the city...",
+      content: "Building localized digital communities requires hyper-specific content. The Weekend Gig Guide for Cleveland serves as a perfect case study in capturing localized search intent. By curating the city's top live music events, we established a recurring, high-engagement digital property that drives consistent returning traffic.",
+      externalLink: "https://livemusicincleveland.com/p/dec-27th-29th"
+    }
+  ],
   reviews: [
     { text: "Produces copy fast! I have no regrets working with Mark!", author: "Mateo V." },
     { text: "The best social media guy! Saved me hours of work with AI!", author: "Seth Y." },
@@ -165,9 +185,9 @@ const CV_DATA = {
     blinq: "https://s.blinq.me/cmgufwl1g04was60m6q7mp208?bs=icl"
   },
   appearances: [
-    { show: "THE 700 CLUB ASIA", title: "I WILL NEVER ABANDON YOU", network: "CBN ASIA / GMA", img: "/Interviews/700club.png", videoUrl: "https://www.youtube.com/embed/NXK8BjsB4x4" },
-    { show: "ROADTRIP REFUELED", title: "PAINS OF LIFE", network: "LIGHT TV", img: "/Interviews/roadtrip.png", videoUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FLightTVGCoB%2Fvideos%2F943905975988813&show_text=false" },
-    { show: "#PTVNEWSTONIGHT", title: "UNESCO MEDIA WORKSHOP", network: "PTV", img: "/Interviews/PTV.png", videoUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D5837386186340729&show_text=false" }
+    { show: "THE 700 CLUB ASIA", title: "I WILL NEVER ABANDON YOU", network: "CBN ASIA / GMA", img: "/Interviews/700club.png", link: "https://www.youtube.com/watch?v=NXK8BjsB4x4&t=1s" },
+    { show: "ROADTRIP REFUELED", title: "PAINS OF LIFE", network: "LIGHT TV", img: "/Interviews/roadtrip.png", link: "https://www.facebook.com/LightTVGCoB/videos/943905975988813" },
+    { show: "#PTVNEWSTONIGHT", title: "UNESCO MEDIA WORKSHOP", network: "PTV", img: "/Interviews/PTV.png", link: "https://www.facebook.com/watch/?v=5837386186340729" }
   ],
   experience: [
     { role: "Head for Online Media", company: "Zoe Broadcasting Network Inc. (ZBNI)", period: "Jan 2025 – Present", description: "Spearheaded the network's digital frontier, providing executive leadership for all online media verticals. Orchestrated the synergy between content creation, social media strategy, and emerging technologies (AI, app/web/software development) to expand the digital footprint and redefine audience engagement." },
@@ -259,7 +279,7 @@ const BrandLogo = ({ client }) => {
 
   if (hasError || !client.logo) {
     return (
-      <span className="font-black text-2xl md:text-3xl tracking-tighter text-stone-300 group-hover:text-stone-900 transition-colors uppercase whitespace-nowrap px-4">
+      <span className="font-black text-2xl md:text-3xl tracking-tighter text-stone-300 dark:text-stone-700 group-hover:text-stone-900 dark:group-hover:text-white transition-colors uppercase whitespace-nowrap px-4">
         {client.name}
       </span>
     );
@@ -269,9 +289,69 @@ const BrandLogo = ({ client }) => {
     <img
       src={client.logo}
       alt={client.name}
-      className="h-10 md:h-14 w-auto min-w-[80px] object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+      className="h-10 md:h-14 w-auto min-w-[80px] object-contain grayscale opacity-40 dark:opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
       onError={() => setHasError(true)}
     />
+  );
+};
+
+// ============================================================================
+// 🚀 CONTACT MODAL
+// ============================================================================
+const ContactModal = ({ isOpen, onClose }) => {
+  const [status, setStatus] = useState('idle'); // idle, sending, sent
+
+  if (!isOpen) return null;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus('sending');
+    setTimeout(() => {
+      setStatus('sent');
+      setTimeout(() => {
+        onClose();
+        setStatus('idle');
+      }, 2000);
+    }, 1200);
+  };
+
+  return (
+    <div className="fixed inset-0 z-[99999] bg-stone-900/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
+      <div className="bg-white dark:bg-stone-900 rounded-3xl p-8 max-w-md w-full shadow-2xl relative" onClick={e => e.stopPropagation()}>
+        <button onClick={onClose} className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 dark:hover:text-white"><X size={24}/></button>
+        <h3 className="text-3xl font-black text-stone-900 dark:text-white mb-2">Let's build.</h3>
+        <p className="text-stone-500 dark:text-stone-400 mb-8">Send a direct message to my personal inbox.</p>
+        
+        {status === 'sent' ? (
+          <div className="py-12 flex flex-col items-center justify-center animate-scale-up">
+            <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
+              <CheckCircle2 size={32} />
+            </div>
+            <p className="font-bold text-lg text-stone-900 dark:text-white">Message Sent!</p>
+            <p className="text-stone-500 dark:text-stone-400 text-sm">I'll get back to you shortly.</p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest mb-2">Name</label>
+              <input required type="text" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors" placeholder="Jane Doe" />
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest mb-2">Email</label>
+              <input required type="email" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors" placeholder="jane@example.com" />
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest mb-2">Message</label>
+              <textarea required rows={4} className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors resize-none" placeholder="How can we help you dominate?" />
+            </div>
+            <button type="submit" disabled={status === 'sending'} className="w-full bg-stone-900 dark:bg-white text-white dark:text-stone-900 py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-amber-600 dark:hover:bg-amber-500 hover:text-white transition-all flex items-center justify-center gap-2 mt-4">
+              {status === 'sending' ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+              {status === 'sending' ? 'Sending...' : 'Send Message'}
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
   );
 };
 
@@ -289,19 +369,19 @@ const WhatsAppWidget = () => {
   return (
     <div className="fixed bottom-8 right-8 z-[60] flex flex-col items-end gap-3 pointer-events-none">
       {stage === 'typing' && (
-        <div className="bg-white px-5 py-3 rounded-2xl shadow-xl border border-stone-100 animate-bounce flex items-center gap-2 pointer-events-auto">
+        <div className="bg-white dark:bg-stone-900 px-5 py-3 rounded-2xl shadow-xl border border-stone-100 dark:border-stone-800 animate-bounce flex items-center gap-2 pointer-events-auto">
           <div className="flex gap-1">
-            <span className="w-1.5 h-1.5 bg-stone-800 rounded-full animate-pulse"></span>
-            <span className="w-1.5 h-1.5 bg-stone-800 rounded-full animate-pulse delay-75"></span>
-            <span className="w-1.5 h-1.5 bg-stone-800 rounded-full animate-pulse delay-150"></span>
+            <span className="w-1.5 h-1.5 bg-stone-800 dark:bg-white rounded-full animate-pulse"></span>
+            <span className="w-1.5 h-1.5 bg-stone-800 dark:bg-white rounded-full animate-pulse delay-75"></span>
+            <span className="w-1.5 h-1.5 bg-stone-800 dark:bg-white rounded-full animate-pulse delay-150"></span>
           </div>
-          <span className="text-xs font-bold text-stone-800">Supervisor is typing...</span>
+          <span className="text-xs font-bold text-stone-800 dark:text-white">Supervisor is typing...</span>
         </div>
       )}
       
       {stage === 'visible' && (
-        <div className="bg-white p-5 rounded-2xl shadow-2xl border border-stone-100 max-w-[280px] animate-scale-up pointer-events-auto relative">
-          <button onClick={() => setStage('hidden')} className="absolute -top-2 -right-2 bg-stone-900 text-white p-1 rounded-full shadow-lg hover:scale-110 transition-transform"><X size={12}/></button>
+        <div className="bg-white dark:bg-stone-900 p-5 rounded-2xl shadow-2xl border border-stone-100 dark:border-stone-800 max-w-[280px] animate-scale-up pointer-events-auto relative">
+          <button onClick={() => setStage('hidden')} className="absolute -top-2 -right-2 bg-stone-900 dark:bg-white text-white dark:text-stone-900 p-1 rounded-full shadow-lg hover:scale-110 transition-transform"><X size={12}/></button>
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-full overflow-hidden bg-stone-100 flex items-center justify-center border border-stone-200 shrink-0">
               <img
@@ -315,11 +395,11 @@ const WhatsAppWidget = () => {
               />
             </div>
             <div>
-              <p className="text-[10px] font-black uppercase text-stone-900 tracking-widest">Mark's Supervisor 🐾</p>
+              <p className="text-[10px] font-black uppercase text-stone-900 dark:text-white tracking-widest">Mark's Supervisor 🐾</p>
               <p className="text-[9px] text-green-600 font-bold flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Waiting for Treats</p>
             </div>
           </div>
-          <p className="text-sm font-medium text-stone-600 leading-relaxed text-left">
+          <p className="text-sm font-medium text-stone-600 dark:text-stone-300 leading-relaxed text-left">
             Meow! I'm Mark's boss. If you hire him, he can buy me more treats. 🍖 How can he help you today?
           </p>
         </div>
@@ -350,8 +430,8 @@ const CookieBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 w-full z-[9999] p-4 md:p-6 animate-fade-in-up">
-      <div className="max-w-4xl mx-auto bg-[#432818] text-white p-6 md:p-8 rounded-[2rem] shadow-2xl border border-white/10 flex flex-col md:flex-row items-center gap-6">
+    <div className="fixed bottom-0 left-0 w-full z-[9999] p-4 md:p-6 animate-fade-in-up pointer-events-none">
+      <div className="max-w-4xl mx-auto bg-[#432818] text-white p-6 md:p-8 rounded-[2rem] shadow-2xl border border-white/10 flex flex-col md:flex-row items-center gap-6 pointer-events-auto">
         <div className="bg-white/10 p-4 rounded-2xl"><ShieldCheck size={32} className="text-[#DDA15E]"/></div>
         <div className="flex-1 text-left">
           <h4 className="font-black text-lg mb-1 tracking-tight text-white">Your privacy, our priority.</h4>
@@ -403,7 +483,7 @@ const SocialAuditTool = () => {
   };
 
   return (
-    <div className="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-stone-200 relative overflow-hidden min-h-[400px] flex flex-col justify-center max-w-3xl mx-auto">
+    <div className="bg-white dark:bg-stone-900 rounded-[2rem] p-8 md:p-12 shadow-sm border border-stone-200 dark:border-stone-800 relative overflow-hidden min-h-[400px] flex flex-col justify-center max-w-3xl mx-auto transition-colors">
       {/* Question Steps */}
       {step < questions.length && (
         <div className="animate-fade-in text-left">
@@ -411,14 +491,14 @@ const SocialAuditTool = () => {
             <span className="text-stone-400 font-mono text-xs uppercase tracking-widest font-bold">Step {step + 1} of {questions.length}</span>
             <div className="flex gap-1">
               {questions.map((_, i) => (
-                <div key={i} className={`h-1.5 w-8 rounded-full transition-colors ${i <= step ? 'bg-amber-600' : 'bg-stone-100'}`}></div>
+                <div key={i} className={`h-1.5 w-8 rounded-full transition-colors ${i <= step ? 'bg-amber-600' : 'bg-stone-100 dark:bg-stone-800'}`}></div>
               ))}
             </div>
           </div>
-          <h3 className="text-2xl md:text-3xl font-black text-stone-900 mb-10 leading-tight">{questions[step].q}</h3>
+          <h3 className="text-2xl md:text-3xl font-black text-stone-900 dark:text-white mb-10 leading-tight">{questions[step].q}</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {questions[step].options.map((opt, idx) => (
-              <button key={idx} onClick={() => handleAnswer(opt.points)} className="bg-stone-50 border border-stone-200 text-stone-700 p-5 rounded-2xl font-bold text-left hover:bg-stone-900 hover:text-white hover:border-stone-900 transition-all active:scale-95 group flex items-center justify-between">
+              <button key={idx} onClick={() => handleAnswer(opt.points)} className="bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-700 dark:text-stone-300 p-5 rounded-2xl font-bold text-left hover:bg-stone-900 dark:hover:bg-amber-600 hover:text-white dark:hover:text-white hover:border-stone-900 dark:hover:border-amber-600 transition-all active:scale-95 group flex items-center justify-between">
                 {opt.text}
                 <ChevronRight size={18} className="opacity-0 group-hover:opacity-100 transition-opacity" />
               </button>
@@ -430,11 +510,11 @@ const SocialAuditTool = () => {
       {/* Email Capture Step */}
       {step === questions.length && !showResult && (
         <div className="animate-scale-up text-center max-w-lg mx-auto">
-          <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Mail className="text-amber-600" size={32} />
+          <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Mail className="text-amber-600 dark:text-amber-500" size={32} />
           </div>
-          <h3 className="text-2xl font-black text-stone-900 mb-4">Audit Complete!</h3>
-          <p className="text-stone-500 font-medium mb-8">Enter your email below to instantly reveal your Growth Grade and custom strategy.</p>
+          <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4">Audit Complete!</h3>
+          <p className="text-stone-500 dark:text-stone-400 font-medium mb-8">Enter your email below to instantly reveal your Growth Grade and custom strategy.</p>
           <form onSubmit={handleEmailSubmit} className="flex flex-col gap-4">
             <input
               type="email"
@@ -442,9 +522,9 @@ const SocialAuditTool = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your best email..."
-              className="w-full px-6 py-4 rounded-xl bg-stone-50 border border-stone-200 focus:border-stone-900 outline-none font-medium text-center"
+              className="w-full px-6 py-4 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 focus:border-amber-600 dark:focus:border-amber-500 outline-none font-medium text-center text-stone-900 dark:text-white transition-colors"
             />
-            <button type="submit" className="w-full py-4 rounded-xl font-black text-white bg-stone-900 hover:bg-amber-600 transition-all uppercase tracking-widest text-sm">
+            <button type="submit" className="w-full py-4 rounded-xl font-black text-white bg-stone-900 dark:bg-white dark:text-stone-900 hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all uppercase tracking-widest text-sm">
               Reveal My Results
             </button>
           </form>
@@ -454,17 +534,17 @@ const SocialAuditTool = () => {
       {/* Results Step */}
       {showResult && (
         <div className="animate-scale-up text-center">
-          <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
-            <BarChart3 className="text-amber-600" size={40} />
+          <div className="w-20 h-20 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+            <BarChart3 className="text-amber-600 dark:text-amber-500" size={40} />
           </div>
           <h3 className="text-stone-400 font-mono text-xs uppercase tracking-[0.3em] mb-2 font-bold">Your Growth Grade</h3>
           <p className={`text-5xl md:text-6xl font-black mb-6 ${getAuditResult().color}`}>{getAuditResult().label}</p>
-          <p className="text-stone-600 text-lg font-medium mb-10 max-w-md mx-auto leading-relaxed">{getAuditResult().advice}</p>
+          <p className="text-stone-600 dark:text-stone-300 text-lg font-medium mb-10 max-w-md mx-auto leading-relaxed">{getAuditResult().advice}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={() => { setStep(0); setScore(0); setEmail(''); setShowResult(false); }} className="text-stone-400 font-bold text-sm hover:text-stone-900 transition-colors">
+            <button onClick={() => { setStep(0); setScore(0); setEmail(''); setShowResult(false); }} className="text-stone-400 font-bold text-sm hover:text-stone-900 dark:hover:text-white transition-colors">
               Retake Audit
             </button>
-            <button onClick={() => document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'smooth' })} className="bg-stone-900 text-white px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 transition-all hover:-translate-y-1">
+            <button onClick={() => document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'smooth' })} className="bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1">
               Book Strategy Call
             </button>
           </div>
@@ -475,7 +555,7 @@ const SocialAuditTool = () => {
 };
 
 // ============================================================================
-// 🚀 REVIEW CAROUSEL (5 Second Interval, Single Slide, No Indicators)
+// 🚀 REVIEW CAROUSEL
 // ============================================================================
 const ReviewCarousel = () => {
   const [current, setCurrent] = useState(0);
@@ -495,16 +575,16 @@ const ReviewCarousel = () => {
         >
           {reviews.map((review, idx) => (
             <div key={idx} className="min-w-full flex-shrink-0 px-2 md:px-4">
-              <div className="bg-white p-8 md:p-12 rounded-[2rem] border border-stone-100 shadow-[0_4px_24px_rgba(0,0,0,0.03)] h-full flex flex-col justify-between group hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] transition-shadow duration-500">
+              <div className="bg-white dark:bg-stone-900 p-8 md:p-12 rounded-[2rem] border border-stone-100 dark:border-stone-800 shadow-[0_4px_24px_rgba(0,0,0,0.03)] dark:shadow-none h-full flex flex-col justify-between group hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] transition-shadow duration-500">
                 <div>
                   <div className="flex gap-1 mb-8 text-left">
                     {[1, 2, 3, 4, 5].map((s) => <Star key={s} className="text-amber-400 fill-amber-400" size={16} />)}
                   </div>
-                  <p className="text-xl md:text-2xl font-medium text-stone-800 leading-relaxed tracking-tight text-left">"{review.text}"</p>
+                  <p className="text-xl md:text-2xl font-medium text-stone-800 dark:text-white leading-relaxed tracking-tight text-left">"{review.text}"</p>
                 </div>
-                <div className="mt-10 pt-6 border-t border-stone-50 flex items-center justify-between text-left">
-                  <p className="text-sm font-bold text-stone-900 uppercase tracking-widest">{review.author}</p>
-                  <div className="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-300 group-hover:text-amber-600 transition-colors">
+                <div className="mt-10 pt-6 border-t border-stone-50 dark:border-stone-800 flex items-center justify-between text-left">
+                  <p className="text-sm font-bold text-stone-900 dark:text-white uppercase tracking-widest">{review.author}</p>
+                  <div className="w-10 h-10 rounded-full bg-stone-50 dark:bg-stone-950 flex items-center justify-center text-stone-300 dark:text-stone-600 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">
                     <Users size={16} />
                   </div>
                 </div>
@@ -530,7 +610,7 @@ const BeforeAfterSlider = ({ beforeImage, afterImage }) => {
     setSliderPosition(Math.max(0, Math.min(100, (x / width) * 100)));
   };
   return (
-    <div ref={containerRef} className="relative w-full aspect-video rounded-[3rem] overflow-hidden cursor-ew-resize select-none touch-none bg-slate-200 shadow-2xl border-4 border-white" onMouseMove={handleMove} onTouchMove={handleMove}>
+    <div ref={containerRef} className="relative w-full aspect-video rounded-[3rem] overflow-hidden cursor-ew-resize select-none touch-none bg-slate-200 dark:bg-stone-900 shadow-2xl border-4 border-white dark:border-stone-800" onMouseMove={handleMove} onTouchMove={handleMove}>
       <img src={afterImage} alt="After" className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
       <div className="absolute top-6 right-6 bg-black/60 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-black pointer-events-none">AFTER</div>
       <div className="absolute inset-0 w-full h-full" style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}><img src={beforeImage} alt="Before" className="absolute inset-0 w-full h-full object-cover pointer-events-none" /></div>
@@ -547,65 +627,201 @@ const BeforeAfterSlider = ({ beforeImage, afterImage }) => {
 
 export default function App() {
   const [activePage, setActivePage] = useState('home');
+  const [activePost, setActivePost] = useState(null); // For rendering single blog post
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [lightboxImg, setLightboxImg] = useState(null);
   const [videoUrl, setVideoUrl] = useState(null);
+  
+  // New State Features
+  const [darkMode, setDarkMode] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 });
+  const [isHovering, setIsHovering] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
+  const [showExitIntent, setShowExitIntent] = useState(false);
+  const exitIntentTriggered = useRef(false);
 
+  // 1. Theme Effect
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    if (darkMode) document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  }, [darkMode]);
+
+  // 2. Global Event Listeners (Scroll, Mouse, Routing)
+  useEffect(() => {
+    // URL Routing Initialization
+    const path = window.location.pathname.replace('/', '') || 'home';
+    if (['home', 'about', 'privacy', 'ai-use', 'insights'].includes(path)) {
+      setActivePage(path);
+    }
+
+    const handlePopState = () => {
+      const newPath = window.location.pathname.replace('/', '') || 'home';
+      setActivePage(newPath);
+      setActivePost(null);
+    };
+    window.addEventListener('popstate', handlePopState);
+
+    // Scroll Progress
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      setScrollProgress((winScroll / height) * 100);
+    };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    // Custom Cursor & Exit Intent
+    const handleMouseMove = (e) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+      
+      // Check if hovering over clickable element
+      const target = e.target;
+      setIsHovering(!!target.closest('button, a, input, textarea'));
+
+      // Exit Intent Logic (Mouse goes to top of screen on desktop)
+      if (e.clientY < 15 && !exitIntentTriggered.current) {
+        setShowExitIntent(true);
+        exitIntentTriggered.current = true;
+      }
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('popstate', handlePopState);
+    };
   }, []);
 
-  const navigateTo = (page) => {
+  // 3. Dynamic SEO Metadata
+  useEffect(() => {
+    const titles = {
+      home: "ME digital | Digital Strategy & AI Automation",
+      about: "Mark Espinosa | Digital Strategist & AI Engineer",
+      privacy: "Privacy Policy | ME digital",
+      'ai-use': "AI Ethics & Usage | ME digital",
+      insights: activePost ? `${activePost.title} | ME digital` : "Insights & Strategy | ME digital"
+    };
+    document.title = titles[activePage] || titles.home;
+    
+    // Simulate updating Meta Description dynamically
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.name = "description";
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.content = activePost ? activePost.snippet : FUNNEL_DATA.brand.subheadline;
+
+  }, [activePage, activePost]);
+
+  // Route Navigator
+  const navigateTo = (page, e = null) => {
+    if (e) e.preventDefault();
+    window.history.pushState({}, '', `/${page === 'home' ? '' : page}`);
     setActivePage(page);
+    setActivePost(null);
     setIsMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const openPost = (post, e) => {
+    if (e) e.preventDefault();
+    window.history.pushState({}, '', `/insights`);
+    setActivePage('insights');
+    setActivePost(post);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <div className="min-h-screen bg-[#FAFAF9] text-stone-900 font-sans flex flex-col selection:bg-amber-600 selection:text-white">
+    <div className="min-h-screen bg-[#FAFAF9] dark:bg-stone-950 text-stone-900 dark:text-white font-sans flex flex-col selection:bg-amber-600 selection:text-white transition-colors duration-300">
       
+      {/* 🚀 GLOBAL CSS OVERRIDES */}
+      <style dangerouslySetInnerHTML={{__html: `
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; background: transparent; }
+        ::-webkit-scrollbar-track { background: ${darkMode ? '#0c0a09' : '#f5f5f4'}; }
+        ::-webkit-scrollbar-thumb { background: ${darkMode ? '#292524' : '#d6d3d1'}; border-radius: 10px; border: 2px solid ${darkMode ? '#0c0a09' : '#f5f5f4'}; }
+        ::-webkit-scrollbar-thumb:hover { background: #d97706; }
+        /* Hide Default Cursor on Desktop */
+        @media (pointer: fine) { body { cursor: none; } a, button, input, textarea { cursor: none !important; } }
+      `}} />
+
+      {/* 🚀 CUSTOM CURSOR */}
+      <div
+        className="fixed top-0 left-0 w-8 h-8 border-2 border-amber-600 rounded-full pointer-events-none z-[99999] transition-transform duration-100 ease-out hidden lg:flex items-center justify-center mix-blend-difference"
+        style={{ transform: `translate(${cursorPos.x - 16}px, ${cursorPos.y - 16}px) scale(${isHovering ? 1.5 : 1})`, opacity: cursorPos.x < 0 ? 0 : 1 }}
+      >
+        <div className={`w-1.5 h-1.5 bg-amber-600 rounded-full transition-opacity ${isHovering ? 'opacity-100' : 'opacity-0'}`} />
+      </div>
+
+      {/* 🚀 SCROLL PROGRESS BAR */}
+      <div className="fixed top-0 left-0 h-1 bg-amber-600 z-[99999] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
+
+      {/* 🚀 MODALS */}
+      <ContactModal isOpen={showContactModal} onClose={() => setShowContactModal(false)} />
+      
+      {/* Exit Intent Modal */}
+      {showExitIntent && (
+        <div className="fixed inset-0 z-[99999] bg-stone-900/60 dark:bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in" onClick={() => setShowExitIntent(false)}>
+          <div className="bg-white dark:bg-stone-900 rounded-[2rem] p-10 max-w-lg text-center shadow-2xl relative" onClick={e => e.stopPropagation()}>
+            <button onClick={() => setShowExitIntent(false)} className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 dark:hover:text-white"><X size={24}/></button>
+            <div className="w-20 h-20 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6"><TrendingUp size={32} className="text-amber-600" /></div>
+            <h3 className="text-4xl font-black text-stone-900 dark:text-white mb-4 tracking-tight">Leaving so soon?</h3>
+            <p className="text-stone-500 dark:text-stone-400 mb-8">Don't leave your digital growth to chance. Let's map out a custom AI strategy for your brand—completely free.</p>
+            <button onClick={() => { setShowExitIntent(false); setShowContactModal(true); }} className="w-full bg-amber-600 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs shadow-lg hover:bg-stone-900 dark:hover:bg-white dark:hover:text-stone-900 transition-all">Claim Strategy Session</button>
+            <button onClick={() => setShowExitIntent(false)} className="mt-4 text-xs font-bold text-stone-400 hover:text-stone-900 dark:hover:text-white uppercase tracking-widest">No thanks, I hate growth</button>
+          </div>
+        </div>
+      )}
+
+      {lightboxImg && (
+        <div className="fixed inset-0 z-[100] bg-white/95 dark:bg-stone-950/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={() => setLightboxImg(null)}>
+          <button className="absolute top-8 right-8 text-stone-900 dark:text-white"><X size={32}/></button>
+          <img src={lightboxImg} className="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl border border-stone-200 dark:border-stone-800" alt="Full View" />
+        </div>
+      )}
+
       {/* 🧭 NAVIGATION */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-stone-100 py-4' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-stone-950/90 backdrop-blur-md shadow-sm border-b border-stone-100 dark:border-stone-800 py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-          <button onClick={() => navigateTo('home')} className="font-black text-2xl tracking-tighter text-stone-900">
+          <button onClick={(e) => navigateTo('home', e)} className="font-black text-2xl tracking-tighter text-stone-900 dark:text-white">
             ME<span className="text-amber-600">digital</span>
           </button>
           
           <div className="hidden md:flex items-center gap-8">
-            <button onClick={() => navigateTo('home')} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors ${activePage === 'home' ? 'text-amber-600' : 'text-stone-400 hover:text-stone-900'}`}>Works</button>
-            <button onClick={() => navigateTo('about')} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors ${activePage === 'about' ? 'text-amber-600' : 'text-stone-400 hover:text-stone-900'}`}>About & CV</button>
-            <button onClick={() => { navigateTo('home'); setTimeout(() => document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="bg-stone-900 text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-amber-600 transition-all shadow-sm">Book Call</button>
+            <button onClick={(e) => navigateTo('home', e)} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors ${activePage === 'home' ? 'text-amber-600' : 'text-stone-400 hover:text-stone-900 dark:hover:text-white'}`}>Works</button>
+            <button onClick={(e) => navigateTo('about', e)} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors ${activePage === 'about' ? 'text-amber-600' : 'text-stone-400 hover:text-stone-900 dark:hover:text-white'}`}>About & CV</button>
+            <button onClick={(e) => navigateTo('insights', e)} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors ${activePage === 'insights' ? 'text-amber-600' : 'text-stone-400 hover:text-stone-900 dark:hover:text-white'}`}>Insights</button>
+            
+            {/* Theme Toggle */}
+            <button onClick={() => setDarkMode(!darkMode)} className="text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="Toggle Dark Mode">
+              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
+            <button onClick={() => setShowContactModal(true)} className="bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all shadow-sm">Book Call</button>
           </div>
 
-          <button className="md:hidden p-2 text-stone-900" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          <div className="md:hidden flex items-center gap-4">
+            <button onClick={() => setDarkMode(!darkMode)} className="text-stone-900 dark:text-white">
+              {darkMode ? <Sun size={24} /> : <Moon size={24} />}
+            </button>
+            <button className="text-stone-900 dark:text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* MOBILE MENU */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[49] bg-white flex flex-col p-8 space-y-8 md:hidden pt-32 animate-fade-in">
-          <button onClick={() => navigateTo('home')} className="text-4xl font-black text-left text-stone-900">Works</button>
-          <button onClick={() => navigateTo('about')} className="text-4xl font-black text-left text-stone-900">About & CV</button>
-          <button onClick={() => { navigateTo('home'); setTimeout(() => document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-4xl font-black text-amber-600 text-left">Book Call</button>
-        </div>
-      )}
-
-      {/* MODALS */}
-      {videoUrl && (
-        <div className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={() => setVideoUrl(null)}>
-          <button className="absolute top-8 right-8 text-stone-900"><X size={32}/></button>
-          <div className="w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"><iframe src={videoUrl} className="w-full h-full" allowFullScreen></iframe></div>
-        </div>
-      )}
-      {lightboxImg && (
-        <div className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={() => setLightboxImg(null)}>
-          <button className="absolute top-8 right-8 text-stone-900"><X size={32}/></button>
-          <img src={lightboxImg} className="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl border border-stone-200" alt="Full View" />
+        <div className="fixed inset-0 z-[49] bg-white dark:bg-stone-950 flex flex-col p-8 space-y-8 md:hidden pt-32 animate-fade-in">
+          <button onClick={(e) => navigateTo('home', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white">Works</button>
+          <button onClick={(e) => navigateTo('about', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white">About & CV</button>
+          <button onClick={(e) => navigateTo('insights', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white">Insights</button>
+          <button onClick={() => { setShowContactModal(true); setIsMobileMenuOpen(false); }} className="text-4xl font-black text-amber-600 text-left">Book Call</button>
         </div>
       )}
 
@@ -625,23 +841,23 @@ export default function App() {
             {/* HERO */}
             <section className="pt-48 pb-20 px-6 text-center">
               <Reveal>
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-100 text-stone-500 font-semibold text-[10px] uppercase tracking-[0.2em] mb-8 border border-stone-200">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-100 dark:bg-stone-900 text-stone-500 dark:text-stone-400 font-semibold text-[10px] uppercase tracking-[0.2em] mb-8 border border-stone-200 dark:border-stone-800">
                   AI Automation & Strategy
                 </div>
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-stone-900 leading-[1.05] tracking-tighter max-w-5xl mx-auto mb-8">
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-stone-900 dark:text-white leading-[1.05] tracking-tighter max-w-5xl mx-auto mb-8 transition-colors">
                   Stop blending in.<br/>Start dominating.
                 </h1>
-                <p className="text-lg md:text-xl text-stone-500 max-w-2xl mx-auto mb-12 font-normal leading-relaxed">
+                <p className="text-lg md:text-xl text-stone-500 dark:text-stone-400 max-w-2xl mx-auto mb-12 font-normal leading-relaxed">
                   {FUNNEL_DATA.brand.subheadline}
                 </p>
-                <button onClick={() => document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'smooth' })} className="group bg-stone-900 text-white px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-xl flex items-center gap-3 mx-auto hover:bg-amber-600 transition-all hover:-translate-y-1">
+                <button onClick={() => setShowContactModal(true)} className="group bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-xl flex items-center gap-3 mx-auto hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1">
                   Start Project <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
                 </button>
               </Reveal>
             </section>
 
             {/* MARQUEE BRANDS */}
-            <section className="py-12 border-y border-stone-200 bg-white overflow-hidden flex items-center">
+            <section className="py-12 border-y border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 overflow-hidden flex items-center">
               <div className="relative flex w-full">
                 <style>{`
                   @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -659,34 +875,34 @@ export default function App() {
             </section>
 
             {/* INTERACTIVE SOCIAL AUDIT (LEAD CAPTURE) */}
-            <section className="py-32 bg-[#FAFAF9]">
+            <section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-5xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
                   <span className="text-amber-600 font-bold font-mono text-[10px] uppercase tracking-widest block mb-4">Interactive Audit</span>
-                  <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight text-stone-900">Is your strategy failing?</h2>
-                  <p className="text-stone-500 text-lg max-w-2xl mx-auto">Most brands post without a system. Use this quick audit to find your biggest growth bottleneck.</p>
+                  <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight text-stone-900 dark:text-white">Is your strategy failing?</h2>
+                  <p className="text-stone-500 dark:text-stone-400 text-lg max-w-2xl mx-auto">Most brands post without a system. Use this quick audit to find your biggest growth bottleneck.</p>
                 </Reveal>
                 <Reveal delay={200}><SocialAuditTool /></Reveal>
               </div>
             </section>
 
             {/* PROOF METRICS */}
-            <section className="py-24 bg-white border-y border-stone-200">
+            <section className="py-24 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
               <div className="max-w-6xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
                   <p className="text-sm font-bold text-amber-600 uppercase tracking-widest mb-4">Proven Results</p>
-                  <h3 className="text-2xl md:text-3xl font-black text-stone-900 max-w-2xl mx-auto leading-tight">{FUNNEL_DATA.caseStudy.hook}</h3>
+                  <h3 className="text-2xl md:text-3xl font-black text-stone-900 dark:text-white max-w-2xl mx-auto leading-tight">{FUNNEL_DATA.caseStudy.hook}</h3>
                 </Reveal>
                 <div className="grid md:grid-cols-3 gap-8">
                   {FUNNEL_DATA.caseStudy.metrics.map((m, i) => {
                     const MIcon = m.icon;
                     return (
-                      <Reveal key={i} delay={i*100} className="text-center p-8 rounded-2xl border border-stone-100 bg-stone-50">
-                        <MIcon className="text-stone-300 mb-6 mx-auto" size={32} />
-                        <p className="text-3xl font-bold text-stone-900 mb-2 tracking-tight">
+                      <Reveal key={i} delay={i*100} className="text-center p-8 rounded-2xl border border-stone-100 dark:border-stone-800 bg-[#FAFAF9] dark:bg-stone-950 shadow-sm hover:shadow-md transition-shadow">
+                        <MIcon className="text-stone-300 dark:text-stone-600 mb-6 mx-auto" size={32} />
+                        <p className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white mb-2 tracking-tight">
                           <CountUp end={m.value} prefix={m.prefix} suffix={m.suffix} decimals={m.decimals} />
                         </p>
-                        <p className="text-stone-500 font-semibold text-[10px] uppercase tracking-widest">{m.label}</p>
+                        <p className="text-stone-500 dark:text-stone-400 font-semibold text-[10px] uppercase tracking-widest">{m.label}</p>
                       </Reveal>
                     );
                   })}
@@ -695,18 +911,18 @@ export default function App() {
             </section>
 
             {/* COMPREHENSIVE PORTFOLIO SECTION */}
-            <section className="py-32 bg-[#FAFAF9]">
+            <section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-6xl mx-auto px-6">
                 
                 {/* Graphics */}
                 <Reveal className="mb-12">
                   <div className="flex items-center gap-3 mb-6">
-                    <ImageIcon className="text-stone-300" size={32}/>
-                    <h3 className="text-3xl font-black text-stone-900 tracking-tight">Sample Graphics</h3>
+                    <ImageIcon className="text-stone-300 dark:text-stone-600" size={32}/>
+                    <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Sample Graphics</h3>
                   </div>
                   <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                     {FUNNEL_DATA.portfolio.graphics.map((img, i) => (
-                      <div key={i} className="aspect-square rounded-2xl overflow-hidden shadow-sm border border-stone-200 cursor-pointer group bg-white" onClick={() => setLightboxImg(img)}>
+                      <div key={i} className="aspect-square rounded-2xl overflow-hidden shadow-sm border border-stone-200 dark:border-stone-800 cursor-pointer group bg-white dark:bg-stone-900" onClick={() => setLightboxImg(img)}>
                         <img src={img} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Graphic" />
                       </div>
                     ))}
@@ -714,63 +930,63 @@ export default function App() {
                 </Reveal>
 
                 {/* Vertical Videos (TikTok/Reels) */}
-                <Reveal className="mb-12 pt-16 border-t border-stone-200">
+                <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
-                    <Smartphone className="text-stone-300" size={32}/>
-                    <h3 className="text-3xl font-black text-stone-900 tracking-tight">Vertical Content (Reels/TikTok)</h3>
+                    <Smartphone className="text-stone-300 dark:text-stone-600" size={32}/>
+                    <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Vertical Content (Reels/TikTok)</h3>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                     {FUNNEL_DATA.portfolio.verticalVideos.map((vid, i) => (
                       <div key={i} className="group cursor-pointer">
-                        <div className="aspect-[9/16] rounded-3xl overflow-hidden shadow-sm border-4 border-stone-100 relative bg-stone-900">
+                        <div className="aspect-[9/16] rounded-3xl overflow-hidden shadow-sm border-4 border-stone-100 dark:border-stone-800 relative bg-stone-900">
                           <img src={vid.img} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt={vid.title} />
                           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                             <PlayCircle size={48} className="text-white drop-shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"/>
                           </div>
                         </div>
-                        <p className="font-bold text-sm mt-4 text-center text-stone-900 group-hover:text-amber-600">{vid.title}</p>
+                        <p className="font-bold text-sm mt-4 text-center text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500">{vid.title}</p>
                       </div>
                     ))}
                   </div>
                 </Reveal>
 
                 {/* Horizontal Videos */}
-                <Reveal className="mb-12 pt-16 border-t border-stone-200">
+                <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
-                    <Film className="text-stone-300" size={32}/>
-                    <h3 className="text-3xl font-black text-stone-900 tracking-tight">Cinematic 16:9 Video</h3>
+                    <Film className="text-stone-300 dark:text-stone-600" size={32}/>
+                    <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Cinematic 16:9 Video</h3>
                   </div>
                   <div className="grid md:grid-cols-2 gap-8">
                     {FUNNEL_DATA.portfolio.horizontalVideos.map((vid, i) => (
                       <div key={i} className="group cursor-pointer">
-                        <div className="aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-200 relative bg-stone-900">
+                        <div className="aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-200 dark:border-stone-800 relative bg-stone-900">
                           <img src={vid.img} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt={vid.title} />
                           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                             <PlayCircle size={48} className="text-white drop-shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"/>
                           </div>
                         </div>
-                        <p className="font-bold text-base mt-4 text-stone-900 group-hover:text-amber-600">{vid.title}</p>
+                        <p className="font-bold text-base mt-4 text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500">{vid.title}</p>
                       </div>
                     ))}
                   </div>
                 </Reveal>
 
                 {/* Web Architecture */}
-                <Reveal className="mb-12 pt-16 border-t border-stone-200">
+                <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
-                    <Monitor className="text-stone-300" size={32}/>
-                    <h3 className="text-3xl font-black text-stone-900 tracking-tight">Digital Architectures</h3>
+                    <Monitor className="text-stone-300 dark:text-stone-600" size={32}/>
+                    <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Digital Architectures</h3>
                   </div>
                   <div className="grid md:grid-cols-2 gap-12">
                     {FUNNEL_DATA.portfolio.websites.map((s, i) => (
                       <Reveal key={i} className="group cursor-pointer text-left" onClick={() => setLightboxImg(s.img)}>
-                        <div className="rounded-2xl overflow-hidden border border-stone-200 shadow-sm relative aspect-[4/3] bg-white">
+                        <div className="rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 shadow-sm relative aspect-[4/3] bg-white dark:bg-stone-900">
                           <img src={s.img} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt={s.title} />
                         </div>
                         <div className="flex justify-between items-center mt-6">
-                           <p className="font-bold text-lg text-stone-900 group-hover:text-amber-600 transition-colors">{s.title}</p>
+                           <p className="font-bold text-lg text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">{s.title}</p>
                            {s.link && (
-                             <a href={s.link} target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-widest text-amber-600 hover:text-stone-900 flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
+                             <a href={s.link} target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-widest text-amber-600 hover:text-stone-900 dark:hover:text-white flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
                                Visit Site <ExternalLink size={12}/>
                              </a>
                            )}
@@ -781,18 +997,18 @@ export default function App() {
                 </Reveal>
 
                 {/* WRITTEN STRATEGY */}
-                <div className="grid md:grid-cols-2 gap-16 pt-20 border-t border-stone-200">
+                <div className="grid md:grid-cols-2 gap-16 pt-20 border-t border-stone-200 dark:border-stone-800">
                   <Reveal>
                     <div className="flex items-center gap-3 mb-8">
-                      <FileText className="text-stone-400" size={24} />
-                      <h4 className="text-xl font-black text-stone-900">Articles & Copy</h4>
+                      <FileText className="text-stone-400 dark:text-stone-500" size={24} />
+                      <h4 className="text-xl font-black text-stone-900 dark:text-white">Articles & Copy</h4>
                     </div>
                     <ul className="space-y-6">
                       {FUNNEL_DATA.portfolio.writing.articles.map((art, idx) => (
-                        <li key={idx} className="group pb-6 border-b border-stone-100 last:border-0">
+                        <li key={idx} className="group pb-6 border-b border-stone-100 dark:border-stone-800 last:border-0">
                           <a href={art.link} target="_blank" rel="noopener noreferrer" className="block">
-                            <h5 className="font-bold text-stone-900 mb-2 group-hover:text-amber-600 transition-colors">{art.title}</h5>
-                            <p className="text-sm text-stone-500 mb-3">{art.snippet}</p>
+                            <h5 className="font-bold text-stone-900 dark:text-white mb-2 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">{art.title}</h5>
+                            <p className="text-sm text-stone-500 dark:text-stone-400 mb-3">{art.snippet}</p>
                             <span className="text-[10px] font-bold uppercase tracking-widest text-amber-600">Read Sample →</span>
                           </a>
                         </li>
@@ -801,15 +1017,15 @@ export default function App() {
                   </Reveal>
                   <Reveal delay={100}>
                     <div className="flex items-center gap-3 mb-8">
-                      <Newspaper className="text-stone-400" size={24} />
-                      <h4 className="text-xl font-black text-stone-900">Newsletters</h4>
+                      <Newspaper className="text-stone-400 dark:text-stone-500" size={24} />
+                      <h4 className="text-xl font-black text-stone-900 dark:text-white">Newsletters</h4>
                     </div>
                     <ul className="space-y-6">
                       {FUNNEL_DATA.portfolio.writing.newsletters.map((news, idx) => (
-                        <li key={idx} className="group pb-6 border-b border-stone-100 last:border-0">
+                        <li key={idx} className="group pb-6 border-b border-stone-100 dark:border-stone-800 last:border-0">
                           <a href={news.link} target="_blank" rel="noopener noreferrer" className="block">
-                            <h5 className="font-bold text-stone-900 mb-2 group-hover:text-amber-600 transition-colors">{news.title}</h5>
-                            <p className="text-sm text-stone-500 mb-3">{news.snippet}</p>
+                            <h5 className="font-bold text-stone-900 dark:text-white mb-2 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">{news.title}</h5>
+                            <p className="text-sm text-stone-500 dark:text-stone-400 mb-3">{news.snippet}</p>
                             <span className="text-[10px] font-bold uppercase tracking-widest text-amber-600">View Campaign →</span>
                           </a>
                         </li>
@@ -819,20 +1035,20 @@ export default function App() {
                 </div>
 
                 {/* VIDEO / AFTER SLIDER */}
-                 <Reveal className="mb-16 flex flex-col items-center pt-20 border-t border-stone-200">
-                  <PlayCircle className="text-stone-300 mb-4" size={32}/>
-                  <h3 className="text-3xl font-black text-stone-900 tracking-tight">Visual Engineering</h3>
+                 <Reveal className="mb-16 flex flex-col items-center pt-20 border-t border-stone-200 dark:border-stone-800">
+                  <PlayCircle className="text-stone-300 dark:text-stone-600 mb-4" size={32}/>
+                  <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Visual Engineering</h3>
                 </Reveal>
                 <Reveal><BeforeAfterSlider beforeImage={FUNNEL_DATA.portfolio.videoEditing.before} afterImage={FUNNEL_DATA.portfolio.videoEditing.after} /></Reveal>
               </div>
             </section>
 
             {/* TESTIMONIALS */}
-            <section className="py-32 bg-white border-y border-stone-200">
+            <section className="py-32 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
               <div className="max-w-7xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
                   <span className="text-amber-600 font-bold font-mono text-[10px] uppercase tracking-widest block mb-4">The Verdict</span>
-                  <h2 className="text-4xl md:text-6xl font-black tracking-tight text-stone-900">Client Success</h2>
+                  <h2 className="text-4xl md:text-6xl font-black tracking-tight text-stone-900 dark:text-white">Client Success</h2>
                 </Reveal>
                 
                 <Reveal delay={100}><ReviewCarousel /></Reveal>
@@ -840,14 +1056,14 @@ export default function App() {
             </section>
 
             {/* LEAD CAPTURE */}
-            <section id="lead-capture" className="py-32 bg-[#FAFAF9]">
+            <section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-3xl mx-auto px-6 text-center">
                 <Reveal>
-                  <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-stone-900">Ready to amplify?</h2>
-                  <p className="text-stone-500 text-lg mb-12">Find a time on my calendar to discuss your digital transformation.</p>
-                  <a href={FUNNEL_DATA.brand.contact.calendarUrl} target="_blank" rel="noopener noreferrer" className="inline-flex bg-stone-900 text-white px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg hover:bg-amber-600 transition-all hover:-translate-y-1">
-                    Schedule Session
-                  </a>
+                  <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-stone-900 dark:text-white">Ready to amplify?</h2>
+                  <p className="text-stone-500 dark:text-stone-400 text-lg mb-12">Message me directly to discuss your digital transformation.</p>
+                  <button onClick={() => setShowContactModal(true)} className="inline-flex items-center gap-3 bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1">
+                    Send Message <Send size={16} />
+                  </button>
                 </Reveal>
               </div>
             </section>
@@ -858,22 +1074,22 @@ export default function App() {
         {/* 📄 ABOUT & CV PAGE                                                   */}
         {/* ==================================================================== */}
         {activePage === 'about' && (
-          <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9]">
+          <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
             <section className="max-w-6xl mx-auto px-6">
               
               {/* Header Profile */}
               <Reveal className="flex flex-col items-center text-center mb-24">
-                 <div className="w-40 h-40 rounded-full overflow-hidden mb-8 border border-stone-200 shadow-sm">
+                 <div className="w-40 h-40 rounded-full overflow-hidden mb-8 border border-stone-200 dark:border-stone-800 shadow-lg">
                   <img src={CV_DATA.profile.image} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" alt="Profile" />
                 </div>
-                <h1 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-stone-900">{CV_DATA.profile.name}</h1>
-                <h2 className="text-sm font-bold text-stone-500 mb-8 uppercase tracking-[0.2em]">{CV_DATA.profile.title}</h2>
+                <h1 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-stone-900 dark:text-white">{CV_DATA.profile.name}</h1>
+                <h2 className="text-sm font-bold text-stone-500 dark:text-stone-400 mb-8 uppercase tracking-[0.2em]">{CV_DATA.profile.title}</h2>
                 <div className="flex flex-wrap justify-center gap-4 mb-10">
-                  <a href={`mailto:${CV_DATA.profile.email}`} className="flex items-center gap-2 bg-white px-6 py-3 rounded-full border border-stone-200 text-stone-600 hover:text-amber-600 hover:border-amber-600 transition-all font-bold text-xs uppercase tracking-widest shadow-sm"><Mail size={16} /> Email Me</a>
-                  <a href={CV_DATA.socials.blinq} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white px-6 py-3 rounded-full border border-stone-200 text-stone-600 hover:text-amber-600 hover:border-amber-600 transition-all font-bold text-xs uppercase tracking-widest shadow-sm"><Contact size={16} /> Digital Card</a>
-                  <a href={CV_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white px-6 py-3 rounded-full border border-stone-200 text-stone-600 hover:text-amber-600 hover:border-amber-600 transition-all font-bold text-xs uppercase tracking-widest shadow-sm"><LinkedInIcon size={16} /> LinkedIn</a>
+                  <button onClick={() => setShowContactModal(true)} className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-bold text-xs uppercase tracking-widest shadow-sm"><Mail size={16} /> Email Me</button>
+                  <a href={CV_DATA.socials.blinq} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-bold text-xs uppercase tracking-widest shadow-sm"><Contact size={16} /> Digital Card</a>
+                  <a href={CV_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-bold text-xs uppercase tracking-widest shadow-sm"><LinkedInIcon size={16} /> LinkedIn</a>
                 </div>
-                <a href={CV_DATA.profile.cvDownloadLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-stone-900 text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 transition-all hover:-translate-y-1">
+                <a href={CV_DATA.profile.cvDownloadLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1">
                   <DownloadCloud size={16} /> Download Full CV
                 </a>
               </Reveal>
@@ -884,16 +1100,16 @@ export default function App() {
                   {/* EXP */}
                   <div className="mb-24">
                     <Reveal className="mb-10 flex items-center gap-3">
-                      <Briefcase className="text-stone-300" size={32} />
-                      <h3 className="text-3xl font-black text-stone-900 tracking-tight">Experience</h3>
+                      <Briefcase className="text-stone-300 dark:text-stone-600" size={32} />
+                      <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Experience</h3>
                     </Reveal>
-                    <div className="space-y-12 border-l border-stone-200 pl-8 ml-4">
+                    <div className="space-y-12 border-l border-stone-200 dark:border-stone-800 pl-8 ml-4">
                       {CV_DATA.experience.map((job, i) => (
                         <Reveal key={i} className="relative">
-                          <div className="absolute -left-[41px] top-1.5 w-3 h-3 rounded-full bg-stone-300 border-2 border-[#FAFAF9]"></div>
-                          <h4 className="font-bold text-xl text-stone-900">{job.role}</h4>
-                          <p className="text-amber-600 font-bold text-xs mb-3 uppercase tracking-widest mt-1">{job.company} <span className="text-stone-300 mx-2">|</span> {job.period}</p>
-                          <p className="text-stone-600 text-sm leading-relaxed">{job.description}</p>
+                          <div className="absolute -left-[41px] top-1.5 w-3 h-3 rounded-full bg-stone-300 dark:bg-stone-600 border-2 border-[#FAFAF9] dark:border-stone-950"></div>
+                          <h4 className="font-bold text-xl text-stone-900 dark:text-white">{job.role}</h4>
+                          <p className="text-amber-600 dark:text-amber-500 font-bold text-xs mb-3 uppercase tracking-widest mt-1">{job.company} <span className="text-stone-300 dark:text-stone-700 mx-2">|</span> {job.period}</p>
+                          <p className="text-stone-600 dark:text-stone-400 text-sm leading-relaxed">{job.description}</p>
                         </Reveal>
                       ))}
                     </div>
@@ -902,16 +1118,16 @@ export default function App() {
                   {/* EDUCATION */}
                   <div className="mb-24">
                     <Reveal className="mb-10 flex items-center gap-3">
-                      <BookOpen className="text-stone-300" size={32} />
-                      <h3 className="text-3xl font-black text-stone-900 tracking-tight">Education</h3>
+                      <BookOpen className="text-stone-300 dark:text-stone-600" size={32} />
+                      <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Education</h3>
                     </Reveal>
-                    <div className="space-y-10 border-l border-stone-200 pl-8 ml-4">
+                    <div className="space-y-10 border-l border-stone-200 dark:border-stone-800 pl-8 ml-4">
                       {CV_DATA.education.map((edu, i) => (
                         <Reveal key={i} className="relative">
-                          <div className="absolute -left-[41px] top-1.5 w-3 h-3 rounded-full bg-stone-300 border-2 border-[#FAFAF9]"></div>
-                          <h4 className="font-bold text-xl text-stone-900">{edu.degree}</h4>
-                          <p className="text-amber-600 font-bold text-xs mb-3 uppercase tracking-widest mt-1">{edu.school} <span className="text-stone-300 mx-2">|</span> {edu.year}</p>
-                          <p className="text-stone-600 text-sm leading-relaxed">{edu.description}</p>
+                          <div className="absolute -left-[41px] top-1.5 w-3 h-3 rounded-full bg-stone-300 dark:bg-stone-600 border-2 border-[#FAFAF9] dark:border-stone-950"></div>
+                          <h4 className="font-bold text-xl text-stone-900 dark:text-white">{edu.degree}</h4>
+                          <p className="text-amber-600 dark:text-amber-500 font-bold text-xs mb-3 uppercase tracking-widest mt-1">{edu.school} <span className="text-stone-300 dark:text-stone-700 mx-2">|</span> {edu.year}</p>
+                          <p className="text-stone-600 dark:text-stone-400 text-sm leading-relaxed">{edu.description}</p>
                         </Reveal>
                       ))}
                     </div>
@@ -923,16 +1139,16 @@ export default function App() {
                   {/* SKILLS */}
                   <div className="mb-24">
                     <Reveal className="mb-10 flex items-center gap-3">
-                      <Cpu className="text-stone-300" size={32} />
-                      <h3 className="text-3xl font-black text-stone-900 tracking-tight">Capabilities</h3>
+                      <Cpu className="text-stone-300 dark:text-stone-600" size={32} />
+                      <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Capabilities</h3>
                     </Reveal>
                     <div className="space-y-10">
                       {CV_DATA.skills.map((skillGroup, i) => (
                         <Reveal key={i} delay={i * 50}>
-                          <h4 className="font-bold text-xs text-stone-900 uppercase tracking-widest mb-4 border-b border-stone-200 pb-2">{skillGroup.category}</h4>
+                          <h4 className="font-bold text-xs text-stone-900 dark:text-white uppercase tracking-widest mb-4 border-b border-stone-200 dark:border-stone-800 pb-2">{skillGroup.category}</h4>
                           <div className="flex flex-wrap gap-2">
                             {skillGroup.items.map((item, j) => (
-                              <span key={j} className="bg-white border border-stone-200 text-stone-600 px-3 py-1.5 rounded-lg text-xs font-medium shadow-sm">
+                              <span key={j} className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 px-3 py-1.5 rounded-lg text-xs font-medium shadow-sm">
                                 {item}
                               </span>
                             ))}
@@ -945,59 +1161,57 @@ export default function App() {
               </div>
 
               {/* FULL-WIDTH APPEARANCES / INTERVIEWS SECTION */}
-              <div className="mt-12 pt-24 border-t border-stone-200">
+              <div className="mt-12 pt-24 border-t border-stone-200 dark:border-stone-800">
                 <Reveal className="mb-16 flex flex-col items-center text-center">
-                  <Tv className="text-stone-300 mb-4" size={48} />
-                  <h3 className="text-4xl md:text-5xl font-black text-stone-900 tracking-tight mb-4">Interviews & Appearances</h3>
-                  <p className="text-stone-500 text-lg max-w-2xl">Media features and thought leadership across national television networks.</p>
+                  <Tv className="text-stone-300 dark:text-stone-600 mb-4" size={48} />
+                  <h3 className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white tracking-tight mb-4">Interviews & Appearances</h3>
+                  <p className="text-stone-500 dark:text-stone-400 text-lg max-w-2xl">Media features and thought leadership across national television networks.</p>
                 </Reveal>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {CV_DATA.appearances.map((item, i) => (
-                    <Reveal key={i} delay={i * 100} className="group cursor-pointer bg-white rounded-[2rem] p-5 border border-stone-100 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] hover:border-amber-600 transition-all duration-500" onClick={() => setVideoUrl(item.videoUrl)}>
-                      <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-100 relative bg-stone-900 mb-6">
-                        <img src={item.img} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt={item.title} />
-                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                          <div className="bg-white/20 backdrop-blur-md p-4 rounded-full group-hover:bg-amber-600 group-hover:scale-110 transition-all duration-300 border border-white/30">
-                            <PlayCircle size={32} className="text-white drop-shadow-md"/>
+                    <Reveal key={i} delay={i * 100}>
+                      <a href={item.link} target="_blank" rel="noopener noreferrer" className="block group cursor-pointer bg-white dark:bg-stone-900 rounded-[2rem] p-5 border border-stone-100 dark:border-stone-800 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] hover:border-amber-600 dark:hover:border-amber-500 transition-all duration-500">
+                        <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-100 dark:border-stone-800 relative bg-stone-900 mb-6">
+                          <img src={item.img} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt={item.title} />
+                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div className="bg-white/20 backdrop-blur-md p-4 rounded-full group-hover:bg-amber-600 group-hover:scale-110 transition-all duration-300 border border-white/30">
+                              <PlayCircle size={32} className="text-white drop-shadow-md"/>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="px-2 pb-2 text-center">
-                        <h4 className="font-black text-xl text-stone-900 group-hover:text-amber-600 transition-colors leading-tight mb-3">{item.title}</h4>
-                        <div className="inline-flex items-center gap-2 bg-stone-50 border border-stone-100 px-4 py-2 rounded-full">
-                          <div className="w-2 h-2 rounded-full bg-amber-500"></div>
-                          <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest">{item.show} • {item.network}</p>
+                        <div className="px-2 pb-2 text-center">
+                          <h4 className="font-black text-xl text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors leading-tight mb-3">{item.title}</h4>
+                          <div className="inline-flex items-center gap-2 bg-stone-50 dark:bg-stone-950 border border-stone-100 dark:border-stone-800 px-4 py-2 rounded-full">
+                            <div className="w-2 h-2 rounded-full bg-amber-500"></div>
+                            <p className="text-[10px] font-bold text-stone-500 dark:text-stone-400 uppercase tracking-widest">{item.show} • {item.network}</p>
+                          </div>
                         </div>
-                      </div>
+                      </a>
                     </Reveal>
                   ))}
                 </div>
               </div>
 
               {/* FULL-WIDTH CERTIFICATIONS SECTION */}
-              <div className="mt-12 pt-24 border-t border-stone-200">
+              <div className="mt-12 pt-24 border-t border-stone-200 dark:border-stone-800">
                 <Reveal className="mb-16 flex flex-col items-center text-center">
-                  <Award className="text-stone-300 mb-4" size={48} />
-                  <h3 className="text-4xl md:text-5xl font-black text-stone-900 tracking-tight mb-4">Certifications</h3>
-                  <p className="text-stone-500 text-lg max-w-2xl">Continuous learning and professional accreditation in strategy and technology.</p>
+                  <Award className="text-stone-300 dark:text-stone-600 mb-4" size={48} />
+                  <h3 className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white tracking-tight mb-4">Certifications</h3>
+                  <p className="text-stone-500 dark:text-stone-400 text-lg max-w-2xl">Continuous learning and professional accreditation in strategy and technology.</p>
                 </Reveal>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                   {CV_DATA.certifications.map((cert, i) => (
                     <Reveal key={i} delay={i * 30} className="h-full">
-                      <a href={cert.link} target="_blank" rel="noopener noreferrer" className="group cursor-pointer bg-white rounded-[2rem] p-8 border border-stone-100 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] hover:border-amber-600 transition-all duration-500 flex flex-col justify-between h-full">
-                        <div>
-                          <div className="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center mb-6 group-hover:bg-amber-100 transition-colors">
-                            <Award size={20} className="text-stone-400 group-hover:text-amber-600" />
-                          </div>
-                          <h4 className="font-black text-xl text-stone-900 group-hover:text-amber-600 transition-colors leading-tight mb-4">{cert.title}</h4>
+                      <a href={cert.link} target="_blank" rel="noopener noreferrer" className="block group cursor-pointer bg-white dark:bg-stone-900 rounded-[2rem] p-5 border border-stone-100 dark:border-stone-800 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] hover:border-amber-600 dark:hover:border-amber-500 transition-all duration-500 h-full flex flex-col">
+                        <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-100 dark:border-stone-800 relative bg-stone-50 dark:bg-stone-950 mb-6 flex flex-col items-center justify-center group-hover:bg-amber-50 dark:group-hover:bg-amber-900/20 transition-colors">
+                          <Award size={48} className="text-stone-300 dark:text-stone-700 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors duration-500 group-hover:scale-110" />
                         </div>
-                        <div>
-                          <div className="h-px w-full bg-stone-100 my-4"></div>
-                          <div className="flex justify-between items-center">
-                            <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest">{cert.issuer}</p>
-                            <ExternalLink size={14} className="text-stone-300 group-hover:text-amber-600" />
+                        <div className="px-2 pb-2 text-center flex-1 flex flex-col justify-between">
+                          <h4 className="font-black text-lg text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors leading-tight mb-4">{cert.title}</h4>
+                          <div className="inline-flex items-center justify-center gap-2 bg-stone-50 dark:bg-stone-950 border border-stone-100 dark:border-stone-800 px-4 py-2 rounded-full mx-auto w-fit">
+                            <p className="text-[10px] font-bold text-stone-500 dark:text-stone-400 uppercase tracking-widest">{cert.issuer}</p>
                           </div>
                         </div>
                       </a>
@@ -1011,32 +1225,98 @@ export default function App() {
         )}
 
         {/* ==================================================================== */}
+        {/* 📄 INSIGHTS & BLOG PAGE                                              */}
+        {/* ==================================================================== */}
+        {activePage === 'insights' && (
+          <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950 min-h-screen">
+            {activePost ? (
+              /* INDIVIDUAL POST VIEW */
+              <article className="max-w-3xl mx-auto px-6">
+                <Reveal>
+                  <button onClick={(e) => navigateTo('insights', e)} className="flex items-center gap-2 text-stone-400 hover:text-stone-900 dark:hover:text-white font-bold text-xs uppercase tracking-widest mb-12 transition-colors">
+                    <ArrowLeft size={16} /> Back to Feed
+                  </button>
+                  <div className="mb-12">
+                    <p className="text-amber-600 font-bold text-xs uppercase tracking-widest mb-4">{activePost.date} • {activePost.readTime}</p>
+                    <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-stone-900 dark:text-white leading-tight mb-6">{activePost.title}</h1>
+                    <p className="text-xl text-stone-500 dark:text-stone-400 font-medium leading-relaxed">{activePost.snippet}</p>
+                  </div>
+                  <div className="w-full h-px bg-stone-200 dark:bg-stone-800 mb-12"></div>
+                  <div className="prose prose-stone dark:prose-invert max-w-none text-stone-600 dark:text-stone-300 leading-loose text-lg">
+                    <p>{activePost.content}</p>
+                    <div className="mt-12 p-8 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-3xl">
+                      <p className="font-bold text-stone-900 dark:text-white mb-2">Want the full breakdown?</p>
+                      <a href={activePost.externalLink} target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:text-amber-700 dark:hover:text-amber-500 font-bold flex items-center gap-2">
+                        Read original publication <ExternalLink size={16} />
+                      </a>
+                    </div>
+                  </div>
+                </Reveal>
+              </article>
+            ) : (
+              /* BLOG FEED VIEW */
+              <section className="max-w-5xl mx-auto px-6">
+                <Reveal>
+                  <div className="flex items-center gap-4 mb-16">
+                    <Newspaper size={48} className="text-amber-600" />
+                    <div>
+                      <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-stone-900 dark:text-white">Insights</h1>
+                      <p className="text-stone-500 dark:text-stone-400 font-medium mt-2">Strategies, updates, and digital marketing breakdowns.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {FUNNEL_DATA.insights.map((post, i) => (
+                      <Reveal key={i} delay={i * 100} className="h-full">
+                        <div onClick={(e) => openPost(post, e)} className="group cursor-pointer bg-white dark:bg-stone-900 rounded-[2rem] p-8 border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-xl hover:border-amber-600 dark:hover:border-amber-500 transition-all duration-500 h-full flex flex-col justify-between">
+                          <div>
+                            <div className="flex justify-between items-center mb-6">
+                              <p className="text-amber-600 font-bold text-[10px] uppercase tracking-widest bg-amber-50 dark:bg-amber-900/20 px-3 py-1 rounded-full">{post.readTime}</p>
+                              <p className="text-stone-400 font-bold text-[10px] uppercase tracking-widest">{post.date}</p>
+                            </div>
+                            <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4 group-hover:text-amber-600 transition-colors leading-tight">{post.title}</h3>
+                            <p className="text-stone-500 dark:text-stone-400 leading-relaxed mb-8">{post.snippet}</p>
+                          </div>
+                          <div className="flex items-center gap-2 text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest group-hover:text-amber-600 transition-colors">
+                            Read Article <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                          </div>
+                        </div>
+                      </Reveal>
+                    ))}
+                  </div>
+                </Reveal>
+              </section>
+            )}
+          </div>
+        )}
+
+        {/* ==================================================================== */}
         {/* 📄 PRIVACY POLICY PAGE                                               */}
         {/* ==================================================================== */}
         {activePage === 'privacy' && (
-          <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9]">
+          <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
             <section className="max-w-3xl mx-auto px-6">
               <Reveal>
                 <div className="flex items-center gap-4 mb-10">
                   <ShieldCheck size={48} className="text-amber-600" />
-                  <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-stone-900">Privacy Policy</h1>
+                  <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-stone-900 dark:text-white">Privacy Policy</h1>
                 </div>
                 
-                <div className="text-stone-600">
+                <div className="text-stone-600 dark:text-stone-400">
                   <p className="text-lg font-medium mb-12">Last updated: April 2026. Your privacy is a priority at ME digital.</p>
                   
-                  <h3 className="text-2xl font-black text-stone-900 mt-12 mb-4">1. Data Collection</h3>
+                  <h3 className="text-2xl font-black text-stone-900 dark:text-white mt-12 mb-4">1. Data Collection</h3>
                   <p className="mb-6 leading-relaxed">When you use the Interactive Social Audit or book a strategy session, we may collect necessary contact information (such as your email address). We use this strictly to deliver the requested value, provide custom audit results, and follow up regarding our services.</p>
                   
-                  <h3 className="text-2xl font-black text-stone-900 mt-12 mb-4">2. Cookie Usage</h3>
+                  <h3 className="text-2xl font-black text-stone-900 dark:text-white mt-12 mb-4">2. Cookie Usage</h3>
                   <p className="mb-6 leading-relaxed">We use essential and analytics cookies to understand site traffic and optimize your browsing experience. You can opt out via the cookie consent banner at the bottom of the screen.</p>
                   
-                  <h3 className="text-2xl font-black text-stone-900 mt-12 mb-4">3. Data Sharing & Security</h3>
+                  <h3 className="text-2xl font-black text-stone-900 dark:text-white mt-12 mb-4">3. Data Sharing & Security</h3>
                   <p className="mb-6 leading-relaxed">Your data is never sold to third parties. It is kept secure and only accessed by ME digital personnel for standard business operations and correspondence.</p>
 
-                  <div className="mt-16 p-8 bg-stone-100 rounded-3xl border border-stone-200">
-                    <p className="font-bold text-stone-900">Questions about your data?</p>
-                    <p className="text-sm mt-2">Contact: <a href="mailto:hello@markespinosa.com" className="text-amber-600 hover:underline">hello@markespinosa.com</a></p>
+                  <div className="mt-16 p-8 bg-white dark:bg-stone-900 rounded-3xl border border-stone-200 dark:border-stone-800">
+                    <p className="font-bold text-stone-900 dark:text-white">Questions about your data?</p>
+                    <p className="text-sm mt-2">Contact: <button onClick={() => setShowContactModal(true)} className="text-amber-600 hover:underline">hello@markespinosa.com</button></p>
                   </div>
                 </div>
               </Reveal>
@@ -1048,29 +1328,29 @@ export default function App() {
         {/* 📄 AI ETHICS & USAGE PAGE                                            */}
         {/* ==================================================================== */}
         {activePage === 'ai-use' && (
-          <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9]">
+          <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
             <section className="max-w-4xl mx-auto px-6">
               <Reveal>
                 <div className="flex items-center gap-4 mb-10">
                   <Cpu size={48} className="text-amber-600" />
-                  <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-stone-900">AI Ethics & Usage</h1>
+                  <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-stone-900 dark:text-white">AI Ethics & Usage</h1>
                 </div>
                 
-                <div className="text-stone-600">
-                  <p className="text-xl font-medium text-stone-800 mb-12 leading-relaxed">Transparency is a core value at ME digital. Here is how we leverage artificial intelligence to power growth strategies while preserving authentic human connection.</p>
+                <div className="text-stone-600 dark:text-stone-400">
+                  <p className="text-xl font-medium text-stone-800 dark:text-stone-300 mb-12 leading-relaxed">Transparency is a core value at ME digital. Here is how we leverage artificial intelligence to power growth strategies while preserving authentic human connection.</p>
                   
-                  <div className="mt-8 bg-white p-8 rounded-3xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="text-2xl font-black text-stone-900 mb-4">Human-in-the-Loop Content</h3>
+                  <div className="mt-8 bg-white dark:bg-stone-900 p-8 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4">Human-in-the-Loop Content</h3>
                     <p className="leading-relaxed">We leverage generative AI for ideation, drafting, and rapid prototyping. However, every piece of copy, graphic, and video is meticulously edited, refined, and approved by a human strategist to ensure brand safety, emotional resonance, and pinpoint accuracy.</p>
                   </div>
 
-                  <div className="mt-8 bg-white p-8 rounded-3xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="text-2xl font-black text-stone-900 mb-4">Data-Driven Insights</h3>
+                  <div className="mt-8 bg-white dark:bg-stone-900 p-8 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4">Data-Driven Insights</h3>
                     <p className="leading-relaxed">We utilize advanced AI-powered analytics tools to rapidly process social media performance data, identify trends, and spot friction points in sales funnels. The AI organizes the raw data; our human expertise formulates the winning strategy.</p>
                   </div>
 
-                  <div className="mt-8 bg-white p-8 rounded-3xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="text-2xl font-black text-stone-900 mb-4">Automation & Efficiency</h3>
+                  <div className="mt-8 bg-white dark:bg-stone-900 p-8 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4">Automation & Efficiency</h3>
                     <p className="leading-relaxed">AI agents (like our WhatsApp supervisor) and automated workflows are deployed to reduce response times and handle repetitive tasks. This efficiency frees up our human bandwidth for high-level creative problem-solving and strategic thinking.</p>
                   </div>
                 </div>
@@ -1082,29 +1362,30 @@ export default function App() {
       </main>
 
       {/* FOOTER */}
-      <footer className="bg-white py-16 px-6 text-center border-t border-stone-100">
+      <footer className="bg-white dark:bg-stone-900 py-16 px-6 text-center border-t border-stone-100 dark:border-stone-800 transition-colors">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
-          <button onClick={() => navigateTo('home')} className="font-black text-2xl tracking-tighter text-stone-900 mb-8">
+          <button onClick={(e) => navigateTo('home', e)} className="font-black text-2xl tracking-tighter text-stone-900 dark:text-white mb-8">
             ME<span className="text-amber-600">digital</span>
           </button>
 
           {/* Page Links */}
-          <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-10 text-stone-400">
-            <button onClick={() => navigateTo('home')} className="hover:text-stone-900 transition-colors text-xs font-bold uppercase tracking-widest">Works</button>
-            <button onClick={() => navigateTo('about')} className="hover:text-stone-900 transition-colors text-xs font-bold uppercase tracking-widest">About & CV</button>
-            <button onClick={() => navigateTo('privacy')} className="hover:text-stone-900 transition-colors text-xs font-bold uppercase tracking-widest">Privacy Policy</button>
-            <button onClick={() => navigateTo('ai-use')} className="hover:text-stone-900 transition-colors text-xs font-bold uppercase tracking-widest">AI Ethics & Usage</button>
+          <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-10 text-stone-400 dark:text-stone-500">
+            <button onClick={(e) => navigateTo('home', e)} className="hover:text-stone-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer">Works</button>
+            <button onClick={(e) => navigateTo('about', e)} className="hover:text-stone-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer">About & CV</button>
+            <button onClick={(e) => navigateTo('insights', e)} className="hover:text-stone-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer">Insights</button>
+            <button onClick={(e) => navigateTo('privacy', e)} className="hover:text-stone-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer">Privacy Policy</button>
+            <button onClick={(e) => navigateTo('ai-use', e)} className="hover:text-stone-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer">AI Ethics</button>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6 mb-10 text-stone-400">
-            <a href={CV_DATA.socials.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="Facebook"><FacebookIcon size={24} /></a>
-            <a href={CV_DATA.socials.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="Instagram"><InstagramIcon size={24} /></a>
-            <a href={CV_DATA.socials.threads} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="Threads"><AtSign size={24} /></a>
-            <a href={CV_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="LinkedIn"><LinkedInIcon size={24} /></a>
-            <a href={CV_DATA.socials.blinq} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="Digital Calling Card"><Contact size={24} /></a>
-            <a href={`mailto:${CV_DATA.profile.email}`} className="hover:text-stone-900 transition-colors" aria-label="Email"><Mail size={24} /></a>
+          <div className="flex flex-wrap justify-center gap-6 mb-10 text-stone-400 dark:text-stone-500">
+            <a href={CV_DATA.socials.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="Facebook"><FacebookIcon size={24} /></a>
+            <a href={CV_DATA.socials.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="Instagram"><InstagramIcon size={24} /></a>
+            <a href={CV_DATA.socials.threads} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="Threads"><AtSign size={24} /></a>
+            <a href={CV_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="LinkedIn"><LinkedInIcon size={24} /></a>
+            <a href={CV_DATA.socials.blinq} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="Digital Calling Card"><Contact size={24} /></a>
+            <button onClick={() => setShowContactModal(true)} className="hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="Email"><Mail size={24} /></button>
           </div>
-          <p className="font-semibold text-[10px] text-stone-400 uppercase tracking-[0.2em]">© {new Date().getFullYear()} Mark Joseph Espinosa • Engineered for Conversion</p>
+          <p className="font-semibold text-[10px] text-stone-400 dark:text-stone-600 uppercase tracking-[0.2em]">© {new Date().getFullYear()} Mark Joseph Espinosa • Engineered for Conversion</p>
         </div>
       </footer>
 
