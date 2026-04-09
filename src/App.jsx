@@ -7,7 +7,7 @@ import {
   Download, MessageCircle, Maximize2, Calculator, Calendar,
   Globe, Laptop, MonitorSmartphone, FileText, Newspaper,
   ShieldAlert, BarChart3, Smartphone, Film, ExternalLink,
-  BookOpen, Cpu, DownloadCloud, Facebook, AtSign, Contact
+  BookOpen, Cpu, DownloadCloud, AtSign, Contact
 } from 'lucide-react';
 
 // ============================================================================
@@ -26,6 +26,12 @@ const LinkedInIcon = ({ size = 24, className = "" }) => (
     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
     <rect x="2" y="9" width="4" height="12"></rect>
     <circle cx="4" cy="4" r="2"></circle>
+  </svg>
+);
+
+const FacebookIcon = ({ size = 24, className = "" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
   </svg>
 );
 
@@ -1081,7 +1087,7 @@ export default function App() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 mb-10 text-stone-400">
-            <a href={CV_DATA.socials.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="Facebook"><Facebook size={24} /></a>
+            <a href={CV_DATA.socials.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="Facebook"><FacebookIcon size={24} /></a>
             <a href={CV_DATA.socials.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="Instagram"><InstagramIcon size={24} /></a>
             <a href={CV_DATA.socials.threads} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="Threads"><AtSign size={24} /></a>
             <a href={CV_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors" aria-label="LinkedIn"><LinkedInIcon size={24} /></a>
