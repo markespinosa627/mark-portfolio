@@ -6,7 +6,8 @@ import {
   Briefcase, GraduationCap, Tv, TerminalSquare, Menu, X,
   Download, MessageCircle, Maximize2, Calculator, Calendar,
   Globe, Laptop, MonitorSmartphone, FileText, Newspaper,
-  ShieldAlert, BarChart3, Smartphone, Film, ExternalLink
+  ShieldAlert, BarChart3, Smartphone, Film, ExternalLink,
+  Linkedin, BookOpen, Cpu, DownloadCloud
 } from 'lucide-react';
 
 // ============================================================================
@@ -99,12 +100,28 @@ const FUNNEL_DATA = {
     },
     writing: {
       articles: [
-        { title: "The Future of AI in Local Small Business", snippet: "How automation is leveling the playing field for mom-and-pop shops...", link: "#" },
-        { title: "Data-Driven Design vs. Aesthetic Guesses", snippet: "Why your beautiful website might be killing your conversion rate...", link: "#" }
+        {
+          title: "From Storyboards to the Big Screen",
+          snippet: "Anak TV Sinebata Workshop Batch 1 empowers children to declare 'Hear My Voice'...",
+          link: "https://anaktv.ph/from-storyboards-to-the-big-screen-anak-tv-sinebata-workshop-batch-1-empowers-children-to-declare-hear-my-voice/"
+        },
+        {
+          title: "₱200 Wage Hike Approved",
+          snippet: "Kamara, inaprubahan ang wage hike para sa mga minimum wage earners...",
+          link: "https://zbni.ph/2025/06/04/%E2%82%B1200-na-dagdag-sahod-bawat-araw-kamara-inaprubahan-ang-wage-hike-para-sa-mga-minimum-wage-earners/"
+        }
       ],
       newsletters: [
-        { title: "The Strategy Weekly", snippet: "Issue #42: Scaling Reach without Scaling Ad Spend...", link: "#" },
-        { title: "ME Digital Insights", snippet: "How ZBNI transformed their online media Vertical...", link: "#" }
+        {
+          title: "Live Music in Cleveland",
+          snippet: "Weekend Gig Guide: Dec 27th - 29th. The best live music events happening around the city...",
+          link: "https://livemusicincleveland.com/p/dec-27th-29th"
+        },
+        {
+          title: "Americans Health Insights",
+          snippet: "New brain imaging method spots Alzheimer's-linked protein in latest medical breakthrough...",
+          link: "https://americanshealth.beehiiv.com/p/first-name-new-brain-imaging-method-spots-alzheimer-s-linked-protein?_bhlid=6f81ea42c863486b848c764176d6e7de4bf6c8c0&last_resource_guid=Post%3Ab108cde5-e89e-4ab9-b71b-fb65efc695c8&jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWJzY3JpYmVyX2lkIjoiOWQxMmE4ZDktMjY4OC00OTU0LWIwNjEtNGEyNGRlZmNhNDAzIiwicHVibGljYXRpb25faWQiOiJjZWQyZTgxNS05MjFlLTQ0MWItYmQ1Zi01MDAzMDc2ODkwMmQiLCJhY2Nlc3NfdHlwZSI6InJlYWQtb25seSIsImV4cCI6MTc3MzU4Njk2NywiaXNzIjoiaHR0cHM6Ly9hcHAuYmVlaGlpdi5jb20iLCJpYXQiOjE3NzM0MTQxNjd9.MX9qNhUyfedaOU6-G-yrk9dHo2tX3soRkeqxd1woz2w"
+        }
       ]
     }
   },
@@ -119,37 +136,51 @@ const FUNNEL_DATA = {
 
 const CV_DATA = {
   profile: {
-    name: "Mark Espinosa",
-    title: "Digital Strategist & AI Engineer",
+    name: "Mark Joseph Espinosa",
+    title: "Digital Strategist and AI Engineer",
     email: "markespinosaofficial@gmail.com",
+    phone: "+63 920 906 2796",
+    linkedin: "linkedin.com/in/markespinosa627",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800",
-    cvDownloadLink: "#"
+    cvDownloadLink: "https://drive.google.com/file/d/1g08_2g4dlGtmROYdyneFeJteoRXq7rPT/view"
   },
   appearances: [
-    { show: "THE 700 CLUB ASIA", title: "I WILL NEVER ABANDON YOU", network: "CBN ASIA / GMA", img: "https://images.unsplash.com/photo-1606131731446-5568d87113aa?auto=format&fit=crop&q=80&w=800", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-    { show: "ROADTRIP REFUELED", title: "PAINS OF LIFE", network: "LIGHT TV", img: "https://images.unsplash.com/photo-1516280440502-861f1c7128cb?auto=format&fit=crop&q=80&w=800", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-    { show: "#PTVNEWSTONIGHT", title: "UNESCO MEDIA WORKSHOP", network: "PTV", img: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&q=80&w=800", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
+    { show: "THE 700 CLUB ASIA", title: "I WILL NEVER ABANDON YOU", network: "CBN ASIA / GMA", img: "/Interviews/700club.png", videoUrl: "https://www.youtube.com/embed/NXK8BjsB4x4" },
+    { show: "ROADTRIP REFUELED", title: "PAINS OF LIFE", network: "LIGHT TV", img: "/Interviews/roadtrip.png", videoUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FLightTVGCoB%2Fvideos%2F943905975988813&show_text=false" },
+    { show: "#PTVNEWSTONIGHT", title: "UNESCO MEDIA WORKSHOP", network: "PTV", img: "/Interviews/PTV.png", videoUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FPTVph%2Fvideos%2F5837386186340729&show_text=false" }
   ],
   experience: [
-    { role: "Head for Online Media", company: "ZBNI", period: "2025 – Present", description: "Spearheaded digital transformation and AI integration." },
-    { role: "Unit Head for New Media", company: "ZBNI", period: "2022 – 2025", description: "Led executive strategy for online verticals." }
+    { role: "Head for Online Media", company: "Zoe Broadcasting Network Inc. (ZBNI)", period: "Jan 2025 – Present", description: "Spearheaded the network's digital frontier, providing executive leadership for all online media verticals. Orchestrated the synergy between content creation, social media strategy, and emerging technologies (AI, app/web/software development) to expand the digital footprint and redefine audience engagement." },
+    { role: "Unit Head for New Media", company: "Zoe Broadcasting Network Inc. (ZBNI)", period: "Nov 2022 – Jan 2025", description: "Provided executive leadership for all online media verticals. Orchestrated the synergy between content creation, social media strategy, and emerging technologies to drive technological innovation in a rapidly evolving market." },
+    { role: "Copy Writer & AI Development Researcher", company: "The 216 Scoop (Cleveland, USA)", period: "Aug 2024 – Jul 2025", description: "Pioneered a hybrid role at the intersection of creative content and emerging technology. Developed compelling, brand-aligned copy while concurrently researching and analyzing the practical integration of AI tools for content generation and workflow optimization." },
+    { role: "Communications Director", company: "Black Meta Agency (DC, USA)", period: "Feb 2023 – Dec 2024", description: "Directed the agency's comprehensive communications strategy, shaping a cohesive brand narrative across all internal and external channels. Drove brand equity by developing and executing impactful campaigns and managing multi-platform media outreach." },
+    { role: "Copy Writer", company: "Zoe Broadcasting Network Inc. (ZBNI)", period: "Nov 2020 – Nov 2022", description: "Operated as a versatile content specialist, blending creative copywriting with data-driven strategy. Conceptualized, developed, and launched new online shows, contributing to the initial growth of the network's digital presence." },
+    { role: "Subject Matter Expert & Customer Specialist", company: "Alorica Philippines", period: "Mar 2018 – Aug 2019", description: "Served as a key escalation point and knowledge leader, blending deep subject matter expertise with advanced customer relations skills. Championed customer satisfaction and retention by resolving complex inquiries." }
+  ],
+  education: [
+    { degree: "Mastering Content Creation & Social Media Production", school: "The Next Academy by iAcademy Makati", year: "Class of 2025", description: "A specialized program focused on advanced techniques in digital content development, production workflows, and social media strategy." },
+    { degree: "DepEd - ALS (HS Graduate)", school: "DepEd Mandaluyong", year: "Class of 2017", description: "Highschool level proficiency as accredited by the Department of Education's ALS A&E Program." }
   ],
   skills: [
-    { category: "Strategy", items: ["Executive Leadership", "AI Strategy", "Digital Growth"] },
-    { category: "Media", items: ["Content Strategy", "Creative Copywriting", "Social Ads"] }
+    { category: "Leadership & Strategy", items: ["Executive Leadership & Team Management", "Digital Strategy & Transformation", "Strategic Planning & Execution", "Department Building & Scaling", "C-Suite Level Reporting"] },
+    { category: "Digital Media & Content", items: ["Content Strategy & Development", "Social Media Management & Audience Growth", "Creative Copywriting & Brand Narrative"] },
+    { category: "Technology & Innovation", items: ["AI Strategy & Development Research", "Web, App, & Software Development Oversight", "Data Analytics & Emerging Technologies"] },
+    { category: "Communication & Relations", items: ["Comprehensive Communications Strategy", "Advanced Customer Relations & De-escalation", "Client & Stakeholder Management", "Coaching & Team Mentoring"] }
   ],
   certifications: [
-    { title: "AI-Powered Data Analytics", issuer: "CDM", date: "Nov 2025", link: "https://cdm-learningportal.thinkific.com/certificates/gylzxcrn9n", category: "AI & Data", primary: true },
-    { title: "Retail & Activations in AI", issuer: "CDM", date: "Nov 2025", link: "https://cdm-learningportal.thinkific.com/certificates/loyuqwa7py", category: "AI & Data", primary: true },
-    { title: "Digital Marketing & E-Commerce", issuer: "Google", date: "Jun 2023", link: "https://coursera.org/verify/V3JKREQVTERZ", category: "Strategy", primary: true },
-    { title: "AI/Strategy Masterclass", issuer: "Udemy", date: "2024", link: "https://www.udemy.com/certificate/UC-248ef0c2-6c73-49b0-b8b1-e0d0a4326b27/", category: "AI & Data" },
-    { title: "Data-Driven Marketing", issuer: "Udemy", date: "2024", link: "https://www.udemy.com/certificate/UC-415308e9-5292-492f-882b-02828047d515/", category: "Strategy" },
-    { title: "Digital Marketing", issuer: "HubSpot", date: "2024", link: "https://app.hubspot.com/academy/achievements/5k9br9f4/en/1/mark-joseph-espinosa/digital-marketing", category: "Marketing" },
-    { title: "Digital Advertising", issuer: "HubSpot", date: "2024", link: "https://app.hubspot.com/academy/achievements/wdpblkhk/en/1/mark-joseph-espinosa/digital-advertising", category: "Marketing" },
-    { title: "Social Media Marketing", issuer: "HubSpot", date: "2024", link: "https://app.hubspot.com/academy/achievements/h4ltxrc4/en/1/mark-joseph-espinosa/social-media-marketing-certification-course", category: "Marketing" },
-    { title: "Social Media Marketing", issuer: "eMarketing Institute", date: "2021", link: "https://www.emarketinginstitute.org/certificate/social-media-marketing-course-and-certification-free-mark-joseph-f-espinosa/", category: "Marketing" },
-    { title: "Content Marketing", issuer: "eMarketing Institute", date: "2021", link: "https://www.emarketinginstitute.org/certificate/content-marketing-course-and-certification-free-mark-joseph-f-espinosa/", category: "Marketing" },
-    { title: "Diploma in Social Media Marketing", issuer: "Shaw Academy", date: "2020", link: "https://www.shawacademy.com/public/module-certificate/?form_id=nGM7MfJU&response_id=41nyiy2k0k03co7sj41nyicmlzkiuho7", category: "Marketing" }
+    { title: "AI-Powered Data Analytics/Science", issuer: "Certified Digital Marketer", date: "Nov 2025", link: "https://cdm-learningportal.thinkific.com/certificates/gylzxcrn9n" },
+    { title: "Retail & Activations in the Age of AI", issuer: "Certified Digital Marketer", date: "Nov 2025", link: "https://cdm-learningportal.thinkific.com/certificates/loyuqwa7py" },
+    { title: "Digital Advertising", issuer: "HubSpot Academy", date: "Jun 2023", link: "https://app.hubspot.com/academy/achievements/wdpblkhk/en/1/mark-joseph-espinosa/digital-advertising" },
+    { title: "Foundations of Digital Marketing and E-Commerce", issuer: "Google", date: "Jun 2023", link: "https://coursera.org/verify/V3JKREQVTERZ" },
+    { title: "Google My Business", issuer: "Udemy", date: "Jun 2023", link: "#" },
+    { title: "Master Course of Facebook Training", issuer: "Udemy", date: "Jun 2023", link: "#" },
+    { title: "Digital Marketing", issuer: "HubSpot Academy", date: "Mar 2022", link: "https://app.hubspot.com/academy/achievements/5k9br9f4/en/1/mark-joseph-espinosa/digital-marketing" },
+    { title: "Content Marketing", issuer: "HubSpot Academy", date: "Nov 2021", link: "#" },
+    { title: "Social Media Marketing Certification", issuer: "HubSpot Academy", date: "Nov 2021", link: "https://app.hubspot.com/academy/achievements/h4ltxrc4/en/1/mark-joseph-espinosa/social-media-marketing-certification-course" },
+    { title: "Viral Marketing", issuer: "Shaw Academy", date: "May 2021", link: "#" },
+    { title: "Social Media Marketing", issuer: "eMarketing Institute", date: "Jan 2021", link: "https://www.emarketinginstitute.org/certificate/social-media-marketing-course-and-certification-free-mark-joseph-f-espinosa/" },
+    { title: "Content Marketing", issuer: "eMarketing Institute", date: "Jan 2021", link: "https://www.emarketinginstitute.org/certificate/content-marketing-course-and-certification-free-mark-joseph-f-espinosa/" },
+    { title: "Brand Building and Digital Marketing", issuer: "Google", date: "Jun 2021", link: "#" }
   ]
 };
 
@@ -802,7 +833,7 @@ export default function App() {
           /* 📄 ABOUT & CV PAGE (Minimalist Layout)                             */
           /* ==================================================================== */
           <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9]">
-            <section className="max-w-4xl mx-auto px-6">
+            <section className="max-w-6xl mx-auto px-6">
               
               {/* Header Profile */}
               <Reveal className="flex flex-col items-center text-center mb-24">
@@ -811,42 +842,124 @@ export default function App() {
                 </div>
                 <h1 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-stone-900">{CV_DATA.profile.name}</h1>
                 <h2 className="text-sm font-bold text-stone-500 mb-8 uppercase tracking-[0.2em]">{CV_DATA.profile.title}</h2>
-                <div className="flex gap-6 justify-center">
-                  <a href={`mailto:${CV_DATA.profile.email}`} className="text-stone-400 hover:text-stone-900 transition-colors"><Mail size={20} /></a>
-                  <a href="#" className="text-stone-400 hover:text-stone-900 transition-colors"><InstagramIcon size={20} /></a>
+                <div className="flex flex-wrap justify-center gap-6 mb-10">
+                  <a href={`mailto:${CV_DATA.profile.email}`} className="flex items-center gap-2 text-stone-500 hover:text-amber-600 transition-colors font-medium text-sm"><Mail size={16} /> Email Me</a>
+                  <a href={`tel:${CV_DATA.profile.phone.replace(/\s+/g, '')}`} className="flex items-center gap-2 text-stone-500 hover:text-amber-600 transition-colors font-medium text-sm"><Phone size={16} /> {CV_DATA.profile.phone}</a>
+                  <a href={`https://${CV_DATA.profile.linkedin}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-stone-500 hover:text-amber-600 transition-colors font-medium text-sm"><Linkedin size={16} /> LinkedIn</a>
                 </div>
+                <a href={CV_DATA.profile.cvDownloadLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-stone-900 text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 transition-all hover:-translate-y-1">
+                  <DownloadCloud size={16} /> Download Full CV
+                </a>
               </Reveal>
 
-              {/* EXP */}
-              <div className="mb-24">
-                <Reveal className="mb-10"><h3 className="text-2xl font-black text-stone-900 tracking-tight">Experience</h3></Reveal>
-                <div className="space-y-8 border-l border-stone-200 pl-6 ml-2">
-                  {CV_DATA.experience.map((job, i) => (
-                    <Reveal key={i} className="relative">
-                      <div className="absolute -left-[29px] top-1.5 w-2 h-2 rounded-full bg-stone-300"></div>
-                      <h4 className="font-bold text-lg text-stone-900">{job.role}</h4>
-                      <p className="text-stone-500 text-sm mb-2">{job.company} • {job.period}</p>
-                      <p className="text-stone-600 text-sm leading-relaxed">{job.description}</p>
+              <div className="grid md:grid-cols-12 gap-16 lg:gap-24">
+                {/* Left Column */}
+                <div className="md:col-span-7">
+                  {/* EXP */}
+                  <div className="mb-24">
+                    <Reveal className="mb-10 flex items-center gap-3">
+                      <Briefcase className="text-stone-300" size={32} />
+                      <h3 className="text-3xl font-black text-stone-900 tracking-tight">Experience</h3>
                     </Reveal>
-                  ))}
-                </div>
-              </div>
+                    <div className="space-y-12 border-l border-stone-200 pl-8 ml-4">
+                      {CV_DATA.experience.map((job, i) => (
+                        <Reveal key={i} className="relative">
+                          <div className="absolute -left-[41px] top-1.5 w-3 h-3 rounded-full bg-stone-300 border-2 border-[#FAFAF9]"></div>
+                          <h4 className="font-bold text-xl text-stone-900">{job.role}</h4>
+                          <p className="text-amber-600 font-bold text-xs mb-3 uppercase tracking-widest mt-1">{job.company} <span className="text-stone-300 mx-2">|</span> {job.period}</p>
+                          <p className="text-stone-600 text-sm leading-relaxed">{job.description}</p>
+                        </Reveal>
+                      ))}
+                    </div>
+                  </div>
 
-              {/* CERTIFICATIONS (Minimalist List) */}
-              <div className="mb-24">
-                <Reveal className="mb-10"><h3 className="text-2xl font-black text-stone-900 tracking-tight">Certifications</h3></Reveal>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
-                  {CV_DATA.certifications.map((cert, i) => (
-                    <Reveal key={i} delay={i * 30} className="border-b border-stone-100 py-4 group">
-                      <a href={cert.link} target="_blank" rel="noopener noreferrer" className="flex justify-between items-start">
-                        <div>
-                          <h4 className="font-bold text-sm text-stone-900 group-hover:text-amber-600 transition-colors">{cert.title}</h4>
-                          <p className="text-[10px] text-stone-400 uppercase tracking-widest mt-1">{cert.issuer} • {cert.date}</p>
-                        </div>
-                        <ExternalLink size={14} className="text-stone-300 group-hover:text-amber-600" />
-                      </a>
+                  {/* EDUCATION */}
+                  <div className="mb-24">
+                    <Reveal className="mb-10 flex items-center gap-3">
+                      <BookOpen className="text-stone-300" size={32} />
+                      <h3 className="text-3xl font-black text-stone-900 tracking-tight">Education</h3>
                     </Reveal>
-                  ))}
+                    <div className="space-y-10 border-l border-stone-200 pl-8 ml-4">
+                      {CV_DATA.education.map((edu, i) => (
+                        <Reveal key={i} className="relative">
+                          <div className="absolute -left-[41px] top-1.5 w-3 h-3 rounded-full bg-stone-300 border-2 border-[#FAFAF9]"></div>
+                          <h4 className="font-bold text-xl text-stone-900">{edu.degree}</h4>
+                          <p className="text-amber-600 font-bold text-xs mb-3 uppercase tracking-widest mt-1">{edu.school} <span className="text-stone-300 mx-2">|</span> {edu.year}</p>
+                          <p className="text-stone-600 text-sm leading-relaxed">{edu.description}</p>
+                        </Reveal>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column */}
+                <div className="md:col-span-5">
+                  {/* SKILLS */}
+                  <div className="mb-24">
+                    <Reveal className="mb-10 flex items-center gap-3">
+                      <Cpu className="text-stone-300" size={32} />
+                      <h3 className="text-3xl font-black text-stone-900 tracking-tight">Capabilities</h3>
+                    </Reveal>
+                    <div className="space-y-10">
+                      {CV_DATA.skills.map((skillGroup, i) => (
+                        <Reveal key={i} delay={i * 50}>
+                          <h4 className="font-bold text-xs text-stone-900 uppercase tracking-widest mb-4 border-b border-stone-200 pb-2">{skillGroup.category}</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {skillGroup.items.map((item, j) => (
+                              <span key={j} className="bg-white border border-stone-200 text-stone-600 px-3 py-1.5 rounded-lg text-xs font-medium shadow-sm">
+                                {item}
+                              </span>
+                            ))}
+                          </div>
+                        </Reveal>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* APPEARANCES */}
+                  <div className="mb-24">
+                    <Reveal className="mb-10 flex items-center gap-3">
+                      <Tv className="text-stone-300" size={32} />
+                      <h3 className="text-3xl font-black text-stone-900 tracking-tight">Interviews</h3>
+                    </Reveal>
+                    <div className="grid grid-cols-1 gap-6">
+                      {CV_DATA.appearances.map((item, i) => (
+                        <Reveal key={i} delay={i * 100} className="group cursor-pointer flex gap-4 items-center bg-white p-3 rounded-2xl border border-stone-100 shadow-sm hover:border-amber-600 transition-colors" onClick={() => setVideoUrl(item.videoUrl)}>
+                          <div className="w-24 aspect-[4/3] rounded-xl overflow-hidden shadow-sm border border-stone-200 relative bg-stone-900 shrink-0">
+                            <img src={item.img} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt={item.title} />
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                              <PlayCircle size={20} className="text-white drop-shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"/>
+                            </div>
+                          </div>
+                          <div>
+                            <h4 className="font-bold text-sm text-stone-900 group-hover:text-amber-600 transition-colors leading-tight mb-1.5">{item.title}</h4>
+                            <p className="text-[9px] text-stone-400 uppercase tracking-widest">{item.show} <br/> {item.network}</p>
+                          </div>
+                        </Reveal>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CERTIFICATIONS */}
+                  <div className="mb-24">
+                    <Reveal className="mb-10 flex items-center gap-3">
+                      <Award className="text-stone-300" size={32} />
+                      <h3 className="text-3xl font-black text-stone-900 tracking-tight">Certifications</h3>
+                    </Reveal>
+                    <div className="space-y-3">
+                      {CV_DATA.certifications.map((cert, i) => (
+                        <Reveal key={i} delay={i * 30} className="border border-stone-100 bg-white p-4 rounded-xl shadow-sm group hover:border-amber-600 transition-colors">
+                          <a href={cert.link} target="_blank" rel="noopener noreferrer" className="flex justify-between items-center gap-4">
+                            <div>
+                              <h4 className="font-bold text-sm text-stone-900 group-hover:text-amber-600 transition-colors leading-tight">{cert.title}</h4>
+                              <p className="text-[9px] text-stone-400 uppercase tracking-widest mt-1.5">{cert.issuer} • {cert.date}</p>
+                            </div>
+                            <ExternalLink size={16} className="text-stone-300 group-hover:text-amber-600 shrink-0" />
+                          </a>
+                        </Reveal>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
 
