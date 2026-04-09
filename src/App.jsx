@@ -43,6 +43,13 @@ const ShieldCheck = ({ size = 24, className = "" }) => (
   </svg>
 );
 
+const Lock = ({ size = 24, className = "" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+  </svg>
+);
+
 // ============================================================================
 // 📊 DATA CONFIGURATION
 // ============================================================================
@@ -303,16 +310,40 @@ const ContactModal = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('sending');
-    setTimeout(() => {
-      setStatus('sent');
-      setTimeout(() => {
-        onClose();
+
+    const formData = new FormData(e.target);
+    // Add your Web3Forms Access Key here
+    formData.append("access_key", "b87ec373-ca5d-408c-b4ce-c131877257c6");
+    formData.append("subject", "New Contact from ME digital Portfolio");
+    formData.append("from_name", "ME digital Lead");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      const data = await response.json();
+      
+      if (data.success) {
+        setStatus('sent');
+        setTimeout(() => {
+          onClose();
+          setStatus('idle');
+          e.target.reset();
+        }, 2000);
+      } else {
+        console.error("Form error:", data);
         setStatus('idle');
-      }, 2000);
-    }, 1200);
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setStatus('idle');
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -334,17 +365,17 @@ const ContactModal = ({ isOpen, onClose }) => {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest mb-2">Name</label>
-              <input required type="text" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors" placeholder="Jane Doe" />
+              <input required type="text" name="name" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors" placeholder="Jane Doe" />
             </div>
             <div>
               <label className="block text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest mb-2">Email</label>
-              <input required type="email" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors" placeholder="jane@example.com" />
+              <input required type="email" name="email" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors" placeholder="jane@example.com" />
             </div>
             <div>
               <label className="block text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest mb-2">Message</label>
-              <textarea required rows={4} className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors resize-none" placeholder="How can we help you dominate?" />
+              <textarea required rows={4} name="message" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors resize-none" placeholder="How can we help you dominate?" />
             </div>
-            <button type="submit" disabled={status === 'sending'} className="w-full bg-stone-900 dark:bg-white text-white dark:text-stone-900 py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-amber-600 dark:hover:bg-amber-500 hover:text-white transition-all flex items-center justify-center gap-2 mt-4">
+            <button type="submit" disabled={status === 'sending'} className="w-full bg-stone-900 dark:bg-white text-white dark:text-stone-900 py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-amber-600 dark:hover:bg-amber-500 hover:text-white transition-all flex items-center justify-center gap-2 mt-4 cursor-pointer">
               {status === 'sending' ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
               {status === 'sending' ? 'Sending...' : 'Send Message'}
             </button>
@@ -381,7 +412,7 @@ const WhatsAppWidget = () => {
       
       {stage === 'visible' && (
         <div className="bg-white dark:bg-stone-900 p-5 rounded-2xl shadow-2xl border border-stone-100 dark:border-stone-800 max-w-[280px] animate-scale-up pointer-events-auto relative">
-          <button onClick={() => setStage('hidden')} className="absolute -top-2 -right-2 bg-stone-900 dark:bg-white text-white dark:text-stone-900 p-1 rounded-full shadow-lg hover:scale-110 transition-transform"><X size={12}/></button>
+          <button onClick={() => setStage('hidden')} className="absolute -top-2 -right-2 bg-stone-900 dark:bg-white text-white dark:text-stone-900 p-1 rounded-full shadow-lg hover:scale-110 transition-transform cursor-pointer"><X size={12}/></button>
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-full overflow-hidden bg-stone-100 flex items-center justify-center border border-stone-200 shrink-0">
               <img
@@ -440,8 +471,8 @@ const CookieBanner = () => {
           </p>
         </div>
         <div className="flex gap-3 w-full md:w-auto">
-          <button onClick={() => handleConsent('declined')} className="flex-1 md:flex-none px-6 py-3 rounded-xl border border-white/20 text-sm font-bold hover:bg-white/5 transition-colors text-white">Decline</button>
-          <button onClick={() => handleConsent('accepted')} className="flex-1 md:flex-none px-8 py-3 rounded-xl bg-[#D97706] text-white text-sm font-black uppercase tracking-widest hover:bg-[#B45309] transition-all shadow-lg active:scale-95">Accept All</button>
+          <button onClick={() => handleConsent('declined')} className="flex-1 md:flex-none px-6 py-3 rounded-xl border border-white/20 text-sm font-bold hover:bg-white/5 transition-colors text-white cursor-pointer">Decline</button>
+          <button onClick={() => handleConsent('accepted')} className="flex-1 md:flex-none px-8 py-3 rounded-xl bg-[#D97706] text-white text-sm font-black uppercase tracking-widest hover:bg-[#B45309] transition-all shadow-lg active:scale-95 cursor-pointer">Accept All</button>
         </div>
       </div>
     </div>
@@ -456,6 +487,7 @@ const SocialAuditTool = () => {
   const [score, setScore] = useState(0);
   const [email, setEmail] = useState('');
   const [showResult, setShowResult] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const questions = [
     { q: "How consistent is your current posting schedule?", options: [{ text: "Daily / Automated", points: 25 }, { text: "3-4 times a week", points: 15 }, { text: "Random / Spontaneous", points: 5 }, { text: "Non-existent", points: 0 }] },
@@ -469,17 +501,39 @@ const SocialAuditTool = () => {
     setStep(prev => prev + 1);
   };
 
-  const handleEmailSubmit = (e) => {
-    e.preventDefault();
-    if (email) {
-      setShowResult(true);
-    }
-  };
-
   const getAuditResult = () => {
     if (score >= 90) return { label: "OPTIMIZED", color: "text-green-600", advice: "Your systems are elite. You're ready to scale reach using AI-driven automation." };
     if (score >= 60) return { label: "MODERATE", color: "text-amber-600", advice: "You have a foundation, but you're losing 60% of potential leads to manual friction." };
     return { label: "CRITICAL", color: "text-red-600", advice: "Your digital presence is leaking revenue. A complete strategy overhaul is recommended." };
+  };
+
+  const handleEmailSubmit = async (e) => {
+    e.preventDefault();
+    if (email) {
+      setIsSubmitting(true);
+      
+      const formData = new FormData();
+      // Add your Web3Forms Access Key here
+      formData.append("access_key", "b87ec373-ca5d-408c-b4ce-c131877257c6");
+      formData.append("subject", "New Lead from Social Audit Tool");
+      formData.append("from_name", "Interactive Audit");
+      formData.append("email", email);
+      formData.append("Audit Score", score.toString());
+      formData.append("Audit Grade", getAuditResult().label);
+
+      try {
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+      } catch (err) {
+        console.error("Form submission error", err);
+      }
+      
+      // Regardless of API success/failure (to not break user experience), show results
+      setIsSubmitting(false);
+      setShowResult(true);
+    }
   };
 
   return (
@@ -498,7 +552,7 @@ const SocialAuditTool = () => {
           <h3 className="text-2xl md:text-3xl font-black text-stone-900 dark:text-white mb-10 leading-tight">{questions[step].q}</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {questions[step].options.map((opt, idx) => (
-              <button key={idx} onClick={() => handleAnswer(opt.points)} className="bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-700 dark:text-stone-300 p-5 rounded-2xl font-bold text-left hover:bg-stone-900 dark:hover:bg-amber-600 hover:text-white dark:hover:text-white hover:border-stone-900 dark:hover:border-amber-600 transition-all active:scale-95 group flex items-center justify-between">
+              <button key={idx} onClick={() => handleAnswer(opt.points)} className="bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-700 dark:text-stone-300 p-5 rounded-2xl font-bold text-left hover:bg-stone-900 dark:hover:bg-amber-600 hover:text-white dark:hover:text-white hover:border-stone-900 dark:hover:border-amber-600 transition-all active:scale-95 group flex items-center justify-between cursor-pointer">
                 {opt.text}
                 <ChevronRight size={18} className="opacity-0 group-hover:opacity-100 transition-opacity" />
               </button>
@@ -518,14 +572,16 @@ const SocialAuditTool = () => {
           <form onSubmit={handleEmailSubmit} className="flex flex-col gap-4">
             <input
               type="email"
+              name="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your best email..."
               className="w-full px-6 py-4 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 focus:border-amber-600 dark:focus:border-amber-500 outline-none font-medium text-center text-stone-900 dark:text-white transition-colors"
             />
-            <button type="submit" className="w-full py-4 rounded-xl font-black text-white bg-stone-900 dark:bg-white dark:text-stone-900 hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all uppercase tracking-widest text-sm">
-              Reveal My Results
+            <button type="submit" disabled={isSubmitting} className="w-full py-4 rounded-xl font-black text-white bg-stone-900 dark:bg-white dark:text-stone-900 hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all uppercase tracking-widest text-sm flex justify-center items-center gap-2 cursor-pointer">
+              {isSubmitting ? <Loader2 size={16} className="animate-spin" /> : null}
+              {isSubmitting ? 'Processing...' : 'Reveal My Results'}
             </button>
           </form>
         </div>
@@ -541,10 +597,10 @@ const SocialAuditTool = () => {
           <p className={`text-5xl md:text-6xl font-black mb-6 ${getAuditResult().color}`}>{getAuditResult().label}</p>
           <p className="text-stone-600 dark:text-stone-300 text-lg font-medium mb-10 max-w-md mx-auto leading-relaxed">{getAuditResult().advice}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={() => { setStep(0); setScore(0); setEmail(''); setShowResult(false); }} className="text-stone-400 font-bold text-sm hover:text-stone-900 dark:hover:text-white transition-colors">
+            <button onClick={() => { setStep(0); setScore(0); setEmail(''); setShowResult(false); }} className="text-stone-400 font-bold text-sm hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer">
               Retake Audit
             </button>
-            <button onClick={() => document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'smooth' })} className="bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1">
+            <button onClick={() => document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'smooth' })} className="bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1 cursor-pointer">
               Book Strategy Call
             </button>
           </div>
@@ -767,19 +823,19 @@ export default function App() {
       {showExitIntent && (
         <div className="fixed inset-0 z-[99999] bg-stone-900/60 dark:bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in" onClick={() => setShowExitIntent(false)}>
           <div className="bg-white dark:bg-stone-900 rounded-[2rem] p-10 max-w-lg text-center shadow-2xl relative" onClick={e => e.stopPropagation()}>
-            <button onClick={() => setShowExitIntent(false)} className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 dark:hover:text-white"><X size={24}/></button>
+            <button onClick={() => setShowExitIntent(false)} className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 dark:hover:text-white cursor-pointer"><X size={24}/></button>
             <div className="w-20 h-20 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6"><TrendingUp size={32} className="text-amber-600" /></div>
             <h3 className="text-4xl font-black text-stone-900 dark:text-white mb-4 tracking-tight">Leaving so soon?</h3>
             <p className="text-stone-500 dark:text-stone-400 mb-8">Don't leave your digital growth to chance. Let's map out a custom AI strategy for your brand—completely free.</p>
-            <button onClick={() => { setShowExitIntent(false); setShowContactModal(true); }} className="w-full bg-amber-600 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs shadow-lg hover:bg-stone-900 dark:hover:bg-white dark:hover:text-stone-900 transition-all">Claim Strategy Session</button>
-            <button onClick={() => setShowExitIntent(false)} className="mt-4 text-xs font-bold text-stone-400 hover:text-stone-900 dark:hover:text-white uppercase tracking-widest">No thanks, I hate growth</button>
+            <button onClick={() => { setShowExitIntent(false); setShowContactModal(true); }} className="w-full bg-amber-600 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs shadow-lg hover:bg-stone-900 dark:hover:bg-white dark:hover:text-stone-900 transition-all cursor-pointer">Claim Strategy Session</button>
+            <button onClick={() => setShowExitIntent(false)} className="mt-4 text-xs font-bold text-stone-400 hover:text-stone-900 dark:hover:text-white uppercase tracking-widest cursor-pointer">No thanks, I hate growth</button>
           </div>
         </div>
       )}
 
       {lightboxImg && (
         <div className="fixed inset-0 z-[100] bg-white/95 dark:bg-stone-950/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={() => setLightboxImg(null)}>
-          <button className="absolute top-8 right-8 text-stone-900 dark:text-white"><X size={32}/></button>
+          <button className="absolute top-8 right-8 text-stone-900 dark:text-white cursor-pointer"><X size={32}/></button>
           <img src={lightboxImg} className="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl border border-stone-200 dark:border-stone-800" alt="Full View" />
         </div>
       )}
@@ -787,28 +843,28 @@ export default function App() {
       {/* 🧭 NAVIGATION */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-stone-950/90 backdrop-blur-md shadow-sm border-b border-stone-100 dark:border-stone-800 py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-          <button onClick={(e) => navigateTo('home', e)} className="font-black text-2xl tracking-tighter text-stone-900 dark:text-white">
+          <button onClick={(e) => navigateTo('home', e)} className="font-black text-2xl tracking-tighter text-stone-900 dark:text-white cursor-pointer">
             ME<span className="text-amber-600">digital</span>
           </button>
           
           <div className="hidden md:flex items-center gap-8">
-            <button onClick={(e) => navigateTo('home', e)} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors ${activePage === 'home' ? 'text-amber-600' : 'text-stone-400 hover:text-stone-900 dark:hover:text-white'}`}>Works</button>
-            <button onClick={(e) => navigateTo('about', e)} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors ${activePage === 'about' ? 'text-amber-600' : 'text-stone-400 hover:text-stone-900 dark:hover:text-white'}`}>About & CV</button>
-            <button onClick={(e) => navigateTo('insights', e)} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors ${activePage === 'insights' ? 'text-amber-600' : 'text-stone-400 hover:text-stone-900 dark:hover:text-white'}`}>Insights</button>
+            <button onClick={(e) => navigateTo('home', e)} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors cursor-pointer ${activePage === 'home' ? 'text-amber-600' : 'text-stone-400 hover:text-stone-900 dark:hover:text-white'}`}>Works</button>
+            <button onClick={(e) => navigateTo('about', e)} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors cursor-pointer ${activePage === 'about' ? 'text-amber-600' : 'text-stone-400 hover:text-stone-900 dark:hover:text-white'}`}>About & CV</button>
+            <button onClick={(e) => navigateTo('insights', e)} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors cursor-pointer ${activePage === 'insights' ? 'text-amber-600' : 'text-stone-400 hover:text-stone-900 dark:hover:text-white'}`}>Insights</button>
             
             {/* Theme Toggle */}
-            <button onClick={() => setDarkMode(!darkMode)} className="text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="Toggle Dark Mode">
+            <button onClick={() => setDarkMode(!darkMode)} className="text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer" aria-label="Toggle Dark Mode">
               {darkMode ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
-            <button onClick={() => setShowContactModal(true)} className="bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all shadow-sm">Book Call</button>
+            <button onClick={() => setShowContactModal(true)} className="bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all shadow-sm cursor-pointer">Book Call</button>
           </div>
 
           <div className="md:hidden flex items-center gap-4">
-            <button onClick={() => setDarkMode(!darkMode)} className="text-stone-900 dark:text-white">
+            <button onClick={() => setDarkMode(!darkMode)} className="text-stone-900 dark:text-white cursor-pointer">
               {darkMode ? <Sun size={24} /> : <Moon size={24} />}
             </button>
-            <button className="text-stone-900 dark:text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            <button className="text-stone-900 dark:text-white cursor-pointer" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
@@ -818,10 +874,10 @@ export default function App() {
       {/* MOBILE MENU */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[49] bg-white dark:bg-stone-950 flex flex-col p-8 space-y-8 md:hidden pt-32 animate-fade-in">
-          <button onClick={(e) => navigateTo('home', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white">Works</button>
-          <button onClick={(e) => navigateTo('about', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white">About & CV</button>
-          <button onClick={(e) => navigateTo('insights', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white">Insights</button>
-          <button onClick={() => { setShowContactModal(true); setIsMobileMenuOpen(false); }} className="text-4xl font-black text-amber-600 text-left">Book Call</button>
+          <button onClick={(e) => navigateTo('home', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">Works</button>
+          <button onClick={(e) => navigateTo('about', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">About & CV</button>
+          <button onClick={(e) => navigateTo('insights', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">Insights</button>
+          <button onClick={() => { setShowContactModal(true); setIsMobileMenuOpen(false); }} className="text-4xl font-black text-amber-600 text-left cursor-pointer">Book Call</button>
         </div>
       )}
 
@@ -850,7 +906,7 @@ export default function App() {
                 <p className="text-lg md:text-xl text-stone-500 dark:text-stone-400 max-w-2xl mx-auto mb-12 font-normal leading-relaxed">
                   {FUNNEL_DATA.brand.subheadline}
                 </p>
-                <button onClick={() => setShowContactModal(true)} className="group bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-xl flex items-center gap-3 mx-auto hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1">
+                <button onClick={() => setShowContactModal(true)} className="group bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-xl flex items-center gap-3 mx-auto hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1 cursor-pointer">
                   Start Project <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
                 </button>
               </Reveal>
@@ -1061,7 +1117,7 @@ export default function App() {
                 <Reveal>
                   <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-stone-900 dark:text-white">Ready to amplify?</h2>
                   <p className="text-stone-500 dark:text-stone-400 text-lg mb-12">Message me directly to discuss your digital transformation.</p>
-                  <button onClick={() => setShowContactModal(true)} className="inline-flex items-center gap-3 bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1">
+                  <button onClick={() => setShowContactModal(true)} className="inline-flex items-center gap-3 bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1 cursor-pointer">
                     Send Message <Send size={16} />
                   </button>
                 </Reveal>
@@ -1085,11 +1141,11 @@ export default function App() {
                 <h1 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-stone-900 dark:text-white">{CV_DATA.profile.name}</h1>
                 <h2 className="text-sm font-bold text-stone-500 dark:text-stone-400 mb-8 uppercase tracking-[0.2em]">{CV_DATA.profile.title}</h2>
                 <div className="flex flex-wrap justify-center gap-4 mb-10">
-                  <button onClick={() => setShowContactModal(true)} className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-bold text-xs uppercase tracking-widest shadow-sm"><Mail size={16} /> Email Me</button>
-                  <a href={CV_DATA.socials.blinq} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-bold text-xs uppercase tracking-widest shadow-sm"><Contact size={16} /> Digital Card</a>
-                  <a href={CV_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-bold text-xs uppercase tracking-widest shadow-sm"><LinkedInIcon size={16} /> LinkedIn</a>
+                  <button onClick={() => setShowContactModal(true)} className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-bold text-xs uppercase tracking-widest shadow-sm cursor-pointer"><Mail size={16} /> Email Me</button>
+                  <a href={CV_DATA.socials.blinq} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-bold text-xs uppercase tracking-widest shadow-sm cursor-pointer"><Contact size={16} /> Digital Card</a>
+                  <a href={CV_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-bold text-xs uppercase tracking-widest shadow-sm cursor-pointer"><LinkedInIcon size={16} /> LinkedIn</a>
                 </div>
-                <a href={CV_DATA.profile.cvDownloadLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1">
+                <a href={CV_DATA.profile.cvDownloadLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1 cursor-pointer">
                   <DownloadCloud size={16} /> Download Full CV
                 </a>
               </Reveal>
@@ -1233,7 +1289,7 @@ export default function App() {
               /* INDIVIDUAL POST VIEW */
               <article className="max-w-3xl mx-auto px-6">
                 <Reveal>
-                  <button onClick={(e) => navigateTo('insights', e)} className="flex items-center gap-2 text-stone-400 hover:text-stone-900 dark:hover:text-white font-bold text-xs uppercase tracking-widest mb-12 transition-colors">
+                  <button onClick={(e) => navigateTo('insights', e)} className="flex items-center gap-2 text-stone-400 hover:text-stone-900 dark:hover:text-white font-bold text-xs uppercase tracking-widest mb-12 transition-colors cursor-pointer">
                     <ArrowLeft size={16} /> Back to Feed
                   </button>
                   <div className="mb-12">
@@ -1316,7 +1372,7 @@ export default function App() {
 
                   <div className="mt-16 p-8 bg-white dark:bg-stone-900 rounded-3xl border border-stone-200 dark:border-stone-800">
                     <p className="font-bold text-stone-900 dark:text-white">Questions about your data?</p>
-                    <p className="text-sm mt-2">Contact: <button onClick={() => setShowContactModal(true)} className="text-amber-600 hover:underline">hello@markespinosa.com</button></p>
+                    <p className="text-sm mt-2">Contact: <button onClick={() => setShowContactModal(true)} className="text-amber-600 hover:underline cursor-pointer">hello@markespinosa.com</button></p>
                   </div>
                 </div>
               </Reveal>
@@ -1364,7 +1420,7 @@ export default function App() {
       {/* FOOTER */}
       <footer className="bg-white dark:bg-stone-900 py-16 px-6 text-center border-t border-stone-100 dark:border-stone-800 transition-colors">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
-          <button onClick={(e) => navigateTo('home', e)} className="font-black text-2xl tracking-tighter text-stone-900 dark:text-white mb-8">
+          <button onClick={(e) => navigateTo('home', e)} className="font-black text-2xl tracking-tighter text-stone-900 dark:text-white mb-8 cursor-pointer">
             ME<span className="text-amber-600">digital</span>
           </button>
 
@@ -1383,7 +1439,7 @@ export default function App() {
             <a href={CV_DATA.socials.threads} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="Threads"><AtSign size={24} /></a>
             <a href={CV_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="LinkedIn"><LinkedInIcon size={24} /></a>
             <a href={CV_DATA.socials.blinq} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="Digital Calling Card"><Contact size={24} /></a>
-            <button onClick={() => setShowContactModal(true)} className="hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="Email"><Mail size={24} /></button>
+            <button onClick={() => setShowContactModal(true)} className="hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer" aria-label="Email"><Mail size={24} /></button>
           </div>
           <p className="font-semibold text-[10px] text-stone-400 dark:text-stone-600 uppercase tracking-[0.2em]">© {new Date().getFullYear()} Mark Joseph Espinosa • Engineered for Conversion</p>
         </div>
