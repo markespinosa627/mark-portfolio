@@ -338,7 +338,7 @@ const CookieBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 w-full z-[100] p-4 md:p-6 animate-fade-in-up">
+    <div className="fixed bottom-0 left-0 w-full z-[9999] p-4 md:p-6 animate-fade-in-up">
       <div className="max-w-4xl mx-auto bg-[#432818] text-white p-6 md:p-8 rounded-[2rem] shadow-2xl border border-white/10 flex flex-col md:flex-row items-center gap-6">
         <div className="bg-white/10 p-4 rounded-2xl"><ShieldCheck size={32} className="text-[#DDA15E]"/></div>
         <div className="flex-1 text-left">
@@ -603,7 +603,11 @@ export default function App() {
 
       {/* 🚀 MAIN CONTENT */}
       <main className="flex-1">
-        {activePage === 'home' ? (
+        
+        {/* ==================================================================== */}
+        {/* 📄 HOME PAGE                                                         */}
+        {/* ==================================================================== */}
+        {activePage === 'home' && (
           <div className="animate-fade-in overflow-x-hidden">
             
             {/* HERO */}
@@ -774,7 +778,7 @@ export default function App() {
                     <ul className="space-y-6">
                       {FUNNEL_DATA.portfolio.writing.articles.map((art, idx) => (
                         <li key={idx} className="group pb-6 border-b border-stone-100 last:border-0">
-                          <a href={art.link} className="block">
+                          <a href={art.link} target="_blank" rel="noopener noreferrer" className="block">
                             <h5 className="font-bold text-stone-900 mb-2 group-hover:text-amber-600 transition-colors">{art.title}</h5>
                             <p className="text-sm text-stone-500 mb-3">{art.snippet}</p>
                             <span className="text-[10px] font-bold uppercase tracking-widest text-amber-600">Read Sample →</span>
@@ -791,7 +795,7 @@ export default function App() {
                     <ul className="space-y-6">
                       {FUNNEL_DATA.portfolio.writing.newsletters.map((news, idx) => (
                         <li key={idx} className="group pb-6 border-b border-stone-100 last:border-0">
-                          <a href={news.link} className="block">
+                          <a href={news.link} target="_blank" rel="noopener noreferrer" className="block">
                             <h5 className="font-bold text-stone-900 mb-2 group-hover:text-amber-600 transition-colors">{news.title}</h5>
                             <p className="text-sm text-stone-500 mb-3">{news.snippet}</p>
                             <span className="text-[10px] font-bold uppercase tracking-widest text-amber-600">View Campaign →</span>
@@ -836,10 +840,12 @@ export default function App() {
               </div>
             </section>
           </div>
-        ) : (
-          /* ==================================================================== */
-          /* 📄 ABOUT & CV PAGE (Minimalist Layout)                             */
-          /* ==================================================================== */
+        )}
+
+        {/* ==================================================================== */}
+        {/* 📄 ABOUT & CV PAGE                                                   */}
+        {/* ==================================================================== */}
+        {activePage === 'about' && (
           <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9]">
             <section className="max-w-6xl mx-auto px-6">
               
@@ -853,7 +859,7 @@ export default function App() {
                 <div className="flex flex-wrap justify-center gap-6 mb-10">
                   <a href={`mailto:${CV_DATA.profile.email}`} className="flex items-center gap-2 text-stone-500 hover:text-amber-600 transition-colors font-medium text-sm"><Mail size={16} /> Email Me</a>
                   <a href={`tel:${CV_DATA.profile.phone.replace(/\s+/g, '')}`} className="flex items-center gap-2 text-stone-500 hover:text-amber-600 transition-colors font-medium text-sm"><Phone size={16} /> {CV_DATA.profile.phone}</a>
-                  <a href={`https://${CV_DATA.profile.linkedin}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-stone-500 hover:text-amber-600 transition-colors font-medium text-sm"><Linkedin size={16} /> LinkedIn</a>
+                  <a href={`https://${CV_DATA.profile.linkedin}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-stone-500 hover:text-amber-600 transition-colors font-medium text-sm"><LinkedInIcon size={16} /> LinkedIn</a>
                 </div>
                 <a href={CV_DATA.profile.cvDownloadLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-stone-900 text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 transition-all hover:-translate-y-1">
                   <DownloadCloud size={16} /> Download Full CV
@@ -974,16 +980,95 @@ export default function App() {
             </section>
           </div>
         )}
+
+        {/* ==================================================================== */}
+        {/* 📄 PRIVACY POLICY PAGE                                               */}
+        {/* ==================================================================== */}
+        {activePage === 'privacy' && (
+          <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9]">
+            <section className="max-w-3xl mx-auto px-6">
+              <Reveal>
+                <div className="flex items-center gap-4 mb-10">
+                  <ShieldCheck size={48} className="text-amber-600" />
+                  <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-stone-900">Privacy Policy</h1>
+                </div>
+                
+                <div className="text-stone-600">
+                  <p className="text-lg font-medium mb-12">Last updated: April 2026. Your privacy is a priority at ME digital.</p>
+                  
+                  <h3 className="text-2xl font-black text-stone-900 mt-12 mb-4">1. Data Collection</h3>
+                  <p className="mb-6 leading-relaxed">When you use the Interactive Social Audit or book a strategy session, we may collect necessary contact information (such as your email address). We use this strictly to deliver the requested value, provide custom audit results, and follow up regarding our services.</p>
+                  
+                  <h3 className="text-2xl font-black text-stone-900 mt-12 mb-4">2. Cookie Usage</h3>
+                  <p className="mb-6 leading-relaxed">We use essential and analytics cookies to understand site traffic and optimize your browsing experience. You can opt out via the cookie consent banner at the bottom of the screen.</p>
+                  
+                  <h3 className="text-2xl font-black text-stone-900 mt-12 mb-4">3. Data Sharing & Security</h3>
+                  <p className="mb-6 leading-relaxed">Your data is never sold to third parties. It is kept secure and only accessed by ME digital personnel for standard business operations and correspondence.</p>
+
+                  <div className="mt-16 p-8 bg-stone-100 rounded-3xl border border-stone-200">
+                    <p className="font-bold text-stone-900">Questions about your data?</p>
+                    <p className="text-sm mt-2">Contact: <a href="mailto:hello@markespinosa.com" className="text-amber-600 hover:underline">hello@markespinosa.com</a></p>
+                  </div>
+                </div>
+              </Reveal>
+            </section>
+          </div>
+        )}
+
+        {/* ==================================================================== */}
+        {/* 📄 AI ETHICS & USAGE PAGE                                            */}
+        {/* ==================================================================== */}
+        {activePage === 'ai-use' && (
+          <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9]">
+            <section className="max-w-4xl mx-auto px-6">
+              <Reveal>
+                <div className="flex items-center gap-4 mb-10">
+                  <Cpu size={48} className="text-amber-600" />
+                  <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-stone-900">AI Ethics & Usage</h1>
+                </div>
+                
+                <div className="text-stone-600">
+                  <p className="text-xl font-medium text-stone-800 mb-12 leading-relaxed">Transparency is a core value at ME digital. Here is how we leverage artificial intelligence to power growth strategies while preserving authentic human connection.</p>
+                  
+                  <div className="mt-8 bg-white p-8 rounded-3xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 className="text-2xl font-black text-stone-900 mb-4">Human-in-the-Loop Content</h3>
+                    <p className="leading-relaxed">We leverage generative AI for ideation, drafting, and rapid prototyping. However, every piece of copy, graphic, and video is meticulously edited, refined, and approved by a human strategist to ensure brand safety, emotional resonance, and pinpoint accuracy.</p>
+                  </div>
+
+                  <div className="mt-8 bg-white p-8 rounded-3xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 className="text-2xl font-black text-stone-900 mb-4">Data-Driven Insights</h3>
+                    <p className="leading-relaxed">We utilize advanced AI-powered analytics tools to rapidly process social media performance data, identify trends, and spot friction points in sales funnels. The AI organizes the raw data; our human expertise formulates the winning strategy.</p>
+                  </div>
+
+                  <div className="mt-8 bg-white p-8 rounded-3xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 className="text-2xl font-black text-stone-900 mb-4">Automation & Efficiency</h3>
+                    <p className="leading-relaxed">AI agents (like our WhatsApp supervisor) and automated workflows are deployed to reduce response times and handle repetitive tasks. This efficiency frees up our human bandwidth for high-level creative problem-solving and strategic thinking.</p>
+                  </div>
+                </div>
+              </Reveal>
+            </section>
+          </div>
+        )}
+
       </main>
 
       {/* FOOTER */}
       <footer className="bg-white py-16 px-6 text-center border-t border-stone-100">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
-          <button onClick={() => navigateTo('home')} className="font-black text-2xl tracking-tighter text-stone-900 mb-6">
+          <button onClick={() => navigateTo('home')} className="font-black text-2xl tracking-tighter text-stone-900 mb-8">
             ME<span className="text-amber-600">digital</span>
           </button>
+
+          {/* Page Links */}
+          <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-10 text-stone-400">
+            <button onClick={() => navigateTo('home')} className="hover:text-stone-900 transition-colors text-xs font-bold uppercase tracking-widest">Works</button>
+            <button onClick={() => navigateTo('about')} className="hover:text-stone-900 transition-colors text-xs font-bold uppercase tracking-widest">About & CV</button>
+            <button onClick={() => navigateTo('privacy')} className="hover:text-stone-900 transition-colors text-xs font-bold uppercase tracking-widest">Privacy Policy</button>
+            <button onClick={() => navigateTo('ai-use')} className="hover:text-stone-900 transition-colors text-xs font-bold uppercase tracking-widest">AI Ethics & Usage</button>
+          </div>
+
           <div className="flex gap-6 mb-10 text-stone-400">
-            <a href="#" className="hover:text-stone-900 transition-colors"><InstagramIcon size={20} /></a>
+            <a href="https://instagram.com/markespinosa627" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors"><InstagramIcon size={20} /></a>
             <a href={`mailto:${CV_DATA.profile.email}`} className="hover:text-stone-900 transition-colors"><Mail size={20} /></a>
           </div>
           <p className="font-semibold text-[10px] text-stone-400 uppercase tracking-[0.2em]">© {new Date().getFullYear()} Mark Joseph Espinosa • Engineered for Conversion</p>
