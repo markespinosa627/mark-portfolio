@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 
 // ============================================================================
-// 🎨 CUSTOM ICONS
+// 🎨 CUSTOM ICONS & UTILS
 // ============================================================================
 const InstagramIcon = ({ size = 24, className = "" }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -49,7 +49,6 @@ const FUNNEL_DATA = {
     }
   },
   brands: [
-    // FIXED: Corrected path to public folder and removed malformed string
     { name: "ZBNI", fb: "https://www.facebook.com/ZBNIofficial", logo: "/logos/zbni.webp" },
     { name: "A2Z", fb: "https://www.facebook.com/A2ZChannel11", logo: "https://placehold.co/200x80/transparent/432818?text=A2Z" },
     { name: "Light TV", fb: "https://www.facebook.com/LightTVGodsChannelofBlessings", logo: "https://placehold.co/200x80/transparent/432818?text=Light+TV" },
@@ -202,6 +201,31 @@ const CountUp = ({ end, prefix = "", suffix = "", decimals = 0 }) => {
 };
 
 // ============================================================================
+// 🚀 BRAND LOGO FALLBACK COMPONENT
+// ============================================================================
+// If an image URL is broken or missing, this ensures a clean text fallback is shown
+const BrandLogo = ({ client }) => {
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError || !client.logo) {
+    return (
+      <span className="font-black text-2xl md:text-3xl tracking-tighter text-stone-300 group-hover:text-stone-900 transition-colors uppercase whitespace-nowrap px-4">
+        {client.name}
+      </span>
+    );
+  }
+
+  return (
+    <img
+      src={client.logo}
+      alt={client.name}
+      className="h-10 md:h-14 w-auto min-w-[80px] object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+      onError={() => setHasError(true)}
+    />
+  );
+};
+
+// ============================================================================
 // 🚀 WHATSAPP CAT WIDGET
 // ============================================================================
 const WhatsAppWidget = () => {
@@ -230,8 +254,15 @@ const WhatsAppWidget = () => {
           <button onClick={() => setStage('hidden')} className="absolute -top-2 -right-2 bg-stone-900 text-white p-1 rounded-full shadow-lg hover:scale-110 transition-transform"><X size={12}/></button>
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-full overflow-hidden bg-stone-100 flex items-center justify-center border border-stone-200 shrink-0">
-              <img src="/IMG_6996.jpg" alt="Siamese Boss" className="w-full h-full object-cover"
-                   onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1513245533418-297f299b6190?auto=format&fit=crop&q=80&w=200'; }} />
+              <img
+                src="/IMG_6996.jpg"
+                alt="Siamese Boss"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.onerror = null; // Prevent infinite loop if fallback also fails
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1513245533418-297f299b6190?auto=format&fit=crop&q=80&w=200';
+                }}
+              />
             </div>
             <div>
               <p className="text-[10px] font-black uppercase text-stone-900 tracking-widest">Mark's Supervisor 🐾</p>
@@ -565,12 +596,8 @@ export default function App() {
                 `}</style>
                 <div className="animate-scroll items-center">
                   {[...FUNNEL_DATA.brands, ...FUNNEL_DATA.brands].map((client, idx) => (
-                    <a key={idx} href={client.fb} target="_blank" rel="noopener noreferrer" className="mx-10 md:mx-16 flex items-center justify-center group">
-                      <img
-                        src={client.logo}
-                        alt={client.name}
-                        className="h-10 md:h-14 w-auto object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-                      />
+                    <a key={idx} href={client.fb} target="_blank" rel="noopener noreferrer" className="mx-10 md:mx-16 flex items-center justify-center group flex-shrink-0">
+                      <BrandLogo client={client} />
                     </a>
                   ))}
                 </div>
