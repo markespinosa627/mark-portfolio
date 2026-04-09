@@ -49,7 +49,8 @@ const FUNNEL_DATA = {
     }
   },
   brands: [
-    { name: "ZBNI", fb: "https://www.facebook.com/ZBNIofficial", logo: "https://zbni.ph/wp-content/themes/zbni/assets/channel-logos/zbni.webp"/200x80/transparent/432818?text=ZBNI" },
+    // FIXED: Corrected path to public folder and removed malformed string
+    { name: "ZBNI", fb: "https://www.facebook.com/ZBNIofficial", logo: "/logos/zbni.webp" },
     { name: "A2Z", fb: "https://www.facebook.com/A2ZChannel11", logo: "https://placehold.co/200x80/transparent/432818?text=A2Z" },
     { name: "Light TV", fb: "https://www.facebook.com/LightTVGodsChannelofBlessings", logo: "https://placehold.co/200x80/transparent/432818?text=Light+TV" },
     { name: "TOCA", fb: "https://www.facebook.com/TOCA", logo: "https://placehold.co/200x80/transparent/432818?text=TOCA" },
@@ -61,7 +62,7 @@ const FUNNEL_DATA = {
     { name: "Black Meta Agency", fb: "https://www.facebook.com/blackmetaagency", logo: "https://placehold.co/200x80/transparent/432818?text=Black+Meta" },
     { name: "The 216 Scoop", fb: "https://www.facebook.com/the216scoop", logo: "https://placehold.co/200x80/transparent/432818?text=The+216+Scoop" },
     { name: "Americans Health", fb: "https://www.facebook.com/AmericansHealth", logo: "https://placehold.co/200x80/transparent/432818?text=Americans+Health" },
-    { name: "Live Music In Cleveland", fb: "https://www.facebook.com/LMIC", logo: "https://placehold.co/200x80/transparent/432818?text=Americans+Health" }
+    { name: "Live Music In Cleveland", fb: "https://www.facebook.com/LMIC", logo: "https://placehold.co/200x80/transparent/432818?text=Live+Music" }
   ],
   caseStudy: {
     hook: "How we generated 1,566% more link clicks for a client.",
@@ -229,7 +230,6 @@ const WhatsAppWidget = () => {
           <button onClick={() => setStage('hidden')} className="absolute -top-2 -right-2 bg-stone-900 text-white p-1 rounded-full shadow-lg hover:scale-110 transition-transform"><X size={12}/></button>
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-full overflow-hidden bg-stone-100 flex items-center justify-center border border-stone-200 shrink-0">
-              {/* Uses local path /IMG_6996.jpg assuming you put it in the public folder */}
               <img src="/IMG_6996.jpg" alt="Siamese Boss" className="w-full h-full object-cover"
                    onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1513245533418-297f299b6190?auto=format&fit=crop&q=80&w=200'; }} />
             </div>
