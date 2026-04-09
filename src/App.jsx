@@ -154,7 +154,7 @@ const CV_DATA = {
     title: "Digital Strategist and AI Engineer",
     email: "hello@markespinosa.com",
     phone: "+63 920 906 2796",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800",
+    image: "/me/markespinosa.jpg",
     cvDownloadLink: "https://drive.google.com/file/d/1g08_2g4dlGtmROYdyneFeJteoRXq7rPT/view"
   },
   socials: {
@@ -167,7 +167,7 @@ const CV_DATA = {
   appearances: [
     { show: "THE 700 CLUB ASIA", title: "I WILL NEVER ABANDON YOU", network: "CBN ASIA / GMA", img: "/Interviews/700club.png", videoUrl: "https://www.youtube.com/embed/NXK8BjsB4x4" },
     { show: "ROADTRIP REFUELED", title: "PAINS OF LIFE", network: "LIGHT TV", img: "/Interviews/roadtrip.png", videoUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FLightTVGCoB%2Fvideos%2F943905975988813&show_text=false" },
-    { show: "#PTVNEWSTONIGHT", title: "UNESCO MEDIA WORKSHOP", network: "PTV", img: "/Interviews/PTV.png", videoUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FPTVph%2Fvideos%2F5837386186340729&show_text=false" }
+    { show: "#PTVNEWSTONIGHT", title: "UNESCO MEDIA WORKSHOP", network: "PTV", img: "/Interviews/PTV.png", videoUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D5837386186340729&show_text=false" }
   ],
   experience: [
     { role: "Head for Online Media", company: "Zoe Broadcasting Network Inc. (ZBNI)", period: "Jan 2025 – Present", description: "Spearheaded the network's digital frontier, providing executive leadership for all online media verticals. Orchestrated the synergy between content creation, social media strategy, and emerging technologies (AI, app/web/software development) to expand the digital footprint and redefine audience engagement." },
@@ -941,27 +941,6 @@ export default function App() {
                       ))}
                     </div>
                   </div>
-
-                  {/* CERTIFICATIONS */}
-                  <div className="mb-24">
-                    <Reveal className="mb-10 flex items-center gap-3">
-                      <Award className="text-stone-300" size={32} />
-                      <h3 className="text-3xl font-black text-stone-900 tracking-tight">Certifications</h3>
-                    </Reveal>
-                    <div className="space-y-3">
-                      {CV_DATA.certifications.map((cert, i) => (
-                        <Reveal key={i} delay={i * 30} className="border border-stone-100 bg-white p-4 rounded-xl shadow-sm group hover:border-amber-600 transition-colors">
-                          <a href={cert.link} target="_blank" rel="noopener noreferrer" className="flex justify-between items-center gap-4">
-                            <div>
-                              <h4 className="font-bold text-sm text-stone-900 group-hover:text-amber-600 transition-colors leading-tight">{cert.title}</h4>
-                              <p className="text-[9px] text-stone-400 uppercase tracking-widest mt-1.5">{cert.issuer} • {cert.date}</p>
-                            </div>
-                            <ExternalLink size={16} className="text-stone-300 group-hover:text-amber-600 shrink-0" />
-                          </a>
-                        </Reveal>
-                      ))}
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -991,6 +970,37 @@ export default function App() {
                           <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest">{item.show} • {item.network}</p>
                         </div>
                       </div>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+
+              {/* FULL-WIDTH CERTIFICATIONS SECTION */}
+              <div className="mt-12 pt-24 border-t border-stone-200">
+                <Reveal className="mb-16 flex flex-col items-center text-center">
+                  <Award className="text-stone-300 mb-4" size={48} />
+                  <h3 className="text-4xl md:text-5xl font-black text-stone-900 tracking-tight mb-4">Certifications</h3>
+                  <p className="text-stone-500 text-lg max-w-2xl">Continuous learning and professional accreditation in strategy and technology.</p>
+                </Reveal>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                  {CV_DATA.certifications.map((cert, i) => (
+                    <Reveal key={i} delay={i * 30} className="h-full">
+                      <a href={cert.link} target="_blank" rel="noopener noreferrer" className="group cursor-pointer bg-white rounded-[2rem] p-8 border border-stone-100 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] hover:border-amber-600 transition-all duration-500 flex flex-col justify-between h-full">
+                        <div>
+                          <div className="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center mb-6 group-hover:bg-amber-100 transition-colors">
+                            <Award size={20} className="text-stone-400 group-hover:text-amber-600" />
+                          </div>
+                          <h4 className="font-black text-xl text-stone-900 group-hover:text-amber-600 transition-colors leading-tight mb-4">{cert.title}</h4>
+                        </div>
+                        <div>
+                          <div className="h-px w-full bg-stone-100 my-4"></div>
+                          <div className="flex justify-between items-center">
+                            <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest">{cert.issuer}</p>
+                            <ExternalLink size={14} className="text-stone-300 group-hover:text-amber-600" />
+                          </div>
+                        </div>
+                      </a>
                     </Reveal>
                   ))}
                 </div>
