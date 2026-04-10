@@ -43,13 +43,6 @@ const ShieldCheck = ({ size = 24, className = "" }) => (
   </svg>
 );
 
-const Lock = ({ size = 24, className = "" }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
-    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-  </svg>
-);
-
 // ============================================================================
 // 📊 DATA CONFIGURATION
 // ============================================================================
@@ -624,8 +617,11 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
     setIsLoading(true);
 
     try {
-      // ✅ UPDATED MODEL STRING TO GUARANTEE COMPATIBILITY
+      // ✅ LIVE PRODUCTION API KEY
       const apiKey = "AIzaSyAQwetYK1A2KZ9VlKo-mnJaaSOssvp5Iys";
+
+      // ✅ LIVE PRODUCTION MODEL FOR VERCEL/NETLIFY
+      const modelName = "gemini-1.5-flash";
 
       const systemPrompt = `You are Ichigo, a sassy, funny Siamese cat who is the true boss of Mark Joseph Espinosa (a Digital Strategist and AI Engineer). You tolerate Mark because he buys you premium treats. Keep answers short, witty, and feline-themed.
       CRITICAL RULE: If they ask to book a call, contact Mark, or schedule anything, simply say "Use this link to schedule with the human:" and then provide EXACTLY this link: https://calendar.app.google/2aixwBAXDDJpNRxV8`;
@@ -637,8 +633,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
       
       conversationHistory.push({ role: "user", parts: [{ text: userText }] });
 
-      // Using gemini-1.5-flash-latest to ensure it points to an active model instance
-      const data = await fetchWithBackoff(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, {
+      const data = await fetchWithBackoff(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
