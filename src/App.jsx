@@ -636,7 +636,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
       
       conversationHistory.push({ role: "user", parts: [{ text: userText }] });
 
-      const data = await fetchWithBackoff(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+      const data = await fetchWithBackoff(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
