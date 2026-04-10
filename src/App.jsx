@@ -45,20 +45,23 @@ const ShieldCheck = ({ size = 24, className = "" }) => (
 
 const SiameseCatSVG = () => (
   <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    {/* Tail */}
-    <path d="M9 14C5 14 2 11 2 7" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
-    {/* Back Legs */}
-    <path d="M12 16V21C12 21.5 12.5 22 13 22C13.5 22 14 21.5 14 21V17" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
-    <path d="M16 16V20C16 20.5 16.5 21 17 21C17.5 21 18 20.5 18 20V17" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
-    {/* Front Legs */}
-    <path d="M24 16V20C24 20.5 24.5 21 25 21C25.5 21 26 20.5 26 20V17" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
-    <path d="M28 16V21C28 21.5 28.5 22 29 22C29.5 22 30 21.5 30 21V17" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
-    {/* Body (Cream) */}
-    <path d="M9 14C9 9 14 8 20 8C26 8 30 10 30 14C30 18 25 18 20 18C14 18 9 18 9 14Z" fill="#F3E5D8"/>
-    {/* Head (Dark Brown) */}
-    <circle cx="31" cy="10" r="4.5" fill="#3A2A22"/>
-    {/* Ears */}
-    <path d="M28 8L29 3L32 7L35 3L34 8" fill="#3A2A22"/>
+    {/* Siamese Cat Body (Cream) */}
+    <path d="M8 15C8 9 13 8 20 8C27 8 32 10 32 15C32 19 27 19 20 19C13 19 8 19 8 15Z" fill="#FDF5E6"/>
+    {/* Tail - Dark Brown */}
+    <path d="M6 15C3 15 1 12 1 8" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    {/* Legs - Dark Brown */}
+    <path d="M12 17V22" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    <path d="M16 17V21" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    <path d="M25 17V21" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    <path d="M29 17V22" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    {/* Head Mask - Dark Brown */}
+    <path d="M30 11C30 7 33 6 36 6C39 6 40 9 40 12C40 15 37 16 34 16C31 16 30 14 30 11Z" fill="#3A2A22"/>
+    {/* Ears - Dark Brown */}
+    <path d="M31 7L32 2L35 6" fill="#3A2A22"/>
+    <path d="M36 6L39 2L39 7" fill="#3A2A22"/>
+    {/* Eyes - Blue */}
+    <circle cx="35" cy="10" r="1.2" fill="#00BFFF"/>
+    <circle cx="38" cy="10" r="1.2" fill="#00BFFF"/>
   </svg>
 );
 
@@ -689,14 +692,14 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
     "Staring at the screen won't grow your brand. Clicking the 'Schedule Call' button will. 🐾"
   ];
 
-  // Scroll to bottom on new message
+  // Scroll to bottom
   useEffect(() => {
     if (isOpen) {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isOpen, isLoading]);
 
-  // Typing Effect
+  // Typing simulator
   useEffect(() => {
     let interval;
     if (isLoading) {
@@ -710,7 +713,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
     return () => clearInterval(interval);
   }, [isLoading]);
 
-  // Idle Nudge Effect (60 seconds)
+  // Idle Nudge (60s)
   useEffect(() => {
     if (!isOpen || isLoading) return;
     const timer = setTimeout(() => {
@@ -720,7 +723,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
     return () => clearTimeout(timer);
   }, [messages, isOpen, isLoading]);
 
-  // Initial Pop-up Tooltip Effect
+  // Initial Tooltip
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!isOpen && messages.length <= 1) {
@@ -773,7 +776,6 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
   return (
     <div className="fixed bottom-8 right-8 z-[60] flex flex-col items-end gap-4 pointer-events-none">
       
-      {/* Custom Keyframes for Running Cat */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes run-cat {
           0% { left: -40px; transform: scaleX(1); }
@@ -786,18 +788,15 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
           position: absolute;
           top: -24px;
           animation: run-cat 12s linear infinite;
-          z-index: 10;
+          z-index: 100;
           filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.15));
         }
       `}} />
 
-      {/* Chat Window */}
-      <div className={`bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-stone-200 dark:border-stone-800 w-[90vw] sm:w-[380px] h-[550px] max-h-[75vh] flex flex-col pointer-events-auto transition-all duration-300 origin-bottom-right ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'} relative overflow-hidden`}>
+      <div className={`bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-stone-200 dark:border-stone-800 w-[90vw] sm:w-[380px] h-[550px] max-h-[75vh] flex flex-col pointer-events-auto transition-all duration-300 origin-bottom-right ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'} relative`}>
         
-        {/* Animated Cat */}
         {isOpen && <div className="running-cat pointer-events-none"><SiameseCatSVG /></div>}
 
-        {/* Header */}
         <div className="p-4 border-b border-stone-100 dark:border-stone-800 flex justify-between items-center bg-stone-50 dark:bg-stone-950 rounded-t-3xl shrink-0 z-20 relative">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 border border-stone-200 dark:border-stone-700 relative">
@@ -812,8 +811,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
           <button onClick={() => setIsOpen(false)} className="text-stone-400 hover:text-stone-900 dark:hover:text-white cursor-pointer"><X size={20}/></button>
         </div>
 
-        {/* Messages Area */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-5 bg-[#FAFAF9] dark:bg-stone-950 hide-scrollbar z-10">
+        <div className="flex-1 overflow-y-auto p-4 space-y-5 bg-[#FAFAF9] dark:bg-stone-950 hide-scrollbar z-10 rounded-b-3xl">
           {messages.map((m, i) => {
             const isLastMessage = i === messages.length - 1;
             return (
@@ -824,10 +822,8 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
                   </div>
                 </div>
                 
-                {/* Dynamic Contextual Buttons appended directly to the bot's message */}
                 {m.isBot && isLastMessage && !isLoading && (
                   <div className="flex flex-wrap gap-2 mt-1 animate-fade-in pl-2">
-                    {/* Render Chat Suggestions */}
                     {m.suggestions && m.suggestions.map((suggestion, idx) => (
                       <button
                         key={idx}
@@ -838,7 +834,6 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
                       </button>
                     ))}
                     
-                    {/* Render Form Triggers */}
                     {m.actions && m.actions.map(action => {
                       const ActionIcon = action.icon;
                       return (
@@ -872,7 +867,6 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Input Area */}
         <form onSubmit={handleSend} className="p-3 border-t border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 rounded-b-3xl flex gap-2 shrink-0 z-10 relative">
           <input
             type="text"
@@ -887,14 +881,12 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
         </form>
       </div>
 
-      {/* Floating CTA Tooltip */}
       {!isOpen && showTooltip && (
          <div className="absolute bottom-[80px] right-0 bg-white dark:bg-stone-900 px-4 py-2 rounded-2xl rounded-br-sm shadow-xl border border-stone-200 dark:border-stone-800 animate-bounce pointer-events-auto cursor-pointer" onClick={() => { setIsOpen(true); setShowTooltip(false); }}>
            <p className="text-xs font-bold text-stone-800 dark:text-stone-200 whitespace-nowrap">Psst... need digital strategy? 🐾</p>
          </div>
       )}
 
-      {/* Floating Trigger Button */}
       <button onClick={() => { setIsOpen(!isOpen); setShowTooltip(false); }} className={`pointer-events-auto w-16 h-16 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all overflow-hidden border-4 border-white dark:border-stone-800 relative group cursor-pointer ${isOpen ? 'scale-0 opacity-0 hidden' : 'scale-100 opacity-100'}`}>
         <LazyImage src="/WhatsappImage/Ichigo.JPG" alt="Chat with Ichigo" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-amber-600/20 group-hover:bg-amber-600/40 transition-colors"></div>
@@ -906,13 +898,54 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
 };
 
 // ============================================================================
+// 🚀 COOKIE BANNER
+// ============================================================================
+const CookieBanner = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+    try {
+      const consent = localStorage.getItem('me_cookie_consent');
+      if (!consent) setTimeout(() => setIsVisible(true), 2000);
+    } catch (e) {
+      setTimeout(() => setIsVisible(true), 2000);
+    }
+  }, []);
+
+  const handleConsent = (type) => {
+    try {
+      localStorage.setItem('me_cookie_consent', type);
+    } catch (e) {}
+    setIsVisible(false);
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="fixed bottom-0 left-0 w-full z-[9999] p-4 md:p-6 animate-fade-in-up pointer-events-none">
+      <div className="max-w-4xl mx-auto bg-[#432818] text-white p-6 md:p-8 rounded-[2rem] shadow-2xl border border-white/10 flex flex-col md:flex-row items-center gap-6 pointer-events-auto">
+        <div className="bg-white/10 p-4 rounded-2xl"><ShieldCheck size={32} className="text-[#DDA15E]"/></div>
+        <div className="flex-1 text-left">
+          <h4 className="font-black text-lg mb-1 tracking-tight text-white">Your privacy, our priority.</h4>
+          <p className="text-sm text-white/70 font-medium leading-relaxed">
+            We use cookies to analyze site traffic, personalize content, and provide a high-conversion browsing experience. By clicking "Accept All", you agree to our data usage policy.
+          </p>
+        </div>
+        <div className="flex gap-3 w-full md:w-auto">
+          <button onClick={() => handleConsent('declined')} className="flex-1 md:flex-none px-6 py-3 rounded-xl border border-white/20 text-sm font-bold hover:bg-white/5 transition-colors text-white cursor-pointer">Decline</button>
+          <button onClick={() => handleConsent('accepted')} className="flex-1 md:flex-none px-8 py-3 rounded-xl bg-[#D97706] text-white text-sm font-black uppercase tracking-widest hover:bg-[#B45309] transition-all shadow-lg active:scale-95 cursor-pointer">Accept All</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ============================================================================
 // 🚀 REVIEW CAROUSEL WITH MANUAL + NATIVE SCROLL
 // ============================================================================
 const ReviewCarousel = () => {
   const scrollRef = useRef(null);
   const reviews = FUNNEL_DATA.reviews;
   
-  // Drag to scroll logic for desktop
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
@@ -938,7 +971,7 @@ const ReviewCarousel = () => {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed multiplier
+    const walk = (x - startX) * 2;
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
 
@@ -972,7 +1005,6 @@ const ReviewCarousel = () => {
         ))}
       </div>
       
-      {/* Desktop / Manual Navigation Buttons */}
       <div className="flex justify-center gap-4 mt-4 pointer-events-auto">
         <button onClick={() => scroll('left')} className="p-3 rounded-full bg-white dark:bg-stone-900 shadow-md border border-stone-200 dark:border-stone-800 hover:bg-amber-50 dark:hover:bg-amber-900/20 text-stone-900 dark:text-white transition-colors cursor-pointer">
           <ArrowLeft size={20} />
@@ -980,42 +1012,6 @@ const ReviewCarousel = () => {
         <button onClick={() => scroll('right')} className="p-3 rounded-full bg-white dark:bg-stone-900 shadow-md border border-stone-200 dark:border-stone-800 hover:bg-amber-50 dark:hover:bg-amber-900/20 text-stone-900 dark:text-white transition-colors cursor-pointer">
           <ArrowRight size={20} />
         </button>
-      </div>
-    </div>
-  );
-};
-
-// ============================================================================
-// 🚀 COOKIE BANNER
-// ============================================================================
-const CookieBanner = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  useEffect(() => {
-    const consent = localStorage.getItem('me_cookie_consent');
-    if (!consent) setTimeout(() => setIsVisible(true), 2000);
-  }, []);
-
-  const handleConsent = (type) => {
-    localStorage.setItem('me_cookie_consent', type);
-    setIsVisible(false);
-  };
-
-  if (!isVisible) return null;
-
-  return (
-    <div className="fixed bottom-0 left-0 w-full z-[9999] p-4 md:p-6 animate-fade-in-up pointer-events-none">
-      <div className="max-w-4xl mx-auto bg-[#432818] text-white p-6 md:p-8 rounded-[2rem] shadow-2xl border border-white/10 flex flex-col md:flex-row items-center gap-6 pointer-events-auto">
-        <div className="bg-white/10 p-4 rounded-2xl"><ShieldCheck size={32} className="text-[#DDA15E]"/></div>
-        <div className="flex-1 text-left">
-          <h4 className="font-black text-lg mb-1 tracking-tight text-white">Your privacy, our priority.</h4>
-          <p className="text-sm text-white/70 font-medium leading-relaxed">
-            We use cookies to analyze site traffic, personalize content, and provide a high-conversion browsing experience. By clicking "Accept All", you agree to our data usage policy.
-          </p>
-        </div>
-        <div className="flex gap-3 w-full md:w-auto">
-          <button onClick={() => handleConsent('declined')} className="flex-1 md:flex-none px-6 py-3 rounded-xl border border-white/20 text-sm font-bold hover:bg-white/5 transition-colors text-white cursor-pointer">Decline</button>
-          <button onClick={() => handleConsent('accepted')} className="flex-1 md:flex-none px-8 py-3 rounded-xl bg-[#D97706] text-white text-sm font-black uppercase tracking-widest hover:bg-[#B45309] transition-all shadow-lg active:scale-95 cursor-pointer">Accept All</button>
-        </div>
       </div>
     </div>
   );
@@ -1148,22 +1144,17 @@ export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [lightboxImg, setLightboxImg] = useState(null);
-  
-  // Modals & Exits
   const [darkMode, setDarkMode] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showExitIntent, setShowExitIntent] = useState(false);
   const [activeCaseStudy, setActiveCaseStudy] = useState(null);
   const exitIntentTriggered = useRef(false);
-
-  // Centralized Contact Modal State
   const [contactModalState, setContactModalState] = useState({ isOpen: false, step: 'select', service: null });
 
   const handleTriggerContact = (step = 'select', service = null) => {
     setContactModalState({ isOpen: true, step, service });
   };
 
-  // Floating Section Tracker
   const [activeSection, setActiveSection] = useState('hero');
   const sections = ['hero', 'audit', 'metrics', 'portfolio', 'reviews', 'lead-capture'];
 
@@ -1173,18 +1164,6 @@ export default function App() {
   }, [darkMode]);
 
   useEffect(() => {
-    const path = window.location.pathname.replace('/', '') || 'home';
-    if (['home', 'about', 'privacy', 'ai-use', 'insights'].includes(path)) {
-      setActivePage(path);
-    }
-
-    const handlePopState = () => {
-      const newPath = window.location.pathname.replace('/', '') || 'home';
-      setActivePage(newPath);
-      setActivePost(null);
-    };
-    window.addEventListener('popstate', handlePopState);
-
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -1214,7 +1193,6 @@ export default function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('popstate', handlePopState);
       observer.disconnect();
     };
   }, []);
@@ -1240,11 +1218,15 @@ export default function App() {
 
   const safePushState = (url) => {
     try {
-      if (window.location.protocol !== 'blob:' && window.location.origin !== 'null') {
+      const isHistoryAccessible = window.location.protocol !== 'blob:' &&
+                                 window.location.origin !== 'null' &&
+                                 typeof window.history !== 'undefined';
+      
+      if (isHistoryAccessible) {
         window.history.pushState({}, '', url);
       }
     } catch (err) {
-      console.warn("History API prevented in this environment.");
+      console.warn("History pushState restricted in this iframe environment.");
     }
   };
 
@@ -1277,7 +1259,6 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#FAFAF9] dark:bg-stone-950 text-stone-900 dark:text-white font-sans flex flex-col selection:bg-amber-600 selection:text-white transition-colors duration-300">
       
-      {/* 🚀 GLOBAL CSS OVERRIDES */}
       <style dangerouslySetInnerHTML={{__html: `
         ::-webkit-scrollbar { width: 10px; background: transparent; }
         ::-webkit-scrollbar-track { background: ${darkMode ? '#0c0a09' : '#f5f5f4'}; }
@@ -1287,10 +1268,8 @@ export default function App() {
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}} />
 
-      {/* 🚀 SCROLL PROGRESS BAR */}
       <div className="fixed top-0 left-0 h-1 bg-amber-600 z-[99999] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
 
-      {/* 🚀 MODALS */}
       <ContactModal
         isOpen={contactModalState.isOpen}
         onClose={() => setContactModalState(prev => ({ ...prev, isOpen: false }))}
@@ -1299,7 +1278,6 @@ export default function App() {
       />
       <CaseStudyModal activeStudy={activeCaseStudy} onClose={() => setActiveCaseStudy(null)} />
       
-      {/* Exit Intent Modal */}
       {showExitIntent && (
         <div className="fixed inset-0 z-[99999] bg-stone-900/60 dark:bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in" onClick={() => setShowExitIntent(false)}>
           <div className="bg-white dark:bg-stone-900 rounded-[2rem] p-10 max-w-lg text-center shadow-2xl relative" onClick={e => e.stopPropagation()}>
@@ -1320,7 +1298,6 @@ export default function App() {
         </div>
       )}
 
-      {/* FLOATING SECTION TRACKER (Home Page Only) */}
       {activePage === 'home' && (
         <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[60] hidden xl:flex flex-col gap-4">
           {sections.map(sec => (
@@ -1334,7 +1311,6 @@ export default function App() {
         </div>
       )}
 
-      {/* 🧭 NAVIGATION */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-stone-950/90 backdrop-blur-md shadow-sm border-b border-stone-100 dark:border-stone-800 py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
           <button onClick={(e) => navigateTo('home', e)} className="font-black text-2xl tracking-tighter text-stone-900 dark:text-white cursor-pointer">
@@ -1350,7 +1326,6 @@ export default function App() {
               {darkMode ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
-            {/* ✅ FIXED TOP NAV BUTTON -> DIRECT WHATSAPP */}
             <MagneticWrapper href={FUNNEL_DATA.brand.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#1DA851] transition-all shadow-sm flex items-center gap-2 cursor-pointer border-none">
               <MessageSquare size={14} /> WhatsApp Me
             </MagneticWrapper>
@@ -1367,13 +1342,11 @@ export default function App() {
         </div>
       </nav>
 
-      {/* MOBILE MENU */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[49] bg-white dark:bg-stone-950 flex flex-col p-8 space-y-8 md:hidden pt-32 animate-fade-in">
           <button onClick={(e) => navigateTo('home', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">Works</button>
           <button onClick={(e) => navigateTo('about', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">About & CV</button>
           <button onClick={(e) => navigateTo('insights', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">Insights</button>
-          {/* ✅ FIXED MOBILE MENU BUTTON -> DIRECT WHATSAPP */}
           <a href={FUNNEL_DATA.brand.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="text-4xl font-black text-[#25D366] text-left cursor-pointer flex items-center gap-4">
             <MessageSquare size={36}/> WhatsApp Me
           </a>
@@ -1383,20 +1356,15 @@ export default function App() {
       <IchigoChatWidget onTriggerContact={handleTriggerContact} />
       <CookieBanner />
 
-      {/* 🚀 MAIN CONTENT WITH SMOOTH TRANSITION */}
       <main className={`flex-1 transition-all duration-400 ease-in-out ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
         
-        {/* ==================================================================== */}
-        {/* 📄 HOME PAGE                                                         */}
-        {/* ==================================================================== */}
         {activePage === 'home' && (
           <div className="overflow-x-hidden">
             
-            {/* HERO */}
             <section id="hero" data-section className="pt-48 pb-20 px-6 text-center min-h-[85vh] flex flex-col justify-center">
               <Reveal>
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-100 dark:bg-stone-900 text-stone-500 dark:text-stone-400 font-semibold text-[10px] uppercase tracking-[0.2em] mb-8 border border-stone-200 dark:border-stone-800">
-                  AI Automation & Strategy
+                  Automation & Growth Strategy
                 </div>
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-stone-900 dark:text-white leading-[1.05] tracking-tighter max-w-5xl mx-auto mb-8 transition-colors">
                   Stop blending in.<br/>Start dominating.
@@ -1410,7 +1378,6 @@ export default function App() {
               </Reveal>
             </section>
 
-            {/* MARQUEE BRANDS */}
             <section className="py-12 border-y border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 overflow-hidden flex items-center">
               <div className="relative flex w-full">
                 <style>{`
@@ -1428,7 +1395,6 @@ export default function App() {
               </div>
             </section>
 
-            {/* INTERACTIVE SOCIAL AUDIT (LEAD CAPTURE) */}
             <section id="audit" data-section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-5xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
@@ -1440,7 +1406,6 @@ export default function App() {
               </div>
             </section>
 
-            {/* PROOF METRICS (DEEP DIVE MODALS ADDED) */}
             <section id="metrics" data-section className="py-32 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
               <div className="max-w-6xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
@@ -1473,11 +1438,9 @@ export default function App() {
               </div>
             </section>
 
-            {/* COMPREHENSIVE PORTFOLIO SECTION */}
             <section id="portfolio" data-section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-6xl mx-auto px-6">
                 
-                {/* Graphics */}
                 <Reveal className="mb-12">
                   <div className="flex items-center gap-3 mb-6">
                     <ImageIcon className="text-stone-300 dark:text-stone-600" size={32}/>
@@ -1492,7 +1455,6 @@ export default function App() {
                   </div>
                 </Reveal>
 
-                {/* Vertical Videos */}
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
                     <Smartphone className="text-stone-300 dark:text-stone-600" size={32}/>
@@ -1513,7 +1475,6 @@ export default function App() {
                   </div>
                 </Reveal>
 
-                {/* Horizontal Videos */}
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
                     <Film className="text-stone-300 dark:text-stone-600" size={32}/>
@@ -1534,7 +1495,6 @@ export default function App() {
                   </div>
                 </Reveal>
 
-                {/* Web Architecture */}
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
                     <Monitor className="text-stone-300 dark:text-stone-600" size={32}/>
@@ -1561,7 +1521,6 @@ export default function App() {
                   </div>
                 </Reveal>
 
-                {/* WRITTEN STRATEGY */}
                 <div className="grid md:grid-cols-2 gap-16 pt-20 border-t border-stone-200 dark:border-stone-800">
                   <Reveal>
                     <div className="flex items-center gap-3 mb-8">
@@ -1599,7 +1558,6 @@ export default function App() {
                   </Reveal>
                 </div>
 
-                {/* VIDEO / AFTER SLIDER */}
                  <Reveal className="mb-16 flex flex-col items-center pt-20 border-t border-stone-200 dark:border-stone-800">
                   <PlayCircle className="text-stone-300 dark:text-stone-600 mb-4" size={32}/>
                   <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Visual Engineering</h3>
@@ -1608,7 +1566,6 @@ export default function App() {
               </div>
             </section>
 
-            {/* TESTIMONIALS */}
             <section id="reviews" data-section className="py-32 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
               <div className="max-w-7xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
@@ -1620,7 +1577,6 @@ export default function App() {
               </div>
             </section>
 
-            {/* LEAD CAPTURE */}
             <section id="lead-capture" data-section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-3xl mx-auto px-6 text-center">
                 <Reveal>
@@ -1635,14 +1591,10 @@ export default function App() {
           </div>
         )}
 
-        {/* ==================================================================== */}
-        {/* 📄 ABOUT & CV PAGE                                                   */}
-        {/* ==================================================================== */}
         {activePage === 'about' && (
           <div className="pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
             <section className="max-w-6xl mx-auto px-6">
               
-              {/* Header Profile */}
               <Reveal className="flex flex-col items-center text-center mb-24">
                  <div className="w-40 h-40 rounded-full overflow-hidden mb-8 border border-stone-200 dark:border-stone-800 shadow-lg">
                   <LazyImage src={CV_DATA.profile.image} alt="Profile" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
@@ -1660,9 +1612,7 @@ export default function App() {
               </Reveal>
 
               <div className="grid md:grid-cols-12 gap-16 lg:gap-24">
-                {/* Left Column */}
                 <div className="md:col-span-7">
-                  {/* EXP */}
                   <div className="mb-24">
                     <Reveal className="mb-10 flex items-center gap-3">
                       <Briefcase className="text-stone-300 dark:text-stone-600" size={32} />
@@ -1680,7 +1630,6 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* EDUCATION */}
                   <div className="mb-24">
                     <Reveal className="mb-10 flex items-center gap-3">
                       <BookOpen className="text-stone-300 dark:text-stone-600" size={32} />
@@ -1699,9 +1648,7 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Right Column */}
                 <div className="md:col-span-5">
-                  {/* SKILLS */}
                   <div className="mb-24">
                     <Reveal className="mb-10 flex items-center gap-3">
                       <Cpu className="text-stone-300 dark:text-stone-600" size={32} />
@@ -1725,7 +1672,6 @@ export default function App() {
                 </div>
               </div>
 
-              {/* FULL-WIDTH APPEARANCES / INTERVIEWS SECTION */}
               <div className="mt-12 pt-24 border-t border-stone-200 dark:border-stone-800">
                 <Reveal className="mb-16 flex flex-col items-center text-center">
                   <Tv className="text-stone-300 dark:text-stone-600 mb-4" size={48} />
@@ -1758,7 +1704,6 @@ export default function App() {
                 </div>
               </div>
 
-              {/* FULL-WIDTH CERTIFICATIONS SECTION */}
               <div className="mt-12 pt-24 border-t border-stone-200 dark:border-stone-800">
                 <Reveal className="mb-16 flex flex-col items-center text-center">
                   <Award className="text-stone-300 dark:text-stone-600 mb-4" size={48} />
@@ -1791,13 +1736,9 @@ export default function App() {
           </div>
         )}
 
-        {/* ==================================================================== */}
-        {/* 📄 INSIGHTS & BLOG PAGE                                              */}
-        {/* ==================================================================== */}
         {activePage === 'insights' && (
           <div className="pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950 min-h-screen">
             {activePost ? (
-              /* INDIVIDUAL POST VIEW */
               <article className="max-w-3xl mx-auto px-6">
                 <Reveal>
                   <button onClick={(e) => navigateTo('insights', e)} className="flex items-center gap-2 text-stone-400 hover:text-stone-900 dark:hover:text-white font-bold text-xs uppercase tracking-widest mb-12 transition-colors cursor-pointer">
@@ -1821,7 +1762,6 @@ export default function App() {
                 </Reveal>
               </article>
             ) : (
-              /* BLOG FEED VIEW */
               <section className="max-w-5xl mx-auto px-6">
                 <Reveal>
                   <div className="flex items-center gap-4 mb-16">
@@ -1859,9 +1799,6 @@ export default function App() {
           </div>
         )}
 
-        {/* ==================================================================== */}
-        {/* 📄 PRIVACY POLICY PAGE                                               */}
-        {/* ==================================================================== */}
         {activePage === 'privacy' && (
           <div className="pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
             <section className="max-w-3xl mx-auto px-6">
@@ -1893,9 +1830,6 @@ export default function App() {
           </div>
         )}
 
-        {/* ==================================================================== */}
-        {/* 📄 AI ETHICS & USAGE PAGE                                            */}
-        {/* ==================================================================== */}
         {activePage === 'ai-use' && (
           <div className="pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
             <section className="max-w-4xl mx-auto px-6">
@@ -1930,14 +1864,12 @@ export default function App() {
 
       </main>
 
-      {/* FOOTER */}
       <footer className="bg-white dark:bg-stone-900 py-16 px-6 text-center border-t border-stone-100 dark:border-stone-800 transition-colors">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
           <button onClick={(e) => navigateTo('home', e)} className="font-black text-2xl tracking-tighter text-stone-900 dark:text-white mb-8 cursor-pointer">
             ME<span className="text-amber-600">digital</span>
           </button>
 
-          {/* Page Links */}
           <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-10 text-stone-400 dark:text-stone-500">
             <button onClick={(e) => navigateTo('home', e)} className="hover:text-stone-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer">Works</button>
             <button onClick={(e) => navigateTo('about', e)} className="hover:text-stone-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer">About & CV</button>
