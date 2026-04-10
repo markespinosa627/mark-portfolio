@@ -593,68 +593,145 @@ const getBotResponse = (userInput) => {
   const text = userInput.toLowerCase();
   
   if (text.includes('who is mark') || text.includes('background') || text.includes('experience') || text.includes('resume')) {
-    return "Mark is my absolute favorite human! 🐾 He's a brilliant Social Media Strategist and Digital Marketer. He knows exactly how to grow brands and build digital systems that convert. (And he gives the best chin scratches!)";
+    return {
+      text: "Mark is my absolute favorite human! 🐾 He's a brilliant Social Media Strategist and Digital Marketer. He knows exactly how to grow brands and build digital systems that convert. (And he gives the best chin scratches!)",
+      suggestions: ["What do you do?", "Show me results", "Book a Call"]
+    };
   }
   if (text.includes('what do you do') || text.includes('service') || text.includes('help')) {
-    return "We build powerful social media strategies, manage GoHighLevel, and create stunning websites. Mark handles all the marketing magic, and I provide the emotional support! 🐈 Click a service button below to get started.";
+    return {
+      text: "We build powerful social media strategies, manage GoHighLevel, and create stunning websites. Mark handles all the marketing magic, and I provide the emotional support! 🐈 Click a service button below to get started.",
+      actions: [
+        { id: 'web', label: "Website", icon: Laptop },
+        { id: 'social', label: "Social Media", icon: Smartphone },
+        { id: 'ghl', label: "GoHighLevel", icon: TrendingUp }
+      ]
+    };
   }
   if (text.includes('result') || text.includes('portfolio') || text.includes('work') || text.includes('show me')) {
-    return "Oh, we get amazing results! Like +1,566% link clicks and millions in organic reach. Mark works very hard on these. Check out the 'Works' page to see all the pretty numbers! 📈";
+    return {
+      text: "Oh, we get amazing results! Like +1,566% link clicks and millions in organic reach. Mark works very hard on these. Check out the 'Works' page to see all the pretty numbers! 📈",
+      suggestions: ["What do you do?", "Book a Call"]
+    };
   }
   if (text.includes('price') || text.includes('cost') || text.includes('budget') || text.includes('rate')) {
-    return "Quality work needs a proper budget! Mark tailors his rates based on your specific goals. You should book a strategy call with him so he can give you the best options! 🐟";
+    return {
+      text: "Quality work needs a proper budget! Mark tailors his rates based on your specific goals. You should book a strategy call with him so he can give you the best options! 🐟",
+      suggestions: ["Book a Call", "What do you do?"]
+    };
   }
   if (text.includes('contact') || text.includes('email') || text.includes('phone') || text.includes('whatsapp')) {
-    return "The fastest way to reach him is the big green WhatsApp button at the top! Or you can email hello@markespinosa.com. Just don't email during my nap time! 💤";
+    return {
+      text: "The fastest way to reach him is the big green WhatsApp button at the top! Or you can email hello@markespinosa.com. Just don't email during my nap time! 💤",
+      suggestions: ["Book a Call"]
+    };
   }
   if (text.includes('book') || text.includes('call') || text.includes('schedule') || text.includes('meeting')) {
-    return `Yay! Mark loves talking strategy. Use this link to get on his calendar: ${FUNNEL_DATA.brand.contact.calendarUrl} or click the WhatsApp button up top!`;
+    return {
+      text: `Yay! Mark loves talking strategy. Use this link to get on his calendar: ${FUNNEL_DATA.brand.contact.calendarUrl} or click the WhatsApp button up top!`,
+      actions: [
+        { id: 'call', label: "Schedule Call", icon: Calendar }
+      ]
+    };
   }
   if (text.includes('cat') || text.includes('kitty') || text.includes('tuna') || text.includes('cute') || text.includes('meow')) {
-    return "*purrs loudly* You're so sweet! I love a good head pat. But enough about me, let's talk about growing your brand! 🐈";
+    return {
+      text: "*purrs loudly* You're so sweet! I love a good head pat. But enough about me, let's talk about growing your brand! 🐈",
+      suggestions: ["What do you do?", "Book a Call"]
+    };
   }
   
-  return "*tilts head and blinks* I'm just a cat, so I didn't quite catch that. Try asking about Mark's experience, our services, or just tell me you want to book a call! 🐾";
+  return {
+    text: "*tilts head and blinks* I'm just a cat, so I didn't quite catch that. Try asking about Mark's experience, our services, or just tell me you want to book a call! 🐾",
+    suggestions: ["Who is Mark?", "What do you do?", "Book a Call"]
+  };
 };
 
 const IchigoChatWidget = ({ onTriggerContact }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { text: "Meow! I'm Ichigo, Mark's furry assistant. He's busy building killer social media strategies and high-converting systems so he can buy me premium tuna. How can we help you today? 🐾", isBot: true }
+    {
+      text: "Meow! I'm Ichigo, Mark's furry assistant. He's busy building killer social media strategies and high-converting systems so he can buy me premium tuna. How can we help you today? 🐾",
+      isBot: true,
+      suggestions: ["Who is Mark?", "What do you do?", "Show me results", "Book a Call"]
+    }
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [typingText, setTypingText] = useState("Ichigo is typing...");
+  const [showTooltip, setShowTooltip] = useState(false);
   const messagesEndRef = useRef(null);
 
-  const conversationStarters = [
-    "Who is Mark?",
-    "What do you do?",
-    "Show me results.",
-    "Book a Call"
+  const typingPhrases = [
+    "Ichigo is walking across the keyboard...",
+    "Ichigo is aggressively demanding tuna...",
+    "asdfjkl;qweruiop... (Ichigo is on the keys)",
+    "Ichigo is thinking of a sassy response..."
   ];
 
-  const quickActions = [
-    { id: 'web', label: "Website", icon: Laptop },
-    { id: 'social', label: "Social Media", icon: Smartphone },
-    { id: 'ghl', label: "GoHighLevel", icon: TrendingUp },
+  const idleNudges = [
+    "Meow? Are you still there, or did you get distracted by a laser pointer? 🔴",
+    "kajsdfhlkjasdhf... oops, sorry. I fell asleep on the keyboard. Need anything? 💤",
+    "*pushes a glass off the table* Wake up, human! Are we building a high-converting system or what? 🥛",
+    "Hello? I have a quota of leads to hit so Mark will buy me more treats. Let's get moving! 🐟",
+    "Staring at the screen won't grow your brand. Clicking the 'Schedule Call' button will. 🐾"
   ];
 
+  // Scroll to bottom on new message
   useEffect(() => {
     if (isOpen) {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [messages, isOpen]);
+  }, [messages, isOpen, isLoading]);
+
+  // Typing Effect
+  useEffect(() => {
+    let interval;
+    if (isLoading) {
+      let i = 0;
+      setTypingText(typingPhrases[0]);
+      interval = setInterval(() => {
+        i = (i + 1) % typingPhrases.length;
+        setTypingText(typingPhrases[i]);
+      }, 1500);
+    }
+    return () => clearInterval(interval);
+  }, [isLoading]);
+
+  // Idle Nudge Effect (60 seconds)
+  useEffect(() => {
+    if (!isOpen || isLoading) return;
+    const timer = setTimeout(() => {
+      const randomNudge = idleNudges[Math.floor(Math.random() * idleNudges.length)];
+      setMessages(prev => [...prev, { text: randomNudge, isBot: true }]);
+    }, 60000);
+    return () => clearTimeout(timer);
+  }, [messages, isOpen, isLoading]);
+
+  // Initial Pop-up Tooltip Effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!isOpen && messages.length <= 1) {
+        setShowTooltip(true);
+      }
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [isOpen, messages.length]);
 
   const processMessage = (userText) => {
     setMessages(prev => [...prev, { text: userText, isBot: false }]);
     setIsLoading(true);
 
-    // Simulate natural thinking delay
     setTimeout(() => {
-      const botResponse = getBotResponse(userText);
-      setMessages(prev => [...prev, { text: botResponse, isBot: true }]);
+      const response = getBotResponse(userText);
+      setMessages(prev => [...prev, {
+        text: response.text,
+        isBot: true,
+        suggestions: response.suggestions,
+        actions: response.actions
+      }]);
       setIsLoading(false);
-    }, 1200);
+    }, 1500);
   };
 
   const handleSend = (e) => {
@@ -703,7 +780,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
       `}} />
 
       {/* Chat Window */}
-      <div className={`bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-stone-200 dark:border-stone-800 w-[90vw] sm:w-[380px] h-[550px] max-h-[75vh] flex flex-col pointer-events-auto transition-all duration-300 origin-bottom-right ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'} relative`}>
+      <div className={`bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-stone-200 dark:border-stone-800 w-[90vw] sm:w-[380px] h-[550px] max-h-[75vh] flex flex-col pointer-events-auto transition-all duration-300 origin-bottom-right ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'} relative overflow-hidden`}>
         
         {/* Animated Cat */}
         {isOpen && <div className="running-cat pointer-events-none"><SiameseCatSVG /></div>}
@@ -724,65 +801,67 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
         </div>
 
         {/* Messages Area */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#FAFAF9] dark:bg-stone-950 hide-scrollbar z-10">
-          {messages.map((m, i) => (
-            <div key={i} className={`flex ${m.isBot ? 'justify-start' : 'justify-end'}`}>
-              <div className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed flex flex-col ${m.isBot ? 'bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-stone-700 dark:text-stone-300 rounded-tl-sm shadow-sm' : 'bg-stone-900 text-white rounded-tr-sm shadow-md'}`}>
-                {m.isBot ? formatBotMessage(m.text) : m.text}
+        <div className="flex-1 overflow-y-auto p-4 space-y-5 bg-[#FAFAF9] dark:bg-stone-950 hide-scrollbar z-10">
+          {messages.map((m, i) => {
+            const isLastMessage = i === messages.length - 1;
+            return (
+              <div key={i} className="flex flex-col gap-2">
+                <div className={`flex ${m.isBot ? 'justify-start' : 'justify-end'}`}>
+                  <div className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed flex flex-col ${m.isBot ? 'bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-stone-700 dark:text-stone-300 rounded-tl-sm shadow-sm' : 'bg-stone-900 text-white rounded-tr-sm shadow-md'}`}>
+                    {m.isBot ? formatBotMessage(m.text) : m.text}
+                  </div>
+                </div>
+                
+                {/* Dynamic Contextual Buttons appended directly to the bot's message */}
+                {m.isBot && isLastMessage && !isLoading && (
+                  <div className="flex flex-wrap gap-2 mt-1 animate-fade-in pl-2">
+                    {/* Render Chat Suggestions */}
+                    {m.suggestions && m.suggestions.map((suggestion, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => processMessage(suggestion)}
+                        className="bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 text-[11px] font-bold px-4 py-2 rounded-full hover:border-amber-600 hover:text-amber-600 dark:hover:border-amber-500 dark:hover:text-amber-500 shadow-sm transition-all text-left cursor-pointer"
+                      >
+                        {suggestion}
+                      </button>
+                    ))}
+                    
+                    {/* Render Form Triggers */}
+                    {m.actions && m.actions.map(action => {
+                      const ActionIcon = action.icon;
+                      return (
+                        <button
+                          key={action.id}
+                          onClick={() => {
+                            setIsOpen(false);
+                            const mockService = { id: action.id, label: action.id === 'call' ? 'Schedule a Call' : `I need help with ${action.label}` };
+                            onTriggerContact(action.id === 'call' ? 'call' : 'form', mockService);
+                          }}
+                          type="button"
+                          className="bg-amber-100 dark:bg-amber-900/30 border border-amber-200/50 dark:border-amber-800/50 text-amber-700 dark:text-amber-400 text-[11px] font-bold px-4 py-2 rounded-full hover:bg-amber-200 dark:hover:bg-amber-900/50 transition-all shadow-sm flex items-center gap-1.5 shrink-0 cursor-pointer"
+                        >
+                          <ActionIcon size={12} /> {action.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
-          
-          {/* Conversation Starters (Only show at the beginning) */}
-          {messages.length === 1 && !isLoading && (
-            <div className="flex flex-wrap gap-2 mt-2">
-              {conversationStarters.map((starter, i) => (
-                <button
-                  key={i}
-                  onClick={() => processMessage(starter)}
-                  className="bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 text-xs font-bold px-3 py-2 rounded-full hover:bg-amber-600 hover:text-white dark:hover:bg-amber-500 dark:hover:text-stone-900 transition-colors cursor-pointer text-left"
-                >
-                  {starter}
-                </button>
-              ))}
-            </div>
-          )}
+            );
+          })}
 
           {isLoading && (
             <div className="flex justify-start">
-              <div className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-2xl rounded-tl-sm px-4 py-3 flex gap-1 items-center shadow-sm">
-                <span className="w-1.5 h-1.5 bg-stone-400 rounded-full animate-bounce"></span>
-                <span className="w-1.5 h-1.5 bg-stone-400 rounded-full animate-bounce delay-75"></span>
-                <span className="w-1.5 h-1.5 bg-stone-400 rounded-full animate-bounce delay-150"></span>
+              <div className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-2xl rounded-tl-sm px-4 py-3 flex gap-2 items-center shadow-sm">
+                <span className="text-xs font-medium text-stone-500 italic">{typingText}</span>
               </div>
             </div>
           )}
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Quick Actions for Modal Injection */}
-        <div className="px-4 pb-3 flex gap-2 overflow-x-auto hide-scrollbar shrink-0 bg-white dark:bg-stone-900 pt-2 border-t border-stone-100 dark:border-stone-800 z-10">
-          {quickActions.map(action => {
-            const ActionIcon = action.icon;
-            return (
-              <button
-                key={action.id}
-                onClick={() => {
-                  setIsOpen(false);
-                  const mockService = { id: action.id, label: `I need help with ${action.label}` };
-                  onTriggerContact('form', mockService);
-                }}
-                type="button"
-                className="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-[10px] font-bold px-3 py-1.5 rounded-full whitespace-nowrap hover:bg-amber-200 dark:hover:bg-amber-900/50 transition-colors flex items-center gap-1 shrink-0 cursor-pointer"
-              >
-                <ActionIcon size={12} /> {action.label} Form
-              </button>
-            );
-          })}
-        </div>
-
         {/* Input Area */}
-        <form onSubmit={handleSend} className="p-3 border-t border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 rounded-b-3xl flex gap-2 shrink-0 z-10">
+        <form onSubmit={handleSend} className="p-3 border-t border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 rounded-b-3xl flex gap-2 shrink-0 z-10 relative">
           <input
             type="text"
             value={input}
@@ -796,8 +875,15 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
         </form>
       </div>
 
+      {/* Floating CTA Tooltip */}
+      {!isOpen && showTooltip && (
+         <div className="absolute bottom-[80px] right-0 bg-white dark:bg-stone-900 px-4 py-2 rounded-2xl rounded-br-sm shadow-xl border border-stone-200 dark:border-stone-800 animate-bounce pointer-events-auto cursor-pointer" onClick={() => { setIsOpen(true); setShowTooltip(false); }}>
+           <p className="text-xs font-bold text-stone-800 dark:text-stone-200 whitespace-nowrap">Psst... need digital strategy? 🐾</p>
+         </div>
+      )}
+
       {/* Floating Trigger Button */}
-      <button onClick={() => setIsOpen(!isOpen)} className={`pointer-events-auto w-16 h-16 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all overflow-hidden border-4 border-white dark:border-stone-800 relative group cursor-pointer ${isOpen ? 'scale-0 opacity-0 hidden' : 'scale-100 opacity-100'}`}>
+      <button onClick={() => { setIsOpen(!isOpen); setShowTooltip(false); }} className={`pointer-events-auto w-16 h-16 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all overflow-hidden border-4 border-white dark:border-stone-800 relative group cursor-pointer ${isOpen ? 'scale-0 opacity-0 hidden' : 'scale-100 opacity-100'}`}>
         <LazyImage src="/WhatsappImage/Ichigo.JPG" alt="Chat with Ichigo" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-amber-600/20 group-hover:bg-amber-600/40 transition-colors"></div>
         <span className="absolute bottom-1 right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
@@ -1140,13 +1226,23 @@ export default function App() {
     metaDesc.content = activePost ? activePost.snippet : FUNNEL_DATA.brand.subheadline;
   }, [activePage, activePost]);
 
+  const safePushState = (url) => {
+    try {
+      if (window.location.protocol !== 'blob:' && window.location.origin !== 'null') {
+        window.history.pushState({}, '', url);
+      }
+    } catch (err) {
+      console.warn("History API prevented in this environment.");
+    }
+  };
+
   const navigateTo = (page, e = null) => {
     if (e) e.preventDefault();
     setIsTransitioning(true);
     setIsMobileMenuOpen(false);
     
     setTimeout(() => {
-      window.history.pushState({}, '', `/${page === 'home' ? '' : page}`);
+      safePushState(`/${page === 'home' ? '' : page}`);
       setActivePage(page);
       setActivePost(null);
       window.scrollTo({ top: 0, behavior: 'instant' });
@@ -1158,7 +1254,7 @@ export default function App() {
     if (e) e.preventDefault();
     setIsTransitioning(true);
     setTimeout(() => {
-      window.history.pushState({}, '', `/insights`);
+      safePushState(`/insights`);
       setActivePage('insights');
       setActivePost(post);
       window.scrollTo({ top: 0, behavior: 'instant' });
