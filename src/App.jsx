@@ -624,6 +624,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
     setIsLoading(true);
 
     try {
+      // ✅ UPDATED MODEL STRING TO GUARANTEE COMPATIBILITY
       const apiKey = "AIzaSyAQwetYK1A2KZ9VlKo-mnJaaSOssvp5Iys";
 
       const systemPrompt = `You are Ichigo, a sassy, funny Siamese cat who is the true boss of Mark Joseph Espinosa (a Digital Strategist and AI Engineer). You tolerate Mark because he buys you premium treats. Keep answers short, witty, and feline-themed.
@@ -636,7 +637,8 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
       
       conversationHistory.push({ role: "user", parts: [{ text: userText }] });
 
-      const data = await fetchWithBackoff(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+      // Using gemini-1.5-flash-latest to ensure it points to an active model instance
+      const data = await fetchWithBackoff(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
