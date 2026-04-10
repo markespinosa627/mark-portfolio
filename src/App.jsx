@@ -625,7 +625,9 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
       const systemPrompt = `You are Ichigo, a sassy, funny Siamese cat who is the true boss of Mark Joseph Espinosa (a Digital Strategist and AI Engineer). You tolerate Mark because he buys you premium treats. Keep answers short, witty, and feline-themed.
       CRITICAL RULE: If they ask to book a call, contact Mark, or schedule anything, simply say "Use this link to schedule with the human:" and then provide EXACTLY this link: https://calendar.app.google/2aixwBAXDDJpNRxV8`;
 
-      const contents = messages.map(m => ({
+      // Ignore the hardcoded initial greeting when sending history to API to prevent 400 Bad Request
+      const apiMessages = messages.slice(1);
+      const contents = apiMessages.map(m => ({
         role: m.isBot ? "model" : "user",
         parts: [{ text: m.text }]
       }));
@@ -640,10 +642,13 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
         })
       });
 
+      if (data.error) throw new Error(data.error.message);
+
       const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || "*ignores you and licks paw*";
       const safeText = typeof botText === 'string' ? botText : JSON.stringify(botText);
       setMessages(prev => [...prev, { text: safeText, isBot: true }]);
     } catch (error) {
+      console.error(error);
       setMessages(prev => [...prev, { text: "*knocks your coffee off the table* (Network error)", isBot: true }]);
     } finally {
       setIsLoading(false);
@@ -708,7 +713,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Quick Actions */}
+        {/* Quick Actions (Lead Capture Handoff) */}
         <div className="px-4 pb-3 flex gap-2 overflow-x-auto hide-scrollbar shrink-0 bg-white dark:bg-stone-900 pt-2 border-t border-stone-100 dark:border-stone-800">
           {quickActions.map(action => {
             const ActionIcon = action.icon;
@@ -754,6 +759,60 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
         <span className="absolute bottom-1 right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
       </button>
 
+    </div>
+  );
+};
+
+// ============================================================================
+// 🚀 REVIEW CAROUSEL WITH MANUAL + NATIVE SCROLL
+// ============================================================================
+const ReviewCarousel = () => {
+  const scrollRef = useRef(null);
+  const reviews = FUNNEL_DATA.reviews;
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const { clientWidth } = scrollRef.current;
+      const scrollAmount = direction === 'left' ? -clientWidth : clientWidth;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="relative w-full max-w-6xl mx-auto px-4">
+      <div
+        ref={scrollRef}
+        className="w-full overflow-x-auto snap-x snap-mandatory flex gap-6 pb-8 hide-scrollbar px-6 md:px-0 scroll-smooth"
+      >
+        {reviews.map((review, idx) => (
+          <div key={idx} className="w-[85vw] md:w-[400px] snap-center flex-shrink-0">
+            <div className="bg-[#FAFAF9] dark:bg-stone-950 p-8 md:p-10 rounded-[2rem] border border-stone-100 dark:border-stone-800 shadow-sm h-full flex flex-col justify-between">
+              <div>
+                <div className="flex gap-1 mb-6 text-left">
+                  {[1, 2, 3, 4, 5].map((s) => <Star key={s} className="text-amber-500 fill-amber-500" size={14} />)}
+                </div>
+                <p className="text-lg md:text-xl font-medium text-stone-800 dark:text-white leading-relaxed text-left">"{review.text}"</p>
+              </div>
+              <div className="mt-8 flex items-center justify-between text-left">
+                <p className="text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest">— {review.author}</p>
+                <div className="w-10 h-10 rounded-full bg-stone-50 dark:bg-stone-900 flex items-center justify-center text-stone-300 dark:text-stone-600 transition-colors">
+                  <Users size={16} />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      {/* Desktop / Manual Navigation Buttons */}
+      <div className="flex justify-center gap-4 mt-4">
+        <button onClick={() => scroll('left')} className="p-3 rounded-full bg-white dark:bg-stone-900 shadow-md border border-stone-200 dark:border-stone-800 hover:bg-amber-50 dark:hover:bg-amber-900/20 text-stone-900 dark:text-white transition-colors cursor-pointer">
+          <ArrowLeft size={20} />
+        </button>
+        <button onClick={() => scroll('right')} className="p-3 rounded-full bg-white dark:bg-stone-900 shadow-md border border-stone-200 dark:border-stone-800 hover:bg-amber-50 dark:hover:bg-amber-900/20 text-stone-900 dark:text-white transition-colors cursor-pointer">
+          <ArrowRight size={20} />
+        </button>
+      </div>
     </div>
   );
 };
@@ -906,32 +965,6 @@ const SocialAuditTool = ({ onTriggerContact }) => {
           </div>
         </div>
       )}
-    </div>
-  );
-};
-
-// ============================================================================
-// 🚀 REVIEW CAROUSEL
-// ============================================================================
-const ReviewCarousel = () => {
-  const reviews = FUNNEL_DATA.reviews;
-  return (
-    <div className="w-full overflow-x-auto snap-x snap-mandatory flex gap-6 pb-8 hide-scrollbar px-6 md:px-0">
-      {reviews.map((review, idx) => (
-        <div key={idx} className="min-w-[85vw] md:min-w-[400px] snap-center flex-shrink-0">
-          <div className="bg-[#FAFAF9] dark:bg-stone-950 p-8 md:p-10 rounded-[2rem] border border-stone-100 dark:border-stone-800 shadow-sm h-full flex flex-col justify-between">
-            <div>
-              <div className="flex gap-1 mb-6 text-left">
-                {[1, 2, 3, 4, 5].map((s) => <Star key={s} className="text-amber-500 fill-amber-500" size={14} />)}
-              </div>
-              <p className="text-lg md:text-xl font-medium text-stone-800 dark:text-white leading-relaxed text-left">"{review.text}"</p>
-            </div>
-            <div className="mt-8 flex items-center justify-between text-left">
-              <p className="text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest">— {review.author}</p>
-            </div>
-          </div>
-        </div>
-      ))}
     </div>
   );
 };
@@ -1162,7 +1195,6 @@ export default function App() {
           <button onClick={(e) => navigateTo('home', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">Works</button>
           <button onClick={(e) => navigateTo('about', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">About & CV</button>
           <button onClick={(e) => navigateTo('insights', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">Insights</button>
-          {/* ✅ UPDATED MOBILE MENU BUTTON -> DIRECT WHATSAPP */}
           <a href={FUNNEL_DATA.brand.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="text-4xl font-black text-[#25D366] text-left cursor-pointer flex items-center gap-4">
             <MessageSquare size={36}/> WhatsApp
           </a>
