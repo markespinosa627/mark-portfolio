@@ -92,19 +92,31 @@ const FUNNEL_DATA = {
     { name: "Live Music In Cleveland", fb: "https://www.facebook.com/LMIC", logo: "/logos/LMIC.avif" }
   ],
   caseStudy: {
-    hook: "How we generated 1,566% more link clicks for a client.",
+    hook: "How we generated 5.47M organic reach and grew link clicks by 1,566%.",
     metrics: [
       {
+        label: "Post Reach (+145%)", value: 5.47, prefix: "", suffix: "M", decimals: 2, icon: Users,
+        details: {
+          problem: "The client needed to maximize their social media performance but lacked a tailored approach to reach their specific target market effectively.",
+          strategy: "We established a consistent brand identity across all platforms, conducted deep target audience research to build buyer personas, and curated highly-tailored content.",
+          result: "A massive expansion reaching 5.47 million organic impressions (+145%), effectively connecting the brand to its exact target market."
+        }
+      },
+      {
+        label: "Engagements (+235%)", value: 918, prefix: "", suffix: "k", decimals: 0, icon: TrendingUp,
+        details: {
+          problem: "The client had a social presence but struggled to build an active, engaged community around their content.",
+          strategy: "We connected the brand directly to its target market by establishing community groups and distributing content specifically designed for engagement and virality.",
+          result: "Page and post engagements skyrocketed to 918,220 (+235%), alongside a 147% increase in active engaged users (478,733 total)."
+        }
+      },
+      {
         label: "Link Clicks", value: 1566, prefix: "+", suffix: "%", decimals: 0, icon: MousePointerClick,
-        details: { problem: "The client suffered from severe ad fatigue and stagnant organic reach. Their posts were blending into the feed, leading to an extremely high Cost-Per-Click.", strategy: "We deployed generative AI to bulk-test 50+ hook variations and ad creatives in 48 hours, pinpointing the most emotionally resonant messaging to break pattern recognition.", result: "An immediate 1,566% surge in link clicks. Cost-Per-Click plummeted by 74%, directly transforming passive scrollers into highly qualified inbound traffic." }
-      },
-      {
-        label: "Post Reach", value: 5.47, prefix: "", suffix: "m", decimals: 2, icon: Users,
-        details: { problem: "Organic reach was heavily suppressed by shifting algorithm updates, making it impossible to scale brand awareness without pouring thousands into paid boosts.", strategy: "We implemented a data-driven short-form video framework that identified trending audio and optimal pacing specific to the client's exact niche.", result: "A massive viral expansion totaling 5.47 million organic impressions within 90 days, effectively establishing local market dominance without extra ad spend." }
-      },
-      {
-        label: "Reactions", value: 489, prefix: "+", suffix: "%", decimals: 0, icon: TrendingUp,
-        details: { problem: "High impressions but zero community engagement. The audience was seeing the content but feeling no motivation to interact or build brand affinity.", strategy: "Integrated a targeted conversational copy framework paired with automated ManyChat flows to instantly reward users for commenting and interacting.", result: "A 489% increase in community reactions and direct comments, triggering the algorithm to aggressively push content to lookalike audiences." }
+        details: {
+          problem: "Followers were passively consuming content without taking the next step to visit external links or interact deeper with the brand.",
+          strategy: "By ensuring every piece of content was curated for the right audience persona, we naturally funneled engaged community members toward specific brand links.",
+          result: "An immediate 1,566% surge in link clicks (2,648 total), alongside 412,892 reactions (+489%), proving that tailored community building directly translates to active traffic."
+        }
       }
     ]
   },
@@ -568,15 +580,15 @@ const CaseStudyModal = ({ activeStudy, onClose }) => {
         
         <div className="space-y-6">
           <div className="bg-stone-50 dark:bg-stone-950 p-6 rounded-2xl border border-stone-100 dark:border-stone-800">
-            <p className="text-[10px] font-black text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-2">The Problem</p>
+            <p className="text-[10px] font-black text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-2">Client's Problem</p>
             <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed font-medium">{activeStudy.details.problem}</p>
           </div>
           <div className="bg-amber-50 dark:bg-amber-900/10 p-6 rounded-2xl border border-amber-100 dark:border-amber-900/20">
-            <p className="text-[10px] font-black text-amber-600 dark:text-amber-500 uppercase tracking-widest mb-2">AI Strategy Applied</p>
+            <p className="text-[10px] font-black text-amber-600 dark:text-amber-500 uppercase tracking-widest mb-2">Our Solution</p>
             <p className="text-sm text-amber-900 dark:text-amber-100 leading-relaxed font-medium">{activeStudy.details.strategy}</p>
           </div>
           <div className="bg-stone-900 dark:bg-stone-800 p-6 rounded-2xl">
-            <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-2">The Result</p>
+            <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-2">The Outcome</p>
             <p className="text-sm text-white leading-relaxed font-medium">{activeStudy.details.result}</p>
           </div>
         </div>
@@ -1440,14 +1452,19 @@ export default function App() {
                     const MIcon = m.icon;
                     return (
                       <Reveal key={i} delay={i*100}>
-                        <TiltCard className="text-center p-8 rounded-2xl border border-stone-100 dark:border-stone-800 bg-[#FAFAF9] dark:bg-stone-950 shadow-sm hover:shadow-xl hover:border-amber-600 transition-all cursor-pointer group" onClick={() => setActiveCaseStudy(m)}>
-                          <MIcon className="text-stone-300 dark:text-stone-600 mb-6 mx-auto group-hover:text-amber-600 transition-colors duration-500" size={32} />
-                          <p className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white mb-2 tracking-tight group-hover:scale-105 transition-transform duration-500">
+                        <TiltCard className="text-center p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(217,119,6,0.1)] hover:border-amber-600 dark:hover:border-amber-500 transition-all duration-500 cursor-pointer group relative overflow-hidden" onClick={() => setActiveCaseStudy(m)}>
+                          <div className="absolute top-4 right-4 bg-stone-100 dark:bg-stone-800 text-stone-400 p-2 rounded-full group-hover:bg-amber-100 group-hover:text-amber-600 transition-colors">
+                            <Maximize2 size={14} />
+                          </div>
+                          <MIcon className="text-stone-300 dark:text-stone-600 mb-6 mx-auto group-hover:text-amber-600 transition-colors duration-500" size={36} />
+                          <p className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white mb-3 tracking-tight group-hover:scale-110 transition-transform duration-500 will-change-transform">
                             <CountUp end={m.value} prefix={m.prefix} suffix={m.suffix} decimals={m.decimals} />
                           </p>
-                          <p className="text-stone-500 dark:text-stone-400 font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2">
-                            {m.label} <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
-                          </p>
+                          <div className="inline-flex items-center justify-center gap-2 bg-stone-50 dark:bg-stone-950 px-4 py-2 rounded-full border border-stone-100 dark:border-stone-800 group-hover:border-amber-200 dark:group-hover:border-amber-900/50 transition-colors">
+                            <p className="text-stone-500 dark:text-stone-400 font-bold text-[10px] uppercase tracking-widest group-hover:text-amber-700 dark:group-hover:text-amber-500">
+                              {m.label}
+                            </p>
+                          </div>
                         </TiltCard>
                       </Reveal>
                     );
