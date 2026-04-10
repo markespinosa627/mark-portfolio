@@ -624,15 +624,11 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
     setIsLoading(true);
 
     try {
-      // IMPORTANT: PASTE YOUR GEMINI API KEY HERE FOR LOCAL/VERCEL DEPLOYMENT
-      // If this is empty ("AIzaSyAQwetYK1A2KZ9VlKo-mnJaaSOssvp5Iys"), it only works inside the Canvas environment proxy.
       const apiKey = "AIzaSyAQwetYK1A2KZ9VlKo-mnJaaSOssvp5Iys";
 
       const systemPrompt = `You are Ichigo, a sassy, funny Siamese cat who is the true boss of Mark Joseph Espinosa (a Digital Strategist and AI Engineer). You tolerate Mark because he buys you premium treats. Keep answers short, witty, and feline-themed.
       CRITICAL RULE: If they ask to book a call, contact Mark, or schedule anything, simply say "Use this link to schedule with the human:" and then provide EXACTLY this link: https://calendar.app.google/2aixwBAXDDJpNRxV8`;
 
-      // The API strictly requires alternating "user" and "model" roles starting with "user".
-      // We skip the very first hardcoded greeting (which is a bot message) to ensure the payload is perfectly clean.
       const conversationHistory = messages.slice(1).map(m => ({
         role: m.isBot ? "model" : "user",
         parts: [{ text: m.text }]
