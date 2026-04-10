@@ -577,6 +577,21 @@ const CaseStudyModal = ({ activeStudy, onClose }) => {
 // ============================================================================
 // 🚀 AI CHATBOT WIDGET (Ichigo the Cat)
 // ============================================================================
+const fetchWithBackoff = async (url, options, retries = 5, delay = 1000) => {
+  try {
+    const res = await fetch(url, options);
+    if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData?.error?.message || `HTTP Error ${res.status}`);
+    }
+    return await res.json();
+  } catch (err) {
+    if (retries === 0) throw err;
+    await new Promise(resolve => setTimeout(resolve, delay));
+    return fetchWithBackoff(url, options, retries - 1, delay * 2);
+  }
+};
+
 const IchigoChatWidget = ({ onTriggerContact }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -609,13 +624,15 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
     setIsLoading(true);
 
     try {
-      const apiKey = "";
+      // IMPORTANT: PASTE YOUR GEMINI API KEY HERE FOR LOCAL/VERCEL DEPLOYMENT
+      // If this is empty ("AIzaSyAQwetYK1A2KZ9VlKo-mnJaaSOssvp5Iys"), it only works inside the Canvas environment proxy.
+      const apiKey = "AIzaSyAQwetYK1A2KZ9VlKo-mnJaaSOssvp5Iys";
+
       const systemPrompt = `You are Ichigo, a sassy, funny Siamese cat who is the true boss of Mark Joseph Espinosa (a Digital Strategist and AI Engineer). You tolerate Mark because he buys you premium treats. Keep answers short, witty, and feline-themed.
       CRITICAL RULE: If they ask to book a call, contact Mark, or schedule anything, simply say "Use this link to schedule with the human:" and then provide EXACTLY this link: https://calendar.app.google/2aixwBAXDDJpNRxV8`;
 
-      // CRITICAL FIX: The API will throw a 400 Bad Request if the 'contents' array
-      // doesn't alternate cleanly or starts with a 'model' role incorrectly.
-      // By ignoring the first hardcoded greeting, we ensure the payload is perfectly clean.
+      // The API strictly requires alternating "user" and "model" roles starting with "user".
+      // We skip the very first hardcoded greeting (which is a bot message) to ensure the payload is perfectly clean.
       const conversationHistory = messages.slice(1).map(m => ({
         role: m.isBot ? "model" : "user",
         parts: [{ text: m.text }]
@@ -623,7 +640,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
       
       conversationHistory.push({ role: "user", parts: [{ text: userText }] });
 
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+      const data = await fetchWithBackoff(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -632,12 +649,6 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
         })
       });
 
-      if (!res.ok) {
-        const errData = await res.json().catch(() => ({}));
-        throw new Error(errData?.error?.message || `HTTP Error ${res.status}`);
-      }
-
-      const data = await res.json();
       const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || "*ignores you and licks paw*";
       const safeText = typeof botText === 'string' ? botText : JSON.stringify(botText);
       
@@ -764,6 +775,11 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
 const ReviewCarousel = () => {
   const scrollRef = useRef(null);
   const reviews = FUNNEL_DATA.reviews;
+  
+  // Drag to scroll logic for desktop
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
   const scroll = (direction) => {
     if (scrollRef.current) {
@@ -773,15 +789,36 @@ const ReviewCarousel = () => {
     }
   };
 
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => setIsDragging(false);
+  const handleMouseUp = () => setIsDragging(false);
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed multiplier
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   return (
     <div className="relative w-full max-w-6xl mx-auto px-4">
       <div
         ref={scrollRef}
-        className="w-full overflow-x-auto snap-x snap-mandatory flex gap-6 pb-8 hide-scrollbar px-6 md:px-0 scroll-smooth"
+        onMouseDown={handleMouseDown}
+        onMouseLeave={handleMouseLeave}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        className={`w-full overflow-x-auto snap-x snap-mandatory flex gap-6 pb-8 hide-scrollbar px-6 md:px-0 scroll-smooth touch-pan-x ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
       >
         {reviews.map((review, idx) => (
           <div key={idx} className="w-[85vw] md:w-[400px] snap-center flex-shrink-0">
-            <div className="bg-[#FAFAF9] dark:bg-stone-950 p-8 md:p-10 rounded-[2rem] border border-stone-100 dark:border-stone-800 shadow-sm h-full flex flex-col justify-between">
+            <div className="bg-[#FAFAF9] dark:bg-stone-950 p-8 md:p-10 rounded-[2rem] border border-stone-100 dark:border-stone-800 shadow-sm h-full flex flex-col justify-between pointer-events-none">
               <div>
                 <div className="flex gap-1 mb-6 text-left">
                   {[1, 2, 3, 4, 5].map((s) => <Star key={s} className="text-amber-500 fill-amber-500" size={14} />)}
@@ -800,7 +837,7 @@ const ReviewCarousel = () => {
       </div>
       
       {/* Desktop / Manual Navigation Buttons */}
-      <div className="flex justify-center gap-4 mt-4">
+      <div className="flex justify-center gap-4 mt-4 pointer-events-auto">
         <button onClick={() => scroll('left')} className="p-3 rounded-full bg-white dark:bg-stone-900 shadow-md border border-stone-200 dark:border-stone-800 hover:bg-amber-50 dark:hover:bg-amber-900/20 text-stone-900 dark:text-white transition-colors cursor-pointer">
           <ArrowLeft size={20} />
         </button>
