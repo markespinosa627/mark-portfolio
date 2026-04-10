@@ -577,18 +577,6 @@ const CaseStudyModal = ({ activeStudy, onClose }) => {
 // ============================================================================
 // 🚀 AI CHATBOT WIDGET (Ichigo the Cat)
 // ============================================================================
-const fetchWithBackoff = async (url, options, retries = 5, delay = 1000) => {
-  try {
-    const res = await fetch(url, options);
-    if (!res.ok) throw new Error("API Error");
-    return await res.json();
-  } catch (err) {
-    if (retries === 0) throw err;
-    await new Promise(resolve => setTimeout(resolve, delay));
-    return fetchWithBackoff(url, options, retries - 1, delay * 2);
-  }
-};
-
 const IchigoChatWidget = ({ onTriggerContact }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -625,31 +613,38 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
       const systemPrompt = `You are Ichigo, a sassy, funny Siamese cat who is the true boss of Mark Joseph Espinosa (a Digital Strategist and AI Engineer). You tolerate Mark because he buys you premium treats. Keep answers short, witty, and feline-themed.
       CRITICAL RULE: If they ask to book a call, contact Mark, or schedule anything, simply say "Use this link to schedule with the human:" and then provide EXACTLY this link: https://calendar.app.google/2aixwBAXDDJpNRxV8`;
 
-      // Ignore the hardcoded initial greeting when sending history to API to prevent 400 Bad Request
-      const apiMessages = messages.slice(1);
-      const contents = apiMessages.map(m => ({
+      // CRITICAL FIX: The API will throw a 400 Bad Request if the 'contents' array
+      // doesn't alternate cleanly or starts with a 'model' role incorrectly.
+      // By ignoring the first hardcoded greeting, we ensure the payload is perfectly clean.
+      const conversationHistory = messages.slice(1).map(m => ({
         role: m.isBot ? "model" : "user",
         parts: [{ text: m.text }]
       }));
-      contents.push({ role: "user", parts: [{ text: userText }] });
+      
+      conversationHistory.push({ role: "user", parts: [{ text: userText }] });
 
-      const data = await fetchWithBackoff(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents,
+          contents: conversationHistory,
           systemInstruction: { parts: [{ text: systemPrompt }] }
         })
       });
 
-      if (data.error) throw new Error(data.error.message);
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData?.error?.message || `HTTP Error ${res.status}`);
+      }
 
+      const data = await res.json();
       const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || "*ignores you and licks paw*";
       const safeText = typeof botText === 'string' ? botText : JSON.stringify(botText);
+      
       setMessages(prev => [...prev, { text: safeText, isBot: true }]);
     } catch (error) {
       console.error(error);
-      setMessages(prev => [...prev, { text: "*knocks your coffee off the table* (Network error)", isBot: true }]);
+      setMessages(prev => [...prev, { text: `*hisses* (System Error: ${error.message})`, isBot: true }]);
     } finally {
       setIsLoading(false);
     }
@@ -713,7 +708,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Quick Actions (Lead Capture Handoff) */}
+        {/* Quick Actions */}
         <div className="px-4 pb-3 flex gap-2 overflow-x-auto hide-scrollbar shrink-0 bg-white dark:bg-stone-900 pt-2 border-t border-stone-100 dark:border-stone-800">
           {quickActions.map(action => {
             const ActionIcon = action.icon;
@@ -854,7 +849,7 @@ const CookieBanner = () => {
 };
 
 // ============================================================================
-// 🚀 SOCIAL AUDIT TOOL
+// 🚀 SOCIAL AUDIT TOOL WITH LEAD CAPTURE
 // ============================================================================
 const SocialAuditTool = ({ onTriggerContact }) => {
   const [step, setStep] = useState(0);
@@ -1172,7 +1167,7 @@ export default function App() {
               {darkMode ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
-            {/* ✅ UPDATED TOP NAV BUTTON -> DIRECT WHATSAPP */}
+            {/* ✅ FIXED TOP NAV BUTTON -> DIRECT WHATSAPP */}
             <MagneticWrapper href={FUNNEL_DATA.brand.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#1DA851] transition-all shadow-sm flex items-center gap-2 cursor-pointer border-none">
               <MessageSquare size={14} /> WhatsApp Me
             </MagneticWrapper>
@@ -1195,8 +1190,9 @@ export default function App() {
           <button onClick={(e) => navigateTo('home', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">Works</button>
           <button onClick={(e) => navigateTo('about', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">About & CV</button>
           <button onClick={(e) => navigateTo('insights', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">Insights</button>
+          {/* ✅ FIXED MOBILE MENU BUTTON -> DIRECT WHATSAPP */}
           <a href={FUNNEL_DATA.brand.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="text-4xl font-black text-[#25D366] text-left cursor-pointer flex items-center gap-4">
-            <MessageSquare size={36}/> WhatsApp
+            <MessageSquare size={36}/> WhatsApp Me
           </a>
         </div>
       )}
