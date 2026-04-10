@@ -43,6 +43,25 @@ const ShieldCheck = ({ size = 24, className = "" }) => (
   </svg>
 );
 
+const SiameseCatSVG = () => (
+  <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Tail */}
+    <path d="M9 14C5 14 2 11 2 7" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    {/* Back Legs */}
+    <path d="M12 16V21C12 21.5 12.5 22 13 22C13.5 22 14 21.5 14 21V17" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    <path d="M16 16V20C16 20.5 16.5 21 17 21C17.5 21 18 20.5 18 20V17" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    {/* Front Legs */}
+    <path d="M24 16V20C24 20.5 24.5 21 25 21C25.5 21 26 20.5 26 20V17" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    <path d="M28 16V21C28 21.5 28.5 22 29 22C29.5 22 30 21.5 30 21V17" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    {/* Body (Cream) */}
+    <path d="M9 14C9 9 14 8 20 8C26 8 30 10 30 14C30 18 25 18 20 18C14 18 9 18 9 14Z" fill="#F3E5D8"/>
+    {/* Head (Dark Brown) */}
+    <circle cx="31" cy="10" r="4.5" fill="#3A2A22"/>
+    {/* Ears */}
+    <path d="M28 8L29 3L32 7L35 3L34 8" fill="#3A2A22"/>
+  </svg>
+);
+
 // ============================================================================
 // 📊 DATA CONFIGURATION
 // ============================================================================
@@ -50,7 +69,7 @@ const FUNNEL_DATA = {
   brand: {
     name: "ME digital",
     headline: "Stop blending in. Start dominating.",
-    subheadline: "I engineer simple, human, and high-converting digital systems that turn your audience into loyal customers on autopilot.",
+    subheadline: "I engineer brilliant social media strategies and high-converting digital marketing systems that turn your audience into loyal customers on autopilot.",
     contact: {
       email: "hello@markespinosa.com",
       whatsapp: "https://wa.me/639209062796",
@@ -81,11 +100,11 @@ const FUNNEL_DATA = {
       },
       {
         label: "Post Reach", value: 5.47, prefix: "", suffix: "m", decimals: 2, icon: Users,
-        details: { problem: "Organic reach was heavily suppressed by shifting algorithm updates, making it impossible to scale brand awareness without pouring thousands into paid boosts.", strategy: "We implemented an AI-driven short-form video framework that identified trending audio and optimal pacing specific to the client's exact niche.", result: "A massive viral expansion totaling 5.47 million organic impressions within 90 days, effectively establishing local market dominance without extra ad spend." }
+        details: { problem: "Organic reach was heavily suppressed by shifting algorithm updates, making it impossible to scale brand awareness without pouring thousands into paid boosts.", strategy: "We implemented a data-driven short-form video framework that identified trending audio and optimal pacing specific to the client's exact niche.", result: "A massive viral expansion totaling 5.47 million organic impressions within 90 days, effectively establishing local market dominance without extra ad spend." }
       },
       {
         label: "Reactions", value: 489, prefix: "+", suffix: "%", decimals: 0, icon: TrendingUp,
-        details: { problem: "High impressions but zero community engagement. The audience was seeing the content but feeling no motivation to interact or build brand affinity.", strategy: "Integrated a targeted conversational copy framework paired with automated ManyChat AI flows to instantly reward users for commenting and interacting.", result: "A 489% increase in community reactions and direct comments, triggering the algorithm to aggressively push content to lookalike audiences." }
+        details: { problem: "High impressions but zero community engagement. The audience was seeing the content but feeling no motivation to interact or build brand affinity.", strategy: "Integrated a targeted conversational copy framework paired with automated ManyChat flows to instantly reward users for commenting and interacting.", result: "A 489% increase in community reactions and direct comments, triggering the algorithm to aggressively push content to lookalike audiences." }
       }
     ]
   },
@@ -154,14 +173,14 @@ const FUNNEL_DATA = {
     { text: "The best social media guy! Saved me hours of work with AI!", author: "Seth Y." },
     { text: "Easy to collaborate with and a fast learner!", author: "Madelyn N." },
     { text: "Mark's digital strategy completely transformed our engagement.", author: "Lucas R." },
-    { text: "Seamless integration of AI into a creative workflow.", author: "Sarah K." }
+    { text: "Seamless integration of systems into a creative workflow.", author: "Sarah K." }
   ]
 };
 
 const CV_DATA = {
   profile: {
     name: "Mark Joseph Espinosa",
-    title: "Digital Strategist and AI Engineer",
+    title: "Digital & Social Media Strategist",
     email: "hello@markespinosa.com",
     phone: "+63 920 906 2796",
     image: "/me/markespinosa.jpg",
@@ -180,9 +199,9 @@ const CV_DATA = {
     { show: "#PTVNEWSTONIGHT", title: "UNESCO MEDIA WORKSHOP", network: "PTV", img: "/Interviews/PTV.png", link: "https://www.facebook.com/watch/?v=5837386186340729" }
   ],
   experience: [
-    { role: "Head for Online Media", company: "Zoe Broadcasting Network Inc. (ZBNI)", period: "Jan 2025 – Present", description: "Spearheaded the network's digital frontier, providing executive leadership for all online media verticals. Orchestrated the synergy between content creation, social media strategy, and emerging technologies (AI, app/web/software development) to expand the digital footprint and redefine audience engagement." },
-    { role: "Unit Head for New Media", company: "Zoe Broadcasting Network Inc. (ZBNI)", period: "Nov 2022 – Jan 2025", description: "Provided executive leadership for all online media verticals. Orchestrated the synergy between content creation, social media strategy, and emerging technologies to drive technological innovation in a rapidly evolving market." },
-    { role: "Copy Writer & AI Development Researcher", company: "The 216 Scoop (Cleveland, USA)", period: "Aug 2024 – Jul 2025", description: "Pioneered a hybrid role at the intersection of creative content and emerging technology. Developed compelling, brand-aligned copy while concurrently researching and analyzing the practical integration of AI tools for content generation and workflow optimization." },
+    { role: "Lead Digital & Social Media Strategist", company: "ME digital", period: "Jan 2025 – Present", description: "Directing comprehensive social media strategies, audience growth, and full-funnel marketing campaigns to drive measurable conversions and brand authority." },
+    { role: "Head for Online Media", company: "Zoe Broadcasting Network Inc. (ZBNI)", period: "Nov 2022 – Jan 2025", description: "Spearheaded the network's digital frontier, providing executive leadership for all online media verticals. Orchestrated the synergy between content creation and social media strategy to expand the digital footprint." },
+    { role: "Copy Writer & Development Researcher", company: "The 216 Scoop (Cleveland, USA)", period: "Aug 2024 – Jul 2025", description: "Pioneered a hybrid role at the intersection of creative content and emerging technology. Developed compelling, brand-aligned copy while optimizing digital workflows." },
     { role: "Communications Director", company: "Black Meta Agency (DC, USA)", period: "Feb 2023 – Dec 2024", description: "Directed the agency's comprehensive communications strategy, shaping a cohesive brand narrative across all internal and external channels. Drove brand equity by developing and executing impactful campaigns and managing multi-platform media outreach." },
     { role: "Copy Writer", company: "Zoe Broadcasting Network Inc. (ZBNI)", period: "Nov 2020 – Nov 2022", description: "Operated as a versatile content specialist, blending creative copywriting with data-driven strategy. Conceptualized, developed, and launched new online shows, contributing to the initial growth of the network's digital presence." },
     { role: "Subject Matter Expert & Customer Specialist", company: "Alorica Philippines", period: "Mar 2018 – Aug 2019", description: "Served as a key escalation point and knowledge leader, blending deep subject matter expertise with advanced customer relations skills. Championed customer satisfaction and retention by resolving complex inquiries." }
@@ -194,12 +213,12 @@ const CV_DATA = {
   skills: [
     { category: "Leadership & Strategy", items: ["Executive Leadership & Team Management", "Digital Strategy & Transformation", "Strategic Planning & Execution", "Department Building & Scaling", "C-Suite Level Reporting"] },
     { category: "Digital Media & Content", items: ["Content Strategy & Development", "Social Media Management & Audience Growth", "Creative Copywriting & Brand Narrative"] },
-    { category: "Technology & Innovation", items: ["AI Strategy & Development Research", "Web, App, & Software Development Oversight", "Data Analytics & Emerging Technologies"] },
+    { category: "Technology & Innovation", items: ["Automation & System Integrations", "Web, App, & Software Development Oversight", "Data Analytics & Audience Tracking"] },
     { category: "Communication & Relations", items: ["Comprehensive Communications Strategy", "Advanced Customer Relations & De-escalation", "Client & Stakeholder Management", "Coaching & Team Mentoring"] }
   ],
   certifications: [
-    { title: "AI-Powered Data Analytics/Science", issuer: "Certified Digital Marketer", date: "Nov 2025", link: "https://cdm-learningportal.thinkific.com/certificates/gylzxcrn9n" },
-    { title: "Retail & Activations in the Age of AI", issuer: "Certified Digital Marketer", date: "Nov 2025", link: "https://cdm-learningportal.thinkific.com/certificates/loyuqwa7py" },
+    { title: "Data Analytics/Science", issuer: "Certified Digital Marketer", date: "Nov 2025", link: "https://cdm-learningportal.thinkific.com/certificates/gylzxcrn9n" },
+    { title: "Retail & Activations Strategy", issuer: "Certified Digital Marketer", date: "Nov 2025", link: "https://cdm-learningportal.thinkific.com/certificates/loyuqwa7py" },
     { title: "Digital Advertising", issuer: "HubSpot Academy", date: "Jun 2023", link: "https://app.hubspot.com/academy/achievements/wdpblkhk/en/1/mark-joseph-espinosa/digital-advertising" },
     { title: "Foundations of Digital Marketing and E-Commerce", issuer: "Google", date: "Jun 2023", link: "https://coursera.org/verify/V3JKREQVTERZ" },
     { title: "Google My Business", issuer: "Udemy", date: "Jun 2023", link: "#" },
@@ -568,37 +587,56 @@ const CaseStudyModal = ({ activeStudy, onClose }) => {
 };
 
 // ============================================================================
-// 🚀 AI CHATBOT WIDGET (Ichigo the Cat)
+// 🚀 HYBRID CHATBOT WIDGET (Local "Choose Your Own Adventure" Ichigo)
 // ============================================================================
-const fetchWithBackoff = async (url, options, retries = 5, delay = 1000) => {
-  try {
-    const res = await fetch(url, options);
-    if (!res.ok) {
-        const errorData = await res.json().catch(() => ({}));
-        throw new Error(errorData?.error?.message || `HTTP Error ${res.status}`);
-    }
-    return await res.json();
-  } catch (err) {
-    if (retries === 0) throw err;
-    await new Promise(resolve => setTimeout(resolve, delay));
-    return fetchWithBackoff(url, options, retries - 1, delay * 2);
+const getBotResponse = (userInput) => {
+  const text = userInput.toLowerCase();
+  
+  if (text.includes('who is mark') || text.includes('background') || text.includes('experience') || text.includes('resume')) {
+    return "Mark is my absolute favorite human! 🐾 He's a brilliant Social Media Strategist and Digital Marketer. He knows exactly how to grow brands and build digital systems that convert. (And he gives the best chin scratches!)";
   }
+  if (text.includes('what do you do') || text.includes('service') || text.includes('help')) {
+    return "We build powerful social media strategies, manage GoHighLevel, and create stunning websites. Mark handles all the marketing magic, and I provide the emotional support! 🐈 Click a service button below to get started.";
+  }
+  if (text.includes('result') || text.includes('portfolio') || text.includes('work') || text.includes('show me')) {
+    return "Oh, we get amazing results! Like +1,566% link clicks and millions in organic reach. Mark works very hard on these. Check out the 'Works' page to see all the pretty numbers! 📈";
+  }
+  if (text.includes('price') || text.includes('cost') || text.includes('budget') || text.includes('rate')) {
+    return "Quality work needs a proper budget! Mark tailors his rates based on your specific goals. You should book a strategy call with him so he can give you the best options! 🐟";
+  }
+  if (text.includes('contact') || text.includes('email') || text.includes('phone') || text.includes('whatsapp')) {
+    return "The fastest way to reach him is the big green WhatsApp button at the top! Or you can email hello@markespinosa.com. Just don't email during my nap time! 💤";
+  }
+  if (text.includes('book') || text.includes('call') || text.includes('schedule') || text.includes('meeting')) {
+    return `Yay! Mark loves talking strategy. Use this link to get on his calendar: ${FUNNEL_DATA.brand.contact.calendarUrl} or click the WhatsApp button up top!`;
+  }
+  if (text.includes('cat') || text.includes('kitty') || text.includes('tuna') || text.includes('cute') || text.includes('meow')) {
+    return "*purrs loudly* You're so sweet! I love a good head pat. But enough about me, let's talk about growing your brand! 🐈";
+  }
+  
+  return "*tilts head and blinks* I'm just a cat, so I didn't quite catch that. Try asking about Mark's experience, our services, or just tell me you want to book a call! 🐾";
 };
 
 const IchigoChatWidget = ({ onTriggerContact }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { text: "Meow. I'm Ichigo, Mark's boss. He's busy engineering high-converting systems so he can afford my premium tuna. What do you need help with?", isBot: true }
+    { text: "Meow! I'm Ichigo, Mark's furry assistant. He's busy building killer social media strategies and high-converting systems so he can buy me premium tuna. How can we help you today? 🐾", isBot: true }
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
+  const conversationStarters = [
+    "Who is Mark?",
+    "What do you do?",
+    "Show me results.",
+    "Book a Call"
+  ];
+
   const quickActions = [
     { id: 'web', label: "Website", icon: Laptop },
     { id: 'social', label: "Social Media", icon: Smartphone },
     { id: 'ghl', label: "GoHighLevel", icon: TrendingUp },
-    { id: 'call', label: "Schedule Call", icon: Calendar },
   ];
 
   useEffect(() => {
@@ -607,51 +645,24 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
     }
   }, [messages, isOpen]);
 
-  const handleSend = async (e) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-
-    const userText = input;
-    setInput("");
+  const processMessage = (userText) => {
     setMessages(prev => [...prev, { text: userText, isBot: false }]);
     setIsLoading(true);
 
-    try {
-      // ✅ LIVE PRODUCTION API KEY
-      const apiKey = "AIzaSyAQwetYK1A2KZ9VlKo-mnJaaSOssvp5Iys";
-
-      // ✅ LIVE PRODUCTION MODEL FOR VERCEL/NETLIFY
-      const modelName = "gemini-1.5-flash";
-
-      const systemPrompt = `You are Ichigo, a sassy, funny Siamese cat who is the true boss of Mark Joseph Espinosa (a Digital Strategist and AI Engineer). You tolerate Mark because he buys you premium treats. Keep answers short, witty, and feline-themed.
-      CRITICAL RULE: If they ask to book a call, contact Mark, or schedule anything, simply say "Use this link to schedule with the human:" and then provide EXACTLY this link: https://calendar.app.google/2aixwBAXDDJpNRxV8`;
-
-      const conversationHistory = messages.slice(1).map(m => ({
-        role: m.isBot ? "model" : "user",
-        parts: [{ text: m.text }]
-      }));
-      
-      conversationHistory.push({ role: "user", parts: [{ text: userText }] });
-
-      const data = await fetchWithBackoff(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: conversationHistory,
-          systemInstruction: { parts: [{ text: systemPrompt }] }
-        })
-      });
-
-      const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || "*ignores you and licks paw*";
-      const safeText = typeof botText === 'string' ? botText : JSON.stringify(botText);
-      
-      setMessages(prev => [...prev, { text: safeText, isBot: true }]);
-    } catch (error) {
-      console.error(error);
-      setMessages(prev => [...prev, { text: `*hisses* (System Error: ${error.message})`, isBot: true }]);
-    } finally {
+    // Simulate natural thinking delay
+    setTimeout(() => {
+      const botResponse = getBotResponse(userText);
+      setMessages(prev => [...prev, { text: botResponse, isBot: true }]);
       setIsLoading(false);
-    }
+    }, 1200);
+  };
+
+  const handleSend = (e) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
+    const userText = input;
+    setInput("");
+    processMessage(userText);
   };
 
   const formatBotMessage = (text) => {
@@ -673,11 +684,32 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
   return (
     <div className="fixed bottom-8 right-8 z-[60] flex flex-col items-end gap-4 pointer-events-none">
       
+      {/* Custom Keyframes for Running Cat */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes run-cat {
+          0% { left: -40px; transform: scaleX(1); }
+          45% { left: calc(100% + 10px); transform: scaleX(1); }
+          50% { left: calc(100% + 10px); transform: scaleX(-1); }
+          95% { left: -40px; transform: scaleX(-1); }
+          100% { left: -40px; transform: scaleX(1); }
+        }
+        .running-cat {
+          position: absolute;
+          top: -24px;
+          animation: run-cat 12s linear infinite;
+          z-index: 10;
+          filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.15));
+        }
+      `}} />
+
       {/* Chat Window */}
-      <div className={`bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-stone-200 dark:border-stone-800 w-[90vw] sm:w-[380px] h-[550px] max-h-[75vh] flex flex-col pointer-events-auto transition-all duration-300 origin-bottom-right ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+      <div className={`bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-stone-200 dark:border-stone-800 w-[90vw] sm:w-[380px] h-[550px] max-h-[75vh] flex flex-col pointer-events-auto transition-all duration-300 origin-bottom-right ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'} relative`}>
         
+        {/* Animated Cat */}
+        {isOpen && <div className="running-cat pointer-events-none"><SiameseCatSVG /></div>}
+
         {/* Header */}
-        <div className="p-4 border-b border-stone-100 dark:border-stone-800 flex justify-between items-center bg-stone-50 dark:bg-stone-950 rounded-t-3xl shrink-0">
+        <div className="p-4 border-b border-stone-100 dark:border-stone-800 flex justify-between items-center bg-stone-50 dark:bg-stone-950 rounded-t-3xl shrink-0 z-20 relative">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 border border-stone-200 dark:border-stone-700 relative">
               <LazyImage src="/WhatsappImage/Ichigo.JPG" alt="Ichigo" className="w-full h-full object-cover" />
@@ -685,14 +717,14 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
             </div>
             <div>
               <h4 className="font-black text-sm text-stone-900 dark:text-white uppercase tracking-widest leading-none">Ichigo</h4>
-              <p className="text-[10px] text-amber-600 font-bold mt-1">CEO & Feline Overlord</p>
+              <p className="text-[10px] text-amber-600 font-bold mt-1">Feline Happiness Manager</p>
             </div>
           </div>
           <button onClick={() => setIsOpen(false)} className="text-stone-400 hover:text-stone-900 dark:hover:text-white cursor-pointer"><X size={20}/></button>
         </div>
 
         {/* Messages Area */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#FAFAF9] dark:bg-stone-950 hide-scrollbar">
+        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#FAFAF9] dark:bg-stone-950 hide-scrollbar z-10">
           {messages.map((m, i) => (
             <div key={i} className={`flex ${m.isBot ? 'justify-start' : 'justify-end'}`}>
               <div className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed flex flex-col ${m.isBot ? 'bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-stone-700 dark:text-stone-300 rounded-tl-sm shadow-sm' : 'bg-stone-900 text-white rounded-tr-sm shadow-md'}`}>
@@ -700,6 +732,22 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
               </div>
             </div>
           ))}
+          
+          {/* Conversation Starters (Only show at the beginning) */}
+          {messages.length === 1 && !isLoading && (
+            <div className="flex flex-wrap gap-2 mt-2">
+              {conversationStarters.map((starter, i) => (
+                <button
+                  key={i}
+                  onClick={() => processMessage(starter)}
+                  className="bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 text-xs font-bold px-3 py-2 rounded-full hover:bg-amber-600 hover:text-white dark:hover:bg-amber-500 dark:hover:text-stone-900 transition-colors cursor-pointer text-left"
+                >
+                  {starter}
+                </button>
+              ))}
+            </div>
+          )}
+
           {isLoading && (
             <div className="flex justify-start">
               <div className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-2xl rounded-tl-sm px-4 py-3 flex gap-1 items-center shadow-sm">
@@ -712,8 +760,8 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Quick Actions */}
-        <div className="px-4 pb-3 flex gap-2 overflow-x-auto hide-scrollbar shrink-0 bg-white dark:bg-stone-900 pt-2 border-t border-stone-100 dark:border-stone-800">
+        {/* Quick Actions for Modal Injection */}
+        <div className="px-4 pb-3 flex gap-2 overflow-x-auto hide-scrollbar shrink-0 bg-white dark:bg-stone-900 pt-2 border-t border-stone-100 dark:border-stone-800 z-10">
           {quickActions.map(action => {
             const ActionIcon = action.icon;
             return (
@@ -721,28 +769,25 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
                 key={action.id}
                 onClick={() => {
                   setIsOpen(false);
-                  const mockService = {
-                    id: action.id,
-                    label: action.id === 'call' ? 'Schedule a Call' : `I need help with ${action.label}`
-                  };
-                  onTriggerContact(action.id === 'call' ? 'call' : 'form', mockService);
+                  const mockService = { id: action.id, label: `I need help with ${action.label}` };
+                  onTriggerContact('form', mockService);
                 }}
                 type="button"
                 className="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-[10px] font-bold px-3 py-1.5 rounded-full whitespace-nowrap hover:bg-amber-200 dark:hover:bg-amber-900/50 transition-colors flex items-center gap-1 shrink-0 cursor-pointer"
               >
-                <ActionIcon size={12} /> {action.label}
+                <ActionIcon size={12} /> {action.label} Form
               </button>
             );
           })}
         </div>
 
         {/* Input Area */}
-        <form onSubmit={handleSend} className="p-3 border-t border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 rounded-b-3xl flex gap-2 shrink-0">
+        <form onSubmit={handleSend} className="p-3 border-t border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 rounded-b-3xl flex gap-2 shrink-0 z-10">
           <input
             type="text"
             value={input}
             onChange={e => setInput(e.target.value)}
-            placeholder="Ask the boss..."
+            placeholder="Ask me anything..."
             className="flex-1 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl px-4 py-2 text-sm text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors"
           />
           <button type="submit" disabled={isLoading || !input.trim()} className="bg-amber-600 text-white w-10 h-10 rounded-xl flex items-center justify-center shrink-0 hover:bg-amber-700 transition-colors disabled:opacity-50 cursor-pointer border-none">
