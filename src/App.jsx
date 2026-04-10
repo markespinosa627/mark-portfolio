@@ -8,7 +8,7 @@ import {
   Globe, Laptop, MonitorSmartphone, FileText, Newspaper,
   ShieldAlert, BarChart3, Smartphone, Film, ExternalLink,
   BookOpen, Cpu, DownloadCloud, AtSign, Contact,
-  Moon, Sun, ArrowLeft, Loader2
+  Moon, Sun, ArrowLeft, Loader2, MessageSquare
 } from 'lucide-react';
 
 // ============================================================================
@@ -82,19 +82,25 @@ const FUNNEL_DATA = {
   caseStudy: {
     hook: "How we generated 1,566% more link clicks for a client.",
     metrics: [
-      { label: "Link Clicks", value: 1566, prefix: "+", suffix: "%", decimals: 0, icon: MousePointerClick },
-      { label: "Post Reach", value: 5.47, prefix: "", suffix: "m", decimals: 2, icon: Users },
-      { label: "Reactions", value: 489, prefix: "+", suffix: "%", decimals: 0, icon: TrendingUp }
+      {
+        label: "Link Clicks", value: 1566, prefix: "+", suffix: "%", decimals: 0, icon: MousePointerClick,
+        details: { problem: "The client suffered from severe ad fatigue and stagnant organic reach. Their posts were blending into the feed, leading to an extremely high Cost-Per-Click.", strategy: "We deployed generative AI to bulk-test 50+ hook variations and ad creatives in 48 hours, pinpointing the most emotionally resonant messaging to break pattern recognition.", result: "An immediate 1,566% surge in link clicks. Cost-Per-Click plummeted by 74%, directly transforming passive scrollers into highly qualified inbound traffic." }
+      },
+      {
+        label: "Post Reach", value: 5.47, prefix: "", suffix: "m", decimals: 2, icon: Users,
+        details: { problem: "Organic reach was heavily suppressed by shifting algorithm updates, making it impossible to scale brand awareness without pouring thousands into paid boosts.", strategy: "We implemented an AI-driven short-form video framework that identified trending audio and optimal pacing specific to the client's exact niche.", result: "A massive viral expansion totaling 5.47 million organic impressions within 90 days, effectively establishing local market dominance without extra ad spend." }
+      },
+      {
+        label: "Reactions", value: 489, prefix: "+", suffix: "%", decimals: 0, icon: TrendingUp,
+        details: { problem: "High impressions but zero community engagement. The audience was seeing the content but feeling no motivation to interact or build brand affinity.", strategy: "Integrated a targeted conversational copy framework paired with automated ManyChat AI flows to instantly reward users for commenting and interacting.", result: "A 489% increase in community reactions and direct comments, triggering the algorithm to aggressively push content to lookalike audiences." }
+      }
     ]
   },
   portfolio: {
     graphics: [
-      "/Sample-Graphics/sample1.png",
-      "/Sample-Graphics/sample2.png",
-      "/Sample-Graphics/sample3.png",
-      "/Sample-Graphics/sample4.png",
-      "/Sample-Graphics/sample5.png",
-      "/Sample-Graphics/sample6.png",
+      "/Sample-Graphics/sample1.png", "/Sample-Graphics/sample2.png",
+      "/Sample-Graphics/sample3.png", "/Sample-Graphics/sample4.png",
+      "/Sample-Graphics/sample5.png", "/Sample-Graphics/sample6.png",
     ],
     verticalVideos: [
       { title: "TikTok Campaign 1", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800" },
@@ -115,28 +121,12 @@ const FUNNEL_DATA = {
     },
     writing: {
       articles: [
-        {
-          title: "From Storyboards to the Big Screen",
-          snippet: "Anak TV Sinebata Workshop Batch 1 empowers children to declare 'Hear My Voice'...",
-          link: "https://anaktv.ph/from-storyboards-to-the-big-screen-anak-tv-sinebata-workshop-batch-1-empowers-children-to-declare-hear-my-voice/"
-        },
-        {
-          title: "₱200 Wage Hike Approved",
-          snippet: "Kamara, inaprubahan ang wage hike para sa mga minimum wage earners...",
-          link: "https://zbni.ph/2025/06/04/%E2%82%B1200-na-dagdag-sahod-bawat-araw-kamara-inaprubahan-ang-wage-hike-para-sa-mga-minimum-wage-earners/"
-        }
+        { title: "From Storyboards to the Big Screen", snippet: "Anak TV Sinebata Workshop Batch 1 empowers children to declare 'Hear My Voice'...", link: "https://anaktv.ph/from-storyboards-to-the-big-screen-anak-tv-sinebata-workshop-batch-1-empowers-children-to-declare-hear-my-voice/" },
+        { title: "₱200 Wage Hike Approved", snippet: "Kamara, inaprubahan ang wage hike para sa mga minimum wage earners...", link: "https://zbni.ph/2025/06/04/%E2%82%B1200-na-dagdag-sahod-bawat-araw-kamara-inaprubahan-ang-wage-hike-para-sa-mga-minimum-wage-earners/" }
       ],
       newsletters: [
-        {
-          title: "Live Music in Cleveland",
-          snippet: "Weekend Gig Guide: Dec 27th - 29th. The best live music events happening around the city...",
-          link: "https://livemusicincleveland.com/p/dec-27th-29th"
-        },
-        {
-          title: "Americans Health Insights",
-          snippet: "New brain imaging method spots Alzheimer's-linked protein in latest medical breakthrough...",
-          link: "https://americanshealth.beehiiv.com/p/first-name-new-brain-imaging-method-spots-alzheimer-s-linked-protein?_bhlid=6f81ea42c863486b848c764176d6e7de4bf6c8c0&last_resource_guid=Post%3Ab108cde5-e89e-4ab9-b71b-fb65efc695c8&jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWJzY3JpYmVyX2lkIjoiOWQxMmE4ZDktMjY4OC00OTU0LWIwNjEtNGEyNGRlZmNhNDAzIiwicHVibGljYXRpb25faWQiOiJjZWQyZTgxNS05MjFlLTQ0MWItYmQ1Zi01MDAzMDc2ODkwMmQiLCJhY2Nlc3NfdHlwZSI6InJlYWQtb25seSIsImV4cCI6MTc3MzU4Njk2NywiaXNzIjoiaHR0cHM6Ly9hcHAuYmVlaGlpdi5jb20iLCJpYXQiOjE3NzM0MTQxNjd9.MX9qNhUyfedaOU6-G-yrk9dHo2tX3soRkeqxd1woz2w"
-        }
+        { title: "Live Music in Cleveland", snippet: "Weekend Gig Guide: Dec 27th - 29th. The best live music events happening around the city...", link: "https://livemusicincleveland.com/p/dec-27th-29th" },
+        { title: "Americans Health Insights", snippet: "New brain imaging method spots Alzheimer's-linked protein in latest medical breakthrough...", link: "https://americanshealth.beehiiv.com/p/first-name-new-brain-imaging-method-spots-alzheimer-s-linked-protein?_bhlid=6f81ea42c863486b848c764176d6e7de4bf6c8c0&last_resource_guid=Post%3Ab108cde5-e89e-4ab9-b71b-fb65efc695c8&jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWJzY3JpYmVyX2lkIjoiOWQxMmE4ZDktMjY4OC00OTU0LWIwNjEtNGEyNGRlZmNhNDAzIiwicHVibGljYXRpb25faWQiOiJjZWQyZTgxNS05MjFlLTQ0MWItYmQ1Zi01MDAzMDc2ODkwMmQiLCJhY2Nlc3NfdHlwZSI6InJlYWQtb25seSIsImV4cCI6MTc3MzU4Njk2NywiaXNzIjoiaHR0cHM6Ly9hcHAuYmVlaGlpdi5jb20iLCJpYXQiOjE3NzM0MTQxNjd9.MX9qNhUyfedaOU6-G-yrk9dHo2tX3soRkeqxd1woz2w" }
       ]
     }
   },
@@ -231,9 +221,69 @@ const CV_DATA = {
   ]
 };
 
+const GOOGLE_SHEETS_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+
 // ============================================================================
 // 🚀 UTILITY COMPONENTS
 // ============================================================================
+const LazyImage = ({ src, alt, className, onError }) => {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+      onLoad={() => setLoaded(true)}
+      onError={onError}
+      className={`${className} transition-opacity duration-700 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+    />
+  );
+};
+
+const MagneticWrapper = ({ children, className, onClick, href, target, rel, type, disabled }) => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const handleMouse = (e) => {
+    const { clientX, clientY, currentTarget } = e;
+    const { left, top, width, height } = currentTarget.getBoundingClientRect();
+    const x = (clientX - (left + width / 2)) * 0.25;
+    const y = (clientY - (top + height / 2)) * 0.25;
+    setPosition({ x, y });
+  };
+  const reset = () => setPosition({ x: 0, y: 0 });
+  const Tag = href ? 'a' : 'button';
+  return (
+    <Tag
+      type={type}
+      disabled={disabled}
+      href={href} target={target} rel={rel} onClick={onClick}
+      onMouseMove={handleMouse} onMouseLeave={reset}
+      style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
+      className={`transition-transform duration-200 ease-out will-change-transform ${className}`}
+    >
+      {children}
+    </Tag>
+  );
+};
+
+const TiltCard = ({ children, className, onClick }) => {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const handleMouse = (e) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - left - width / 2) / 25;
+    const y = -(e.clientY - top - height / 2) / 25;
+    setTilt({ x, y });
+  };
+  return (
+    <div
+      onMouseMove={handleMouse} onMouseLeave={() => setTilt({x: 0, y: 0})} onClick={onClick}
+      style={{ transform: `perspective(1000px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)` }}
+      className={`transition-transform duration-200 ease-out will-change-transform ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
 
 const Reveal = ({ children, delay = 0, className = "" }) => {
   const ref = useRef(null);
@@ -278,12 +328,8 @@ const CountUp = ({ end, prefix = "", suffix = "", decimals = 0 }) => {
   return <span ref={ref}>{prefix}{count.toFixed(decimals)}{suffix}</span>;
 };
 
-// ============================================================================
-// 🚀 BRAND LOGO FALLBACK COMPONENT
-// ============================================================================
 const BrandLogo = ({ client }) => {
   const [hasError, setHasError] = useState(false);
-
   if (hasError || !client.logo) {
     return (
       <span className="font-black text-2xl md:text-3xl tracking-tighter text-stone-300 dark:text-stone-700 group-hover:text-stone-900 dark:group-hover:text-white transition-colors uppercase whitespace-nowrap px-4">
@@ -291,9 +337,8 @@ const BrandLogo = ({ client }) => {
       </span>
     );
   }
-
   return (
-    <img
+    <LazyImage
       src={client.logo}
       alt={client.name}
       className="h-10 md:h-14 w-auto min-w-[80px] object-contain grayscale opacity-40 dark:opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
@@ -303,142 +348,412 @@ const BrandLogo = ({ client }) => {
 };
 
 // ============================================================================
-// 🚀 CONTACT MODAL
+// 🚀 BEFORE/AFTER SLIDER
 // ============================================================================
-const ContactModal = ({ isOpen, onClose }) => {
-  const [status, setStatus] = useState('idle'); // idle, sending, sent
-
-  if (!isOpen) return null;
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('sending');
-
-    const formData = new FormData(e.target);
-    // Add your Web3Forms Access Key here
-    formData.append("access_key", "b87ec373-ca5d-408c-b4ce-c131877257c6");
-    formData.append("subject", "New Contact from ME digital Portfolio");
-    formData.append("from_name", "ME digital Lead");
-
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
-      });
-      const data = await response.json();
-      
-      if (data.success) {
-        setStatus('sent');
-        setTimeout(() => {
-          onClose();
-          setStatus('idle');
-          e.target.reset();
-        }, 2000);
-      } else {
-        console.error("Form error:", data);
-        setStatus('idle');
-        alert("Something went wrong. Please try again.");
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
-      setStatus('idle');
-      alert("Something went wrong. Please try again.");
-    }
+const BeforeAfterSlider = ({ beforeImage, afterImage }) => {
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const containerRef = useRef(null);
+  const handleMove = (e) => {
+    if (!containerRef.current) return;
+    const { left, width } = containerRef.current.getBoundingClientRect();
+    const x = (e.touches ? e.touches[0].clientX : e.clientX) - left;
+    setSliderPosition(Math.max(0, Math.min(100, (x / width) * 100)));
   };
-
   return (
-    <div className="fixed inset-0 z-[99999] bg-stone-900/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
-      <div className="bg-white dark:bg-stone-900 rounded-3xl p-8 max-w-md w-full shadow-2xl relative" onClick={e => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 dark:hover:text-white"><X size={24}/></button>
-        <h3 className="text-3xl font-black text-stone-900 dark:text-white mb-2">Let's build.</h3>
-        <p className="text-stone-500 dark:text-stone-400 mb-8">Send a direct message to my personal inbox.</p>
-        
-        {status === 'sent' ? (
-          <div className="py-12 flex flex-col items-center justify-center animate-scale-up">
-            <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
-              <CheckCircle2 size={32} />
-            </div>
-            <p className="font-bold text-lg text-stone-900 dark:text-white">Message Sent!</p>
-            <p className="text-stone-500 dark:text-stone-400 text-sm">I'll get back to you shortly.</p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest mb-2">Name</label>
-              <input required type="text" name="name" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors" placeholder="Jane Doe" />
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest mb-2">Email</label>
-              <input required type="email" name="email" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors" placeholder="jane@example.com" />
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest mb-2">Message</label>
-              <textarea required rows={4} name="message" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors resize-none" placeholder="How can we help you dominate?" />
-            </div>
-            <button type="submit" disabled={status === 'sending'} className="w-full bg-stone-900 dark:bg-white text-white dark:text-stone-900 py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-amber-600 dark:hover:bg-amber-500 hover:text-white transition-all flex items-center justify-center gap-2 mt-4 cursor-pointer">
-              {status === 'sending' ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
-              {status === 'sending' ? 'Sending...' : 'Send Message'}
-            </button>
-          </form>
-        )}
+    <div ref={containerRef} className="relative w-full aspect-video rounded-2xl overflow-hidden cursor-ew-resize select-none touch-none shadow-sm border border-stone-200 dark:border-stone-800" onMouseMove={handleMove} onTouchMove={handleMove}>
+      <LazyImage src={afterImage} className="absolute inset-0 w-full h-full object-cover pointer-events-none" alt="After" />
+      <div className="absolute inset-0 w-full h-full" style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}>
+        <LazyImage src={beforeImage} className="absolute inset-0 w-full h-full object-cover pointer-events-none" alt="Before" />
+      </div>
+      <div className="absolute top-0 bottom-0 w-0.5 bg-white shadow-sm pointer-events-none" style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-md border border-stone-100 flex items-center justify-center text-stone-400"><MoveHorizontal size={14} /></div>
       </div>
     </div>
   );
 };
 
 // ============================================================================
-// 🚀 WHATSAPP CAT WIDGET
+// 🚀 DYNAMIC INTAKE MODAL
 // ============================================================================
-const WhatsAppWidget = () => {
-  const [stage, setStage] = useState('hidden');
+const ContactModal = ({ isOpen, onClose, initialStep = 'select', initialService = null }) => {
+  const [step, setStep] = useState(initialStep);
+  const [service, setService] = useState(initialService);
+
+  const servicesList = [
+    { id: 'web', label: "I need help with my Website", icon: Laptop },
+    { id: 'social', label: "I need help with Social Media", icon: Smartphone },
+    { id: 'ghl', label: "GoHighLevel Management & Setup", icon: TrendingUp },
+    { id: 'other', label: "Other Services", icon: MonitorSmartphone },
+    { id: 'call', label: "Schedule a Call", icon: Calendar },
+  ];
+
   useEffect(() => {
-    const typingTimer = setTimeout(() => setStage('typing'), 4000);
-    const visibleTimer = setTimeout(() => setStage('visible'), 6500);
-    return () => { clearTimeout(typingTimer); clearTimeout(visibleTimer); };
-  }, []);
+    if (isOpen) {
+      setStep(initialStep);
+      setService(initialService);
+    }
+  }, [isOpen, initialStep, initialService]);
+
+  if (!isOpen) return null;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStep('sending');
+
+    const formData = new FormData(e.target);
+    const web3FormData = new FormData();
+    for (const [key, value] of formData.entries()) { web3FormData.append(key, value); }
+    web3FormData.append("access_key", "b87ec373-ca5d-408c-b4ce-c131877257c6");
+    web3FormData.append("subject", `New Lead: ${service.label}`);
+    web3FormData.append("from_name", "ME digital Intake");
+    web3FormData.append("Service_Requested", service.label);
+
+    const sheetFormData = new FormData();
+    sheetFormData.append("Date", new Date().toLocaleString());
+    sheetFormData.append("Source", "Intake Form");
+    sheetFormData.append("Name", formData.get("name") || "");
+    sheetFormData.append("Email", formData.get("email") || "");
+    sheetFormData.append("Phone", formData.get("phone") || "");
+    sheetFormData.append("Location", formData.get("location") || "");
+    sheetFormData.append("Service", service.label);
+    sheetFormData.append("Message", formData.get("message") || "");
+
+    try {
+      await fetch("https://api.web3forms.com/submit", { method: "POST", body: web3FormData });
+      if (GOOGLE_SHEETS_SCRIPT_URL && GOOGLE_SHEETS_SCRIPT_URL.includes("script.google.com")) {
+        await fetch(GOOGLE_SHEETS_SCRIPT_URL, { method: "POST", body: sheetFormData, mode: "no-cors" });
+      }
+      setStep('sent');
+      setTimeout(() => { onClose(); }, 2500);
+    } catch (error) {
+      console.error("Submission error:", error);
+      setStep('form');
+      alert("Something went wrong. Please try again.");
+    }
+  };
 
   return (
-    <div className="fixed bottom-8 right-8 z-[60] flex flex-col items-end gap-3 pointer-events-none">
-      {stage === 'typing' && (
-        <div className="bg-white dark:bg-stone-900 px-5 py-3 rounded-2xl shadow-xl border border-stone-100 dark:border-stone-800 animate-bounce flex items-center gap-2 pointer-events-auto">
-          <div className="flex gap-1">
-            <span className="w-1.5 h-1.5 bg-stone-800 dark:bg-white rounded-full animate-pulse"></span>
-            <span className="w-1.5 h-1.5 bg-stone-800 dark:bg-white rounded-full animate-pulse delay-75"></span>
-            <span className="w-1.5 h-1.5 bg-stone-800 dark:bg-white rounded-full animate-pulse delay-150"></span>
+    <div className="fixed inset-0 z-[99999] bg-stone-900/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
+      <div className="bg-white dark:bg-stone-900 rounded-3xl p-8 max-w-md w-full shadow-2xl relative overflow-hidden" onClick={e => e.stopPropagation()}>
+        <button onClick={onClose} className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer z-10"><X size={24}/></button>
+        
+        {step === 'select' && (
+          <div className="animate-fade-in">
+            <h3 className="text-3xl font-black text-stone-900 dark:text-white mb-2 pr-8">Let's build.</h3>
+            <p className="text-stone-500 dark:text-stone-400 mb-8">How can I help you dominate your market?</p>
+            <div className="flex flex-col gap-3">
+              {servicesList.map((svc) => {
+                const SvcIcon = svc.icon;
+                return (
+                  <button
+                    key={svc.id}
+                    onClick={() => { setService(svc); setStep(svc.id === 'call' ? 'call' : 'form'); }}
+                    className="w-full bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 hover:border-amber-600 dark:hover:border-amber-500 text-stone-700 dark:text-stone-300 p-4 rounded-2xl flex items-center gap-4 transition-all group hover:bg-stone-900 dark:hover:bg-amber-600 hover:text-white cursor-pointer"
+                  >
+                    <div className="bg-white dark:bg-stone-900 p-2 rounded-xl group-hover:bg-white/20 transition-colors">
+                      <SvcIcon size={20} className="text-stone-900 dark:text-white group-hover:text-white" />
+                    </div>
+                    <span className="font-bold text-sm text-left flex-1">{svc.label}</span>
+                    <ChevronRight size={18} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </button>
+                );
+              })}
+            </div>
           </div>
-          <span className="text-xs font-bold text-stone-800 dark:text-white">Supervisor is typing...</span>
+        )}
+
+        {step === 'call' && (
+          <div className="animate-fade-in text-center py-6">
+            <button onClick={() => setStep('select')} className="absolute top-6 left-6 text-xs font-bold text-stone-400 hover:text-stone-900 dark:hover:text-white uppercase tracking-widest flex items-center gap-1 transition-colors cursor-pointer"><ArrowLeft size={14}/> Back</button>
+            <div className="w-20 h-20 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6 mt-4">
+              <Calendar size={32} className="text-amber-600" />
+            </div>
+            <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4">Book Your Session</h3>
+            <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed mb-8">
+              You will be redirected to my official Google Calendar portal. It will automatically detect your time zone, capture your details, and instantly email both of us a Google Meet link.
+            </p>
+            <MagneticWrapper href={FUNNEL_DATA.brand.contact.calendarUrl} target="_blank" rel="noopener noreferrer" onClick={onClose} className="w-full bg-amber-600 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs shadow-lg hover:bg-amber-700 transition-all flex items-center justify-center gap-2 cursor-pointer border-none block">
+              Open Booking Portal <ExternalLink size={16} />
+            </MagneticWrapper>
+          </div>
+        )}
+
+        {(step === 'form' || step === 'sending') && (
+          <div className="animate-fade-in">
+            <button onClick={() => setStep('select')} className="text-xs font-bold text-stone-400 hover:text-stone-900 dark:hover:text-white uppercase tracking-widest flex items-center gap-1 mb-6 transition-colors cursor-pointer"><ArrowLeft size={14}/> Back</button>
+            <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-6 leading-tight">{service?.label}</h3>
+            
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[10px] font-bold text-stone-900 dark:text-white uppercase tracking-widest mb-1.5">Name</label>
+                  <input required type="text" name="name" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors text-sm" placeholder="Jane Doe" />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-bold text-stone-900 dark:text-white uppercase tracking-widest mb-1.5">Email</label>
+                  <input required type="email" name="email" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors text-sm" placeholder="jane@co.com" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[10px] font-bold text-stone-900 dark:text-white uppercase tracking-widest mb-1.5">Phone</label>
+                  <input required type="tel" name="phone" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors text-sm" placeholder="+1 234 567" />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-bold text-stone-900 dark:text-white uppercase tracking-widest mb-1.5">Location</label>
+                  <input required type="text" name="location" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors text-sm" placeholder="City, Country" />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-bold text-stone-900 dark:text-white uppercase tracking-widest mb-1.5">Project Details</label>
+                <textarea required rows={3} name="message" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors resize-none text-sm" placeholder="Tell me about your goals..." />
+              </div>
+              
+              <button type="submit" disabled={step === 'sending'} className="w-full bg-stone-900 dark:bg-white text-white dark:text-stone-900 py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-amber-600 dark:hover:bg-amber-500 transition-all flex items-center justify-center gap-2 mt-4 cursor-pointer border-none">
+                {step === 'sending' ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+                {step === 'sending' ? 'Sending...' : 'Send Inquiry'}
+              </button>
+            </form>
+          </div>
+        )}
+
+        {step === 'sent' && (
+          <div className="py-12 flex flex-col items-center justify-center animate-scale-up">
+            <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
+              <CheckCircle2 size={32} />
+            </div>
+            <p className="font-bold text-xl text-stone-900 dark:text-white mb-2">Inquiry Received!</p>
+            <p className="text-stone-500 dark:text-stone-400 text-sm text-center">I've received your request for {service?.label}. I'll be in touch shortly.</p>
+          </div>
+        )}
+
+      </div>
+    </div>
+  );
+};
+
+// ============================================================================
+// 🚀 CASE STUDY MODAL
+// ============================================================================
+const CaseStudyModal = ({ activeStudy, onClose }) => {
+  if (!activeStudy) return null;
+  const Icon = activeStudy.icon;
+  return (
+    <div className="fixed inset-0 z-[99999] bg-stone-900/60 dark:bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
+      <div className="bg-white dark:bg-stone-900 rounded-[2rem] p-8 md:p-12 max-w-2xl w-full shadow-2xl relative" onClick={e => e.stopPropagation()}>
+        <button onClick={onClose} className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 dark:hover:text-white cursor-pointer"><X size={24}/></button>
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center shrink-0">
+            <Icon size={32} className="text-amber-600" />
+          </div>
+          <div>
+            <p className="text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-widest">{activeStudy.label}</p>
+            <p className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white tracking-tight">{activeStudy.prefix}{activeStudy.value.toLocaleString()}{activeStudy.suffix}</p>
+          </div>
         </div>
-      )}
+        
+        <div className="space-y-6">
+          <div className="bg-stone-50 dark:bg-stone-950 p-6 rounded-2xl border border-stone-100 dark:border-stone-800">
+            <p className="text-[10px] font-black text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-2">The Problem</p>
+            <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed font-medium">{activeStudy.details.problem}</p>
+          </div>
+          <div className="bg-amber-50 dark:bg-amber-900/10 p-6 rounded-2xl border border-amber-100 dark:border-amber-900/20">
+            <p className="text-[10px] font-black text-amber-600 dark:text-amber-500 uppercase tracking-widest mb-2">AI Strategy Applied</p>
+            <p className="text-sm text-amber-900 dark:text-amber-100 leading-relaxed font-medium">{activeStudy.details.strategy}</p>
+          </div>
+          <div className="bg-stone-900 dark:bg-stone-800 p-6 rounded-2xl">
+            <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-2">The Result</p>
+            <p className="text-sm text-white leading-relaxed font-medium">{activeStudy.details.result}</p>
+          </div>
+        </div>
+        <button onClick={onClose} className="w-full mt-8 bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-stone-200 dark:hover:bg-stone-700 transition-all cursor-pointer">Close Breakdown</button>
+      </div>
+    </div>
+  );
+};
+
+// ============================================================================
+// 🚀 AI CHATBOT WIDGET (Ichigo the Cat)
+// ============================================================================
+const fetchWithBackoff = async (url, options, retries = 5, delay = 1000) => {
+  try {
+    const res = await fetch(url, options);
+    if (!res.ok) throw new Error("API Error");
+    return await res.json();
+  } catch (err) {
+    if (retries === 0) throw err;
+    await new Promise(resolve => setTimeout(resolve, delay));
+    return fetchWithBackoff(url, options, retries - 1, delay * 2);
+  }
+};
+
+const IchigoChatWidget = ({ onTriggerContact }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState([
+    { text: "Meow. I'm Ichigo, Mark's boss. He's busy engineering high-converting systems so he can afford my premium tuna. What do you need help with?", isBot: true }
+  ]);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  const quickActions = [
+    { id: 'web', label: "Website", icon: Laptop },
+    { id: 'social', label: "Social Media", icon: Smartphone },
+    { id: 'ghl', label: "GoHighLevel", icon: TrendingUp },
+    { id: 'call', label: "Schedule Call", icon: Calendar },
+  ];
+
+  useEffect(() => {
+    if (isOpen) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages, isOpen]);
+
+  const handleSend = async (e) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+
+    const userText = input;
+    setInput("");
+    setMessages(prev => [...prev, { text: userText, isBot: false }]);
+    setIsLoading(true);
+
+    try {
+      const apiKey = "";
+      const systemPrompt = `You are Ichigo, a sassy, funny Siamese cat who is the true boss of Mark Joseph Espinosa (a Digital Strategist and AI Engineer). You tolerate Mark because he buys you premium treats. Keep answers short, witty, and feline-themed.
+      CRITICAL RULE: If they ask to book a call, contact Mark, or schedule anything, simply say "Use this link to schedule with the human:" and then provide EXACTLY this link: https://calendar.app.google/2aixwBAXDDJpNRxV8`;
+
+      const contents = messages.map(m => ({
+        role: m.isBot ? "model" : "user",
+        parts: [{ text: m.text }]
+      }));
+      contents.push({ role: "user", parts: [{ text: userText }] });
+
+      const data = await fetchWithBackoff(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents,
+          systemInstruction: { parts: [{ text: systemPrompt }] }
+        })
+      });
+
+      const botText = data.candidates?.[0]?.content?.parts?.[0]?.text || "*ignores you and licks paw*";
+      const safeText = typeof botText === 'string' ? botText : JSON.stringify(botText);
+      setMessages(prev => [...prev, { text: safeText, isBot: true }]);
+    } catch (error) {
+      setMessages(prev => [...prev, { text: "*knocks your coffee off the table* (Network error)", isBot: true }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const formatBotMessage = (text) => {
+    if (typeof text !== 'string') return text;
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const parts = text.split(urlRegex);
+    return parts.map((part, i) => {
+      if (part.match(urlRegex)) {
+        return (
+          <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-xl font-bold text-[10px] uppercase tracking-widest mt-3 mb-2 hover:bg-amber-600 transition-colors shadow-md w-max border border-amber-400 no-underline cursor-pointer">
+            <ExternalLink size={14} /> Open Link
+          </a>
+        );
+      }
+      return <span key={i}>{part}</span>;
+    });
+  };
+
+  return (
+    <div className="fixed bottom-8 right-8 z-[60] flex flex-col items-end gap-4 pointer-events-none">
       
-      {stage === 'visible' && (
-        <div className="bg-white dark:bg-stone-900 p-5 rounded-2xl shadow-2xl border border-stone-100 dark:border-stone-800 max-w-[280px] animate-scale-up pointer-events-auto relative">
-          <button onClick={() => setStage('hidden')} className="absolute -top-2 -right-2 bg-stone-900 dark:bg-white text-white dark:text-stone-900 p-1 rounded-full shadow-lg hover:scale-110 transition-transform cursor-pointer"><X size={12}/></button>
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-full overflow-hidden bg-stone-100 flex items-center justify-center border border-stone-200 shrink-0">
-              <img
-                src="/WhatsappImage/Ichigo.JPG"
-                alt="Siamese Boss"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = 'https://images.unsplash.com/photo-1513245533418-297f299b6190?auto=format&fit=crop&q=80&w=200';
-                }}
-              />
+      {/* Chat Window */}
+      <div className={`bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-stone-200 dark:border-stone-800 w-[90vw] sm:w-[380px] h-[550px] max-h-[75vh] flex flex-col pointer-events-auto transition-all duration-300 origin-bottom-right ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+        
+        {/* Header */}
+        <div className="p-4 border-b border-stone-100 dark:border-stone-800 flex justify-between items-center bg-stone-50 dark:bg-stone-950 rounded-t-3xl shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 border border-stone-200 dark:border-stone-700 relative">
+              <LazyImage src="/WhatsappImage/Ichigo.JPG" alt="Ichigo" className="w-full h-full object-cover" />
+              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border border-white rounded-full"></span>
             </div>
             <div>
-              <p className="text-[10px] font-black uppercase text-stone-900 dark:text-white tracking-widest">Mark's Supervisor 🐾</p>
-              <p className="text-[9px] text-green-600 font-bold flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Waiting for Treats</p>
+              <h4 className="font-black text-sm text-stone-900 dark:text-white uppercase tracking-widest leading-none">Ichigo</h4>
+              <p className="text-[10px] text-amber-600 font-bold mt-1">CEO & Feline Overlord</p>
             </div>
           </div>
-          <p className="text-sm font-medium text-stone-600 dark:text-stone-300 leading-relaxed text-left">
-            Meow! I'm Mark's boss. If you hire him, he can buy me more treats. 🍖 How can he help you today?
-          </p>
+          <button onClick={() => setIsOpen(false)} className="text-stone-400 hover:text-stone-900 dark:hover:text-white cursor-pointer"><X size={20}/></button>
         </div>
-      )}
 
-      <a href={FUNNEL_DATA.brand.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all active:scale-95 group pointer-events-auto flex items-center justify-center">
-        <MessageCircle size={32} />
-      </a>
+        {/* Messages Area */}
+        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#FAFAF9] dark:bg-stone-950 hide-scrollbar">
+          {messages.map((m, i) => (
+            <div key={i} className={`flex ${m.isBot ? 'justify-start' : 'justify-end'}`}>
+              <div className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed flex flex-col ${m.isBot ? 'bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-stone-700 dark:text-stone-300 rounded-tl-sm shadow-sm' : 'bg-stone-900 text-white rounded-tr-sm shadow-md'}`}>
+                {m.isBot ? formatBotMessage(m.text) : m.text}
+              </div>
+            </div>
+          ))}
+          {isLoading && (
+            <div className="flex justify-start">
+              <div className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-2xl rounded-tl-sm px-4 py-3 flex gap-1 items-center shadow-sm">
+                <span className="w-1.5 h-1.5 bg-stone-400 rounded-full animate-bounce"></span>
+                <span className="w-1.5 h-1.5 bg-stone-400 rounded-full animate-bounce delay-75"></span>
+                <span className="w-1.5 h-1.5 bg-stone-400 rounded-full animate-bounce delay-150"></span>
+              </div>
+            </div>
+          )}
+          <div ref={messagesEndRef} />
+        </div>
+
+        {/* Quick Actions */}
+        <div className="px-4 pb-3 flex gap-2 overflow-x-auto hide-scrollbar shrink-0 bg-white dark:bg-stone-900 pt-2 border-t border-stone-100 dark:border-stone-800">
+          {quickActions.map(action => {
+            const ActionIcon = action.icon;
+            return (
+              <button
+                key={action.id}
+                onClick={() => {
+                  setIsOpen(false);
+                  const mockService = {
+                    id: action.id,
+                    label: action.id === 'call' ? 'Schedule a Call' : `I need help with ${action.label}`
+                  };
+                  onTriggerContact(action.id === 'call' ? 'call' : 'form', mockService);
+                }}
+                type="button"
+                className="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-[10px] font-bold px-3 py-1.5 rounded-full whitespace-nowrap hover:bg-amber-200 dark:hover:bg-amber-900/50 transition-colors flex items-center gap-1 shrink-0 cursor-pointer"
+              >
+                <ActionIcon size={12} /> {action.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Input Area */}
+        <form onSubmit={handleSend} className="p-3 border-t border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 rounded-b-3xl flex gap-2 shrink-0">
+          <input
+            type="text"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            placeholder="Ask the boss..."
+            className="flex-1 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl px-4 py-2 text-sm text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors"
+          />
+          <button type="submit" disabled={isLoading || !input.trim()} className="bg-amber-600 text-white w-10 h-10 rounded-xl flex items-center justify-center shrink-0 hover:bg-amber-700 transition-colors disabled:opacity-50 cursor-pointer border-none">
+            <Send size={16} />
+          </button>
+        </form>
+      </div>
+
+      {/* Floating Trigger Button */}
+      <button onClick={() => setIsOpen(!isOpen)} className={`pointer-events-auto w-16 h-16 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all overflow-hidden border-4 border-white dark:border-stone-800 relative group cursor-pointer ${isOpen ? 'scale-0 opacity-0 hidden' : 'scale-100 opacity-100'}`}>
+        <LazyImage src="/WhatsappImage/Ichigo.JPG" alt="Chat with Ichigo" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-amber-600/20 group-hover:bg-amber-600/40 transition-colors"></div>
+        <span className="absolute bottom-1 right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+      </button>
+
     </div>
   );
 };
@@ -480,9 +795,9 @@ const CookieBanner = () => {
 };
 
 // ============================================================================
-// 🚀 SOCIAL AUDIT TOOL WITH LEAD CAPTURE
+// 🚀 SOCIAL AUDIT TOOL
 // ============================================================================
-const SocialAuditTool = () => {
+const SocialAuditTool = ({ onTriggerContact }) => {
   const [step, setStep] = useState(0);
   const [score, setScore] = useState(0);
   const [email, setEmail] = useState('');
@@ -511,26 +826,28 @@ const SocialAuditTool = () => {
     e.preventDefault();
     if (email) {
       setIsSubmitting(true);
-      
-      const formData = new FormData();
-      // Add your Web3Forms Access Key here
-      formData.append("access_key", "b87ec373-ca5d-408c-b4ce-c131877257c6");
-      formData.append("subject", "New Lead from Social Audit Tool");
-      formData.append("from_name", "Interactive Audit");
-      formData.append("email", email);
-      formData.append("Audit Score", score.toString());
-      formData.append("Audit Grade", getAuditResult().label);
+      const web3FormData = new FormData();
+      web3FormData.append("access_key", "b87ec373-ca5d-408c-b4ce-c131877257c6");
+      web3FormData.append("subject", "New Lead from Social Audit Tool");
+      web3FormData.append("from_name", "Interactive Audit");
+      web3FormData.append("email", email);
+      web3FormData.append("Audit Score", score.toString());
+      web3FormData.append("Audit Grade", getAuditResult().label);
+
+      const sheetFormData = new FormData();
+      sheetFormData.append("Date", new Date().toLocaleString());
+      sheetFormData.append("Source", "Social Audit");
+      sheetFormData.append("Name", "N/A");
+      sheetFormData.append("Email", email);
+      sheetFormData.append("Message", `Audit Score: ${score} | Grade: ${getAuditResult().label}`);
 
       try {
-        await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          body: formData
-        });
-      } catch (err) {
-        console.error("Form submission error", err);
-      }
+        await fetch("https://api.web3forms.com/submit", { method: "POST", body: web3FormData });
+        if (GOOGLE_SHEETS_SCRIPT_URL && GOOGLE_SHEETS_SCRIPT_URL.includes("script.google.com")) {
+          await fetch(GOOGLE_SHEETS_SCRIPT_URL, { method: "POST", body: sheetFormData, mode: "no-cors" });
+        }
+      } catch (err) { console.error("Form submission error", err); }
       
-      // Regardless of API success/failure (to not break user experience), show results
       setIsSubmitting(false);
       setShowResult(true);
     }
@@ -538,7 +855,6 @@ const SocialAuditTool = () => {
 
   return (
     <div className="bg-white dark:bg-stone-900 rounded-[2rem] p-8 md:p-12 shadow-sm border border-stone-200 dark:border-stone-800 relative overflow-hidden min-h-[400px] flex flex-col justify-center max-w-3xl mx-auto transition-colors">
-      {/* Question Steps */}
       {step < questions.length && (
         <div className="animate-fade-in text-left">
           <div className="flex justify-between items-center mb-8">
@@ -560,8 +876,6 @@ const SocialAuditTool = () => {
           </div>
         </div>
       )}
-
-      {/* Email Capture Step */}
       {step === questions.length && !showResult && (
         <div className="animate-scale-up text-center max-w-lg mx-auto">
           <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -570,24 +884,14 @@ const SocialAuditTool = () => {
           <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4">Audit Complete!</h3>
           <p className="text-stone-500 dark:text-stone-400 font-medium mb-8">Enter your email below to instantly reveal your Growth Grade and custom strategy.</p>
           <form onSubmit={handleEmailSubmit} className="flex flex-col gap-4">
-            <input
-              type="email"
-              name="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your best email..."
-              className="w-full px-6 py-4 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 focus:border-amber-600 dark:focus:border-amber-500 outline-none font-medium text-center text-stone-900 dark:text-white transition-colors"
-            />
-            <button type="submit" disabled={isSubmitting} className="w-full py-4 rounded-xl font-black text-white bg-stone-900 dark:bg-white dark:text-stone-900 hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all uppercase tracking-widest text-sm flex justify-center items-center gap-2 cursor-pointer">
+            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your best email..." className="w-full px-6 py-4 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 focus:border-amber-600 outline-none font-medium text-center text-stone-900 dark:text-white transition-colors" />
+            <MagneticWrapper type="submit" disabled={isSubmitting} className="w-full py-4 rounded-xl font-black text-white bg-stone-900 dark:bg-white dark:text-stone-900 hover:bg-amber-600 dark:hover:bg-amber-500 transition-all uppercase tracking-widest text-sm flex justify-center items-center gap-2 cursor-pointer border-none">
               {isSubmitting ? <Loader2 size={16} className="animate-spin" /> : null}
               {isSubmitting ? 'Processing...' : 'Reveal My Results'}
-            </button>
+            </MagneticWrapper>
           </form>
         </div>
       )}
-
-      {/* Results Step */}
       {showResult && (
         <div className="animate-scale-up text-center">
           <div className="w-20 h-20 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
@@ -597,12 +901,8 @@ const SocialAuditTool = () => {
           <p className={`text-5xl md:text-6xl font-black mb-6 ${getAuditResult().color}`}>{getAuditResult().label}</p>
           <p className="text-stone-600 dark:text-stone-300 text-lg font-medium mb-10 max-w-md mx-auto leading-relaxed">{getAuditResult().advice}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={() => { setStep(0); setScore(0); setEmail(''); setShowResult(false); }} className="text-stone-400 font-bold text-sm hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer">
-              Retake Audit
-            </button>
-            <button onClick={() => document.getElementById('lead-capture')?.scrollIntoView({ behavior: 'smooth' })} className="bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1 cursor-pointer">
-              Book Strategy Call
-            </button>
+            <button onClick={() => { setStep(0); setScore(0); setEmail(''); setShowResult(false); }} className="text-stone-400 font-bold text-sm hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer">Retake Audit</button>
+            <MagneticWrapper onClick={() => onTriggerContact('select', null)} className="bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 transition-all cursor-pointer border-none">Book Strategy Call</MagneticWrapper>
           </div>
         </div>
       )}
@@ -614,68 +914,27 @@ const SocialAuditTool = () => {
 // 🚀 REVIEW CAROUSEL
 // ============================================================================
 const ReviewCarousel = () => {
-  const [current, setCurrent] = useState(0);
   const reviews = FUNNEL_DATA.reviews;
-  
-  useEffect(() => {
-    const timer = setInterval(() => setCurrent(prev => prev === reviews.length - 1 ? 0 : prev + 1), 5000);
-    return () => clearInterval(timer);
-  }, [reviews.length]);
-
   return (
-    <div className="relative w-full max-w-4xl mx-auto px-4 overflow-hidden">
-      <div className="overflow-hidden pb-12 pt-4">
-        <div
-          className="flex transition-transform duration-1000 ease-in-out"
-          style={{ transform: `translateX(-${current * 100}%)` }}
-        >
-          {reviews.map((review, idx) => (
-            <div key={idx} className="min-w-full flex-shrink-0 px-2 md:px-4">
-              <div className="bg-white dark:bg-stone-900 p-8 md:p-12 rounded-[2rem] border border-stone-100 dark:border-stone-800 shadow-[0_4px_24px_rgba(0,0,0,0.03)] dark:shadow-none h-full flex flex-col justify-between group hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] transition-shadow duration-500">
-                <div>
-                  <div className="flex gap-1 mb-8 text-left">
-                    {[1, 2, 3, 4, 5].map((s) => <Star key={s} className="text-amber-400 fill-amber-400" size={16} />)}
-                  </div>
-                  <p className="text-xl md:text-2xl font-medium text-stone-800 dark:text-white leading-relaxed tracking-tight text-left">"{review.text}"</p>
-                </div>
-                <div className="mt-10 pt-6 border-t border-stone-50 dark:border-stone-800 flex items-center justify-between text-left">
-                  <p className="text-sm font-bold text-stone-900 dark:text-white uppercase tracking-widest">{review.author}</p>
-                  <div className="w-10 h-10 rounded-full bg-stone-50 dark:bg-stone-950 flex items-center justify-center text-stone-300 dark:text-stone-600 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">
-                    <Users size={16} />
-                  </div>
-                </div>
+    <div className="w-full overflow-x-auto snap-x snap-mandatory flex gap-6 pb-8 hide-scrollbar px-6 md:px-0">
+      {reviews.map((review, idx) => (
+        <div key={idx} className="min-w-[85vw] md:min-w-[400px] snap-center flex-shrink-0">
+          <div className="bg-[#FAFAF9] dark:bg-stone-950 p-8 md:p-10 rounded-[2rem] border border-stone-100 dark:border-stone-800 shadow-sm h-full flex flex-col justify-between">
+            <div>
+              <div className="flex gap-1 mb-6 text-left">
+                {[1, 2, 3, 4, 5].map((s) => <Star key={s} className="text-amber-500 fill-amber-500" size={14} />)}
               </div>
+              <p className="text-lg md:text-xl font-medium text-stone-800 dark:text-white leading-relaxed text-left">"{review.text}"</p>
             </div>
-          ))}
+            <div className="mt-8 flex items-center justify-between text-left">
+              <p className="text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest">— {review.author}</p>
+            </div>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };
-
-// ============================================================================
-// 🚀 BEFORE/AFTER SLIDER
-// ============================================================================
-const BeforeAfterSlider = ({ beforeImage, afterImage }) => {
-  const [sliderPosition, setSliderPosition] = useState(50);
-  const containerRef = useRef(null);
-  const handleMove = (event) => {
-    if (!containerRef.current) return;
-    const { left, width } = containerRef.current.getBoundingClientRect();
-    const x = (event.touches ? event.touches[0].clientX : event.clientX) - left;
-    setSliderPosition(Math.max(0, Math.min(100, (x / width) * 100)));
-  };
-  return (
-    <div ref={containerRef} className="relative w-full aspect-video rounded-[3rem] overflow-hidden cursor-ew-resize select-none touch-none bg-slate-200 dark:bg-stone-900 shadow-2xl border-4 border-white dark:border-stone-800" onMouseMove={handleMove} onTouchMove={handleMove}>
-      <img src={afterImage} alt="After" className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
-      <div className="absolute top-6 right-6 bg-black/60 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-black pointer-events-none">AFTER</div>
-      <div className="absolute inset-0 w-full h-full" style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}><img src={beforeImage} alt="Before" className="absolute inset-0 w-full h-full object-cover pointer-events-none" /></div>
-      <div className="absolute top-6 left-6 bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full text-xs font-black pointer-events-none">BEFORE</div>
-      <div className="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_15px_rgba(0,0,0,0.3)] pointer-events-none" style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}><div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-2xl flex items-center justify-center text-[#432818]"><MoveHorizontal size={24} /></div></div>
-    </div>
-  );
-};
-
 
 // ============================================================================
 // 🚀 MAIN APP
@@ -683,30 +942,36 @@ const BeforeAfterSlider = ({ beforeImage, afterImage }) => {
 
 export default function App() {
   const [activePage, setActivePage] = useState('home');
-  const [activePost, setActivePost] = useState(null); // For rendering single blog post
+  const [activePost, setActivePost] = useState(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [lightboxImg, setLightboxImg] = useState(null);
-  const [videoUrl, setVideoUrl] = useState(null);
   
-  // New State Features
+  // Modals & Exits
   const [darkMode, setDarkMode] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [showContactModal, setShowContactModal] = useState(false);
   const [showExitIntent, setShowExitIntent] = useState(false);
+  const [activeCaseStudy, setActiveCaseStudy] = useState(null);
   const exitIntentTriggered = useRef(false);
 
-  // 1. Theme Effect
+  // Centralized Contact Modal State
+  const [contactModalState, setContactModalState] = useState({ isOpen: false, step: 'select', service: null });
+
+  const handleTriggerContact = (step = 'select', service = null) => {
+    setContactModalState({ isOpen: true, step, service });
+  };
+
+  // Floating Section Tracker
+  const [activeSection, setActiveSection] = useState('hero');
+  const sections = ['hero', 'audit', 'metrics', 'portfolio', 'reviews', 'lead-capture'];
+
   useEffect(() => {
     if (darkMode) document.documentElement.classList.add('dark');
     else document.documentElement.classList.remove('dark');
   }, [darkMode]);
 
-  // 2. Global Event Listeners (Scroll, Mouse, Routing)
   useEffect(() => {
-    // URL Routing Initialization
     const path = window.location.pathname.replace('/', '') || 'home';
     if (['home', 'about', 'privacy', 'ai-use', 'insights'].includes(path)) {
       setActivePage(path);
@@ -719,7 +984,6 @@ export default function App() {
     };
     window.addEventListener('popstate', handlePopState);
 
-    // Scroll Progress
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -728,15 +992,7 @@ export default function App() {
     };
     window.addEventListener('scroll', handleScroll);
 
-    // Custom Cursor & Exit Intent
     const handleMouseMove = (e) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
-      
-      // Check if hovering over clickable element
-      const target = e.target;
-      setIsHovering(!!target.closest('button, a, input, textarea'));
-
-      // Exit Intent Logic (Mouse goes to top of screen on desktop)
       if (e.clientY < 15 && !exitIntentTriggered.current) {
         setShowExitIntent(true);
         exitIntentTriggered.current = true;
@@ -744,14 +1000,24 @@ export default function App() {
     };
     window.addEventListener('mousemove', handleMouseMove);
 
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('[data-section]').forEach(sec => observer.observe(sec));
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('popstate', handlePopState);
+      observer.disconnect();
     };
   }, []);
 
-  // 3. Dynamic SEO Metadata
   useEffect(() => {
     const titles = {
       home: "ME digital | Digital Strategy & AI Automation",
@@ -762,7 +1028,6 @@ export default function App() {
     };
     document.title = titles[activePage] || titles.home;
     
-    // Simulate updating Meta Description dynamically
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
       metaDesc = document.createElement('meta');
@@ -770,25 +1035,32 @@ export default function App() {
       document.head.appendChild(metaDesc);
     }
     metaDesc.content = activePost ? activePost.snippet : FUNNEL_DATA.brand.subheadline;
-
   }, [activePage, activePost]);
 
-  // Route Navigator
   const navigateTo = (page, e = null) => {
     if (e) e.preventDefault();
-    window.history.pushState({}, '', `/${page === 'home' ? '' : page}`);
-    setActivePage(page);
-    setActivePost(null);
+    setIsTransitioning(true);
     setIsMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    setTimeout(() => {
+      window.history.pushState({}, '', `/${page === 'home' ? '' : page}`);
+      setActivePage(page);
+      setActivePost(null);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      setIsTransitioning(false);
+    }, 400);
   };
 
   const openPost = (post, e) => {
     if (e) e.preventDefault();
-    window.history.pushState({}, '', `/insights`);
-    setActivePage('insights');
-    setActivePost(post);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsTransitioning(true);
+    setTimeout(() => {
+      window.history.pushState({}, '', `/insights`);
+      setActivePage('insights');
+      setActivePost(post);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      setIsTransitioning(false);
+    }, 400);
   };
 
   return (
@@ -796,28 +1068,25 @@ export default function App() {
       
       {/* 🚀 GLOBAL CSS OVERRIDES */}
       <style dangerouslySetInnerHTML={{__html: `
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 10px; background: transparent; }
         ::-webkit-scrollbar-track { background: ${darkMode ? '#0c0a09' : '#f5f5f4'}; }
         ::-webkit-scrollbar-thumb { background: ${darkMode ? '#292524' : '#d6d3d1'}; border-radius: 10px; border: 2px solid ${darkMode ? '#0c0a09' : '#f5f5f4'}; }
         ::-webkit-scrollbar-thumb:hover { background: #d97706; }
-        /* Hide Default Cursor on Desktop */
-        @media (pointer: fine) { body { cursor: none; } a, button, input, textarea { cursor: none !important; } }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}} />
-
-      {/* 🚀 CUSTOM CURSOR */}
-      <div
-        className="fixed top-0 left-0 w-8 h-8 border-2 border-amber-600 rounded-full pointer-events-none z-[99999] transition-transform duration-100 ease-out hidden lg:flex items-center justify-center mix-blend-difference"
-        style={{ transform: `translate(${cursorPos.x - 16}px, ${cursorPos.y - 16}px) scale(${isHovering ? 1.5 : 1})`, opacity: cursorPos.x < 0 ? 0 : 1 }}
-      >
-        <div className={`w-1.5 h-1.5 bg-amber-600 rounded-full transition-opacity ${isHovering ? 'opacity-100' : 'opacity-0'}`} />
-      </div>
 
       {/* 🚀 SCROLL PROGRESS BAR */}
       <div className="fixed top-0 left-0 h-1 bg-amber-600 z-[99999] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
 
       {/* 🚀 MODALS */}
-      <ContactModal isOpen={showContactModal} onClose={() => setShowContactModal(false)} />
+      <ContactModal
+        isOpen={contactModalState.isOpen}
+        onClose={() => setContactModalState(prev => ({ ...prev, isOpen: false }))}
+        initialStep={contactModalState.step}
+        initialService={contactModalState.service}
+      />
+      <CaseStudyModal activeStudy={activeCaseStudy} onClose={() => setActiveCaseStudy(null)} />
       
       {/* Exit Intent Modal */}
       {showExitIntent && (
@@ -827,7 +1096,7 @@ export default function App() {
             <div className="w-20 h-20 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6"><TrendingUp size={32} className="text-amber-600" /></div>
             <h3 className="text-4xl font-black text-stone-900 dark:text-white mb-4 tracking-tight">Leaving so soon?</h3>
             <p className="text-stone-500 dark:text-stone-400 mb-8">Don't leave your digital growth to chance. Let's map out a custom AI strategy for your brand—completely free.</p>
-            <button onClick={() => { setShowExitIntent(false); setShowContactModal(true); }} className="w-full bg-amber-600 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs shadow-lg hover:bg-stone-900 dark:hover:bg-white dark:hover:text-stone-900 transition-all cursor-pointer">Claim Strategy Session</button>
+            <MagneticWrapper onClick={() => { setShowExitIntent(false); handleTriggerContact('select', null); }} className="w-full bg-amber-600 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs shadow-lg hover:bg-stone-900 dark:hover:bg-white dark:hover:text-stone-900 transition-all cursor-pointer border-none">Claim Strategy Session</MagneticWrapper>
             <button onClick={() => setShowExitIntent(false)} className="mt-4 text-xs font-bold text-stone-400 hover:text-stone-900 dark:hover:text-white uppercase tracking-widest cursor-pointer">No thanks, I hate growth</button>
           </div>
         </div>
@@ -837,6 +1106,20 @@ export default function App() {
         <div className="fixed inset-0 z-[100] bg-white/95 dark:bg-stone-950/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={() => setLightboxImg(null)}>
           <button className="absolute top-8 right-8 text-stone-900 dark:text-white cursor-pointer"><X size={32}/></button>
           <img src={lightboxImg} className="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl border border-stone-200 dark:border-stone-800" alt="Full View" />
+        </div>
+      )}
+
+      {/* FLOATING SECTION TRACKER (Home Page Only) */}
+      {activePage === 'home' && (
+        <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[60] hidden xl:flex flex-col gap-4">
+          {sections.map(sec => (
+            <div
+              key={sec}
+              onClick={() => document.getElementById(sec)?.scrollIntoView({ behavior: 'smooth' })}
+              className={`w-2.5 h-2.5 rounded-full cursor-pointer transition-all duration-300 ${activeSection === sec ? 'bg-amber-600 scale-150' : 'bg-stone-300 dark:bg-stone-700 hover:bg-stone-400'}`}
+              title={sec.replace('-', ' ').toUpperCase()}
+            />
+          ))}
         </div>
       )}
 
@@ -852,12 +1135,14 @@ export default function App() {
             <button onClick={(e) => navigateTo('about', e)} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors cursor-pointer ${activePage === 'about' ? 'text-amber-600' : 'text-stone-400 hover:text-stone-900 dark:hover:text-white'}`}>About & CV</button>
             <button onClick={(e) => navigateTo('insights', e)} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors cursor-pointer ${activePage === 'insights' ? 'text-amber-600' : 'text-stone-400 hover:text-stone-900 dark:hover:text-white'}`}>Insights</button>
             
-            {/* Theme Toggle */}
             <button onClick={() => setDarkMode(!darkMode)} className="text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer" aria-label="Toggle Dark Mode">
               {darkMode ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
-            <button onClick={() => setShowContactModal(true)} className="bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all shadow-sm cursor-pointer">Book Call</button>
+            {/* ✅ UPDATED TOP NAV BUTTON -> DIRECT WHATSAPP */}
+            <MagneticWrapper href={FUNNEL_DATA.brand.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#1DA851] transition-all shadow-sm flex items-center gap-2 cursor-pointer border-none">
+              <MessageSquare size={14} /> WhatsApp Me
+            </MagneticWrapper>
           </div>
 
           <div className="md:hidden flex items-center gap-4">
@@ -877,25 +1162,27 @@ export default function App() {
           <button onClick={(e) => navigateTo('home', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">Works</button>
           <button onClick={(e) => navigateTo('about', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">About & CV</button>
           <button onClick={(e) => navigateTo('insights', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">Insights</button>
-          <button onClick={() => { setShowContactModal(true); setIsMobileMenuOpen(false); }} className="text-4xl font-black text-amber-600 text-left cursor-pointer">Book Call</button>
+          {/* ✅ UPDATED MOBILE MENU BUTTON -> DIRECT WHATSAPP */}
+          <a href={FUNNEL_DATA.brand.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="text-4xl font-black text-[#25D366] text-left cursor-pointer flex items-center gap-4">
+            <MessageSquare size={36}/> WhatsApp
+          </a>
         </div>
       )}
 
-      {/* RENDER THE WHATSAPP CAT WIDGET */}
-      <WhatsAppWidget />
+      <IchigoChatWidget onTriggerContact={handleTriggerContact} />
       <CookieBanner />
 
-      {/* 🚀 MAIN CONTENT */}
-      <main className="flex-1">
+      {/* 🚀 MAIN CONTENT WITH SMOOTH TRANSITION */}
+      <main className={`flex-1 transition-all duration-400 ease-in-out ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
         
         {/* ==================================================================== */}
         {/* 📄 HOME PAGE                                                         */}
         {/* ==================================================================== */}
         {activePage === 'home' && (
-          <div className="animate-fade-in overflow-x-hidden">
+          <div className="overflow-x-hidden">
             
             {/* HERO */}
-            <section className="pt-48 pb-20 px-6 text-center">
+            <section id="hero" data-section className="pt-48 pb-20 px-6 text-center min-h-[85vh] flex flex-col justify-center">
               <Reveal>
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-100 dark:bg-stone-900 text-stone-500 dark:text-stone-400 font-semibold text-[10px] uppercase tracking-[0.2em] mb-8 border border-stone-200 dark:border-stone-800">
                   AI Automation & Strategy
@@ -906,9 +1193,9 @@ export default function App() {
                 <p className="text-lg md:text-xl text-stone-500 dark:text-stone-400 max-w-2xl mx-auto mb-12 font-normal leading-relaxed">
                   {FUNNEL_DATA.brand.subheadline}
                 </p>
-                <button onClick={() => setShowContactModal(true)} className="group bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-xl flex items-center gap-3 mx-auto hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1 cursor-pointer">
+                <MagneticWrapper onClick={() => handleTriggerContact('select', null)} className="group bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-xl flex items-center gap-3 mx-auto hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all cursor-pointer border-none w-fit">
                   Start Project <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
-                </button>
+                </MagneticWrapper>
               </Reveal>
             </section>
 
@@ -931,19 +1218,19 @@ export default function App() {
             </section>
 
             {/* INTERACTIVE SOCIAL AUDIT (LEAD CAPTURE) */}
-            <section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
+            <section id="audit" data-section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-5xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
                   <span className="text-amber-600 font-bold font-mono text-[10px] uppercase tracking-widest block mb-4">Interactive Audit</span>
                   <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight text-stone-900 dark:text-white">Is your strategy failing?</h2>
                   <p className="text-stone-500 dark:text-stone-400 text-lg max-w-2xl mx-auto">Most brands post without a system. Use this quick audit to find your biggest growth bottleneck.</p>
                 </Reveal>
-                <Reveal delay={200}><SocialAuditTool /></Reveal>
+                <Reveal delay={200}><SocialAuditTool onTriggerContact={handleTriggerContact} /></Reveal>
               </div>
             </section>
 
-            {/* PROOF METRICS */}
-            <section className="py-24 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
+            {/* PROOF METRICS (DEEP DIVE MODALS ADDED) */}
+            <section id="metrics" data-section className="py-32 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
               <div className="max-w-6xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
                   <p className="text-sm font-bold text-amber-600 uppercase tracking-widest mb-4">Proven Results</p>
@@ -953,12 +1240,16 @@ export default function App() {
                   {FUNNEL_DATA.caseStudy.metrics.map((m, i) => {
                     const MIcon = m.icon;
                     return (
-                      <Reveal key={i} delay={i*100} className="text-center p-8 rounded-2xl border border-stone-100 dark:border-stone-800 bg-[#FAFAF9] dark:bg-stone-950 shadow-sm hover:shadow-md transition-shadow">
-                        <MIcon className="text-stone-300 dark:text-stone-600 mb-6 mx-auto" size={32} />
-                        <p className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white mb-2 tracking-tight">
-                          <CountUp end={m.value} prefix={m.prefix} suffix={m.suffix} decimals={m.decimals} />
-                        </p>
-                        <p className="text-stone-500 dark:text-stone-400 font-semibold text-[10px] uppercase tracking-widest">{m.label}</p>
+                      <Reveal key={i} delay={i*100}>
+                        <TiltCard className="text-center p-8 rounded-2xl border border-stone-100 dark:border-stone-800 bg-[#FAFAF9] dark:bg-stone-950 shadow-sm hover:shadow-xl hover:border-amber-600 transition-all cursor-pointer group" onClick={() => setActiveCaseStudy(m)}>
+                          <MIcon className="text-stone-300 dark:text-stone-600 mb-6 mx-auto group-hover:text-amber-600 transition-colors duration-500" size={32} />
+                          <p className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white mb-2 tracking-tight group-hover:scale-105 transition-transform duration-500">
+                            <CountUp end={m.value} prefix={m.prefix} suffix={m.suffix} decimals={m.decimals} />
+                          </p>
+                          <p className="text-stone-500 dark:text-stone-400 font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2">
+                            {m.label} <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
+                          </p>
+                        </TiltCard>
                       </Reveal>
                     );
                   })}
@@ -967,7 +1258,7 @@ export default function App() {
             </section>
 
             {/* COMPREHENSIVE PORTFOLIO SECTION */}
-            <section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
+            <section id="portfolio" data-section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-6xl mx-auto px-6">
                 
                 {/* Graphics */}
@@ -978,14 +1269,14 @@ export default function App() {
                   </div>
                   <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                     {FUNNEL_DATA.portfolio.graphics.map((img, i) => (
-                      <div key={i} className="aspect-square rounded-2xl overflow-hidden shadow-sm border border-stone-200 dark:border-stone-800 cursor-pointer group bg-white dark:bg-stone-900" onClick={() => setLightboxImg(img)}>
-                        <img src={img} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Graphic" />
-                      </div>
+                      <TiltCard key={i} className="aspect-square rounded-2xl overflow-hidden shadow-sm border border-stone-200 dark:border-stone-800 cursor-pointer group bg-white dark:bg-stone-900" onClick={() => setLightboxImg(img)}>
+                        <LazyImage src={img} alt="Graphic" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                      </TiltCard>
                     ))}
                   </div>
                 </Reveal>
 
-                {/* Vertical Videos (TikTok/Reels) */}
+                {/* Vertical Videos */}
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
                     <Smartphone className="text-stone-300 dark:text-stone-600" size={32}/>
@@ -993,15 +1284,15 @@ export default function App() {
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                     {FUNNEL_DATA.portfolio.verticalVideos.map((vid, i) => (
-                      <div key={i} className="group cursor-pointer">
+                      <TiltCard key={i} className="group cursor-pointer">
                         <div className="aspect-[9/16] rounded-3xl overflow-hidden shadow-sm border-4 border-stone-100 dark:border-stone-800 relative bg-stone-900">
-                          <img src={vid.img} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt={vid.title} />
+                          <LazyImage src={vid.img} alt={vid.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
                           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                             <PlayCircle size={48} className="text-white drop-shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"/>
                           </div>
                         </div>
                         <p className="font-bold text-sm mt-4 text-center text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500">{vid.title}</p>
-                      </div>
+                      </TiltCard>
                     ))}
                   </div>
                 </Reveal>
@@ -1014,15 +1305,15 @@ export default function App() {
                   </div>
                   <div className="grid md:grid-cols-2 gap-8">
                     {FUNNEL_DATA.portfolio.horizontalVideos.map((vid, i) => (
-                      <div key={i} className="group cursor-pointer">
+                      <TiltCard key={i} className="group cursor-pointer">
                         <div className="aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-200 dark:border-stone-800 relative bg-stone-900">
-                          <img src={vid.img} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt={vid.title} />
+                          <LazyImage src={vid.img} alt={vid.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
                           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                             <PlayCircle size={48} className="text-white drop-shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"/>
                           </div>
                         </div>
                         <p className="font-bold text-base mt-4 text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500">{vid.title}</p>
-                      </div>
+                      </TiltCard>
                     ))}
                   </div>
                 </Reveal>
@@ -1035,18 +1326,20 @@ export default function App() {
                   </div>
                   <div className="grid md:grid-cols-2 gap-12">
                     {FUNNEL_DATA.portfolio.websites.map((s, i) => (
-                      <Reveal key={i} className="group cursor-pointer text-left" onClick={() => setLightboxImg(s.img)}>
-                        <div className="rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 shadow-sm relative aspect-[4/3] bg-white dark:bg-stone-900">
-                          <img src={s.img} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt={s.title} />
-                        </div>
-                        <div className="flex justify-between items-center mt-6">
-                           <p className="font-bold text-lg text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">{s.title}</p>
-                           {s.link && (
-                             <a href={s.link} target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-widest text-amber-600 hover:text-stone-900 dark:hover:text-white flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
-                               Visit Site <ExternalLink size={12}/>
-                             </a>
-                           )}
-                        </div>
+                      <Reveal key={i}>
+                        <TiltCard className="group cursor-pointer text-left" onClick={() => setLightboxImg(s.img)}>
+                          <div className="rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 shadow-sm relative aspect-[4/3] bg-white dark:bg-stone-900">
+                            <LazyImage src={s.img} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                          </div>
+                          <div className="flex justify-between items-center mt-6 px-2">
+                            <p className="font-bold text-lg text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">{s.title}</p>
+                            {s.link && (
+                              <a href={s.link} target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-widest text-amber-600 hover:text-stone-900 dark:hover:text-white flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
+                                Visit Site <ExternalLink size={12}/>
+                              </a>
+                            )}
+                          </div>
+                        </TiltCard>
                       </Reveal>
                     ))}
                   </div>
@@ -1100,7 +1393,7 @@ export default function App() {
             </section>
 
             {/* TESTIMONIALS */}
-            <section className="py-32 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
+            <section id="reviews" data-section className="py-32 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
               <div className="max-w-7xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
                   <span className="text-amber-600 font-bold font-mono text-[10px] uppercase tracking-widest block mb-4">The Verdict</span>
@@ -1112,14 +1405,14 @@ export default function App() {
             </section>
 
             {/* LEAD CAPTURE */}
-            <section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
+            <section id="lead-capture" data-section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-3xl mx-auto px-6 text-center">
                 <Reveal>
                   <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-stone-900 dark:text-white">Ready to amplify?</h2>
                   <p className="text-stone-500 dark:text-stone-400 text-lg mb-12">Message me directly to discuss your digital transformation.</p>
-                  <button onClick={() => setShowContactModal(true)} className="inline-flex items-center gap-3 bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1 cursor-pointer">
+                  <MagneticWrapper onClick={() => handleTriggerContact('select', null)} className="inline-flex items-center gap-3 bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all cursor-pointer border-none w-fit mx-auto">
                     Send Message <Send size={16} />
-                  </button>
+                  </MagneticWrapper>
                 </Reveal>
               </div>
             </section>
@@ -1130,24 +1423,24 @@ export default function App() {
         {/* 📄 ABOUT & CV PAGE                                                   */}
         {/* ==================================================================== */}
         {activePage === 'about' && (
-          <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
+          <div className="pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
             <section className="max-w-6xl mx-auto px-6">
               
               {/* Header Profile */}
               <Reveal className="flex flex-col items-center text-center mb-24">
                  <div className="w-40 h-40 rounded-full overflow-hidden mb-8 border border-stone-200 dark:border-stone-800 shadow-lg">
-                  <img src={CV_DATA.profile.image} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" alt="Profile" />
+                  <LazyImage src={CV_DATA.profile.image} alt="Profile" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
                 </div>
                 <h1 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-stone-900 dark:text-white">{CV_DATA.profile.name}</h1>
                 <h2 className="text-sm font-bold text-stone-500 dark:text-stone-400 mb-8 uppercase tracking-[0.2em]">{CV_DATA.profile.title}</h2>
                 <div className="flex flex-wrap justify-center gap-4 mb-10">
-                  <button onClick={() => setShowContactModal(true)} className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-bold text-xs uppercase tracking-widest shadow-sm cursor-pointer"><Mail size={16} /> Email Me</button>
+                  <button onClick={() => handleTriggerContact('select', null)} className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-bold text-xs uppercase tracking-widest shadow-sm cursor-pointer"><Mail size={16} /> Email Me</button>
                   <a href={CV_DATA.socials.blinq} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-bold text-xs uppercase tracking-widest shadow-sm cursor-pointer"><Contact size={16} /> Digital Card</a>
                   <a href={CV_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-bold text-xs uppercase tracking-widest shadow-sm cursor-pointer"><LinkedInIcon size={16} /> LinkedIn</a>
                 </div>
-                <a href={CV_DATA.profile.cvDownloadLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all hover:-translate-y-1 cursor-pointer">
+                <MagneticWrapper href={CV_DATA.profile.cvDownloadLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all cursor-pointer">
                   <DownloadCloud size={16} /> Download Full CV
-                </a>
+                </MagneticWrapper>
               </Reveal>
 
               <div className="grid md:grid-cols-12 gap-16 lg:gap-24">
@@ -1229,7 +1522,7 @@ export default function App() {
                     <Reveal key={i} delay={i * 100}>
                       <a href={item.link} target="_blank" rel="noopener noreferrer" className="block group cursor-pointer bg-white dark:bg-stone-900 rounded-[2rem] p-5 border border-stone-100 dark:border-stone-800 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] hover:border-amber-600 dark:hover:border-amber-500 transition-all duration-500">
                         <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-100 dark:border-stone-800 relative bg-stone-900 mb-6">
-                          <img src={item.img} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt={item.title} />
+                          <LazyImage src={item.img} alt={item.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
                           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                             <div className="bg-white/20 backdrop-blur-md p-4 rounded-full group-hover:bg-amber-600 group-hover:scale-110 transition-all duration-300 border border-white/30">
                               <PlayCircle size={32} className="text-white drop-shadow-md"/>
@@ -1260,17 +1553,19 @@ export default function App() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                   {CV_DATA.certifications.map((cert, i) => (
                     <Reveal key={i} delay={i * 30} className="h-full">
-                      <a href={cert.link} target="_blank" rel="noopener noreferrer" className="block group cursor-pointer bg-white dark:bg-stone-900 rounded-[2rem] p-5 border border-stone-100 dark:border-stone-800 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] hover:border-amber-600 dark:hover:border-amber-500 transition-all duration-500 h-full flex flex-col">
-                        <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-100 dark:border-stone-800 relative bg-stone-50 dark:bg-stone-950 mb-6 flex flex-col items-center justify-center group-hover:bg-amber-50 dark:group-hover:bg-amber-900/20 transition-colors">
-                          <Award size={48} className="text-stone-300 dark:text-stone-700 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors duration-500 group-hover:scale-110" />
-                        </div>
-                        <div className="px-2 pb-2 text-center flex-1 flex flex-col justify-between">
-                          <h4 className="font-black text-lg text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors leading-tight mb-4">{cert.title}</h4>
-                          <div className="inline-flex items-center justify-center gap-2 bg-stone-50 dark:bg-stone-950 border border-stone-100 dark:border-stone-800 px-4 py-2 rounded-full mx-auto w-fit">
-                            <p className="text-[10px] font-bold text-stone-500 dark:text-stone-400 uppercase tracking-widest">{cert.issuer}</p>
+                      <TiltCard>
+                        <a href={cert.link} target="_blank" rel="noopener noreferrer" className="block group cursor-pointer bg-white dark:bg-stone-900 rounded-[2rem] p-5 border border-stone-100 dark:border-stone-800 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] hover:border-amber-600 dark:hover:border-amber-500 transition-all duration-500 h-full flex flex-col">
+                          <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-100 dark:border-stone-800 relative bg-stone-50 dark:bg-stone-950 mb-6 flex flex-col items-center justify-center group-hover:bg-amber-50 dark:group-hover:bg-amber-900/20 transition-colors">
+                            <Award size={48} className="text-stone-300 dark:text-stone-700 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors duration-500 group-hover:scale-110" />
                           </div>
-                        </div>
-                      </a>
+                          <div className="px-2 pb-2 text-center flex-1 flex flex-col justify-between">
+                            <h4 className="font-black text-lg text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors leading-tight mb-4">{cert.title}</h4>
+                            <div className="inline-flex items-center justify-center gap-2 bg-stone-50 dark:bg-stone-950 border border-stone-100 dark:border-stone-800 px-4 py-2 rounded-full mx-auto w-fit">
+                              <p className="text-[10px] font-bold text-stone-500 dark:text-stone-400 uppercase tracking-widest">{cert.issuer}</p>
+                            </div>
+                          </div>
+                        </a>
+                      </TiltCard>
                     </Reveal>
                   ))}
                 </div>
@@ -1284,7 +1579,7 @@ export default function App() {
         {/* 📄 INSIGHTS & BLOG PAGE                                              */}
         {/* ==================================================================== */}
         {activePage === 'insights' && (
-          <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950 min-h-screen">
+          <div className="pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950 min-h-screen">
             {activePost ? (
               /* INDIVIDUAL POST VIEW */
               <article className="max-w-3xl mx-auto px-6">
@@ -1324,19 +1619,21 @@ export default function App() {
                   <div className="grid md:grid-cols-2 gap-8">
                     {FUNNEL_DATA.insights.map((post, i) => (
                       <Reveal key={i} delay={i * 100} className="h-full">
-                        <div onClick={(e) => openPost(post, e)} className="group cursor-pointer bg-white dark:bg-stone-900 rounded-[2rem] p-8 border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-xl hover:border-amber-600 dark:hover:border-amber-500 transition-all duration-500 h-full flex flex-col justify-between">
-                          <div>
-                            <div className="flex justify-between items-center mb-6">
-                              <p className="text-amber-600 font-bold text-[10px] uppercase tracking-widest bg-amber-50 dark:bg-amber-900/20 px-3 py-1 rounded-full">{post.readTime}</p>
-                              <p className="text-stone-400 font-bold text-[10px] uppercase tracking-widest">{post.date}</p>
+                        <TiltCard>
+                          <div onClick={(e) => openPost(post, e)} className="group cursor-pointer bg-white dark:bg-stone-900 rounded-[2rem] p-8 border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-xl hover:border-amber-600 dark:hover:border-amber-500 transition-all duration-500 h-full flex flex-col justify-between">
+                            <div>
+                              <div className="flex justify-between items-center mb-6">
+                                <p className="text-amber-600 font-bold text-[10px] uppercase tracking-widest bg-amber-50 dark:bg-amber-900/20 px-3 py-1 rounded-full">{post.readTime}</p>
+                                <p className="text-stone-400 font-bold text-[10px] uppercase tracking-widest">{post.date}</p>
+                              </div>
+                              <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4 group-hover:text-amber-600 transition-colors leading-tight">{post.title}</h3>
+                              <p className="text-stone-500 dark:text-stone-400 leading-relaxed mb-8">{post.snippet}</p>
                             </div>
-                            <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4 group-hover:text-amber-600 transition-colors leading-tight">{post.title}</h3>
-                            <p className="text-stone-500 dark:text-stone-400 leading-relaxed mb-8">{post.snippet}</p>
+                            <div className="flex items-center gap-2 text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest group-hover:text-amber-600 transition-colors">
+                              Read Article <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                            </div>
                           </div>
-                          <div className="flex items-center gap-2 text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest group-hover:text-amber-600 transition-colors">
-                            Read Article <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                          </div>
-                        </div>
+                        </TiltCard>
                       </Reveal>
                     ))}
                   </div>
@@ -1350,7 +1647,7 @@ export default function App() {
         {/* 📄 PRIVACY POLICY PAGE                                               */}
         {/* ==================================================================== */}
         {activePage === 'privacy' && (
-          <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
+          <div className="pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
             <section className="max-w-3xl mx-auto px-6">
               <Reveal>
                 <div className="flex items-center gap-4 mb-10">
@@ -1372,7 +1669,7 @@ export default function App() {
 
                   <div className="mt-16 p-8 bg-white dark:bg-stone-900 rounded-3xl border border-stone-200 dark:border-stone-800">
                     <p className="font-bold text-stone-900 dark:text-white">Questions about your data?</p>
-                    <p className="text-sm mt-2">Contact: <button onClick={() => setShowContactModal(true)} className="text-amber-600 hover:underline cursor-pointer">hello@markespinosa.com</button></p>
+                    <p className="text-sm mt-2">Contact: <button onClick={() => handleTriggerContact('select', null)} className="text-amber-600 hover:underline cursor-pointer">hello@markespinosa.com</button></p>
                   </div>
                 </div>
               </Reveal>
@@ -1384,7 +1681,7 @@ export default function App() {
         {/* 📄 AI ETHICS & USAGE PAGE                                            */}
         {/* ==================================================================== */}
         {activePage === 'ai-use' && (
-          <div className="animate-fade-in pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
+          <div className="pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
             <section className="max-w-4xl mx-auto px-6">
               <Reveal>
                 <div className="flex items-center gap-4 mb-10">
@@ -1439,7 +1736,7 @@ export default function App() {
             <a href={CV_DATA.socials.threads} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="Threads"><AtSign size={24} /></a>
             <a href={CV_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="LinkedIn"><LinkedInIcon size={24} /></a>
             <a href={CV_DATA.socials.blinq} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="Digital Calling Card"><Contact size={24} /></a>
-            <button onClick={() => setShowContactModal(true)} className="hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer" aria-label="Email"><Mail size={24} /></button>
+            <button onClick={() => handleTriggerContact('select', null)} className="hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer" aria-label="Email"><Mail size={24} /></button>
           </div>
           <p className="font-semibold text-[10px] text-stone-400 dark:text-stone-600 uppercase tracking-[0.2em]">© {new Date().getFullYear()} Mark Joseph Espinosa • Engineered for Conversion</p>
         </div>
