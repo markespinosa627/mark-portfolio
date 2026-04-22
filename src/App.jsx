@@ -45,21 +45,15 @@ const ShieldCheck = ({ size = 24, className = "" }) => (
 
 const SiameseCatSVG = () => (
   <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    {/* Siamese Cat Body (Cream) */}
     <path d="M8 15C8 9 13 8 20 8C27 8 32 10 32 15C32 19 27 19 20 19C13 19 8 19 8 15Z" fill="#FDF5E6"/>
-    {/* Tail - Dark Brown */}
     <path d="M6 15C3 15 1 12 1 8" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
-    {/* Legs - Dark Brown */}
     <path d="M12 17V22" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
     <path d="M16 17V21" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
     <path d="M25 17V21" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
     <path d="M29 17V22" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
-    {/* Head Mask - Dark Brown */}
     <path d="M30 11C30 7 33 6 36 6C39 6 40 9 40 12C40 15 37 16 34 16C31 16 30 14 30 11Z" fill="#3A2A22"/>
-    {/* Ears - Dark Brown */}
     <path d="M31 7L32 2L35 6" fill="#3A2A22"/>
     <path d="M36 6L39 2L39 7" fill="#3A2A22"/>
-    {/* Eyes - Blue */}
     <circle cx="35" cy="10" r="1.2" fill="#00BFFF"/>
     <circle cx="38" cy="10" r="1.2" fill="#00BFFF"/>
   </svg>
@@ -692,14 +686,12 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
     "Staring at the screen won't grow your brand. Clicking the 'Schedule Call' button will. 🐾"
   ];
 
-  // Scroll to bottom
   useEffect(() => {
     if (isOpen) {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isOpen, isLoading]);
 
-  // Typing simulator
   useEffect(() => {
     let interval;
     if (isLoading) {
@@ -713,7 +705,6 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
     return () => clearInterval(interval);
   }, [isLoading]);
 
-  // Idle Nudge (60s)
   useEffect(() => {
     if (!isOpen || isLoading) return;
     const timer = setTimeout(() => {
@@ -723,7 +714,6 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
     return () => clearTimeout(timer);
   }, [messages, isOpen, isLoading]);
 
-  // Initial Tooltip
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!isOpen && messages.length <= 1) {
@@ -1144,17 +1134,22 @@ export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [lightboxImg, setLightboxImg] = useState(null);
+  
+  // Modals & Exits
   const [darkMode, setDarkMode] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showExitIntent, setShowExitIntent] = useState(false);
   const [activeCaseStudy, setActiveCaseStudy] = useState(null);
   const exitIntentTriggered = useRef(false);
+
+  // Centralized Contact Modal State
   const [contactModalState, setContactModalState] = useState({ isOpen: false, step: 'select', service: null });
 
   const handleTriggerContact = (step = 'select', service = null) => {
     setContactModalState({ isOpen: true, step, service });
   };
 
+  // Floating Section Tracker
   const [activeSection, setActiveSection] = useState('hero');
   const sections = ['hero', 'audit', 'metrics', 'portfolio', 'reviews', 'lead-capture'];
 
@@ -1218,11 +1213,7 @@ export default function App() {
 
   const safePushState = (url) => {
     try {
-      const isHistoryAccessible = window.location.protocol !== 'blob:' &&
-                                 window.location.origin !== 'null' &&
-                                 typeof window.history !== 'undefined';
-      
-      if (isHistoryAccessible) {
+      if (window.location.protocol !== 'blob:' && window.location.origin !== 'null' && typeof window.history !== 'undefined') {
         window.history.pushState({}, '', url);
       }
     } catch (err) {
@@ -1259,6 +1250,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#FAFAF9] dark:bg-stone-950 text-stone-900 dark:text-white font-sans flex flex-col selection:bg-amber-600 selection:text-white transition-colors duration-300">
       
+      {/* 🚀 GLOBAL CSS OVERRIDES */}
       <style dangerouslySetInnerHTML={{__html: `
         ::-webkit-scrollbar { width: 10px; background: transparent; }
         ::-webkit-scrollbar-track { background: ${darkMode ? '#0c0a09' : '#f5f5f4'}; }
@@ -1268,8 +1260,10 @@ export default function App() {
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}} />
 
+      {/* 🚀 SCROLL PROGRESS BAR */}
       <div className="fixed top-0 left-0 h-1 bg-amber-600 z-[99999] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
 
+      {/* 🚀 MODALS */}
       <ContactModal
         isOpen={contactModalState.isOpen}
         onClose={() => setContactModalState(prev => ({ ...prev, isOpen: false }))}
@@ -1278,6 +1272,7 @@ export default function App() {
       />
       <CaseStudyModal activeStudy={activeCaseStudy} onClose={() => setActiveCaseStudy(null)} />
       
+      {/* Exit Intent Modal */}
       {showExitIntent && (
         <div className="fixed inset-0 z-[99999] bg-stone-900/60 dark:bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in" onClick={() => setShowExitIntent(false)}>
           <div className="bg-white dark:bg-stone-900 rounded-[2rem] p-10 max-w-lg text-center shadow-2xl relative" onClick={e => e.stopPropagation()}>
@@ -1298,6 +1293,7 @@ export default function App() {
         </div>
       )}
 
+      {/* FLOATING SECTION TRACKER (Home Page Only) */}
       {activePage === 'home' && (
         <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[60] hidden xl:flex flex-col gap-4">
           {sections.map(sec => (
@@ -1311,6 +1307,7 @@ export default function App() {
         </div>
       )}
 
+      {/* 🧭 NAVIGATION */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-stone-950/90 backdrop-blur-md shadow-sm border-b border-stone-100 dark:border-stone-800 py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
           <button onClick={(e) => navigateTo('home', e)} className="font-black text-2xl tracking-tighter text-stone-900 dark:text-white cursor-pointer">
@@ -1326,6 +1323,7 @@ export default function App() {
               {darkMode ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
+            {/* ✅ FIXED TOP NAV BUTTON -> DIRECT WHATSAPP */}
             <MagneticWrapper href={FUNNEL_DATA.brand.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#1DA851] transition-all shadow-sm flex items-center gap-2 cursor-pointer border-none">
               <MessageSquare size={14} /> WhatsApp Me
             </MagneticWrapper>
@@ -1342,11 +1340,13 @@ export default function App() {
         </div>
       </nav>
 
+      {/* MOBILE MENU */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[49] bg-white dark:bg-stone-950 flex flex-col p-8 space-y-8 md:hidden pt-32 animate-fade-in">
           <button onClick={(e) => navigateTo('home', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">Works</button>
           <button onClick={(e) => navigateTo('about', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">About & CV</button>
           <button onClick={(e) => navigateTo('insights', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">Insights</button>
+          {/* ✅ FIXED MOBILE MENU BUTTON -> DIRECT WHATSAPP */}
           <a href={FUNNEL_DATA.brand.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="text-4xl font-black text-[#25D366] text-left cursor-pointer flex items-center gap-4">
             <MessageSquare size={36}/> WhatsApp Me
           </a>
@@ -1356,11 +1356,16 @@ export default function App() {
       <IchigoChatWidget onTriggerContact={handleTriggerContact} />
       <CookieBanner />
 
+      {/* 🚀 MAIN CONTENT WITH SMOOTH TRANSITION */}
       <main className={`flex-1 transition-all duration-400 ease-in-out ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
         
+        {/* ==================================================================== */}
+        {/* 📄 HOME PAGE                                                         */}
+        {/* ==================================================================== */}
         {activePage === 'home' && (
           <div className="overflow-x-hidden">
             
+            {/* HERO */}
             <section id="hero" data-section className="pt-48 pb-20 px-6 text-center min-h-[85vh] flex flex-col justify-center">
               <Reveal>
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-100 dark:bg-stone-900 text-stone-500 dark:text-stone-400 font-semibold text-[10px] uppercase tracking-[0.2em] mb-8 border border-stone-200 dark:border-stone-800">
@@ -1378,6 +1383,7 @@ export default function App() {
               </Reveal>
             </section>
 
+            {/* MARQUEE BRANDS */}
             <section className="py-12 border-y border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 overflow-hidden flex items-center">
               <div className="relative flex w-full">
                 <style>{`
@@ -1395,6 +1401,7 @@ export default function App() {
               </div>
             </section>
 
+            {/* INTERACTIVE SOCIAL AUDIT (LEAD CAPTURE) */}
             <section id="audit" data-section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-5xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
@@ -1406,6 +1413,7 @@ export default function App() {
               </div>
             </section>
 
+            {/* PROOF METRICS (DEEP DIVE MODALS ADDED) */}
             <section id="metrics" data-section className="py-32 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
               <div className="max-w-6xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
@@ -1438,9 +1446,11 @@ export default function App() {
               </div>
             </section>
 
+            {/* COMPREHENSIVE PORTFOLIO SECTION */}
             <section id="portfolio" data-section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-6xl mx-auto px-6">
                 
+                {/* Graphics */}
                 <Reveal className="mb-12">
                   <div className="flex items-center gap-3 mb-6">
                     <ImageIcon className="text-stone-300 dark:text-stone-600" size={32}/>
@@ -1455,6 +1465,7 @@ export default function App() {
                   </div>
                 </Reveal>
 
+                {/* Vertical Videos */}
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
                     <Smartphone className="text-stone-300 dark:text-stone-600" size={32}/>
@@ -1475,6 +1486,7 @@ export default function App() {
                   </div>
                 </Reveal>
 
+                {/* Horizontal Videos */}
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
                     <Film className="text-stone-300 dark:text-stone-600" size={32}/>
@@ -1495,6 +1507,7 @@ export default function App() {
                   </div>
                 </Reveal>
 
+                {/* Web Architecture */}
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
                     <Monitor className="text-stone-300 dark:text-stone-600" size={32}/>
@@ -1521,6 +1534,7 @@ export default function App() {
                   </div>
                 </Reveal>
 
+                {/* WRITTEN STRATEGY */}
                 <div className="grid md:grid-cols-2 gap-16 pt-20 border-t border-stone-200 dark:border-stone-800">
                   <Reveal>
                     <div className="flex items-center gap-3 mb-8">
@@ -1558,6 +1572,7 @@ export default function App() {
                   </Reveal>
                 </div>
 
+                {/* VIDEO / AFTER SLIDER */}
                  <Reveal className="mb-16 flex flex-col items-center pt-20 border-t border-stone-200 dark:border-stone-800">
                   <PlayCircle className="text-stone-300 dark:text-stone-600 mb-4" size={32}/>
                   <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Visual Engineering</h3>
@@ -1566,6 +1581,7 @@ export default function App() {
               </div>
             </section>
 
+            {/* TESTIMONIALS */}
             <section id="reviews" data-section className="py-32 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
               <div className="max-w-7xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
@@ -1577,6 +1593,7 @@ export default function App() {
               </div>
             </section>
 
+            {/* LEAD CAPTURE */}
             <section id="lead-capture" data-section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-3xl mx-auto px-6 text-center">
                 <Reveal>
@@ -1591,10 +1608,14 @@ export default function App() {
           </div>
         )}
 
+        {/* ==================================================================== */}
+        {/* 📄 ABOUT & CV PAGE                                                   */}
+        {/* ==================================================================== */}
         {activePage === 'about' && (
           <div className="pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
             <section className="max-w-6xl mx-auto px-6">
               
+              {/* Header Profile */}
               <Reveal className="flex flex-col items-center text-center mb-24">
                  <div className="w-40 h-40 rounded-full overflow-hidden mb-8 border border-stone-200 dark:border-stone-800 shadow-lg">
                   <LazyImage src={CV_DATA.profile.image} alt="Profile" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
@@ -1612,7 +1633,9 @@ export default function App() {
               </Reveal>
 
               <div className="grid md:grid-cols-12 gap-16 lg:gap-24">
+                {/* Left Column */}
                 <div className="md:col-span-7">
+                  {/* EXP */}
                   <div className="mb-24">
                     <Reveal className="mb-10 flex items-center gap-3">
                       <Briefcase className="text-stone-300 dark:text-stone-600" size={32} />
@@ -1630,6 +1653,7 @@ export default function App() {
                     </div>
                   </div>
 
+                  {/* EDUCATION */}
                   <div className="mb-24">
                     <Reveal className="mb-10 flex items-center gap-3">
                       <BookOpen className="text-stone-300 dark:text-stone-600" size={32} />
@@ -1648,7 +1672,9 @@ export default function App() {
                   </div>
                 </div>
 
+                {/* Right Column */}
                 <div className="md:col-span-5">
+                  {/* SKILLS */}
                   <div className="mb-24">
                     <Reveal className="mb-10 flex items-center gap-3">
                       <Cpu className="text-stone-300 dark:text-stone-600" size={32} />
@@ -1672,6 +1698,7 @@ export default function App() {
                 </div>
               </div>
 
+              {/* FULL-WIDTH APPEARANCES / INTERVIEWS SECTION */}
               <div className="mt-12 pt-24 border-t border-stone-200 dark:border-stone-800">
                 <Reveal className="mb-16 flex flex-col items-center text-center">
                   <Tv className="text-stone-300 dark:text-stone-600 mb-4" size={48} />
@@ -1704,6 +1731,7 @@ export default function App() {
                 </div>
               </div>
 
+              {/* FULL-WIDTH CERTIFICATIONS SECTION */}
               <div className="mt-12 pt-24 border-t border-stone-200 dark:border-stone-800">
                 <Reveal className="mb-16 flex flex-col items-center text-center">
                   <Award className="text-stone-300 dark:text-stone-600 mb-4" size={48} />
@@ -1736,9 +1764,13 @@ export default function App() {
           </div>
         )}
 
+        {/* ==================================================================== */}
+        {/* 📄 INSIGHTS & BLOG PAGE                                              */}
+        {/* ==================================================================== */}
         {activePage === 'insights' && (
           <div className="pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950 min-h-screen">
             {activePost ? (
+              /* INDIVIDUAL POST VIEW */
               <article className="max-w-3xl mx-auto px-6">
                 <Reveal>
                   <button onClick={(e) => navigateTo('insights', e)} className="flex items-center gap-2 text-stone-400 hover:text-stone-900 dark:hover:text-white font-bold text-xs uppercase tracking-widest mb-12 transition-colors cursor-pointer">
@@ -1762,6 +1794,7 @@ export default function App() {
                 </Reveal>
               </article>
             ) : (
+              /* BLOG FEED VIEW */
               <section className="max-w-5xl mx-auto px-6">
                 <Reveal>
                   <div className="flex items-center gap-4 mb-16">
@@ -1799,6 +1832,9 @@ export default function App() {
           </div>
         )}
 
+        {/* ==================================================================== */}
+        {/* 📄 PRIVACY POLICY PAGE                                               */}
+        {/* ==================================================================== */}
         {activePage === 'privacy' && (
           <div className="pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
             <section className="max-w-3xl mx-auto px-6">
@@ -1830,6 +1866,9 @@ export default function App() {
           </div>
         )}
 
+        {/* ==================================================================== */}
+        {/* 📄 AI ETHICS & USAGE PAGE                                            */}
+        {/* ==================================================================== */}
         {activePage === 'ai-use' && (
           <div className="pt-40 pb-32 bg-[#FAFAF9] dark:bg-stone-950">
             <section className="max-w-4xl mx-auto px-6">
@@ -1864,12 +1903,14 @@ export default function App() {
 
       </main>
 
+      {/* FOOTER */}
       <footer className="bg-white dark:bg-stone-900 py-16 px-6 text-center border-t border-stone-100 dark:border-stone-800 transition-colors">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
           <button onClick={(e) => navigateTo('home', e)} className="font-black text-2xl tracking-tighter text-stone-900 dark:text-white mb-8 cursor-pointer">
             ME<span className="text-amber-600">digital</span>
           </button>
 
+          {/* Page Links */}
           <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-10 text-stone-400 dark:text-stone-500">
             <button onClick={(e) => navigateTo('home', e)} className="hover:text-stone-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer">Works</button>
             <button onClick={(e) => navigateTo('about', e)} className="hover:text-stone-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer">About & CV</button>
