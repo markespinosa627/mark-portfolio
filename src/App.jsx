@@ -1524,7 +1524,7 @@ export default function App() {
                     {FUNNEL_DATA.portfolio.horizontalVideos.map((vid, i) => (
                       <TiltCard key={i} className="group cursor-pointer">
                         <a href={vid.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
-                          <div className="aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-200 dark:border-stone-800 relative bg-stone-900">
+                          <div className="aspect-[9/16] rounded-3xl overflow-hidden shadow-sm border-4 border-stone-100 dark:border-stone-800 relative bg-stone-900">
                             <LazyImage src={vid.img} alt={vid.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                               <PlayCircle size={48} className="text-white drop-shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"/>
