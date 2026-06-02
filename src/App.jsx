@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {
-  TrendingUp, Users, MousePointerClick, CheckCircle2,
+import { 
+  TrendingUp, Users, MousePointerClick, CheckCircle2, 
   ArrowRight, Star, Send, Award, PlayCircle, Image as ImageIcon,
   ChevronRight, Phone, Mail, MoveHorizontal, Monitor,
-  Briefcase, GraduationCap, Tv, TerminalSquare, Menu, X,
+  Briefcase, GraduationCap, Tv, TerminalSquare, Menu, X, 
   Download, MessageCircle, Maximize2, Calculator, Calendar,
   Globe, Laptop, MonitorSmartphone, FileText, Newspaper,
   ShieldAlert, BarChart3, Smartphone, Film, ExternalLink,
@@ -69,7 +69,7 @@ const FUNNEL_DATA = {
     subheadline: "I engineer brilliant social media strategies and high-converting digital marketing systems that turn your audience into loyal customers on autopilot.",
     contact: {
       email: "hello@markespinosa.com",
-      whatsapp: "https://wa.me/639209062796",
+      whatsapp: "https://wa.me/639209062796", 
       calendarUrl: "https://calendar.app.google/2aixwBAXDDJpNRxV8"
     }
   },
@@ -91,37 +91,37 @@ const FUNNEL_DATA = {
   caseStudy: {
     hook: "How we generated 5.47M organic reach and grew link clicks by 1,566%.",
     metrics: [
-      {
+      { 
         label: "Post Reach (+145%)", value: 5.47, prefix: "", suffix: "M", decimals: 2, icon: Users,
-        details: {
-          problem: "The client needed to maximize their social media performance but lacked a tailored approach to reach their specific target market effectively.",
-          strategy: "We established a consistent brand identity across all platforms, conducted deep target audience research to build buyer personas, and curated highly-tailored content.",
-          result: "A massive expansion reaching 5.47 million organic impressions (+145%), effectively connecting the brand to its exact target market."
+        details: { 
+          problem: "The client needed to maximize their social media performance but lacked a tailored approach to reach their specific target market effectively.", 
+          strategy: "We established a consistent brand identity across all platforms, conducted deep target audience research to build buyer personas, and curated highly-tailored content.", 
+          result: "A massive expansion reaching 5.47 million organic impressions (+145%), effectively connecting the brand to its exact target market." 
         }
       },
-      {
+      { 
         label: "Engagements (+235%)", value: 918, prefix: "", suffix: "k", decimals: 0, icon: TrendingUp,
-        details: {
-          problem: "The client had a social presence but struggled to build an active, engaged community around their content.",
-          strategy: "We connected the brand directly to its target market by establishing community groups and distributing content specifically designed for engagement and virality.",
-          result: "Page and post engagements skyrocketed to 918,220 (+235%), alongside a 147% increase in active engaged users (478,733 total)."
+        details: { 
+          problem: "The client had a social presence but struggled to build an active, engaged community around their content.", 
+          strategy: "We connected the brand directly to its target market by establishing community groups and distributing content specifically designed for engagement and virality.", 
+          result: "Page and post engagements skyrocketed to 918,220 (+235%), alongside a 147% increase in active engaged users (478,733 total)." 
         }
       },
-      {
+      { 
         label: "Link Clicks", value: 1566, prefix: "+", suffix: "%", decimals: 0, icon: MousePointerClick,
-        details: {
-          problem: "Followers were passively consuming content without taking the next step to visit external links or interact deeper with the brand.",
-          strategy: "By ensuring every piece of content was curated for the right audience persona, we naturally funneled engaged community members toward specific brand links.",
-          result: "An immediate 1,566% surge in link clicks (2,648 total), alongside 412,892 reactions (+489%), proving that tailored community building directly translates to active traffic."
+        details: { 
+          problem: "Followers were passively consuming content without taking the next step to visit external links or interact deeper with the brand.", 
+          strategy: "By ensuring every piece of content was curated for the right audience persona, we naturally funneled engaged community members toward specific brand links.", 
+          result: "An immediate 1,566% surge in link clicks (2,648 total), alongside 412,892 reactions (+489%), proving that tailored community building directly translates to active traffic." 
         }
       }
     ]
   },
   portfolio: {
     graphics: [
-      "/Sample-Graphics/sample1.png", "/Sample-Graphics/sample2.png",
-      "/Sample-Graphics/sample3.png", "/Sample-Graphics/sample4.png",
-      "/Sample-Graphics/sample5.png", "/Sample-Graphics/sample6.png",
+      "/Sample-Graphics/sample1.png", "/Sample-Graphics/sample2.png", 
+      "/Sample-Graphics/sample3.png", "/Sample-Graphics/sample4.png", 
+      "/Sample-Graphics/sample5.png", "/Sample-Graphics/sample6.png", 
     ],
     verticalVideos: [
       { title: "TikTok Campaign 1", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800" },
@@ -138,7 +138,7 @@ const FUNNEL_DATA = {
     ],
     videoEditing: {
       before: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200",
-      after: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200"
+      after: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200"  
     },
     writing: {
       articles: [
@@ -152,29 +152,29 @@ const FUNNEL_DATA = {
     }
   },
   insights: [
-    {
+    { 
       id: "storyboards-to-big-screen",
-      title: "From Storyboards to the Big Screen",
+      title: "From Storyboards to the Big Screen", 
       date: "March 2026", readTime: "4 min read",
-      snippet: "Anak TV Sinebata Workshop Batch 1 empowers children to declare 'Hear My Voice'...",
+      snippet: "Anak TV Sinebata Workshop Batch 1 empowers children to declare 'Hear My Voice'...", 
       content: "Empowering the next generation of storytellers is paramount. In this immersive workshop, children were taught how to translate their raw imaginations into compelling visual storyboards, ultimately giving them the confidence to declare, 'Hear My Voice.' The integration of accessible digital tools proved that premium storytelling is no longer gatekept by high-end studio budgets.",
-      externalLink: "https://anaktv.ph/from-storyboards-to-the-big-screen-anak-tv-sinebata-workshop-batch-1-empowers-children-to-declare-hear-my-voice/"
+      externalLink: "https://anaktv.ph/from-storyboards-to-the-big-screen-anak-tv-sinebata-workshop-batch-1-empowers-children-to-declare-hear-my-voice/" 
     },
-    {
+    { 
       id: "wage-hike-approved",
-      title: "₱200 Wage Hike Approved",
+      title: "₱200 Wage Hike Approved", 
       date: "June 2025", readTime: "3 min read",
-      snippet: "Kamara, inaprubahan ang wage hike para sa mga minimum wage earners...",
+      snippet: "Kamara, inaprubahan ang wage hike para sa mga minimum wage earners...", 
       content: "In a pivotal legislative move, the chamber officially approved a ₱200 daily wage increase for minimum wage earners. This shift not only impacts the local economy but directly influences consumer purchasing power, changing how digital marketers must approach ad spend and targeting strategies in the coming fiscal year.",
-      externalLink: "https://zbni.ph/2025/06/04/%E2%82%B1200-na-dagdag-sahod-bawat-araw-kamara-inaprubahan-ang-wage-hike-para-sa-mga-minimum-wage-earners/"
+      externalLink: "https://zbni.ph/2025/06/04/%E2%82%B1200-na-dagdag-sahod-bawat-araw-kamara-inaprubahan-ang-wage-hike-para-sa-mga-minimum-wage-earners/" 
     },
-    {
+    { 
       id: "live-music-cleveland",
-      title: "Live Music in Cleveland",
+      title: "Live Music in Cleveland", 
       date: "December 2025", readTime: "5 min read",
-      snippet: "Weekend Gig Guide: Dec 27th - 29th. The best live music events happening around the city...",
+      snippet: "Weekend Gig Guide: Dec 27th - 29th. The best live music events happening around the city...", 
       content: "Building localized digital communities requires hyper-specific content. The Weekend Gig Guide for Cleveland serves as a perfect case study in capturing localized search intent. By curating the city's top live music events, we established a recurring, high-engagement digital property that drives consistent returning traffic.",
-      externalLink: "https://livemusicincleveland.com/p/dec-27th-29th"
+      externalLink: "https://livemusicincleveland.com/p/dec-27th-29th" 
     }
   ],
   reviews: [
@@ -193,7 +193,7 @@ const CV_DATA = {
     email: "hello@markespinosa.com",
     phone: "+63 920 906 2796",
     image: "/me/markespinosa.jpg",
-    cvDownloadLink: "https://drive.google.com/file/d/1g08_2g4dlGtmROYdyneFeJteoRXq7rPT/view"
+    cvDownloadLink: "https://drive.google.com/file/d/1g08_2g4dlGtmROYdyneFeJteoRXq7rPT/view" 
   },
   socials: {
     facebook: "https://facebook.com/markespinosa627",
@@ -250,14 +250,14 @@ const GOOGLE_SHEETS_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
 const LazyImage = ({ src, alt, className, onError }) => {
   const [loaded, setLoaded] = useState(false);
   return (
-    <img
-      src={src}
-      alt={alt}
-      loading="lazy"
+    <img 
+      src={src} 
+      alt={alt} 
+      loading="lazy" 
       decoding="async"
-      onLoad={() => setLoaded(true)}
+      onLoad={() => setLoaded(true)} 
       onError={onError}
-      className={`${className} transition-opacity duration-700 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+      className={`${className} transition-opacity duration-700 ${loaded ? 'opacity-100' : 'opacity-0'}`} 
     />
   );
 };
@@ -267,14 +267,14 @@ const MagneticWrapper = ({ children, className, onClick, href, target, rel, type
   const handleMouse = (e) => {
     const { clientX, clientY, currentTarget } = e;
     const { left, top, width, height } = currentTarget.getBoundingClientRect();
-    const x = (clientX - (left + width / 2)) * 0.25;
+    const x = (clientX - (left + width / 2)) * 0.25; 
     const y = (clientY - (top + height / 2)) * 0.25;
     setPosition({ x, y });
   };
   const reset = () => setPosition({ x: 0, y: 0 });
   const Tag = href ? 'a' : 'button';
   return (
-    <Tag
+    <Tag 
       type={type}
       disabled={disabled}
       href={href} target={target} rel={rel} onClick={onClick}
@@ -291,12 +291,12 @@ const TiltCard = ({ children, className, onClick }) => {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const handleMouse = (e) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - left - width / 2) / 25;
+    const x = (e.clientX - left - width / 2) / 25; 
     const y = -(e.clientY - top - height / 2) / 25;
     setTilt({ x, y });
   };
   return (
-    <div
+    <div 
       onMouseMove={handleMouse} onMouseLeave={() => setTilt({x: 0, y: 0})} onClick={onClick}
       style={{ transform: `perspective(1000px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)` }}
       className={`transition-transform duration-200 ease-out will-change-transform ${className}`}
@@ -359,10 +359,10 @@ const BrandLogo = ({ client }) => {
     );
   }
   return (
-    <LazyImage
-      src={client.logo}
-      alt={client.name}
-      className="h-10 md:h-14 w-auto min-w-[80px] object-contain grayscale opacity-40 dark:opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+    <LazyImage 
+      src={client.logo} 
+      alt={client.name} 
+      className="h-10 md:h-14 w-auto min-w-[80px] object-contain grayscale opacity-40 dark:opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
       onError={() => setHasError(true)}
     />
   );
@@ -397,7 +397,7 @@ const BeforeAfterSlider = ({ beforeImage, afterImage }) => {
 // 🚀 DYNAMIC INTAKE MODAL
 // ============================================================================
 const ContactModal = ({ isOpen, onClose, initialStep = 'select', initialService = null }) => {
-  const [step, setStep] = useState(initialStep);
+  const [step, setStep] = useState(initialStep); 
   const [service, setService] = useState(initialService);
 
   const servicesList = [
@@ -466,8 +466,8 @@ const ContactModal = ({ isOpen, onClose, initialStep = 'select', initialService 
               {servicesList.map((svc) => {
                 const SvcIcon = svc.icon;
                 return (
-                  <button
-                    key={svc.id}
+                  <button 
+                    key={svc.id} 
                     onClick={() => { setService(svc); setStep(svc.id === 'call' ? 'call' : 'form'); }}
                     className="w-full bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 hover:border-amber-600 dark:hover:border-amber-500 text-stone-700 dark:text-stone-300 p-4 rounded-2xl flex items-center gap-4 transition-all group hover:bg-stone-900 dark:hover:bg-amber-600 hover:text-white cursor-pointer"
                   >
@@ -659,8 +659,8 @@ const getBotResponse = (userInput) => {
 const IchigoChatWidget = ({ onTriggerContact }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    {
-      text: "Meow! I'm Ichigo, Mark's furry assistant. He's busy building killer social media strategies and high-converting systems so he can buy me premium tuna. How can we help you today? 🐾",
+    { 
+      text: "Meow! I'm Ichigo, Mark's furry assistant. He's busy building killer social media strategies and high-converting systems so he can buy me premium tuna. How can we help you today? 🐾", 
       isBot: true,
       suggestions: ["Who is Mark?", "What do you do?", "Show me results", "Book a Call"]
     }
@@ -706,11 +706,11 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
   }, [isLoading]);
 
   useEffect(() => {
-    if (!isOpen || isLoading) return;
+    if (!isOpen || isLoading) return; 
     const timer = setTimeout(() => {
       const randomNudge = idleNudges[Math.floor(Math.random() * idleNudges.length)];
       setMessages(prev => [...prev, { text: randomNudge, isBot: true }]);
-    }, 60000);
+    }, 60000); 
     return () => clearTimeout(timer);
   }, [messages, isOpen, isLoading]);
 
@@ -729,8 +729,8 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
 
     setTimeout(() => {
       const response = getBotResponse(userText);
-      setMessages(prev => [...prev, {
-        text: response.text,
+      setMessages(prev => [...prev, { 
+        text: response.text, 
         isBot: true,
         suggestions: response.suggestions,
         actions: response.actions
@@ -815,8 +815,8 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
                 {m.isBot && isLastMessage && !isLoading && (
                   <div className="flex flex-wrap gap-2 mt-1 animate-fade-in pl-2">
                     {m.suggestions && m.suggestions.map((suggestion, idx) => (
-                      <button
-                        key={idx}
+                      <button 
+                        key={idx} 
                         onClick={() => processMessage(suggestion)}
                         className="bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 text-[11px] font-bold px-4 py-2 rounded-full hover:border-amber-600 hover:text-amber-600 dark:hover:border-amber-500 dark:hover:text-amber-500 shadow-sm transition-all text-left cursor-pointer"
                       >
@@ -858,12 +858,12 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
         </div>
 
         <form onSubmit={handleSend} className="p-3 border-t border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 rounded-b-3xl flex gap-2 shrink-0 z-10 relative">
-          <input
-            type="text"
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            placeholder="Ask me anything..."
-            className="flex-1 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl px-4 py-2 text-sm text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors"
+          <input 
+            type="text" 
+            value={input} 
+            onChange={e => setInput(e.target.value)} 
+            placeholder="Ask me anything..." 
+            className="flex-1 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl px-4 py-2 text-sm text-stone-900 dark:text-white focus:border-amber-600 dark:focus:border-amber-500 outline-none transition-colors" 
           />
           <button type="submit" disabled={isLoading || !input.trim()} className="bg-amber-600 text-white w-10 h-10 rounded-xl flex items-center justify-center shrink-0 hover:bg-amber-700 transition-colors disabled:opacity-50 cursor-pointer border-none">
             <Send size={16} />
@@ -961,13 +961,13 @@ const ReviewCarousel = () => {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
+    const walk = (x - startX) * 2; 
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
 
   return (
     <div className="relative w-full max-w-6xl mx-auto px-4">
-      <div
+      <div 
         ref={scrollRef}
         onMouseDown={handleMouseDown}
         onMouseLeave={handleMouseLeave}
@@ -1128,8 +1128,8 @@ const SocialAuditTool = ({ onTriggerContact }) => {
 // ============================================================================
 
 export default function App() {
-  const [activePage, setActivePage] = useState('home');
-  const [activePost, setActivePost] = useState(null);
+  const [activePage, setActivePage] = useState('home'); 
+  const [activePost, setActivePost] = useState(null); 
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -1221,16 +1221,16 @@ export default function App() {
     }
   };
 
-  const navigateTo = (page, e = null) => {
+  const navigateTo = (page, e = null) => { 
     if (e) e.preventDefault();
     setIsTransitioning(true);
-    setIsMobileMenuOpen(false);
+    setIsMobileMenuOpen(false); 
     
     setTimeout(() => {
       safePushState(`/${page === 'home' ? '' : page}`);
-      setActivePage(page);
+      setActivePage(page); 
       setActivePost(null);
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      window.scrollTo({ top: 0, behavior: 'instant' }); 
       setIsTransitioning(false);
     }, 400);
   };
@@ -1242,7 +1242,7 @@ export default function App() {
       safePushState(`/insights`);
       setActivePage('insights');
       setActivePost(post);
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      window.scrollTo({ top: 0, behavior: 'instant' }); 
       setIsTransitioning(false);
     }, 400);
   };
@@ -1264,9 +1264,9 @@ export default function App() {
       <div className="fixed top-0 left-0 h-1 bg-amber-600 z-[99999] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
 
       {/* 🚀 MODALS */}
-      <ContactModal
-        isOpen={contactModalState.isOpen}
-        onClose={() => setContactModalState(prev => ({ ...prev, isOpen: false }))}
+      <ContactModal 
+        isOpen={contactModalState.isOpen} 
+        onClose={() => setContactModalState(prev => ({ ...prev, isOpen: false }))} 
         initialStep={contactModalState.step}
         initialService={contactModalState.service}
       />
@@ -1297,8 +1297,8 @@ export default function App() {
       {activePage === 'home' && (
         <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[60] hidden xl:flex flex-col gap-4">
           {sections.map(sec => (
-            <div
-              key={sec}
+            <div 
+              key={sec} 
               onClick={() => document.getElementById(sec)?.scrollIntoView({ behavior: 'smooth' })}
               className={`w-2.5 h-2.5 rounded-full cursor-pointer transition-all duration-300 ${activeSection === sec ? 'bg-amber-600 scale-150' : 'bg-stone-300 dark:bg-stone-700 hover:bg-stone-400'}`}
               title={sec.replace('-', ' ').toUpperCase()}
