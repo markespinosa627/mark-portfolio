@@ -8,7 +8,7 @@ import {
   Globe, Laptop, MonitorSmartphone, FileText, Newspaper,
   ShieldAlert, BarChart3, Smartphone, Film, ExternalLink,
   BookOpen, Cpu, DownloadCloud, AtSign, Contact,
-  Moon, Sun, ArrowLeft, Loader2, MessageSquare
+  Moon, Sun, ArrowLeft, Loader2, MessageSquare, Heart
 } from 'lucide-react';
 
 // ============================================================================
@@ -124,11 +124,23 @@ const FUNNEL_DATA = {
       "/Sample-Graphics/sample5.png", "/Sample-Graphics/sample6.png", 
     ],
     verticalVideos: [
-      { title: "TikTok Campaign", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800", link: "https://vt.tiktok.com/ZSxwroCjn/" },
-      { title: "Facebook Strategy", img: "https://images.unsplash.com/photo-1588624108865-c49156b6279f?auto=format&fit=crop&q=80&w=800", link: "https://www.facebook.com/share/v/1CYu7SVan8/?mibextid=wwXIfr" },
-      { title: "Instagram Reel", img: "https://images.unsplash.com/photo-1611162618828-bc409f073cbf?auto=format&fit=crop&q=80&w=800", link: "https://www.instagram.com/reel/DXQqbwykXDF/?igsh=Ym14NXl6eG93a2lw" }
+      { 
+        title: "TikTok Campaign", 
+        img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800",
+        link: "https://vt.tiktok.com/ZSxwroCjn/"
+      },
+      { 
+        title: "Facebook Strategy", 
+        img: "https://images.unsplash.com/photo-1588624108865-c49156b6279f?auto=format&fit=crop&q=80&w=800",
+        link: "https://www.facebook.com/share/v/1CYu7SVan8/?mibextid=wwXIfr"
+      },
+      { 
+        title: "Instagram Reel", 
+        img: "https://images.unsplash.com/photo-1611162618828-bc409f073cbf?auto=format&fit=crop&q=80&w=800",
+        link: "https://www.instagram.com/reel/DXQqbwykXDF/?igsh=Ym14NXl6eG93a2lw"
+      }
     ],
-    horizontalVideos: [
+    viralHooks: [
       { title: "Viral Hook 1", img: "/ViralHooks/dogdancing-thumb1.png", link: "https://drive.google.com/file/d/1rsnrAqbMVSF4qz3ocXi_9NEfMiXFAOuB/view?usp=sharing" },
       { title: "Viral Hook 2", img: "/ViralHooks/kidfalling-thumb2.png", link: "https://drive.google.com/file/d/1WNw_gmuitmdBpz2o9Q6kNE39_dKaOPyF/view?usp=sharing" },
       { title: "Viral Hook 3", img: "/ViralHooks/iloveit-thumb3.png", link: "https://drive.google.com/file/d/1VWUrZ5nDiaLuJiNL_GMr_UqRhD7LP0eU/view?usp=sharing" }
@@ -1130,7 +1142,7 @@ export default function App() {
     else document.documentElement.classList.remove('dark');
   }, [darkMode]);
 
-   useEffect(() => {
+  useEffect(() => {
     const path = window.location.pathname.replace('/', '') || 'home';
     if (['home', 'about', 'privacy', 'ai-use', 'hey-ai', 'insights'].includes(path)) {
       setActivePage(path);
@@ -1177,7 +1189,7 @@ export default function App() {
     };
   }, []);
 
-    useEffect(() => {
+  useEffect(() => {
     const titles = {
       home: "ME digital | Digital Strategy & AI Automation",
       about: "Mark Espinosa | Digital Strategist & AI Engineer",
@@ -1403,7 +1415,7 @@ export default function App() {
               </div>
             </section>
 
-            {/* PROOF METRICS (DEEP DIVE MODALS ADDED) */}
+            {/* PROOF METRICS */}
             <section id="metrics" data-section className="py-32 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
               <div className="max-w-6xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
@@ -1415,7 +1427,7 @@ export default function App() {
                     const MIcon = m.icon;
                     return (
                       <Reveal key={i} delay={i*100}>
-                        <TiltCard className="text-center p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-[#FAFAF9] dark:bg-stone-950 shadow-sm hover:shadow-xl hover:border-amber-600 transition-all cursor-pointer group relative overflow-hidden" onClick={() => setActiveCaseStudy(m)}>
+                        <TiltCard className="text-center p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(217,119,6,0.1)] hover:border-amber-600 dark:hover:border-amber-500 transition-all duration-500 cursor-pointer group relative overflow-hidden" onClick={() => setActiveCaseStudy(m)}>
                           <div className="absolute top-4 right-4 bg-stone-100 dark:bg-stone-800 text-stone-400 p-2 rounded-full group-hover:bg-amber-100 group-hover:text-amber-600 transition-colors">
                             <Maximize2 size={14} />
                           </div>
@@ -1455,7 +1467,7 @@ export default function App() {
                   </div>
                 </Reveal>
 
-                {/* Vertical Videos - UPDATED TO CLICKABLE LINKS */}
+                {/* Vertical Content */}
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
                     <Smartphone className="text-stone-300 dark:text-stone-600" size={32}/>
@@ -1480,14 +1492,14 @@ export default function App() {
                   </div>
                 </Reveal>
 
-                {/* Viral Hooks Campaign - UPDATED TO VERTICAL */}
+                {/* Viral Hooks Campaign */}
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
-                    <Film className="text-stone-300 dark:text-stone-600" size={32}/>
+                    <PlayCircle className="text-stone-300 dark:text-stone-600" size={32}/>
                     <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Viral Hooks Campaign</h3>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                    {FUNNEL_DATA.portfolio.horizontalVideos.map((vid, i) => (
+                    {FUNNEL_DATA.portfolio.viralHooks.map((vid, i) => (
                       <TiltCard key={i} className="group cursor-pointer">
                         <a href={vid.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
                           <div className="aspect-[9/16] rounded-3xl overflow-hidden shadow-sm border-4 border-stone-100 dark:border-stone-800 relative bg-stone-900">
@@ -1569,7 +1581,6 @@ export default function App() {
                     </ul>
                   </Reveal>
                 </div>
-
               </div>
             </section>
 
@@ -1892,15 +1903,6 @@ export default function App() {
             </section>
           </div>
         )}
- <div className="mt-8 bg-white dark:bg-stone-900 p-8 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4">Automation & Efficiency</h3>
-                    <p className="leading-relaxed">AI agents (like our WhatsApp supervisor) and automated workflows are deployed to reduce response times and handle repetitive tasks. This efficiency frees up our human bandwidth for high-level creative problem-solving and strategic thinking.</p>
-                  </div>
-                </div>
-              </Reveal>
-            </section>
-          </div>
-        )}
 
         {/* ==================================================================== */}
         {/* 📄 HEY AI PAGE (LLM / SYSTEM PROMPT)                                 */}
@@ -1948,26 +1950,25 @@ export default function App() {
 
       </main>
 
-      {/* CATS MISSION BANNER (Appears above footer) */}
-      <section className="py-16 bg-[#FAFAF9] dark:bg-stone-950 px-6 border-t border-stone-200 dark:border-stone-800">
-        <Reveal>
-          <div className="max-w-5xl mx-auto bg-stone-900 rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row items-center">
-            <div className="p-10 md:p-16 flex-1 text-left">
-              <h3 className="text-3xl font-black text-white mb-4 tracking-tight">The Real Masterminds 🐾</h3>
-              <p className="text-stone-300 text-lg leading-relaxed font-medium">
-                Powered by high-converting systems, premium coffee, and a lot of cat food. Every project we take on helps feed our 4 cats and the strays that we meet!
-              </p>
-            </div>
-            <div className="w-full md:w-1/2 bg-black flex justify-center p-6 md:p-0">
-              <LazyImage 
-                src="/Ichigo-Haru-Anko-Yuzu.png" 
-                alt="Mark, Maureen, Ichigo, Haru, Anko, Yuzu" 
-                className="w-full h-auto object-cover md:scale-110 md:translate-y-4"
-              />
-            </div>
+      {/* CATS MISSION BANNER */}
+      <div className="bg-stone-900 text-white py-12 px-6 border-t-4 border-amber-600">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+          <div className="w-48 h-48 md:w-64 md:h-64 shrink-0 rounded-full overflow-hidden border-4 border-amber-500 shadow-2xl">
+            <img src="/Ichigo-Haru-Anko-Yuzu.png" alt="Mark, Maureen, and 4 Cats" className="w-full h-full object-cover" />
           </div>
-        </Reveal>
-      </section>
+          <div>
+            <h3 className="text-2xl md:text-3xl font-black mb-4 flex items-center justify-center md:justify-start gap-3">
+              The Real Masterminds <Heart className="text-amber-500 fill-amber-500" size={28} />
+            </h3>
+            <p className="text-stone-300 text-lg leading-relaxed mb-6">
+              Powered by high-converting systems, premium coffee, and a lot of cat food. Every project we take on helps feed our 4 cats and the strays that we meet!
+            </p>
+            <button onClick={() => handleTriggerContact('select', null)} className="bg-amber-600 text-white px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-amber-700 transition-all cursor-pointer border-none">
+              Work With Us
+            </button>
+          </div>
+        </div>
+      </div>
 
       {/* FOOTER */}
       <footer className="bg-white dark:bg-stone-900 py-16 px-6 text-center border-t border-stone-100 dark:border-stone-800 transition-colors">
@@ -1983,6 +1984,7 @@ export default function App() {
             <button onClick={(e) => navigateTo('insights', e)} className="hover:text-stone-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer">Insights</button>
             <button onClick={(e) => navigateTo('privacy', e)} className="hover:text-stone-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer">Privacy Policy</button>
             <button onClick={(e) => navigateTo('ai-use', e)} className="hover:text-stone-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer">AI Ethics</button>
+            <button onClick={(e) => navigateTo('hey-ai', e)} className="hover:text-stone-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer">Hey AI</button>
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 mb-10 text-stone-400 dark:text-stone-500">
