@@ -1958,7 +1958,7 @@ export default function App() {
       <div className="bg-[#1c1917] dark:bg-black text-white py-16 px-6 border-t-4 border-amber-600">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
           <div className="w-48 h-48 md:w-72 md:h-72 shrink-0 rounded-[2rem] overflow-hidden border-2 border-stone-800 shadow-2xl">
-            <img src="/Ichigo-Haru-Anko-Yuzu.jpg" alt="Mark, Partner, and 4 Cats" className="w-full h-full object-cover" />
+            <img src="/Ichigo-Haru-Anko-Yuzu.png" alt="Mark, Partner, and 4 Cats" className="w-full h-full object-cover" />
           </div>
           <div>
             <h3 className="text-3xl md:text-5xl font-black mb-6 flex items-center justify-center md:justify-start gap-4 tracking-tight">
