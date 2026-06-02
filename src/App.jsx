@@ -145,8 +145,21 @@ const FUNNEL_DATA = {
       }
     ],
     horizontalVideos: [
-      { title: "Brand Documentary", img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200" },
-      { title: "YouTube Pre-Roll", img: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&q=80&w=1200" }
+      { 
+        title: "Viral Hook 1", 
+        img: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&q=80&w=1200",
+        link: "https://drive.google.com/file/d/1rsnrAqbMVSF4qz3ocXi_9NEfMiXFAOuB/view?usp=sharing"
+      },
+      { 
+        title: "Viral Hook 2", 
+        img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200",
+        link: "https://drive.google.com/file/d/1WNw_gmuitmdBpz2o9Q6kNE39_dKaOPyF/view?usp=sharing"
+      },
+      { 
+        title: "Viral Hook 3", 
+        img: "https://images.unsplash.com/photo-1557672172-298e090bd0f1?auto=format&fit=crop&q=80&w=1200",
+        link: "https://drive.google.com/file/d/1VWUrZ5nDiaLuJiNL_GMr_UqRhD7LP0eU/view?usp=sharing"
+      }
     ],
     websites: [
       { title: "ZBNI Architecture", img: "/Websites/zbniwebsite.png", link: "https://www.zbni.ph" },
@@ -1501,22 +1514,26 @@ export default function App() {
                   </div>
                 </Reveal>
 
-                {/* Horizontal Videos */}
+                {/* Viral Hooks Campaign */}
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
                     <Film className="text-stone-300 dark:text-stone-600" size={32}/>
-                    <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Cinematic 16:9 Video</h3>
+                    <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Viral Hooks Campaign</h3>
                   </div>
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="grid md:grid-cols-3 gap-8">
                     {FUNNEL_DATA.portfolio.horizontalVideos.map((vid, i) => (
                       <TiltCard key={i} className="group cursor-pointer">
-                        <div className="aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-200 dark:border-stone-800 relative bg-stone-900">
-                          <LazyImage src={vid.img} alt={vid.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
-                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <PlayCircle size={48} className="text-white drop-shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"/>
+                        <a href={vid.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                          <div className="aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-200 dark:border-stone-800 relative bg-stone-900">
+                            <LazyImage src={vid.img} alt={vid.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                              <PlayCircle size={48} className="text-white drop-shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"/>
+                            </div>
                           </div>
-                        </div>
-                        <p className="font-bold text-base mt-4 text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500">{vid.title}</p>
+                          <p className="font-bold text-base mt-4 text-center text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 flex items-center justify-center gap-1">
+                            {vid.title} <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </p>
+                        </a>
                       </TiltCard>
                     ))}
                   </div>
