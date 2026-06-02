@@ -1616,15 +1616,6 @@ export default function App() {
                   </Reveal>
                 </div>
 
-                {/* VIDEO / AFTER SLIDER */}
-                 <Reveal className="mb-16 flex flex-col items-center pt-20 border-t border-stone-200 dark:border-stone-800">
-                  <PlayCircle className="text-stone-300 dark:text-stone-600 mb-4" size={32}/>
-                  <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Visual Engineering</h3>
-                </Reveal>
-                <Reveal><BeforeAfterSlider beforeImage={FUNNEL_DATA.portfolio.videoEditing.before} afterImage={FUNNEL_DATA.portfolio.videoEditing.after} /></Reveal>
-              </div>
-            </section>
-
             {/* TESTIMONIALS */}
             <section id="reviews" data-section className="py-32 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
               <div className="max-w-7xl mx-auto px-6">
