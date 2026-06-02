@@ -1534,7 +1534,7 @@ export default function App() {
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
                     <Film className="text-stone-300 dark:text-stone-600" size={32}/>
-                    <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Cinematic 16:9 Video</h3>
+                    <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">16:9 Videos</h3>
                   </div>
                   <div className="grid md:grid-cols-2 gap-8">
                     {FUNNEL_DATA.portfolio.horizontalVideos.map((vid, i) => (
