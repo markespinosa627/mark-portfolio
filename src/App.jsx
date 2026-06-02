@@ -45,18 +45,20 @@ const ShieldCheck = ({ size = 24, className = "" }) => (
 
 const SiameseCatSVG = () => (
   <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    {/* Refined Siamese Cat Design */}
-    <path d="M6 15C3 15 1 12 1 8" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
-    <path d="M12 17V22" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
-    <path d="M16 17V21" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
-    <path d="M25 17V21" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
-    <path d="M29 17V22" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
-    <path d="M8 15C8 9 13 8 20 8C27 8 32 10 32 15C32 19 27 19 20 19C13 19 8 19 8 15Z" fill="#FDF5E6"/>
-    <path d="M30 11C30 7 33 6 36 6C39 6 40 9 40 12C40 15 37 16 34 16C31 16 30 14 30 11Z" fill="#3A2A22"/>
-    <path d="M31 7L32 2L35 6" fill="#3A2A22"/>
-    <path d="M36 6L39 2L39 7" fill="#3A2A22"/>
-    <circle cx="35" cy="10" r="1" fill="#00BFFF"/>
-    <circle cx="38" cy="10" r="1" fill="#00BFFF"/>
+    {/* Tail */}
+    <path d="M9 14C5 14 2 11 2 7" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    {/* Back Legs */}
+    <path d="M12 16V21C12 21.5 12.5 22 13 22C13.5 22 14 21.5 14 21V17" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    <path d="M16 16V20C16 20.5 16.5 21 17 21C17.5 21 18 20.5 18 20V17" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    {/* Front Legs */}
+    <path d="M24 16V20C24 20.5 24.5 21 25 21C25.5 21 26 20.5 26 20V17" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    <path d="M28 16V21C28 21.5 28.5 22 29 22C29.5 22 30 21.5 30 21V17" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    {/* Body (Cream) */}
+    <path d="M9 14C9 9 14 8 20 8C26 8 30 10 30 14C30 18 25 18 20 18C14 18 9 18 9 14Z" fill="#F3E5D8"/>
+    {/* Head (Dark Brown) */}
+    <circle cx="31" cy="10" r="4.5" fill="#3A2A22"/>
+    {/* Ears */}
+    <path d="M28 8L29 3L32 7L35 3L34 8" fill="#3A2A22"/>
   </svg>
 );
 
@@ -124,19 +126,20 @@ const FUNNEL_DATA = {
       "/Sample-Graphics/sample3.png", "/Sample-Graphics/sample4.png", 
       "/Sample-Graphics/sample5.png", "/Sample-Graphics/sample6.png", 
     ],
+    // ✅ Custom Clickable Vertical Video Links
     verticalVideos: [
       { 
-        title: "TikTok Post", 
+        title: "TikTok Campaign", 
         img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800",
         link: "https://vt.tiktok.com/ZSxwroCjn/"
       },
       { 
-        title: "Facebook Campaign", 
+        title: "Facebook Strategy", 
         img: "https://images.unsplash.com/photo-1588624108865-c49156b6279f?auto=format&fit=crop&q=80&w=800",
         link: "https://www.facebook.com/share/v/1CYu7SVan8/?mibextid=wwXIfr"
       },
       { 
-        title: "Instagram Campaign", 
+        title: "Instagram Reel", 
         img: "https://images.unsplash.com/photo-1611162618828-bc409f073cbf?auto=format&fit=crop&q=80&w=800",
         link: "https://www.instagram.com/reel/DXQqbwykXDF/?igsh=Ym14NXl6eG93a2lw"
       }
@@ -699,12 +702,14 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
     "Staring at the screen won't grow your brand. Clicking the 'Schedule Call' button will. 🐾"
   ];
 
+  // Scroll to bottom
   useEffect(() => {
     if (isOpen) {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isOpen, isLoading]);
 
+  // Typing simulator
   useEffect(() => {
     let interval;
     if (isLoading) {
@@ -718,6 +723,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
     return () => clearInterval(interval);
   }, [isLoading]);
 
+  // Idle Nudge (60s)
   useEffect(() => {
     if (!isOpen || isLoading) return; 
     const timer = setTimeout(() => {
@@ -727,6 +733,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
     return () => clearTimeout(timer);
   }, [messages, isOpen, isLoading]);
 
+  // Initial Tooltip
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!isOpen && messages.length <= 1) {
@@ -825,6 +832,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
                   </div>
                 </div>
                 
+                {/* Dynamic Contextual Buttons appended directly to the bot's message */}
                 {m.isBot && isLastMessage && !isLoading && (
                   <div className="flex flex-wrap gap-2 mt-1 animate-fade-in pl-2">
                     {m.suggestions && m.suggestions.map((suggestion, idx) => (
@@ -907,6 +915,7 @@ const ReviewCarousel = () => {
   const scrollRef = useRef(null);
   const reviews = FUNNEL_DATA.reviews;
   
+  // Drag to scroll logic for desktop
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
@@ -932,7 +941,7 @@ const ReviewCarousel = () => {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2; 
+    const walk = (x - startX) * 2; // Scroll speed multiplier
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
 
@@ -966,6 +975,7 @@ const ReviewCarousel = () => {
         ))}
       </div>
       
+      {/* Desktop / Manual Navigation Buttons */}
       <div className="flex justify-center gap-4 mt-4 pointer-events-auto">
         <button onClick={() => scroll('left')} className="p-3 rounded-full bg-white dark:bg-stone-900 shadow-md border border-stone-200 dark:border-stone-800 hover:bg-amber-50 dark:hover:bg-amber-900/20 text-stone-900 dark:text-white transition-colors cursor-pointer">
           <ArrowLeft size={20} />
@@ -973,6 +983,48 @@ const ReviewCarousel = () => {
         <button onClick={() => scroll('right')} className="p-3 rounded-full bg-white dark:bg-stone-900 shadow-md border border-stone-200 dark:border-stone-800 hover:bg-amber-50 dark:hover:bg-amber-900/20 text-stone-900 dark:text-white transition-colors cursor-pointer">
           <ArrowRight size={20} />
         </button>
+      </div>
+    </div>
+  );
+};
+
+// ============================================================================
+// 🚀 COOKIE BANNER
+// ============================================================================
+const CookieBanner = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+    try {
+      const consent = localStorage.getItem('me_cookie_consent');
+      if (!consent) setTimeout(() => setIsVisible(true), 2000);
+    } catch (e) {
+      setTimeout(() => setIsVisible(true), 2000);
+    }
+  }, []);
+
+  const handleConsent = (type) => {
+    try {
+      localStorage.setItem('me_cookie_consent', type);
+    } catch (e) {}
+    setIsVisible(false);
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="fixed bottom-0 left-0 w-full z-[9999] p-4 md:p-6 animate-fade-in-up pointer-events-none">
+      <div className="max-w-4xl mx-auto bg-[#432818] text-white p-6 md:p-8 rounded-[2rem] shadow-2xl border border-white/10 flex flex-col md:flex-row items-center gap-6 pointer-events-auto">
+        <div className="bg-white/10 p-4 rounded-2xl"><ShieldCheck size={32} className="text-[#DDA15E]"/></div>
+        <div className="flex-1 text-left">
+          <h4 className="font-black text-lg mb-1 tracking-tight text-white">Your privacy, our priority.</h4>
+          <p className="text-sm text-white/70 font-medium leading-relaxed">
+            We use cookies to analyze site traffic, personalize content, and provide a high-conversion browsing experience. By clicking "Accept All", you agree to our data usage policy.
+          </p>
+        </div>
+        <div className="flex gap-3 w-full md:w-auto">
+          <button onClick={() => handleConsent('declined')} className="flex-1 md:flex-none px-6 py-3 rounded-xl border border-white/20 text-sm font-bold hover:bg-white/5 transition-colors text-white cursor-pointer">Decline</button>
+          <button onClick={() => handleConsent('accepted')} className="flex-1 md:flex-none px-8 py-3 rounded-xl bg-[#D97706] text-white text-sm font-black uppercase tracking-widest hover:bg-[#B45309] transition-all shadow-lg active:scale-95 cursor-pointer">Accept All</button>
+        </div>
       </div>
     </div>
   );
@@ -1413,17 +1465,19 @@ export default function App() {
                     const MIcon = m.icon;
                     return (
                       <Reveal key={i} delay={i*100}>
-                        <TiltCard className="text-center p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-[#FAFAF9] dark:bg-stone-950 shadow-sm hover:shadow-xl hover:border-amber-600 transition-all cursor-pointer group" onClick={() => setActiveCaseStudy(m)}>
+                        <TiltCard className="text-center p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-[#FAFAF9] dark:bg-stone-950 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(217,119,6,0.1)] hover:border-amber-600 dark:hover:border-amber-500 transition-all duration-500 cursor-pointer group relative overflow-hidden" onClick={() => setActiveCaseStudy(m)}>
                           <div className="absolute top-4 right-4 bg-stone-100 dark:bg-stone-800 text-stone-400 p-2 rounded-full group-hover:bg-amber-100 group-hover:text-amber-600 transition-colors">
                             <Maximize2 size={14} />
                           </div>
-                          <MIcon className="text-stone-300 dark:text-stone-600 mb-6 mx-auto group-hover:text-amber-600 transition-colors duration-500" size={32} />
-                          <p className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white mb-2 tracking-tight group-hover:scale-105 transition-transform duration-500">
+                          <MIcon className="text-stone-300 dark:text-stone-600 mb-6 mx-auto group-hover:text-amber-600 transition-colors duration-500" size={36} />
+                          <p className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white mb-3 tracking-tight group-hover:scale-110 transition-transform duration-500 will-change-transform">
                             <CountUp end={m.value} prefix={m.prefix} suffix={m.suffix} decimals={m.decimals} />
                           </p>
-                          <p className="text-stone-500 dark:text-stone-400 font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2">
-                            {m.label} <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
-                          </p>
+                          <div className="inline-flex items-center justify-center gap-2 bg-stone-50 dark:bg-stone-950 px-4 py-2 rounded-full border border-stone-100 dark:border-stone-800 group-hover:border-amber-200 dark:group-hover:border-amber-900/50 transition-colors">
+                            <p className="text-stone-500 dark:text-stone-400 font-bold text-[10px] uppercase tracking-widest group-hover:text-amber-700 dark:group-hover:text-amber-500">
+                              {m.label}
+                            </p>
+                          </div>
                         </TiltCard>
                       </Reveal>
                     );
