@@ -157,7 +157,7 @@ const FUNNEL_DATA = {
       },
       { 
         title: "Viral Hook 3", 
-        img: "https://images.unsplash.com/photo-1557672172-298e090bd0f1?auto=format&fit=crop&q=80&w=1200",
+        img: "https://drive.google.com/file/d/10oZgegaIkq_Wk4cCAhLN_Dg2iKdD66UA/view?usp=sharing",
         link: "https://drive.google.com/file/d/1VWUrZ5nDiaLuJiNL_GMr_UqRhD7LP0eU/view?usp=sharing"
       }
     ],
