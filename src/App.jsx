@@ -45,17 +45,18 @@ const ShieldCheck = ({ size = 24, className = "" }) => (
 
 const SiameseCatSVG = () => (
   <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 15C8 9 13 8 20 8C27 8 32 10 32 15C32 19 27 19 20 19C13 19 8 19 8 15Z" fill="#FDF5E6"/>
+    {/* Refined Siamese Cat Design */}
     <path d="M6 15C3 15 1 12 1 8" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
     <path d="M12 17V22" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
     <path d="M16 17V21" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
     <path d="M25 17V21" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
     <path d="M29 17V22" stroke="#3A2A22" strokeWidth="2.5" strokeLinecap="round"/>
+    <path d="M8 15C8 9 13 8 20 8C27 8 32 10 32 15C32 19 27 19 20 19C13 19 8 19 8 15Z" fill="#FDF5E6"/>
     <path d="M30 11C30 7 33 6 36 6C39 6 40 9 40 12C40 15 37 16 34 16C31 16 30 14 30 11Z" fill="#3A2A22"/>
     <path d="M31 7L32 2L35 6" fill="#3A2A22"/>
     <path d="M36 6L39 2L39 7" fill="#3A2A22"/>
-    <circle cx="35" cy="10" r="1.2" fill="#00BFFF"/>
-    <circle cx="38" cy="10" r="1.2" fill="#00BFFF"/>
+    <circle cx="35" cy="10" r="1" fill="#00BFFF"/>
+    <circle cx="38" cy="10" r="1" fill="#00BFFF"/>
   </svg>
 );
 
@@ -124,9 +125,21 @@ const FUNNEL_DATA = {
       "/Sample-Graphics/sample5.png", "/Sample-Graphics/sample6.png", 
     ],
     verticalVideos: [
-      { title: "TikTok Campaign 1", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800" },
-      { title: "IG Reel Strategy", img: "https://images.unsplash.com/photo-1588624108865-c49156b6279f?auto=format&fit=crop&q=80&w=800" },
-      { title: "Short-form Ad", img: "https://images.unsplash.com/photo-1611162618828-bc409f073cbf?auto=format&fit=crop&q=80&w=800" }
+      { 
+        title: "TikTok Post", 
+        img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800",
+        link: "https://vt.tiktok.com/ZSxwroCjn/"
+      },
+      { 
+        title: "Facebook Campaign", 
+        img: "https://images.unsplash.com/photo-1588624108865-c49156b6279f?auto=format&fit=crop&q=80&w=800",
+        link: "https://www.facebook.com/share/v/1CYu7SVan8/?mibextid=wwXIfr"
+      },
+      { 
+        title: "Instagram Campaign", 
+        img: "https://images.unsplash.com/photo-1611162618828-bc409f073cbf?auto=format&fit=crop&q=80&w=800",
+        link: "https://www.instagram.com/reel/DXQqbwykXDF/?igsh=Ym14NXl6eG93a2lw"
+      }
     ],
     horizontalVideos: [
       { title: "Brand Documentary", img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200" },
@@ -888,48 +901,6 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
 };
 
 // ============================================================================
-// 🚀 COOKIE BANNER
-// ============================================================================
-const CookieBanner = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  useEffect(() => {
-    try {
-      const consent = localStorage.getItem('me_cookie_consent');
-      if (!consent) setTimeout(() => setIsVisible(true), 2000);
-    } catch (e) {
-      setTimeout(() => setIsVisible(true), 2000);
-    }
-  }, []);
-
-  const handleConsent = (type) => {
-    try {
-      localStorage.setItem('me_cookie_consent', type);
-    } catch (e) {}
-    setIsVisible(false);
-  };
-
-  if (!isVisible) return null;
-
-  return (
-    <div className="fixed bottom-0 left-0 w-full z-[9999] p-4 md:p-6 animate-fade-in-up pointer-events-none">
-      <div className="max-w-4xl mx-auto bg-[#432818] text-white p-6 md:p-8 rounded-[2rem] shadow-2xl border border-white/10 flex flex-col md:flex-row items-center gap-6 pointer-events-auto">
-        <div className="bg-white/10 p-4 rounded-2xl"><ShieldCheck size={32} className="text-[#DDA15E]"/></div>
-        <div className="flex-1 text-left">
-          <h4 className="font-black text-lg mb-1 tracking-tight text-white">Your privacy, our priority.</h4>
-          <p className="text-sm text-white/70 font-medium leading-relaxed">
-            We use cookies to analyze site traffic, personalize content, and provide a high-conversion browsing experience. By clicking "Accept All", you agree to our data usage policy.
-          </p>
-        </div>
-        <div className="flex gap-3 w-full md:w-auto">
-          <button onClick={() => handleConsent('declined')} className="flex-1 md:flex-none px-6 py-3 rounded-xl border border-white/20 text-sm font-bold hover:bg-white/5 transition-colors text-white cursor-pointer">Decline</button>
-          <button onClick={() => handleConsent('accepted')} className="flex-1 md:flex-none px-8 py-3 rounded-xl bg-[#D97706] text-white text-sm font-black uppercase tracking-widest hover:bg-[#B45309] transition-all shadow-lg active:scale-95 cursor-pointer">Accept All</button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// ============================================================================
 // 🚀 REVIEW CAROUSEL WITH MANUAL + NATIVE SCROLL
 // ============================================================================
 const ReviewCarousel = () => {
@@ -1159,6 +1130,18 @@ export default function App() {
   }, [darkMode]);
 
   useEffect(() => {
+    const path = window.location.pathname.replace('/', '') || 'home';
+    if (['home', 'about', 'privacy', 'ai-use', 'insights'].includes(path)) {
+      setActivePage(path);
+    }
+
+    const handlePopState = () => {
+      const newPath = window.location.pathname.replace('/', '') || 'home';
+      setActivePage(newPath);
+      setActivePost(null);
+    };
+    window.addEventListener('popstate', handlePopState);
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -1188,6 +1171,7 @@ export default function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('popstate', handlePopState);
       observer.disconnect();
     };
   }, []);
@@ -1213,7 +1197,11 @@ export default function App() {
 
   const safePushState = (url) => {
     try {
-      if (window.location.protocol !== 'blob:' && window.location.origin !== 'null' && typeof window.history !== 'undefined') {
+      const isHistoryAccessible = window.location.protocol !== 'blob:' && 
+                                 window.location.origin !== 'null' &&
+                                 typeof window.history !== 'undefined';
+      
+      if (isHistoryAccessible) {
         window.history.pushState({}, '', url);
       }
     } catch (err) {
@@ -1425,19 +1413,17 @@ export default function App() {
                     const MIcon = m.icon;
                     return (
                       <Reveal key={i} delay={i*100}>
-                        <TiltCard className="text-center p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(217,119,6,0.1)] hover:border-amber-600 dark:hover:border-amber-500 transition-all duration-500 cursor-pointer group relative overflow-hidden" onClick={() => setActiveCaseStudy(m)}>
+                        <TiltCard className="text-center p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-[#FAFAF9] dark:bg-stone-950 shadow-sm hover:shadow-xl hover:border-amber-600 transition-all cursor-pointer group" onClick={() => setActiveCaseStudy(m)}>
                           <div className="absolute top-4 right-4 bg-stone-100 dark:bg-stone-800 text-stone-400 p-2 rounded-full group-hover:bg-amber-100 group-hover:text-amber-600 transition-colors">
                             <Maximize2 size={14} />
                           </div>
-                          <MIcon className="text-stone-300 dark:text-stone-600 mb-6 mx-auto group-hover:text-amber-600 transition-colors duration-500" size={36} />
-                          <p className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white mb-3 tracking-tight group-hover:scale-110 transition-transform duration-500 will-change-transform">
+                          <MIcon className="text-stone-300 dark:text-stone-600 mb-6 mx-auto group-hover:text-amber-600 transition-colors duration-500" size={32} />
+                          <p className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white mb-2 tracking-tight group-hover:scale-105 transition-transform duration-500">
                             <CountUp end={m.value} prefix={m.prefix} suffix={m.suffix} decimals={m.decimals} />
                           </p>
-                          <div className="inline-flex items-center justify-center gap-2 bg-stone-50 dark:bg-stone-950 px-4 py-2 rounded-full border border-stone-100 dark:border-stone-800 group-hover:border-amber-200 dark:group-hover:border-amber-900/50 transition-colors">
-                            <p className="text-stone-500 dark:text-stone-400 font-bold text-[10px] uppercase tracking-widest group-hover:text-amber-700 dark:group-hover:text-amber-500">
-                              {m.label}
-                            </p>
-                          </div>
+                          <p className="text-stone-500 dark:text-stone-400 font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2">
+                            {m.label} <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
+                          </p>
                         </TiltCard>
                       </Reveal>
                     );
@@ -1465,7 +1451,7 @@ export default function App() {
                   </div>
                 </Reveal>
 
-                {/* Vertical Videos */}
+                {/* Vertical Videos - UPDATED TO CLICKABLE LINKS */}
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
                     <Smartphone className="text-stone-300 dark:text-stone-600" size={32}/>
@@ -1474,13 +1460,17 @@ export default function App() {
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                     {FUNNEL_DATA.portfolio.verticalVideos.map((vid, i) => (
                       <TiltCard key={i} className="group cursor-pointer">
-                        <div className="aspect-[9/16] rounded-3xl overflow-hidden shadow-sm border-4 border-stone-100 dark:border-stone-800 relative bg-stone-900">
-                          <LazyImage src={vid.img} alt={vid.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
-                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <PlayCircle size={48} className="text-white drop-shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"/>
+                        <a href={vid.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                          <div className="aspect-[9/16] rounded-3xl overflow-hidden shadow-sm border-4 border-stone-100 dark:border-stone-800 relative bg-stone-900">
+                            <LazyImage src={vid.img} alt={vid.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                              <PlayCircle size={48} className="text-white drop-shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"/>
+                            </div>
                           </div>
-                        </div>
-                        <p className="font-bold text-sm mt-4 text-center text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500">{vid.title}</p>
+                          <p className="font-bold text-sm mt-4 text-center text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 flex items-center justify-center gap-1">
+                            {vid.title} <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </p>
+                        </a>
                       </TiltCard>
                     ))}
                   </div>
