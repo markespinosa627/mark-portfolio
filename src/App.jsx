@@ -152,10 +152,6 @@ const FUNNEL_DATA = {
       { title: "ZBNI Architecture", img: "/Websites/zbniwebsite.png", link: "https://www.zbni.ph" },
       { title: "Kevin Paige E-Commerce", img: "/Websites/kevinpaigeartwebsite.png", link: "https://www.kevinpaigeart.com" }
     ],
-    videoEditing: {
-      before: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200",
-      after: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200"  
-    },
     writing: {
       articles: [
         { title: "From Storyboards to the Big Screen", snippet: "Anak TV Sinebata Workshop Batch 1 empowers children to declare 'Hear My Voice'...", link: "https://anaktv.ph/from-storyboards-to-the-big-screen-anak-tv-sinebata-workshop-batch-1-empowers-children-to-declare-hear-my-voice/" },
@@ -381,31 +377,6 @@ const BrandLogo = ({ client }) => {
       className="h-10 md:h-14 w-auto min-w-[80px] object-contain grayscale opacity-40 dark:opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
       onError={() => setHasError(true)}
     />
-  );
-};
-
-// ============================================================================
-// 🚀 BEFORE/AFTER SLIDER
-// ============================================================================
-const BeforeAfterSlider = ({ beforeImage, afterImage }) => {
-  const [sliderPosition, setSliderPosition] = useState(50);
-  const containerRef = useRef(null);
-  const handleMove = (e) => {
-    if (!containerRef.current) return;
-    const { left, width } = containerRef.current.getBoundingClientRect();
-    const x = (e.touches ? e.touches[0].clientX : e.clientX) - left;
-    setSliderPosition(Math.max(0, Math.min(100, (x / width) * 100)));
-  };
-  return (
-    <div ref={containerRef} className="relative w-full aspect-video rounded-2xl overflow-hidden cursor-ew-resize select-none touch-none shadow-sm border border-stone-200 dark:border-stone-800" onMouseMove={handleMove} onTouchMove={handleMove}>
-      <LazyImage src={afterImage} className="absolute inset-0 w-full h-full object-cover pointer-events-none" alt="After" />
-      <div className="absolute inset-0 w-full h-full" style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}>
-        <LazyImage src={beforeImage} className="absolute inset-0 w-full h-full object-cover pointer-events-none" alt="Before" />
-      </div>
-      <div className="absolute top-0 bottom-0 w-0.5 bg-white shadow-sm pointer-events-none" style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-md border border-stone-100 flex items-center justify-center text-stone-400"><MoveHorizontal size={14} /></div>
-      </div>
-    </div>
   );
 };
 
@@ -1534,7 +1505,7 @@ export default function App() {
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
                     <Film className="text-stone-300 dark:text-stone-600" size={32}/>
-                    <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">16:9 Videos</h3>
+                    <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Cinematic 16:9 Video</h3>
                   </div>
                   <div className="grid md:grid-cols-2 gap-8">
                     {FUNNEL_DATA.portfolio.horizontalVideos.map((vid, i) => (
@@ -1615,6 +1586,8 @@ export default function App() {
                     </ul>
                   </Reveal>
                 </div>
+              </div>
+            </section>
 
             {/* TESTIMONIALS */}
             <section id="reviews" data-section className="py-32 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
