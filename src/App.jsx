@@ -130,10 +130,10 @@ const FUNNEL_DATA = {
     ],
     // ✅ UPDATED VIRAL HOOKS CAMPAIGN DATA ✅
     horizontalVideos: [
-      { title: "Viral Hook 1", img: "/ViralHooks/dogdancing-thumb1.png", link: "https://drive.google.com/file/d/1rsnrAqbMVSF4qz3ocXi_9NEfMiXFAOuB/view?usp=sharing" },
+     { title: "Viral Hook 1", img: "/ViralHooks/dogdancing-thumb1.png", link: "https://drive.google.com/file/d/1rsnrAqbMVSF4qz3ocXi_9NEfMiXFAOuB/view?usp=sharing" },
       { title: "Viral Hook 2", img: "/ViralHooks/kidfalling-thumb2.png", link: "https://drive.google.com/file/d/1WNw_gmuitmdBpz2o9Q6kNE39_dKaOPyF/view?usp=sharing" },
       { title: "Viral Hook 3", img: "/ViralHooks/iloveit-thumb3.png", link: "https://drive.google.com/file/d/1VWUrZ5nDiaLuJiNL_GMr_UqRhD7LP0eU/view?usp=sharing" }
-    ]
+    ],
     websites: [
       { title: "ZBNI Architecture", img: "/Websites/zbniwebsite.png", link: "https://www.zbni.ph" },
       { title: "Kevin Paige E-Commerce", img: "/Websites/kevinpaigeartwebsite.png", link: "https://www.kevinpaigeart.com" }
