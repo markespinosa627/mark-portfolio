@@ -1770,6 +1770,28 @@ export default function App() {
                 </div>
               </div>
 
+              <div className="mt-12 pt-24 border-t border-stone-200 dark:border-stone-800">
+                <Reveal className="mb-16 flex flex-col items-center text-center">
+                  <PlayCircle className="text-stone-300 dark:text-stone-600 mb-4" size={48} />
+                  <h3 className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white tracking-tight mb-4">Introduction</h3>
+                  <p className="text-stone-500 dark:text-stone-400 text-lg max-w-2xl">A quick introduction to myself and my strategic process.</p>
+                </Reveal>
+                
+                <Reveal delay={100} className="max-w-4xl mx-auto">
+                  <div className="relative w-full aspect-video rounded-[2rem] overflow-hidden shadow-2xl border border-stone-100 dark:border-stone-800 bg-stone-900">
+                    <iframe 
+                      className="w-full h-full absolute top-0 left-0"
+                      src="https://www.youtube.com/embed/dgtNB5xZOPE?si=_jFM0jWAWYSojYk3&amp;start=2" 
+                      title="YouTube video player" 
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                      referrerPolicy="strict-origin-when-cross-origin" 
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </Reveal>
+              </div>
+
             </section>
           </div>
         )}
@@ -1952,7 +1974,7 @@ export default function App() {
       <div className="bg-[#1c1917] dark:bg-black text-white py-16 px-6 border-t-4 border-amber-600 mt-12">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
           <div className="w-48 h-48 md:w-72 md:h-72 shrink-0 rounded-[2rem] overflow-hidden border-2 border-stone-800 shadow-2xl">
-            <img src="/Ichigo-Haru-Anko-Yuzu.png" alt="Mark, Partner, and 4 Cats" className="w-full h-full object-cover" />
+            <img src="/Ichigo-Haru-Anko-Yuzu.jpg" alt="Mark, Partner, and 4 Cats" className="w-full h-full object-cover" />
           </div>
           <div>
             <h3 className="text-3xl md:text-5xl font-black mb-6 flex items-center justify-center md:justify-start gap-4 tracking-tight">
