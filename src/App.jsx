@@ -87,6 +87,7 @@ const FUNNEL_DATA = {
     { name: "The 216 Scoop", fb: "https://www.facebook.com/the216scoop", logo: "/logos/landscape_The_216_Scoop_-_Horizontal_-_Solid.avif" },
     { name: "Americans Health", fb: "https://www.facebook.com/AmericansHealth", logo: "/logos/AH.png" },
     { name: "Live Music In Cleveland", fb: "https://www.facebook.com/LMIC", logo: "/logos/LMIC.avif" }
+    { name: "Woodcreek Family Dental", fb: "https://www.yourmurphydoctor.com", logo: "/logos/woodcreek.png" }
   ],
   caseStudy: {
     hook: "How we generated 5.47M organic reach and grew link clicks by 1,566%.",
