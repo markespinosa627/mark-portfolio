@@ -74,6 +74,7 @@ const FUNNEL_DATA = {
     }
   },
   brands: [
+    { name: "Woodcreek Family Dental", website: "https://www.yourmurphydoctor.com", logo: "/logos/woodcreek.png" }
     { name: "ZBNI", fb: "https://www.facebook.com/ZBNIofficial", logo: "/logos/zbni.webp" },
     { name: "A2Z", fb: "https://www.facebook.com/A2ZChannel11", logo: "/logos/A2Z_Channel_11_Logo.png" },
     { name: "Light TV", fb: "https://www.facebook.com/LightTVGodsChannelofBlessings", logo: "/logos/Light_TV_Logo_2025.webp" },
@@ -87,7 +88,6 @@ const FUNNEL_DATA = {
     { name: "The 216 Scoop", fb: "https://www.facebook.com/the216scoop", logo: "/logos/landscape_The_216_Scoop_-_Horizontal_-_Solid.avif" },
     { name: "Americans Health", fb: "https://www.facebook.com/AmericansHealth", logo: "/logos/AH.png" },
     { name: "Live Music In Cleveland", fb: "https://www.facebook.com/LMIC", logo: "/logos/LMIC.avif" }
-    { name: "Woodcreek Family Dental", fb: "https://www.yourmurphydoctor.com", logo: "/logos/woodcreek.png" }
   ],
   caseStudy: {
     hook: "How we generated 5.47M organic reach and grew link clicks by 1,566%.",
