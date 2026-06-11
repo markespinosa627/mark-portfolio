@@ -206,12 +206,12 @@ const CV_DATA = {
     { show: "#PTVNEWSTONIGHT", title: "UNESCO MEDIA WORKSHOP", network: "PTV", img: "/Interviews/PTV.png", link: "https://www.facebook.com/watch/?v=5837386186340729" }
   ],
   experience: [
-    { role: "Lead Digital & Social Media Strategist", company: "ME digital", period: "Jan 2025 – Present", description: "Directing comprehensive social media strategies, audience growth, and full-funnel marketing campaigns to drive measurable conversions and brand authority." },
-    { role: "Head for Online Media", company: "Zoe Broadcasting Network Inc. (ZBNI)", period: "Nov 2022 – Jan 2025", description: "Spearheaded the network's digital frontier, providing executive leadership for all online media verticals. Orchestrated the synergy between content creation and social media strategy to expand the digital footprint." },
-    { role: "Copy Writer & Development Researcher", company: "The 216 Scoop (Cleveland, USA)", period: "Aug 2024 – Jul 2025", description: "Pioneered a hybrid role at the intersection of creative content and emerging technology. Developed compelling, brand-aligned copy while optimizing digital workflows." },
-    { role: "Communications Director", company: "Black Meta Agency (DC, USA)", period: "Feb 2023 – Dec 2024", description: "Directed the agency's comprehensive communications strategy, shaping a cohesive brand narrative across all internal and external channels. Drove brand equity by developing and executing impactful campaigns and managing multi-platform media outreach." },
-    { role: "Copy Writer", company: "Zoe Broadcasting Network Inc. (ZBNI)", period: "Nov 2020 – Nov 2022", description: "Operated as a versatile content specialist, blending creative copywriting with data-driven strategy. Conceptualized, developed, and launched new online shows, contributing to the initial growth of the network's digital presence." },
-    { role: "Subject Matter Expert & Customer Specialist", company: "Alorica Philippines", period: "Mar 2018 – Aug 2019", description: "Served as a key escalation point and knowledge leader, blending deep subject matter expertise with advanced customer relations skills. Championed customer satisfaction and retention by resolving complex inquiries." }
+    { role: "Head for Online Media", company: "Zoe Broadcasting Network Inc. (ZBNI)", period: "January 2025 - Present", description: "Spearheaded the network's digital frontier, providing executive leadership for all online media verticals. Orchestrated the synergy between content creation, social media strategy, and emerging technologies (Al, app/web/software development) to expand the digital footprint, drive technological innovation, and redefine audience engagement in a rapidly evolving market." },
+    { role: "Unit Head for New Media", company: "Zoe Broadcasting Network Inc. (ZBNI)", period: "November 2022 - January 2025", description: "Spearheaded the network's digital frontier, providing executive leadership for all online media verticals. Orchestrated the synergy between content creation, social media strategy, and emerging technologies (Al, app/web/software development) to expand the digital footprint, drive technological innovation, and redefine audience engagement in a rapidly evolving market." },
+    { role: "Copy Writer & Al Development Researcher", company: "The 216 Scoop (Cleveland, USA)", period: "August 2024 - July 2025", description: "Pioneered a hybrid role at the intersection of creative content and emerging technology. Developed compelling, brand-aligned copy while concurrently researching and analyzing the practical integration of Al tools for content generation, workflow optimization, and identifying new avenues for audience engagement." },
+    { role: "Communications Director", company: "Black Meta Agency (District of Columbia, USA)", period: "February 2023 - December 2024", description: "Directed the agency's comprehensive communications strategy, shaping a cohesive brand narrative across all internal and external channels. Drove brand equity and achieved strategic goals by developing and executing impactful campaigns, overseeing public relations, and managing multi-platform media outreach for a diverse portfolio of clients." },
+    { role: "Copy Writer", company: "Zoe Broadcasting Network Inc. (ZBNI)", period: "November 2020 - November 2022", description: "Operated as a versatile content specialist, blending creative copywriting with data-driven strategy. Leveraged analytics and in-depth research to craft compelling, high-engagement online content. Played a key production role in conceptualizing, developing, and launching new online shows, contributing to the initial growth of the network's digital presence." },
+    { role: "Subject Matter Expert & Customer Specialist", company: "Alorica Philippines", period: "March 2018 - August 2019", description: "Served as a key escalation point and knowledge leader, blending deep subject matter expertise with advanced customer relations skills. Championed customer satisfaction and retention by resolving complex inquiries, de-escalating critical situations, and providing expert-level support and coaching to both clients and internal teams." }
   ],
   education: [
     { degree: "Mastering Content Creation & Social Media Production", school: "The Next Academy by iAcademy Makati", year: "Class of 2025", description: "A specialized program focused on advanced techniques in digital content development, production workflows, and social media strategy." },
@@ -577,14 +577,10 @@ const fireChickenRain = () => {
   const emojis = ['🍗', '🐔', '🍗'];
   for (let i = 0; i < 40; i++) {
     const c = document.createElement('div');
-    c.className = 'chicken-drop pointer-events-none'; 
+    c.className = 'chicken-drop pointer-events-none fixed z-[99999]';
     c.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    c.style.position = 'fixed';
-    c.style.top = '-50px';
     c.style.left = Math.random() * 100 + 'vw';
     c.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
-    c.style.zIndex = '999999'; 
-    c.style.pointerEvents = 'none';
     c.style.animation = `fall-chicken ${Math.random() * 2 + 2}s linear forwards`;
     c.style.animationDelay = (Math.random() * 0.5) + 's';
     document.body.appendChild(c);
