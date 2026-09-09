@@ -176,9 +176,10 @@ const FUNNEL_DATA = {
   // logo), and `image` (a headshot) to any review below and it'll appear automatically —
   // fields left blank are simply hidden, so it's safe to fill these in gradually.
   reviews: [
-    { text: "Produces copy fast! I have no regrets working with Mark!", author: "Mateo V.", role: "", company: "", logo: "", image: "" },
-    { text: "The best social media guy! Saved me hours of work with AI!", author: "Seth Y.", role: "", company: "", logo: "", image: "" },
-    { text: "Easy to collaborate with and a fast learner!", author: "Madelyn N.", role: "", company: "", logo: "", image: "" },
+    { text: "I worked with Mark and was pleased with his thinking and his communication which was the best I have experienced with a VA.", author: "Marc O.", Area Director: "", Christian Business Mens Connection - Orange County, California: "", logo: "", image: "" },
+    { text: "Produces copy fast! I have no regrets working with Mark, we gained 100k newsletter subscribers with him!", author: "Mateo V.", Founder: "", Live Music In Cleveland: "", logo: "", image: "" },
+    { text: "The best social media guy! Saved me hours of work with AI!", author: "Seth Y.", CEO: "", Yates Naturopatic Clinic: "", logo: "", image: "" },
+    { text: "Easy to collaborate with and a fast learner!", author: "Madelyn N.", Co-Founder: "", Great Scott Marketing: "", logo: "", image: "" },
     { text: "Mark's digital strategy completely transformed our engagement.", author: "Lucas R.", role: "", company: "", logo: "", image: "" },
     { text: "Seamless integration of systems into a creative workflow.", author: "Sarah K.", role: "", company: "", logo: "", image: "" }
   ]
