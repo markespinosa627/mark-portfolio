@@ -1605,7 +1605,55 @@ export default function App() {
 
 
 
-            
+// ============================================================================
+// 🚀 COOKIE BANNER
+// ============================================================================
+
+  insights: [
+    { 
+      id: "storyboards-to-big-screen",
+      title: "From Storyboards to the Big Screen", 
+      date: "March 2026", readTime: "4 min read",
+      snippet: "Anak TV Sinebata Workshop Batch 1 empowers children to declare 'Hear My Voice'...", 
+      content: "Empowering the next generation of storytellers is paramount. In this immersive workshop, children were taught how to translate their raw imaginations into compelling visual storyboards, ultimately giving them the confidence to declare, 'Hear My Voice.' The integration of accessible digital tools proved that premium storytelling is no longer gatekept by high-end studio budgets.",
+      externalLink: "https://anaktv.ph/from-storyboards-to-the-big-screen-anak-tv-sinebata-workshop-batch-1-empowers-children-to-declare-hear-my-voice/" 
+    },
+    { 
+      id: "wage-hike-approved",
+      title: "₱200 Wage Hike Approved", 
+      date: "June 2025", readTime: "3 min read",
+      snippet: "Kamara, inaprubahan ang wage hike para sa mga minimum wage earners...", 
+      content: "In a pivotal legislative move, the chamber officially approved a ₱200 daily wage increase for minimum wage earners. This shift not only impacts the local economy but directly influences consumer purchasing power, changing how digital marketers must approach ad spend and targeting strategies in the coming fiscal year.",
+      externalLink: "https://zbni.ph/2025/06/04/%E2%82%B1200-na-dagdag-sahod-bawat-araw-kamara-inaprubahan-ang-wage-hike-para-sa-mga-minimum-wage-earners/" 
+    },
+    { 
+      id: "live-music-cleveland",
+      title: "Live Music in Cleveland", 
+      date: "December 2025", readTime: "5 min read",
+      snippet: "Weekend Gig Guide: Dec 27th - 29th. The best live music events happening around the city...", 
+      content: "Building localized digital communities requires hyper-specific content. The Weekend Gig Guide for Cleveland serves as a perfect case study in capturing localized search intent. By curating the city's top live music events, we established a recurring, high-engagement digital property that drives consistent returning traffic.",
+      externalLink: "https://livemusicincleveland.com/p/dec-27th-29th" 
+    }
+  ],
+  reviews: [
+    { 
+      text: "Produces copy fast! I have no regrets working with Mark! The workflow automations saved our team dozens of hours.", 
+      author: "Mateo V.", title: "Operations Manager", business: "Black Meta Agency", 
+      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150", logo: "/
+
+
+
+            <section id="lead-capture" data-section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
+              <div className="max-w-3xl mx-auto px-6 text-center">
+                <Reveal>
+                  <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-stone-900 dark:text-white">Ready to amplify?</h2>
+                  <p className="text-stone-500 dark:text-stone-400 text-lg mb-12">Message me directly to discuss your digital transformation.</p>
+                  <MagneticWrapper onClick={() => handleTriggerContact('select', null)} className="inline-flex items-center gap-3 bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all cursor-pointer border-none w-fit mx-auto">
+                    Send Message <Send size={16} />
+                  </MagneticWrapper>
+                </Reveal>
+              </div>
+            </section>
           </div>
         )}
 
