@@ -124,11 +124,7 @@ const FUNNEL_DATA = {
       "/Sample-Graphics/sample3.png", "/Sample-Graphics/sample4.png", 
       "/Sample-Graphics/sample5.png", "/Sample-Graphics/sample6.png", 
     ],
-    verticalVideos: [
-      { title: "TikTok Campaign 1", img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800" },
-      { title: "IG Reel Strategy", img: "https://images.unsplash.com/photo-1588624108865-c49156b6279f?auto=format&fit=crop&q=80&w=800" },
-      { title: "Short-form Ad", img: "https://images.unsplash.com/photo-1611162618828-bc409f073cbf?auto=format&fit=crop&q=80&w=800" }
-    ],
+
     viralHooks: [
       { title: "Viral Hook 1", img: "/ViralHooks/dogdancing-thumb1.png", link: "https://drive.google.com/file/d/1rsnrAqbMVSF4qz3ocXi_9NEfMiXFAOuB/view?usp=sharing" },
       { title: "Viral Hook 2", img: "/ViralHooks/kidfalling-thumb2.png", link: "https://drive.google.com/file/d/1WNw_gmuitmdBpz2o9Q6kNE39_dKaOPyF/view?usp=sharing" },
@@ -1492,30 +1488,6 @@ export default function App() {
 
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
-                    <Smartphone className="text-stone-300 dark:text-stone-600" size={32}/>
-                    <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Vertical Content (Reels/TikTok)</h3>
-                  </div>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                    {FUNNEL_DATA.portfolio.verticalVideos.map((vid, i) => (
-                      <TiltCard key={i} className="group cursor-pointer">
-                        <a href={vid.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
-                          <div className="aspect-[9/16] rounded-3xl overflow-hidden shadow-sm border-4 border-stone-100 dark:border-stone-800 relative bg-stone-900">
-                            <LazyImage src={vid.img} alt={vid.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
-                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                              <PlayCircle size={48} className="text-white drop-shadow-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"/>
-                            </div>
-                          </div>
-                          <p className="font-bold text-sm mt-4 text-center text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 flex items-center justify-center gap-1">
-                            {vid.title} <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </p>
-                        </a>
-                      </TiltCard>
-                    ))}
-                  </div>
-                </Reveal>
-
-                <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
-                  <div className="flex items-center gap-3 mb-6">
                     <Film className="text-stone-300 dark:text-stone-600" size={32}/>
                     <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Viral Hooks Campaign</h3>
                   </div>
@@ -1603,45 +1575,16 @@ export default function App() {
               </div>
             </section>
 
-
-
-// ============================================================================
-// 🚀 COOKIE BANNER
-// ============================================================================
-
-  insights: [
-    { 
-      id: "storyboards-to-big-screen",
-      title: "From Storyboards to the Big Screen", 
-      date: "March 2026", readTime: "4 min read",
-      snippet: "Anak TV Sinebata Workshop Batch 1 empowers children to declare 'Hear My Voice'...", 
-      content: "Empowering the next generation of storytellers is paramount. In this immersive workshop, children were taught how to translate their raw imaginations into compelling visual storyboards, ultimately giving them the confidence to declare, 'Hear My Voice.' The integration of accessible digital tools proved that premium storytelling is no longer gatekept by high-end studio budgets.",
-      externalLink: "https://anaktv.ph/from-storyboards-to-the-big-screen-anak-tv-sinebata-workshop-batch-1-empowers-children-to-declare-hear-my-voice/" 
-    },
-    { 
-      id: "wage-hike-approved",
-      title: "₱200 Wage Hike Approved", 
-      date: "June 2025", readTime: "3 min read",
-      snippet: "Kamara, inaprubahan ang wage hike para sa mga minimum wage earners...", 
-      content: "In a pivotal legislative move, the chamber officially approved a ₱200 daily wage increase for minimum wage earners. This shift not only impacts the local economy but directly influences consumer purchasing power, changing how digital marketers must approach ad spend and targeting strategies in the coming fiscal year.",
-      externalLink: "https://zbni.ph/2025/06/04/%E2%82%B1200-na-dagdag-sahod-bawat-araw-kamara-inaprubahan-ang-wage-hike-para-sa-mga-minimum-wage-earners/" 
-    },
-    { 
-      id: "live-music-cleveland",
-      title: "Live Music in Cleveland", 
-      date: "December 2025", readTime: "5 min read",
-      snippet: "Weekend Gig Guide: Dec 27th - 29th. The best live music events happening around the city...", 
-      content: "Building localized digital communities requires hyper-specific content. The Weekend Gig Guide for Cleveland serves as a perfect case study in capturing localized search intent. By curating the city's top live music events, we established a recurring, high-engagement digital property that drives consistent returning traffic.",
-      externalLink: "https://livemusicincleveland.com/p/dec-27th-29th" 
-    }
-  ],
-  reviews: [
-    { 
-      text: "Produces copy fast! I have no regrets working with Mark! The workflow automations saved our team dozens of hours.", 
-      author: "Mateo V.", title: "Operations Manager", business: "Black Meta Agency", 
-      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150", logo: "/
-
-
+            <section id="reviews" data-section className="py-32 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
+              <div className="max-w-7xl mx-auto px-6">
+                <Reveal className="text-center mb-16">
+                  <span className="text-amber-600 font-bold font-mono text-[10px] uppercase tracking-widest block mb-4">The Verdict</span>
+                  <h2 className="text-4xl md:text-6xl font-black tracking-tight text-stone-900 dark:text-white">Client Success</h2>
+                </Reveal>
+                
+                <Reveal delay={100}><ReviewCarousel /></Reveal>
+              </div>
+            </section>
 
             <section id="lead-capture" data-section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-3xl mx-auto px-6 text-center">
