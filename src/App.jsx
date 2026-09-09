@@ -1603,16 +1603,193 @@ export default function App() {
               </div>
             </section>
 
-            <section id="reviews" data-section className="py-32 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
-              <div className="max-w-7xl mx-auto px-6">
-                <Reveal className="text-center mb-16">
-                  <span className="text-amber-600 font-bold font-mono text-[10px] uppercase tracking-widest block mb-4">The Verdict</span>
-                  <h2 className="text-4xl md:text-6xl font-black tracking-tight text-stone-900 dark:text-white">Client Success</h2>
-                </Reveal>
-                
-                <Reveal delay={100}><ReviewCarousel /></Reveal>
+// ============================================================================
+// 🚀 REVIEWS / CLIENT SUCESS SECTION
+// ============================================================================
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  TrendingUp, Users, MousePointerClick, CheckCircle2, 
+  ArrowRight, Star, Send, Award, PlayCircle, Image as ImageIcon,
+  ChevronRight, Phone, Mail, MoveHorizontal, Monitor,
+  Briefcase, GraduationCap, Tv, TerminalSquare, Menu, X, 
+  Download, MessageCircle, Maximize2, Calculator, Calendar,
+  Globe, Laptop, MonitorSmartphone, FileText, Newspaper,
+  ShieldAlert, BarChart3, Smartphone, Film, ExternalLink,
+  BookOpen, Cpu, DownloadCloud, AtSign, Contact,
+  ArrowLeft, Loader2, MessageSquare
+} from 'lucide-react';
+
+// ============================================================================
+// 🚀 REVIEW CAROUSEL WITH MANUAL + NATIVE SCROLL
+// ============================================================================
+const ReviewCarousel = () => {
+  const scrollRef = useRef(null);
+  const reviews = FUNNEL_DATA.reviews;
+  
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // 🚀 Auto-scroll every 5 seconds, pauses if hovering or dragging
+  useEffect(() => {
+    if (isHovered || isDragging) return;
+    
+    const interval = setInterval(() => {
+      if (scrollRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        // If we reach the end, smoothly loop back to the start
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          scrollRef.current.scrollBy({ left: clientWidth, behavior: 'smooth' });
+        }
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isHovered, isDragging]);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const { clientWidth } = scrollRef.current;
+      const scrollAmount = direction === 'left' ? -clientWidth : clientWidth;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => setIsDragging(false);
+  const handleMouseUp = () => setIsDragging(false);
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2; 
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  return (
+    <div 
+      className="relative w-full max-w-6xl mx-auto px-4"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div 
+        ref={scrollRef}
+        onMouseDown={handleMouseDown}
+        onMouseLeave={handleMouseLeave}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        className={`w-full overflow-x-auto snap-x snap-mandatory flex gap-6 pb-8 hide-scrollbar px-6 md:px-0 scroll-smooth touch-pan-x ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+      >
+        {reviews.map((review, idx) => (
+          <div key={idx} className="w-[85vw] md:w-[450px] snap-center flex-shrink-0">
+            <div className="bg-white p-8 md:p-10 rounded-[2rem] border border-stone-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_40px_rgb(217,119,6,0.1)] hover:border-[#D97706]/40 h-full flex flex-col justify-between relative overflow-hidden group transition-all duration-500">
+              
+              {/* Premium Amber Hover Glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#D97706]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
+              <div className="relative z-10">
+                <div className="flex gap-1 mb-6 text-left">
+                  {[1, 2, 3, 4, 5].map((s) => <Star key={s} className="text-[#D97706] fill-[#D97706]" size={14} />)}
+                </div>
+                <p className="text-lg md:text-xl font-medium text-[#432818] leading-relaxed text-left tracking-tight">"{review.text}"</p>
               </div>
-            </section>
+
+              <div className="mt-8 flex items-center justify-between text-left relative z-10 pt-6 border-t border-stone-100">
+                <div className="flex items-center gap-4">
+                  {/* Photo Profile */}
+                  {review.photo ? (
+                    <div className="w-12 h-12 rounded-full overflow-hidden border border-stone-200 shrink-0 shadow-sm bg-stone-50">
+                      <LazyImage src={review.photo} alt={review.author} className="w-full h-full object-cover" />
+                    </div>
+                  ) : (
+                    <div className="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center text-stone-400 shrink-0">
+                      <Users size={20} />
+                    </div>
+                  )}
+                  
+                  {/* Name and Title */}
+                  <div>
+                    <p className="text-sm font-black text-[#432818] tracking-tight">{review.author}</p>
+                    {review.title && review.business && (
+                      <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mt-1">
+                        {review.title} <span className="mx-1 text-[#D97706]">•</span> {review.business}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                
+                {/* Desaturated Logo that colorizes on hover */}
+                {review.logo && (
+                  <div className="w-10 h-10 shrink-0 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 hidden sm:block">
+                    <LazyImage src={review.logo} alt={review.business} className="w-full h-full object-contain" />
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div className="flex justify-center gap-4 mt-4 pointer-events-auto">
+        <button onClick={() => scroll('left')} className="p-3 rounded-full bg-white shadow-md border border-stone-200 hover:bg-[#FAFAF9] text-[#432818] hover:text-[#D97706] hover:border-[#D97706]/40 transition-all cursor-pointer">
+          <ArrowLeft size={20} />
+        </button>
+        <button onClick={() => scroll('right')} className="p-3 rounded-full bg-white shadow-md border border-stone-200 hover:bg-[#FAFAF9] text-[#432818] hover:text-[#D97706] hover:border-[#D97706]/40 transition-all cursor-pointer">
+          <ArrowRight size={20} />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// ============================================================================
+// 🚀 COOKIE BANNER
+        { title: "Americans Health Insights", snippet: "New brain imaging method spots Alzheimer's-linked protein in latest medical breakthrough...", link: "https://americanshealth.beehiiv.com/p/first-name-new-brain-imaging-method-spots-alzheimer-s-linked-protein?_bhlid=6f81ea42c863486b848c764176d6e7de4bf6c8c0&last_resource_guid=Post%3Ab108cde5-e89e-4ab9-b71b-fb65efc695c8&jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWJzY3JpYmVyX2lkIjoiOWQxMmE4ZDktMjY4OC00OTU0LWIwNjEtNGEyNGRlZmNhNDAzIiwicHVibGljYXRpb25faWQiOiJjZWQyZTgxNS05MjFlLTQ0MWItYmQ1Zi01MDAzMDc2ODkwMmQiLCJhY2Nlc3NfdHlwZSI6InJlYWQtb25seSIsImV4cCI6MTc3MzU4Njk2NywiaXNzIjoiaHR0cHM6Ly9hcHAuYmVlaGlpdi5jb20iLCJpYXQiOjE3NzM0MTQxNjd9.MX9qNhUyfedaOU6-G-yrk9dHo2tX3soRkeqxd1woz2w" }
+      ]
+    }
+  },
+  insights: [
+    { 
+      id: "storyboards-to-big-screen",
+      title: "From Storyboards to the Big Screen", 
+      date: "March 2026", readTime: "4 min read",
+      snippet: "Anak TV Sinebata Workshop Batch 1 empowers children to declare 'Hear My Voice'...", 
+      content: "Empowering the next generation of storytellers is paramount. In this immersive workshop, children were taught how to translate their raw imaginations into compelling visual storyboards, ultimately giving them the confidence to declare, 'Hear My Voice.' The integration of accessible digital tools proved that premium storytelling is no longer gatekept by high-end studio budgets.",
+      externalLink: "https://anaktv.ph/from-storyboards-to-the-big-screen-anak-tv-sinebata-workshop-batch-1-empowers-children-to-declare-hear-my-voice/" 
+    },
+    { 
+      id: "wage-hike-approved",
+      title: "₱200 Wage Hike Approved", 
+      date: "June 2025", readTime: "3 min read",
+      snippet: "Kamara, inaprubahan ang wage hike para sa mga minimum wage earners...", 
+      content: "In a pivotal legislative move, the chamber officially approved a ₱200 daily wage increase for minimum wage earners. This shift not only impacts the local economy but directly influences consumer purchasing power, changing how digital marketers must approach ad spend and targeting strategies in the coming fiscal year.",
+      externalLink: "https://zbni.ph/2025/06/04/%E2%82%B1200-na-dagdag-sahod-bawat-araw-kamara-inaprubahan-ang-wage-hike-para-sa-mga-minimum-wage-earners/" 
+    },
+    { 
+      id: "live-music-cleveland",
+      title: "Live Music in Cleveland", 
+      date: "December 2025", readTime: "5 min read",
+      snippet: "Weekend Gig Guide: Dec 27th - 29th. The best live music events happening around the city...", 
+      content: "Building localized digital communities requires hyper-specific content. The Weekend Gig Guide for Cleveland serves as a perfect case study in capturing localized search intent. By curating the city's top live music events, we established a recurring, high-engagement digital property that drives consistent returning traffic.",
+      externalLink: "https://livemusicincleveland.com/p/dec-27th-29th" 
+    }
+  ],
+  reviews: [
+    { 
+      text: "Produces copy fast! I have no regrets working with Mark! The workflow automations saved our team dozens of hours.", 
+      author: "Mateo V.", title: "Operations Manager", business: "Black Meta Agency", 
+      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150", logo: "/
+
+
 
             <section id="lead-capture" data-section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-3xl mx-auto px-6 text-center">
