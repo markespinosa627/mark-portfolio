@@ -65,8 +65,9 @@ const SiameseCatSVG = () => (
 const FUNNEL_DATA = {
   brand: {
     name: "ME digital",
-    headline: "Stop blending in. Start dominating.",
-    subheadline: "I engineer brilliant social media strategies and high-converting digital marketing systems that turn your audience into loyal customers on autopilot.",
+    headline: "Overwhelmed by the algorithm?",
+    headlineAccent: "Leave the digital to ME.",
+    subheadline: "I design marketing systems, AI workflows, and CRM pipelines that run your growth on autopilot — so you can get back to running the business.",
     contact: {
       email: "hello@markespinosa.com",
       whatsapp: "https://wa.me/639209062796", 
@@ -347,7 +348,7 @@ const BrandLogo = ({ client }) => {
   const [hasError, setHasError] = useState(false);
   if (hasError || !client.logo) {
     return (
-      <span className="font-black text-2xl md:text-3xl tracking-tighter text-stone-300 dark:text-stone-700 group-hover:text-stone-900 dark:group-hover:text-white transition-colors uppercase whitespace-nowrap px-4">
+      <span className="font-bold text-2xl md:text-3xl tracking-tight text-stone-300 dark:text-stone-700 group-hover:text-stone-900 dark:group-hover:text-white transition-colors uppercase whitespace-nowrap px-4">
         {client.name}
       </span>
     );
@@ -429,7 +430,7 @@ const ContactModal = ({ isOpen, onClose, initialStep = 'select', initialService 
         
         {step === 'select' && (
           <div className="animate-fade-in">
-            <h3 className="text-3xl font-black text-stone-900 dark:text-white mb-2 pr-8">Let's build.</h3>
+            <h3 className="text-3xl font-bold text-stone-900 dark:text-white mb-2 pr-8">Let's build.</h3>
             <p className="text-stone-500 dark:text-stone-400 mb-8">How can I help you dominate your market?</p>
             <div className="flex flex-col gap-3">
               {servicesList.map((svc) => {
@@ -458,7 +459,7 @@ const ContactModal = ({ isOpen, onClose, initialStep = 'select', initialService 
             <div className="w-20 h-20 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6 mt-4">
               <Calendar size={32} className="text-amber-600" />
             </div>
-            <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4">Book Your Session</h3>
+            <h3 className="text-2xl font-bold text-stone-900 dark:text-white mb-4">Book Your Session</h3>
             <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed mb-8">
               You will be redirected to my official Google Calendar portal. It will automatically detect your time zone, capture your details, and instantly email both of us a Google Meet link.
             </p>
@@ -471,7 +472,7 @@ const ContactModal = ({ isOpen, onClose, initialStep = 'select', initialService 
         {(step === 'form' || step === 'sending') && (
           <div className="animate-fade-in">
             <button onClick={() => setStep('select')} className="text-xs font-bold text-stone-400 hover:text-stone-900 dark:hover:text-white uppercase tracking-widest flex items-center gap-1 mb-6 transition-colors cursor-pointer"><ArrowLeft size={14}/> Back</button>
-            <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-6 leading-tight">{service?.label}</h3>
+            <h3 className="text-2xl font-bold text-stone-900 dark:text-white mb-6 leading-tight">{service?.label}</h3>
             
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
@@ -540,21 +541,21 @@ const CaseStudyModal = ({ activeStudy, onClose }) => {
           </div>
           <div>
             <p className="text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-widest">{activeStudy.label}</p>
-            <p className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white tracking-tight">{activeStudy.prefix}{activeStudy.value.toLocaleString()}{activeStudy.suffix}</p>
+            <p className="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white tracking-tight">{activeStudy.prefix}{activeStudy.value.toLocaleString()}{activeStudy.suffix}</p>
           </div>
         </div>
         
         <div className="space-y-6">
           <div className="bg-stone-50 dark:bg-stone-950 p-6 rounded-2xl border border-stone-100 dark:border-stone-800">
-            <p className="text-[10px] font-black text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-2">Client's Problem</p>
+            <p className="text-[10px] font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-2">Client's Problem</p>
             <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed font-medium">{activeStudy.details.problem}</p>
           </div>
           <div className="bg-amber-50 dark:bg-amber-900/10 p-6 rounded-2xl border border-amber-100 dark:border-amber-900/20">
-            <p className="text-[10px] font-black text-amber-600 dark:text-amber-500 uppercase tracking-widest mb-2">Our Solution</p>
+            <p className="text-[10px] font-bold text-amber-600 dark:text-amber-500 uppercase tracking-widest mb-2">Our Solution</p>
             <p className="text-sm text-amber-900 dark:text-amber-100 leading-relaxed font-medium">{activeStudy.details.strategy}</p>
           </div>
           <div className="bg-stone-900 dark:bg-stone-800 p-6 rounded-2xl">
-            <p className="text-[10px] font-black text-stone-400 uppercase tracking-widest mb-2">The Outcome</p>
+            <p className="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-2">The Outcome</p>
             <p className="text-sm text-white leading-relaxed font-medium">{activeStudy.details.result}</p>
           </div>
         </div>
@@ -809,7 +810,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
               <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border border-white rounded-full"></span>
             </div>
             <div>
-              <h4 className="font-black text-sm text-stone-900 dark:text-white uppercase tracking-widest leading-none">Ichigo</h4>
+              <h4 className="font-bold text-sm text-stone-900 dark:text-white uppercase tracking-widest leading-none">Ichigo</h4>
               <p className="text-[10px] text-amber-600 font-bold mt-1">Feline Happiness Manager</p>
             </div>
           </div>
@@ -1015,14 +1016,14 @@ const CookieBanner = () => {
       <div className="max-w-4xl mx-auto bg-[#432818] text-white p-6 md:p-8 rounded-[2rem] shadow-2xl border border-white/10 flex flex-col md:flex-row items-center gap-6 pointer-events-auto">
         <div className="bg-white/10 p-4 rounded-2xl"><ShieldCheck size={32} className="text-[#DDA15E]"/></div>
         <div className="flex-1 text-left">
-          <h4 className="font-black text-lg mb-1 tracking-tight text-white">Your privacy, our priority.</h4>
+          <h4 className="font-bold text-lg mb-1 tracking-tight text-white">Your privacy, our priority.</h4>
           <p className="text-sm text-white/70 font-medium leading-relaxed">
             We use cookies to analyze site traffic, personalize content, and provide a high-conversion browsing experience. By clicking "Accept All", you agree to our data usage policy.
           </p>
         </div>
         <div className="flex gap-3 w-full md:w-auto">
           <button onClick={() => handleConsent('declined')} className="flex-1 md:flex-none px-6 py-3 rounded-xl border border-white/20 text-sm font-bold hover:bg-white/5 transition-colors text-white cursor-pointer">Decline</button>
-          <button onClick={() => handleConsent('accepted')} className="flex-1 md:flex-none px-8 py-3 rounded-xl bg-[#D97706] text-white text-sm font-black uppercase tracking-widest hover:bg-[#B45309] transition-all shadow-lg active:scale-95 cursor-pointer">Accept All</button>
+          <button onClick={() => handleConsent('accepted')} className="flex-1 md:flex-none px-8 py-3 rounded-xl bg-[#D97706] text-white text-sm font-bold uppercase tracking-widest hover:bg-[#B45309] transition-all shadow-lg active:scale-95 cursor-pointer">Accept All</button>
         </div>
       </div>
     </div>
@@ -1100,7 +1101,7 @@ const SocialAuditTool = ({ onTriggerContact }) => {
               ))}
             </div>
           </div>
-          <h3 className="text-2xl md:text-3xl font-black text-stone-900 dark:text-white mb-10 leading-tight">{questions[step].q}</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-stone-900 dark:text-white mb-10 leading-tight">{questions[step].q}</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {questions[step].options.map((opt, idx) => (
               <button key={idx} onClick={() => handleAnswer(opt.points)} className="bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-700 dark:text-stone-300 p-5 rounded-2xl font-bold text-left hover:bg-stone-900 dark:hover:bg-amber-600 hover:text-white dark:hover:text-white hover:border-stone-900 dark:hover:border-amber-600 transition-all active:scale-95 group flex items-center justify-between cursor-pointer">
@@ -1116,11 +1117,11 @@ const SocialAuditTool = ({ onTriggerContact }) => {
           <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
             <Mail className="text-amber-600 dark:text-amber-500" size={32} />
           </div>
-          <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4">Audit Complete!</h3>
+          <h3 className="text-2xl font-bold text-stone-900 dark:text-white mb-4">Audit Complete!</h3>
           <p className="text-stone-500 dark:text-stone-400 font-medium mb-8">Enter your email below to instantly reveal your Growth Grade and custom strategy.</p>
           <form onSubmit={handleEmailSubmit} className="flex flex-col gap-4">
             <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your best email..." className="w-full px-6 py-4 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 focus:border-amber-600 outline-none font-medium text-center text-stone-900 dark:text-white transition-colors" />
-            <MagneticWrapper type="submit" disabled={isSubmitting} className="w-full py-4 rounded-xl font-black text-white bg-stone-900 dark:bg-white dark:text-stone-900 hover:bg-amber-600 dark:hover:bg-amber-500 transition-all uppercase tracking-widest text-sm flex justify-center items-center gap-2 cursor-pointer border-none">
+            <MagneticWrapper type="submit" disabled={isSubmitting} className="w-full py-4 rounded-xl font-bold text-white bg-stone-900 dark:bg-white dark:text-stone-900 hover:bg-amber-600 dark:hover:bg-amber-500 transition-all uppercase tracking-widest text-sm flex justify-center items-center gap-2 cursor-pointer border-none">
               {isSubmitting ? <Loader2 size={16} className="animate-spin" /> : null}
               {isSubmitting ? 'Processing...' : 'Reveal My Results'}
             </MagneticWrapper>
@@ -1133,11 +1134,11 @@ const SocialAuditTool = ({ onTriggerContact }) => {
             <BarChart3 className="text-amber-600 dark:text-amber-500" size={40} />
           </div>
           <h3 className="text-stone-400 font-mono text-xs uppercase tracking-[0.3em] mb-2 font-bold">Your Growth Grade</h3>
-          <p className={`text-5xl md:text-6xl font-black mb-6 ${getAuditResult().color}`}>{getAuditResult().label}</p>
+          <p className={`text-5xl md:text-6xl font-bold mb-6 ${getAuditResult().color}`}>{getAuditResult().label}</p>
           <p className="text-stone-600 dark:text-stone-300 text-lg font-medium mb-10 max-w-md mx-auto leading-relaxed">{getAuditResult().advice}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button onClick={() => { setStep(0); setScore(0); setEmail(''); setShowResult(false); }} className="text-stone-400 font-bold text-sm hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer">Retake Audit</button>
-            <MagneticWrapper onClick={() => onTriggerContact('select', null)} className="bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 transition-all cursor-pointer border-none">Book Strategy Call</MagneticWrapper>
+            <MagneticWrapper onClick={() => onTriggerContact('select', null)} className="bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 transition-all cursor-pointer border-none">Book Strategy Call</MagneticWrapper>
           </div>
         </div>
       )}
@@ -1314,7 +1315,7 @@ export default function App() {
           <div className="bg-white dark:bg-stone-900 rounded-[2rem] p-10 max-w-lg text-center shadow-2xl relative" onClick={e => e.stopPropagation()}>
             <button onClick={() => setShowExitIntent(false)} className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 dark:hover:text-white cursor-pointer"><X size={24}/></button>
             <div className="w-20 h-20 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6"><TrendingUp size={32} className="text-amber-600" /></div>
-            <h3 className="text-4xl font-black text-stone-900 dark:text-white mb-4 tracking-tight">Leaving so soon?</h3>
+            <h3 className="text-4xl font-bold text-stone-900 dark:text-white mb-4 tracking-tight">Leaving so soon?</h3>
             <p className="text-stone-500 dark:text-stone-400 mb-8">Don't leave your digital growth to chance. Let's map out a custom AI strategy for your brand—completely free.</p>
             <MagneticWrapper onClick={() => { setShowExitIntent(false); handleTriggerContact('select', null); }} className="w-full bg-amber-600 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs shadow-lg hover:bg-stone-900 dark:hover:bg-white dark:hover:text-stone-900 transition-all cursor-pointer border-none">Claim Strategy Session</MagneticWrapper>
             <button onClick={() => setShowExitIntent(false)} className="mt-4 text-xs font-bold text-stone-400 hover:text-stone-900 dark:hover:text-white uppercase tracking-widest cursor-pointer">No thanks, I hate growth</button>
@@ -1346,7 +1347,7 @@ export default function App() {
       {/* 🧭 NAVIGATION */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-stone-950/90 backdrop-blur-md shadow-sm border-b border-stone-100 dark:border-stone-800 py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-          <button onClick={(e) => navigateTo('home', e)} className="font-black text-2xl tracking-tighter text-stone-900 dark:text-white cursor-pointer">
+          <button onClick={(e) => navigateTo('home', e)} className="font-bold text-2xl tracking-tight text-stone-900 dark:text-white cursor-pointer">
             ME<span className="text-amber-600">digital</span>
           </button>
           
@@ -1379,11 +1380,11 @@ export default function App() {
       {/* MOBILE MENU */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[49] bg-white dark:bg-stone-950 flex flex-col p-8 space-y-8 md:hidden pt-32 animate-fade-in">
-          <button onClick={(e) => navigateTo('home', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">Works</button>
-          <button onClick={(e) => navigateTo('about', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">About & CV</button>
-          <button onClick={(e) => navigateTo('insights', e)} className="text-4xl font-black text-left text-stone-900 dark:text-white cursor-pointer">Insights</button>
+          <button onClick={(e) => navigateTo('home', e)} className="text-4xl font-bold text-left text-stone-900 dark:text-white cursor-pointer">Works</button>
+          <button onClick={(e) => navigateTo('about', e)} className="text-4xl font-bold text-left text-stone-900 dark:text-white cursor-pointer">About & CV</button>
+          <button onClick={(e) => navigateTo('insights', e)} className="text-4xl font-bold text-left text-stone-900 dark:text-white cursor-pointer">Insights</button>
           {/* ✅ FIXED MOBILE MENU BUTTON -> DIRECT WHATSAPP */}
-          <a href={FUNNEL_DATA.brand.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="text-4xl font-black text-[#25D366] text-left cursor-pointer flex items-center gap-4">
+          <a href={FUNNEL_DATA.brand.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="text-4xl font-bold text-[#25D366] text-left cursor-pointer flex items-center gap-4">
             <MessageSquare size={36}/> WhatsApp Me
           </a>
         </div>
@@ -1397,20 +1398,30 @@ export default function App() {
         {activePage === 'home' && (
           <div className="overflow-x-hidden">
             
-            <section id="hero" data-section className="pt-48 pb-20 px-6 text-center min-h-[85vh] flex flex-col justify-center">
+            <section id="hero" data-section className="pt-48 pb-24 px-6 text-center min-h-[88vh] flex flex-col justify-center relative overflow-hidden">
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-center -z-10">
+                <div className="w-[36rem] h-[36rem] rounded-full bg-amber-200/30 dark:bg-amber-500/10 blur-[120px]"></div>
+              </div>
               <Reveal>
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-100 dark:bg-stone-900 text-stone-500 dark:text-stone-400 font-semibold text-[10px] uppercase tracking-[0.2em] mb-8 border border-stone-200 dark:border-stone-800">
-                  Automation & Growth Strategy
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 dark:bg-stone-900/70 backdrop-blur text-stone-500 dark:text-stone-400 font-medium text-[10px] uppercase tracking-[0.2em] mb-10 border border-stone-200 dark:border-stone-800">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                  Digital Marketing · AI Automation · CRM
                 </div>
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-stone-900 dark:text-white leading-[1.05] tracking-tighter max-w-5xl mx-auto mb-8 transition-colors">
-                  Stop blending in.<br/>Start dominating.
+                <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold text-stone-900 dark:text-white leading-[1.1] tracking-tight max-w-4xl mx-auto mb-6 transition-colors">
+                  {FUNNEL_DATA.brand.headline}
+                  <span className="block mt-1 text-amber-600 dark:text-amber-500">{FUNNEL_DATA.brand.headlineAccent}</span>
                 </h1>
-                <p className="text-lg md:text-xl text-stone-500 dark:text-stone-400 max-w-2xl mx-auto mb-12 font-normal leading-relaxed">
+                <p className="text-lg md:text-xl text-stone-500 dark:text-stone-400 max-w-xl mx-auto mb-12 font-normal leading-relaxed">
                   {FUNNEL_DATA.brand.subheadline}
                 </p>
-                <MagneticWrapper onClick={() => handleTriggerContact('select', null)} className="group bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-xl flex items-center gap-3 mx-auto hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all cursor-pointer border-none w-fit">
-                  Start Project <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
-                </MagneticWrapper>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <MagneticWrapper onClick={() => handleTriggerContact('select', null)} className="group bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-9 py-4 rounded-full font-medium text-sm shadow-lg shadow-stone-900/10 flex items-center gap-3 hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all cursor-pointer border-none w-fit">
+                    Book a strategy call <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
+                  </MagneticWrapper>
+                  <button onClick={() => document.getElementById('audit')?.scrollIntoView({behavior:'smooth'})} className="px-9 py-4 rounded-full font-medium text-sm text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 transition-all cursor-pointer bg-transparent">
+                    See how it works
+                  </button>
+                </div>
               </Reveal>
             </section>
 
@@ -1435,7 +1446,7 @@ export default function App() {
               <div className="max-w-5xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
                   <span className="text-amber-600 font-bold font-mono text-[10px] uppercase tracking-widest block mb-4">Interactive Audit</span>
-                  <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight text-stone-900 dark:text-white">Is your strategy failing?</h2>
+                  <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight text-stone-900 dark:text-white">Is your strategy failing?</h2>
                   <p className="text-stone-500 dark:text-stone-400 text-lg max-w-2xl mx-auto">Most brands post without a system. Use this quick audit to find your biggest growth bottleneck.</p>
                 </Reveal>
                 <Reveal delay={200}><SocialAuditTool onTriggerContact={handleTriggerContact} /></Reveal>
@@ -1445,17 +1456,17 @@ export default function App() {
             <section id="metrics" data-section className="py-32 bg-white dark:bg-stone-900 border-y border-stone-200 dark:border-stone-800">
               <div className="max-w-6xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
-                  <p className="text-sm font-bold text-amber-600 uppercase tracking-widest mb-4">Proven Results</p>
-                  <h3 className="text-2xl md:text-3xl font-black text-stone-900 dark:text-white max-w-2xl mx-auto leading-tight">{FUNNEL_DATA.caseStudy.hook}</h3>
+                  <p className="text-xs font-semibold text-amber-600 uppercase tracking-[0.2em] mb-4">Proven Results</p>
+                  <h3 className="text-2xl md:text-3xl font-semibold text-stone-900 dark:text-white max-w-2xl mx-auto leading-snug tracking-tight">{FUNNEL_DATA.caseStudy.hook}</h3>
                 </Reveal>
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-3 gap-6">
                   {FUNNEL_DATA.caseStudy.metrics.map((m, i) => {
                     const MIcon = m.icon;
                     return (
                       <Reveal key={i} delay={i*100}>
-                        <TiltCard className="text-center p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-[#FAFAF9] dark:bg-stone-950 shadow-sm hover:shadow-xl hover:border-amber-600 transition-all cursor-pointer group" onClick={() => setActiveCaseStudy(m)}>
+                        <TiltCard className="text-center p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-950 shadow-sm hover:shadow-lg hover:border-amber-600/60 transition-all cursor-pointer group" onClick={() => setActiveCaseStudy(m)}>
                           <MIcon className="text-stone-300 dark:text-stone-600 mb-6 mx-auto group-hover:text-amber-600 transition-colors duration-500" size={32} />
-                          <p className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white mb-2 tracking-tight group-hover:scale-105 transition-transform duration-500">
+                          <p className="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white mb-2 tracking-tight group-hover:scale-105 transition-transform duration-500">
                             <CountUp end={m.value} prefix={m.prefix} suffix={m.suffix} decimals={m.decimals} />
                           </p>
                           <p className="text-stone-500 dark:text-stone-400 font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2">
@@ -1475,7 +1486,7 @@ export default function App() {
                 <Reveal className="mb-12">
                   <div className="flex items-center gap-3 mb-6">
                     <ImageIcon className="text-stone-300 dark:text-stone-600" size={32}/>
-                    <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Sample Graphics</h3>
+                    <h3 className="text-3xl font-bold text-stone-900 dark:text-white tracking-tight">Sample Graphics</h3>
                   </div>
                   <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
                     {FUNNEL_DATA.portfolio.graphics.map((img, i) => (
@@ -1489,7 +1500,7 @@ export default function App() {
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
                     <Film className="text-stone-300 dark:text-stone-600" size={32}/>
-                    <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Viral Hooks Campaign</h3>
+                    <h3 className="text-3xl font-bold text-stone-900 dark:text-white tracking-tight">Viral Hooks Campaign</h3>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                     {FUNNEL_DATA.portfolio.viralHooks.map((vid, i) => (
@@ -1513,7 +1524,7 @@ export default function App() {
                 <Reveal className="mb-12 pt-16 border-t border-stone-200 dark:border-stone-800">
                   <div className="flex items-center gap-3 mb-6">
                     <Monitor className="text-stone-300 dark:text-stone-600" size={32}/>
-                    <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Digital Architectures</h3>
+                    <h3 className="text-3xl font-bold text-stone-900 dark:text-white tracking-tight">Digital Architectures</h3>
                   </div>
                   <div className="grid md:grid-cols-2 gap-12">
                     {FUNNEL_DATA.portfolio.websites.map((s, i) => (
@@ -1540,7 +1551,7 @@ export default function App() {
                   <Reveal>
                     <div className="flex items-center gap-3 mb-8">
                       <FileText className="text-stone-400 dark:text-stone-500" size={24} />
-                      <h4 className="text-xl font-black text-stone-900 dark:text-white">Articles & Copy</h4>
+                      <h4 className="text-xl font-bold text-stone-900 dark:text-white">Articles & Copy</h4>
                     </div>
                     <ul className="space-y-6">
                       {FUNNEL_DATA.portfolio.writing.articles.map((art, idx) => (
@@ -1557,7 +1568,7 @@ export default function App() {
                   <Reveal delay={100}>
                     <div className="flex items-center gap-3 mb-8">
                       <Newspaper className="text-stone-400 dark:text-stone-500" size={24} />
-                      <h4 className="text-xl font-black text-stone-900 dark:text-white">Newsletters</h4>
+                      <h4 className="text-xl font-bold text-stone-900 dark:text-white">Newsletters</h4>
                     </div>
                     <ul className="space-y-6">
                       {FUNNEL_DATA.portfolio.writing.newsletters.map((news, idx) => (
@@ -1579,7 +1590,7 @@ export default function App() {
               <div className="max-w-7xl mx-auto px-6">
                 <Reveal className="text-center mb-16">
                   <span className="text-amber-600 font-bold font-mono text-[10px] uppercase tracking-widest block mb-4">The Verdict</span>
-                  <h2 className="text-4xl md:text-6xl font-black tracking-tight text-stone-900 dark:text-white">Client Success</h2>
+                  <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-stone-900 dark:text-white">Client Success</h2>
                 </Reveal>
                 
                 <Reveal delay={100}><ReviewCarousel /></Reveal>
@@ -1589,7 +1600,7 @@ export default function App() {
             <section id="lead-capture" data-section className="py-32 bg-[#FAFAF9] dark:bg-stone-950">
               <div className="max-w-3xl mx-auto px-6 text-center">
                 <Reveal>
-                  <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-stone-900 dark:text-white">Ready to amplify?</h2>
+                  <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-stone-900 dark:text-white">Ready to amplify?</h2>
                   <p className="text-stone-500 dark:text-stone-400 text-lg mb-12">Message me directly to discuss your digital transformation.</p>
                   <MagneticWrapper onClick={() => handleTriggerContact('select', null)} className="inline-flex items-center gap-3 bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all cursor-pointer border-none w-fit mx-auto">
                     Send Message <Send size={16} />
@@ -1608,7 +1619,7 @@ export default function App() {
                  <div className="w-40 h-40 rounded-full overflow-hidden mb-8 border border-stone-200 dark:border-stone-800 shadow-lg">
                   <LazyImage src={CV_DATA.profile.image} alt="Profile" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
                 </div>
-                <h1 className="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-stone-900 dark:text-white">{CV_DATA.profile.name}</h1>
+                <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight text-stone-900 dark:text-white">{CV_DATA.profile.name}</h1>
                 <h2 className="text-sm font-bold text-stone-500 dark:text-stone-400 mb-8 uppercase tracking-[0.2em]">{CV_DATA.profile.title}</h2>
                 <div className="flex flex-wrap justify-center gap-4 mb-10">
                   <button onClick={() => handleTriggerContact('select', null)} className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-bold text-xs uppercase tracking-widest shadow-sm cursor-pointer"><Mail size={16} /> Email Me</button>
@@ -1625,7 +1636,7 @@ export default function App() {
                   <div className="mb-24">
                     <Reveal className="mb-10 flex items-center gap-3">
                       <Briefcase className="text-stone-300 dark:text-stone-600" size={32} />
-                      <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Experience</h3>
+                      <h3 className="text-3xl font-bold text-stone-900 dark:text-white tracking-tight">Experience</h3>
                     </Reveal>
                     <div className="space-y-12 border-l border-stone-200 dark:border-stone-800 pl-8 ml-4">
                       {CV_DATA.experience.map((job, i) => (
@@ -1642,7 +1653,7 @@ export default function App() {
                   <div className="mb-24">
                     <Reveal className="mb-10 flex items-center gap-3">
                       <BookOpen className="text-stone-300 dark:text-stone-600" size={32} />
-                      <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Education</h3>
+                      <h3 className="text-3xl font-bold text-stone-900 dark:text-white tracking-tight">Education</h3>
                     </Reveal>
                     <div className="space-y-10 border-l border-stone-200 dark:border-stone-800 pl-8 ml-4">
                       {CV_DATA.education.map((edu, i) => (
@@ -1661,7 +1672,7 @@ export default function App() {
                   <div className="mb-24">
                     <Reveal className="mb-10 flex items-center gap-3">
                       <Cpu className="text-stone-300 dark:text-stone-600" size={32} />
-                      <h3 className="text-3xl font-black text-stone-900 dark:text-white tracking-tight">Capabilities</h3>
+                      <h3 className="text-3xl font-bold text-stone-900 dark:text-white tracking-tight">Capabilities</h3>
                     </Reveal>
                     <div className="space-y-10">
                       {CV_DATA.skills.map((skillGroup, i) => (
@@ -1684,7 +1695,7 @@ export default function App() {
               <div className="mt-12 pt-24 border-t border-stone-200 dark:border-stone-800">
                 <Reveal className="mb-16 flex flex-col items-center text-center">
                   <Tv className="text-stone-300 dark:text-stone-600 mb-4" size={48} />
-                  <h3 className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white tracking-tight mb-4">Interviews & Appearances</h3>
+                  <h3 className="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white tracking-tight mb-4">Interviews & Appearances</h3>
                   <p className="text-stone-500 dark:text-stone-400 text-lg max-w-2xl">Media features and thought leadership across national television networks.</p>
                 </Reveal>
                 
@@ -1701,7 +1712,7 @@ export default function App() {
                           </div>
                         </div>
                         <div className="px-2 pb-2 text-center">
-                          <h4 className="font-black text-xl text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors leading-tight mb-3">{item.title}</h4>
+                          <h4 className="font-bold text-xl text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors leading-tight mb-3">{item.title}</h4>
                           <div className="inline-flex items-center gap-2 bg-stone-50 dark:bg-stone-950 border border-stone-100 dark:border-stone-800 px-4 py-2 rounded-full">
                             <div className="w-2 h-2 rounded-full bg-amber-500"></div>
                             <p className="text-[10px] font-bold text-stone-500 dark:text-stone-400 uppercase tracking-widest">{item.show} • {item.network}</p>
@@ -1716,7 +1727,7 @@ export default function App() {
               <div className="mt-12 pt-24 border-t border-stone-200 dark:border-stone-800">
                 <Reveal className="mb-16 flex flex-col items-center text-center">
                   <Award className="text-stone-300 dark:text-stone-600 mb-4" size={48} />
-                  <h3 className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white tracking-tight mb-4">Certifications</h3>
+                  <h3 className="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white tracking-tight mb-4">Certifications</h3>
                   <p className="text-stone-500 dark:text-stone-400 text-lg max-w-2xl">Continuous learning and professional accreditation in strategy and technology.</p>
                 </Reveal>
                 
@@ -1729,7 +1740,7 @@ export default function App() {
                             <Award size={48} className="text-stone-300 dark:text-stone-700 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors duration-500 group-hover:scale-110" />
                           </div>
                           <div className="px-2 pb-2 text-center flex-1 flex flex-col justify-between">
-                            <h4 className="font-black text-lg text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors leading-tight mb-4">{cert.title}</h4>
+                            <h4 className="font-bold text-lg text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors leading-tight mb-4">{cert.title}</h4>
                             <div className="inline-flex items-center justify-center gap-2 bg-stone-50 dark:bg-stone-950 border border-stone-100 dark:border-stone-800 px-4 py-2 rounded-full mx-auto w-fit">
                               <p className="text-[10px] font-bold text-stone-500 dark:text-stone-400 uppercase tracking-widest">{cert.issuer}</p>
                             </div>
@@ -1744,7 +1755,7 @@ export default function App() {
               <div className="mt-12 pt-24 border-t border-stone-200 dark:border-stone-800">
                 <Reveal className="mb-16 flex flex-col items-center text-center">
                   <PlayCircle className="text-stone-300 dark:text-stone-600 mb-4" size={48} />
-                  <h3 className="text-4xl md:text-5xl font-black text-stone-900 dark:text-white tracking-tight mb-4">Introduction</h3>
+                  <h3 className="text-4xl md:text-5xl font-bold text-stone-900 dark:text-white tracking-tight mb-4">Introduction</h3>
                   <p className="text-stone-500 dark:text-stone-400 text-lg max-w-2xl">A quick introduction to myself and my strategic process.</p>
                 </Reveal>
                 
@@ -1777,7 +1788,7 @@ export default function App() {
                   </button>
                   <div className="mb-12">
                     <p className="text-amber-600 font-bold text-xs uppercase tracking-widest mb-4">{activePost.date} • {activePost.readTime}</p>
-                    <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-stone-900 dark:text-white leading-tight mb-6">{activePost.title}</h1>
+                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-stone-900 dark:text-white leading-tight mb-6">{activePost.title}</h1>
                     <p className="text-xl text-stone-500 dark:text-stone-400 font-medium leading-relaxed">{activePost.snippet}</p>
                   </div>
                   <div className="w-full h-px bg-stone-200 dark:bg-stone-800 mb-12"></div>
@@ -1798,7 +1809,7 @@ export default function App() {
                   <div className="flex items-center gap-4 mb-16">
                     <Newspaper size={48} className="text-amber-600" />
                     <div>
-                      <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-stone-900 dark:text-white">Insights</h1>
+                      <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-stone-900 dark:text-white">Insights</h1>
                       <p className="text-stone-500 dark:text-stone-400 font-medium mt-2">Strategies, updates, and digital marketing breakdowns.</p>
                     </div>
                   </div>
@@ -1813,7 +1824,7 @@ export default function App() {
                                 <p className="text-amber-600 font-bold text-[10px] uppercase tracking-widest bg-amber-50 dark:bg-amber-900/20 px-3 py-1 rounded-full">{post.readTime}</p>
                                 <p className="text-stone-400 font-bold text-[10px] uppercase tracking-widest">{post.date}</p>
                               </div>
-                              <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4 group-hover:text-amber-600 transition-colors leading-tight">{post.title}</h3>
+                              <h3 className="text-2xl font-bold text-stone-900 dark:text-white mb-4 group-hover:text-amber-600 transition-colors leading-tight">{post.title}</h3>
                               <p className="text-stone-500 dark:text-stone-400 leading-relaxed mb-8">{post.snippet}</p>
                             </div>
                             <div className="flex items-center gap-2 text-xs font-bold text-stone-900 dark:text-white uppercase tracking-widest group-hover:text-amber-600 transition-colors">
@@ -1836,7 +1847,7 @@ export default function App() {
               <Reveal>
                 <div className="flex items-center gap-4 mb-10">
                   <TerminalSquare size={48} className="text-amber-600" />
-                  <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-stone-900 dark:text-white">Hey AI, Learn About Us</h1>
+                  <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-stone-900 dark:text-white">Hey AI, Learn About Us</h1>
                 </div>
                 
                 <div className="bg-stone-900 rounded-3xl p-8 shadow-2xl font-mono text-sm leading-relaxed overflow-hidden relative">
@@ -1882,19 +1893,19 @@ export default function App() {
               <Reveal>
                 <div className="flex items-center gap-4 mb-10">
                   <ShieldCheck size={48} className="text-amber-600" />
-                  <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-stone-900 dark:text-white">Privacy Policy</h1>
+                  <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-stone-900 dark:text-white">Privacy Policy</h1>
                 </div>
                 
                 <div className="text-stone-600 dark:text-stone-400">
                   <p className="text-lg font-medium mb-12">Last updated: April 2026. Your privacy is a priority at ME digital.</p>
                   
-                  <h3 className="text-2xl font-black text-stone-900 dark:text-white mt-12 mb-4">1. Data Collection</h3>
+                  <h3 className="text-2xl font-bold text-stone-900 dark:text-white mt-12 mb-4">1. Data Collection</h3>
                   <p className="mb-6 leading-relaxed">When you use the Interactive Social Audit or book a strategy session, we may collect necessary contact information (such as your email address). We use this strictly to deliver the requested value, provide custom audit results, and follow up regarding our services.</p>
                   
-                  <h3 className="text-2xl font-black text-stone-900 dark:text-white mt-12 mb-4">2. Cookie Usage</h3>
+                  <h3 className="text-2xl font-bold text-stone-900 dark:text-white mt-12 mb-4">2. Cookie Usage</h3>
                   <p className="mb-6 leading-relaxed">We use essential and analytics cookies to understand site traffic and optimize your browsing experience. You can opt out via the cookie consent banner at the bottom of the screen.</p>
                   
-                  <h3 className="text-2xl font-black text-stone-900 dark:text-white mt-12 mb-4">3. Data Sharing & Security</h3>
+                  <h3 className="text-2xl font-bold text-stone-900 dark:text-white mt-12 mb-4">3. Data Sharing & Security</h3>
                   <p className="mb-6 leading-relaxed">Your data is never sold to third parties. It is kept secure and only accessed by ME digital personnel for standard business operations and correspondence.</p>
 
                   <div className="mt-16 p-8 bg-white dark:bg-stone-900 rounded-3xl border border-stone-200 dark:border-stone-800">
@@ -1913,24 +1924,24 @@ export default function App() {
               <Reveal>
                 <div className="flex items-center gap-4 mb-10">
                   <Cpu size={48} className="text-amber-600" />
-                  <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-stone-900 dark:text-white">AI Ethics & Usage</h1>
+                  <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-stone-900 dark:text-white">AI Ethics & Usage</h1>
                 </div>
                 
                 <div className="text-stone-600 dark:text-stone-400">
                   <p className="text-xl font-medium text-stone-800 dark:text-stone-300 mb-12 leading-relaxed">Transparency is a core value at ME digital. Here is how we leverage artificial intelligence to power growth strategies while preserving authentic human connection.</p>
                   
                   <div className="mt-8 bg-white dark:bg-stone-900 p-8 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4">Human-in-the-Loop Content</h3>
+                    <h3 className="text-2xl font-bold text-stone-900 dark:text-white mb-4">Human-in-the-Loop Content</h3>
                     <p className="leading-relaxed">We leverage generative AI for ideation, drafting, and rapid prototyping. However, every piece of copy, graphic, and video is meticulously edited, refined, and approved by a human strategist to ensure brand safety, emotional resonance, and pinpoint accuracy.</p>
                   </div>
 
                   <div className="mt-8 bg-white dark:bg-stone-900 p-8 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4">Data-Driven Insights</h3>
+                    <h3 className="text-2xl font-bold text-stone-900 dark:text-white mb-4">Data-Driven Insights</h3>
                     <p className="leading-relaxed">We utilize advanced AI-powered analytics tools to rapidly process social media performance data, identify trends, and spot friction points in sales funnels. The AI organizes the raw data; our human expertise formulates the winning strategy.</p>
                   </div>
 
                   <div className="mt-8 bg-white dark:bg-stone-900 p-8 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="text-2xl font-black text-stone-900 dark:text-white mb-4">Automation & Efficiency</h3>
+                    <h3 className="text-2xl font-bold text-stone-900 dark:text-white mb-4">Automation & Efficiency</h3>
                     <p className="leading-relaxed">AI agents (like our WhatsApp supervisor) and automated workflows are deployed to reduce response times and handle repetitive tasks. This efficiency frees up our human bandwidth for high-level creative problem-solving and strategic thinking.</p>
                   </div>
                 </div>
@@ -1942,19 +1953,19 @@ export default function App() {
       </main>
 
       {/* CATS MISSION BANNER */}
-      <div className="bg-[#1c1917] dark:bg-black text-white py-16 px-6 border-t-4 border-amber-600 mt-12">
+      <div className="bg-[#1c1917] dark:bg-black text-white py-16 px-6 border-t border-stone-200 dark:border-stone-800 mt-12">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
           <div className="w-48 h-48 md:w-72 md:h-72 shrink-0 rounded-[2rem] overflow-hidden border-2 border-stone-800 shadow-2xl">
             <img src="/Ichigo-Haru-Anko-Yuzu.png" alt="Mark, Partner, and 4 Cats" className="w-full h-full object-cover" />
           </div>
           <div>
-            <h3 className="text-3xl md:text-5xl font-black mb-6 flex items-center justify-center md:justify-start gap-4 tracking-tight">
+            <h3 className="text-3xl md:text-5xl font-bold mb-6 flex items-center justify-center md:justify-start gap-4 tracking-tight">
               The Real Masterminds 🐾
             </h3>
             <p className="text-stone-300 text-lg md:text-xl leading-relaxed mb-8 font-medium max-w-2xl">
               Powered by high-converting systems, premium coffee, and a lot of chicken. Every project we take on helps feed our 4 cats and the strays that we meet!
             </p>
-            <MagneticWrapper onClick={() => handleTriggerContact('select', null)} className="inline-block bg-amber-600 text-white px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest shadow-lg hover:bg-white hover:text-stone-900 transition-all cursor-pointer border-none">
+            <MagneticWrapper onClick={() => handleTriggerContact('select', null)} className="inline-block bg-amber-600 text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-white hover:text-stone-900 transition-all cursor-pointer border-none">
               Work With Us
             </MagneticWrapper>
           </div>
@@ -1964,7 +1975,7 @@ export default function App() {
       {/* FOOTER */}
       <footer className="bg-white dark:bg-stone-900 py-16 px-6 text-center border-t border-stone-100 dark:border-stone-800 transition-colors">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
-          <button onClick={(e) => navigateTo('home', e)} className="font-black text-2xl tracking-tighter text-stone-900 dark:text-white mb-8 cursor-pointer">
+          <button onClick={(e) => navigateTo('home', e)} className="font-bold text-2xl tracking-tight text-stone-900 dark:text-white mb-8 cursor-pointer">
             ME<span className="text-amber-600">digital</span>
           </button>
 
