@@ -75,6 +75,7 @@ const FUNNEL_DATA = {
     }
   },
   brands: [
+    { name: "CBMC OC", fb: "https://www.facebook.com/oc.cbmc", logo: "/logos/CBMC-Logo-H.png" }
     { name: "ZBNI", fb: "https://www.facebook.com/ZBNIofficial", logo: "/logos/zbni.webp" },
     { name: "A2Z", fb: "https://www.facebook.com/A2ZChannel11", logo: "/logos/A2Z_Channel_11_Logo.png" },
     { name: "Light TV", fb: "https://www.facebook.com/LightTVGodsChannelofBlessings", logo: "/logos/Light_TV_Logo_2025.webp" },
@@ -180,8 +181,8 @@ const FUNNEL_DATA = {
     { text: "Produces copy fast! I have no regrets working with Mark, we gained 100k newsletter subscribers with him!", author: "Mateo V.", role: "Founder", company: "Live Music In Cleveland", logo: "", image: "" },
     { text: "The best social media guy! Saved me hours of work with AI!", author: "Seth Y.", role: "CEO", company: "Yates Naturopatic Clinic", logo: "", image: "" },
     { text: "Easy to collaborate with and a fast learner!", author: "Madelyn N.", role: "Co-Founder", company: "Great Scott Marketing", logo: "", image: "" },
-    { text: "Mark's digital strategy completely transformed our engagement.", author: "Lucas R.", role: "", company: "", logo: "", image: "" },
-    { text: "Seamless integration of systems into a creative workflow.", author: "Sarah K.", role: "", company: "", logo: "", image: "" }
+    { text: "Mark's digital strategy completely transformed our engagement.", author: "Lucas R.", role: "VP for Marketing", company: "OMG Creamery", logo: "", image: "" },
+    { text: "Seamless integration of systems into a creative workflow.", author: "Sarah K.", role: "Owner", company: "Woodcreek Family Dental", logo: "", image: "" }
   ]
 };
 
