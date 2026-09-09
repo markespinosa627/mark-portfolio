@@ -76,6 +76,7 @@ const FUNNEL_DATA = {
   },
   brands: [
     { name: "CBMC OC", fb: "https://www.facebook.com/oc.cbmc", logo: "/logos/cbmc.png" },
+    { name: "Brighter Days Behavioral Health", fb: "https://www.facebook.com/brighterdaysbh/", logo: "/logos/bdbh.avif" },
     { name: "ZBNI", fb: "https://www.facebook.com/ZBNIofficial", logo: "/logos/zbni.webp" },
     { name: "A2Z", fb: "https://www.facebook.com/A2ZChannel11", logo: "/logos/A2Z_Channel_11_Logo.png" },
     { name: "Light TV", fb: "https://www.facebook.com/LightTVGodsChannelofBlessings", logo: "/logos/Light_TV_Logo_2025.webp" },
