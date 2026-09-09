@@ -181,7 +181,6 @@ const FUNNEL_DATA = {
     { text: "The best social media guy! Saved me hours of work with AI!", author: "Seth Y.", CEO: "", Yates Naturopatic Clinic: "", logo: "", image: "" },
     { text: "Easy to collaborate with and a fast learner!", author: "Madelyn N.", Co-Founder: "", Great Scott Marketing: "", logo: "", image: "" },
     { text: "Mark's digital strategy completely transformed our engagement.", author: "Lucas R.", role: "", company: "", logo: "", image: "" },
-    { text: "Seamless integration of systems into a creative workflow.", author: "Sarah K.", role: "", company: "", logo: "", image: "" }
   ]
 };
 
