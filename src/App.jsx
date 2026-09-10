@@ -1284,7 +1284,7 @@ const AccessibilityMenu = () => {
             aria-label="Accessibility options"
             tabIndex={-1}
             onClick={e => e.stopPropagation()}
-            className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-t-[2rem] md:rounded-[2rem] p-6 md:p-8 w-full md:max-w-sm shadow-2xl outline-none"
+            className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-t-[2rem] md:rounded-[2rem] p-6 md:p-8 w-full md:max-w-sm shadow-2xl outline-none max-h-[85vh] overflow-y-auto"
           >
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg font-semibold text-stone-900 dark:text-white flex items-center gap-2"><AccessibilityIcon size={18} className="text-amber-600" /> Accessibility</h3>
@@ -1801,23 +1801,23 @@ export default function App() {
         /* ADHD-friendly mode: cuts visual noise — decorative blurs, glows, and the
            auto-scrolling logo marquee — and opens up line/paragraph spacing so text
            is easier to track without losing your place. */
-        .a11y-adhd-mode [class*="blur-"] { opacity: 0 !important; }
+        .a11y-adhd-mode [class*="blur-["] { opacity: 0 !important; }
         .a11y-adhd-mode .animate-scroll { animation-play-state: paused !important; }
-        .a11y-adhd-mode p, .a11y-adhd-mode li {
+        .a11y-adhd-mode #main-content p, .a11y-adhd-mode #main-content li {
           line-height: 1.85 !important;
           max-width: 68ch;
         }
-        .a11y-adhd-mode p + p, .a11y-adhd-mode li + li { margin-top: 1em; }
+        .a11y-adhd-mode #main-content p + p, .a11y-adhd-mode #main-content li + li { margin-top: 1em; }
         /* Dyslexia-friendly mode: a more legible, less crowded font stack with
            extra letter/word spacing. Swap in a self-hosted OpenDyslexic @font-face
            above this rule if you want the full effect. */
-        .a11y-dyslexic-mode, .a11y-dyslexic-mode * {
+        .a11y-dyslexic-mode #main-content, .a11y-dyslexic-mode #main-content * {
           font-family: 'Comic Sans MS', 'Comic Sans', Verdana, Tahoma, sans-serif !important;
           letter-spacing: 0.035em !important;
           word-spacing: 0.12em !important;
           line-height: 1.7 !important;
         }
-        .a11y-dyslexic-mode p, .a11y-dyslexic-mode li { max-width: 70ch; }
+        .a11y-dyslexic-mode #main-content p, .a11y-dyslexic-mode #main-content li { max-width: 70ch; }
         .a11y-reduce-motion, .a11y-reduce-motion *, .a11y-reduce-motion *::before, .a11y-reduce-motion *::after,
         .a11y-adhd-mode, .a11y-adhd-mode *, .a11y-adhd-mode *::before, .a11y-adhd-mode *::after {
           animation-duration: 0.001ms !important;
