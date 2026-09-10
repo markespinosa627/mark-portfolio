@@ -1274,7 +1274,8 @@ const AccessibilityMenu = () => {
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-[99999] bg-stone-900/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          className="fixed inset-0 z-[99999] bg-stone-900/40 dark:bg-black/60 backdrop-blur-sm p-4 animate-fade-in"
           onClick={() => setIsOpen(false)}
         >
           <div
