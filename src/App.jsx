@@ -43,6 +43,16 @@ const ShieldCheck = ({ size = 24, className = "" }) => (
   </svg>
 );
 
+const AccessibilityIcon = ({ size = 24, className = "" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <circle cx="12" cy="12" r="10"></circle>
+    <circle cx="12" cy="7" r="1.2" fill="currentColor" stroke="none"></circle>
+    <path d="M7.5 9.5c3 1 6 1 9 0"></path>
+    <path d="M12 9.5v4l3 5"></path>
+    <path d="M12 13.5 9 18.5"></path>
+  </svg>
+);
+
 const SiameseCatSVG = () => (
   <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M8 15C8 9 13 8 20 8C27 8 32 10 32 15C32 19 27 19 20 19C13 19 8 19 8 15Z" fill="#FDF5E6"/>
@@ -75,8 +85,6 @@ const FUNNEL_DATA = {
     }
   },
   brands: [
-    { name: "CBMC OC", fb: "https://www.facebook.com/oc.cbmc", logo: "/logos/cbmc.png" },
-    { name: "Brighter Days Behavioral Health", fb: "https://www.facebook.com/brighterdaysbh/", logo: "/logos/bdbh.avif" },
     { name: "ZBNI", fb: "https://www.facebook.com/ZBNIofficial", logo: "/logos/zbni.webp" },
     { name: "A2Z", fb: "https://www.facebook.com/A2ZChannel11", logo: "/logos/A2Z_Channel_11_Logo.png" },
     { name: "Light TV", fb: "https://www.facebook.com/LightTVGodsChannelofBlessings", logo: "/logos/Light_TV_Logo_2025.webp" },
@@ -137,17 +145,22 @@ const FUNNEL_DATA = {
       { title: "ZBNI Architecture", img: "/Websites/zbniwebsite.png", link: "https://www.zbni.ph" },
       { title: "Kevin Paige E-Commerce", img: "/Websites/kevinpaigeartwebsite.png", link: "https://www.kevinpaigeart.com" }
     ],
+    // Add an `image` (path to a thumbnail) to any item below and it'll appear next to
+    // the title. Left blank, a branded placeholder icon is shown instead.
     writing: {
       articles: [
-        { title: "From Storyboards to the Big Screen", snippet: "Anak TV Sinebata Workshop Batch 1 empowers children to declare 'Hear My Voice'...", link: "https://anaktv.ph/from-storyboards-to-the-big-screen-anak-tv-sinebata-workshop-batch-1-empowers-children-to-declare-hear-my-voice/" },
-        { title: "₱200 Wage Hike Approved", snippet: "Kamara, inaprubahan ang wage hike para sa mga minimum wage earners...", link: "https://zbni.ph/2025/06/04/%E2%82%B1200-na-dagdag-sahod-bawat-araw-kamara-inaprubahan-ang-wage-hike-para-sa-mga-minimum-wage-earners/" }
+        { title: "From Storyboards to the Big Screen", snippet: "Anak TV Sinebata Workshop Batch 1 empowers children to declare 'Hear My Voice'...", link: "https://anaktv.ph/from-storyboards-to-the-big-screen-anak-tv-sinebata-workshop-batch-1-empowers-children-to-declare-hear-my-voice/", image: "" },
+        { title: "₱200 Wage Hike Approved", snippet: "Kamara, inaprubahan ang wage hike para sa mga minimum wage earners...", link: "https://zbni.ph/2025/06/04/%E2%82%B1200-na-dagdag-sahod-bawat-araw-kamara-inaprubahan-ang-wage-hike-para-sa-mga-minimum-wage-earners/", image: "" }
       ],
       newsletters: [
-        { title: "Live Music in Cleveland", snippet: "Weekend Gig Guide: Dec 27th - 29th. The best live music events happening around the city...", link: "https://livemusicincleveland.com/p/dec-27th-29th" },
-        { title: "Americans Health Insights", snippet: "New brain imaging method spots Alzheimer's-linked protein in latest medical breakthrough...", link: "https://americanshealth.beehiiv.com/p/first-name-new-brain-imaging-method-spots-alzheimer-s-linked-protein?_bhlid=6f81ea42c863486b848c764176d6e7de4bf6c8c0&last_resource_guid=Post%3Ab108cde5-e89e-4ab9-b71b-fb65efc695c8&jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWJzY3JpYmVyX2lkIjoiOWQxMmE4ZDktMjY4OC00OTU0LWIwNjEtNGEyNGRlZmNhNDAzIiwicHVibGljYXRpb25faWQiOiJjZWQyZTgxNS05MjFlLTQ0MWItYmQ1Zi01MDAzMDc2ODkwMmQiLCJhY2Nlc3NfdHlwZSI6InJlYWQtb25seSIsImV4cCI6MTc3MzU4Njk2NywiaXNzIjoiaHR0cHM6Ly9hcHAuYmVlaGlpdi5jb20iLCJpYXQiOjE3NzM0MTQxNjd9.MX9qNhUyfedaOU6-G-yrk9dHo2tX3soRkeqxd1woz2w" }
+        { title: "Live Music in Cleveland", snippet: "Weekend Gig Guide: Dec 27th - 29th. The best live music events happening around the city...", link: "https://livemusicincleveland.com/p/dec-27th-29th", image: "" },
+        { title: "Americans Health Insights", snippet: "New brain imaging method spots Alzheimer's-linked protein in latest medical breakthrough...", link: "https://americanshealth.beehiiv.com/p/first-name-new-brain-imaging-method-spots-alzheimer-s-linked-protein?_bhlid=6f81ea42c863486b848c764176d6e7de4bf6c8c0&last_resource_guid=Post%3Ab108cde5-e89e-4ab9-b71b-fb65efc695c8&jwt_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWJzY3JpYmVyX2lkIjoiOWQxMmE4ZDktMjY4OC00OTU0LWIwNjEtNGEyNGRlZmNhNDAzIiwicHVibGljYXRpb25faWQiOiJjZWQyZTgxNS05MjFlLTQ0MWItYmQ1Zi01MDAzMDc2ODkwMmQiLCJhY2Nlc3NfdHlwZSI6InJlYWQtb25seSIsImV4cCI6MTc3MzU4Njk2NywiaXNzIjoiaHR0cHM6Ly9hcHAuYmVlaGlpdi5jb20iLCJpYXQiOjE3NzM0MTQxNjd9.MX9qNhUyfedaOU6-G-yrk9dHo2tX3soRkeqxd1woz2w", image: "" }
       ]
     }
   },
+  // Add an `image` (path to a featured/header image) to any post below and it will
+  // appear on the Insights card, the single-post view, and the social share preview
+  // for that article. Left blank, a branded placeholder is shown instead.
   insights: [
     { 
       id: "storyboards-to-big-screen",
@@ -155,7 +168,8 @@ const FUNNEL_DATA = {
       date: "March 2026", readTime: "4 min read",
       snippet: "Anak TV Sinebata Workshop Batch 1 empowers children to declare 'Hear My Voice'...", 
       content: "Empowering the next generation of storytellers is paramount. In this immersive workshop, children were taught how to translate their raw imaginations into compelling visual storyboards, ultimately giving them the confidence to declare, 'Hear My Voice.' The integration of accessible digital tools proved that premium storytelling is no longer gatekept by high-end studio budgets.",
-      externalLink: "https://anaktv.ph/from-storyboards-to-the-big-screen-anak-tv-sinebata-workshop-batch-1-empowers-children-to-declare-hear-my-voice/" 
+      externalLink: "https://anaktv.ph/from-storyboards-to-the-big-screen-anak-tv-sinebata-workshop-batch-1-empowers-children-to-declare-hear-my-voice/",
+      image: ""
     },
     { 
       id: "wage-hike-approved",
@@ -163,7 +177,8 @@ const FUNNEL_DATA = {
       date: "June 2025", readTime: "3 min read",
       snippet: "Kamara, inaprubahan ang wage hike para sa mga minimum wage earners...", 
       content: "In a pivotal legislative move, the chamber officially approved a ₱200 daily wage increase for minimum wage earners. This shift not only impacts the local economy but directly influences consumer purchasing power, changing how digital marketers must approach ad spend and targeting strategies in the coming fiscal year.",
-      externalLink: "https://zbni.ph/2025/06/04/%E2%82%B1200-na-dagdag-sahod-bawat-araw-kamara-inaprubahan-ang-wage-hike-para-sa-mga-minimum-wage-earners/" 
+      externalLink: "https://zbni.ph/2025/06/04/%E2%82%B1200-na-dagdag-sahod-bawat-araw-kamara-inaprubahan-ang-wage-hike-para-sa-mga-minimum-wage-earners/",
+      image: ""
     },
     { 
       id: "live-music-cleveland",
@@ -171,19 +186,19 @@ const FUNNEL_DATA = {
       date: "December 2025", readTime: "5 min read",
       snippet: "Weekend Gig Guide: Dec 27th - 29th. The best live music events happening around the city...", 
       content: "Building localized digital communities requires hyper-specific content. The Weekend Gig Guide for Cleveland serves as a perfect case study in capturing localized search intent. By curating the city's top live music events, we established a recurring, high-engagement digital property that drives consistent returning traffic.",
-      externalLink: "https://livemusicincleveland.com/p/dec-27th-29th" 
+      externalLink: "https://livemusicincleveland.com/p/dec-27th-29th",
+      image: ""
     }
   ],
   // Add `role` (job title), `company` (business name), `logo` (path to their business
   // logo), and `image` (a headshot) to any review below and it'll appear automatically —
   // fields left blank are simply hidden, so it's safe to fill these in gradually.
   reviews: [
-    { text: "I worked with Mark and was pleased with his thinking and his communication which was the best I have experienced with a VA.", author: "Marc O.", role: "Area Director", company: "Christian Business Mens Connection - Orange County, California", logo: "", image: "" },
-    { text: "Produces copy fast! I have no regrets working with Mark, we gained 100k newsletter subscribers with him!", author: "Mateo V.", role: "Founder", company: "Live Music In Cleveland", logo: "", image: "" },
-    { text: "The best social media guy! Saved me hours of work with AI!", author: "Seth Y.", role: "CEO", company: "Yates Naturopatic Clinic", logo: "", image: "" },
-    { text: "Easy to collaborate with and a fast learner!", author: "Madelyn N.", role: "Co-Founder", company: "Great Scott Marketing", logo: "", image: "" },
-    { text: "Mark's digital strategy completely transformed our engagement.", author: "Lucas R.", role: "VP for Marketing", company: "OMG Creamery", logo: "", image: "" },
-    { text: "Seamless integration of systems into a creative workflow.", author: "Sarah K.", role: "Owner", company: "Woodcreek Family Dental", logo: "", image: "" }
+    { text: "Produces copy fast! I have no regrets working with Mark!", author: "Mateo V.", role: "", company: "", logo: "", image: "" },
+    { text: "The best social media guy! Saved me hours of work with AI!", author: "Seth Y.", role: "", company: "", logo: "", image: "" },
+    { text: "Easy to collaborate with and a fast learner!", author: "Madelyn N.", role: "", company: "", logo: "", image: "" },
+    { text: "Mark's digital strategy completely transformed our engagement.", author: "Lucas R.", role: "", company: "", logo: "", image: "" },
+    { text: "Seamless integration of systems into a creative workflow.", author: "Sarah K.", role: "", company: "", logo: "", image: "" }
   ]
 };
 
@@ -244,6 +259,7 @@ const CV_DATA = {
 };
 
 const GOOGLE_SHEETS_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+const WEB3FORMS_ACCESS_KEY = "b87ec373-ca5d-408c-b4ce-c131877257c6";
 
 // ============================================================================
 // 🚀 UTILITY COMPONENTS
@@ -371,10 +387,87 @@ const BrandLogo = ({ client }) => {
 
 // ============================================================================
 // 🚀 DYNAMIC INTAKE MODAL
+// Shows a real featured image when one is provided; falls back to a branded
+// placeholder tile (never a fabricated stock photo) when it's blank or fails to load.
+const FeaturedImage = ({ src, alt, className = "", icon: IconComp = ImageIcon }) => {
+  const [hasError, setHasError] = useState(false);
+  if (!src || hasError) {
+    return (
+      <div className={`flex items-center justify-center bg-gradient-to-br from-amber-50 to-stone-100 dark:from-stone-900 dark:to-stone-950 ${className}`}>
+        <IconComp size={28} className="text-amber-600/40" />
+      </div>
+    );
+  }
+  return (
+    <LazyImage
+      src={src}
+      alt={alt}
+      className={`object-cover ${className}`}
+      onError={() => setHasError(true)}
+    />
+  );
+};
+
+// ============================================================================
+// ♿ ACCESSIBILITY: shared Escape-to-close + focus-trap hook for modals/dialogs
+// ============================================================================
+const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+const useFocusTrap = (isOpen, onClose, containerRef) => {
+  const previouslyFocused = useRef(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    previouslyFocused.current = document.activeElement;
+
+    const getFocusable = () => {
+      if (!containerRef.current) return [];
+      return Array.from(containerRef.current.querySelectorAll(FOCUSABLE_SELECTOR))
+        .filter(el => el.offsetParent !== null);
+    };
+
+    // Move focus into the dialog on open (fall back to the container itself).
+    const raf = requestAnimationFrame(() => {
+      const focusables = getFocusable();
+      (focusables[0] || containerRef.current)?.focus();
+    });
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        e.stopPropagation();
+        onClose?.();
+        return;
+      }
+      if (e.key === 'Tab') {
+        const items = getFocusable();
+        if (items.length === 0) { e.preventDefault(); return; }
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown, true);
+    return () => {
+      cancelAnimationFrame(raf);
+      document.removeEventListener('keydown', handleKeyDown, true);
+      // Restore focus to whatever triggered the dialog.
+      previouslyFocused.current?.focus?.();
+    };
+  }, [isOpen]);
+};
+
 // ============================================================================
 const ContactModal = ({ isOpen, onClose, initialStep = 'select', initialService = null }) => {
   const [step, setStep] = useState(initialStep); 
   const [service, setService] = useState(initialService);
+  const [formError, setFormError] = useState(null);
 
   const servicesList = [
     { id: 'web', label: "I need help with my Website", icon: Laptop },
@@ -388,19 +481,24 @@ const ContactModal = ({ isOpen, onClose, initialStep = 'select', initialService 
     if (isOpen) {
       setStep(initialStep);
       setService(initialService);
+      setFormError(null);
     }
   }, [isOpen, initialStep, initialService]);
+
+  const modalRef = useRef(null);
+  useFocusTrap(isOpen, onClose, modalRef);
 
   if (!isOpen) return null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStep('sending');
+    setFormError(null);
 
     const formData = new FormData(e.target);
     const web3FormData = new FormData();
     for (const [key, value] of formData.entries()) { web3FormData.append(key, value); }
-    web3FormData.append("access_key", "b87ec373-ca5d-408c-b4ce-c131877257c6");
+    web3FormData.append("access_key", WEB3FORMS_ACCESS_KEY);
     web3FormData.append("subject", `New Lead: ${service.label}`);
     web3FormData.append("from_name", "ME digital Intake");
     web3FormData.append("Service_Requested", service.label);
@@ -423,16 +521,15 @@ const ContactModal = ({ isOpen, onClose, initialStep = 'select', initialService 
       setStep('sent');
       setTimeout(() => { onClose(); }, 2500);
     } catch (error) {
-      console.error("Submission error:", error);
       setStep('form');
-      alert("Something went wrong. Please try again.");
+      setFormError("Something went wrong sending your message — please try again, or reach out on WhatsApp instead.");
     }
   };
 
   return (
     <div className="fixed inset-0 z-[99999] bg-stone-900/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
-      <div className="bg-white dark:bg-stone-900 rounded-3xl p-8 max-w-md w-full shadow-2xl border border-stone-100 dark:border-stone-800 relative overflow-hidden" onClick={e => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer z-10"><X size={22}/></button>
+      <div ref={modalRef} role="dialog" aria-modal="true" aria-label="Contact ME digital" tabIndex={-1} className="bg-white dark:bg-stone-900 rounded-3xl p-8 max-w-md w-full shadow-2xl border border-stone-100 dark:border-stone-800 relative overflow-hidden outline-none" onClick={e => e.stopPropagation()}>
+        <button onClick={onClose} aria-label="Close contact dialog" className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer z-10"><X size={22}/></button>
         
         {step === 'select' && (
           <div className="animate-fade-in">
@@ -507,6 +604,12 @@ const ContactModal = ({ isOpen, onClose, initialStep = 'select', initialService 
                 <label className="block text-[10px] font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-widest mb-1.5">Project Details</label>
                 <textarea required rows={3} name="message" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors resize-none text-sm" placeholder="Tell me about your goals..." />
               </div>
+
+              {formError && (
+                <p role="alert" className="text-xs font-medium text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/40 rounded-xl px-4 py-3">
+                  {formError}
+                </p>
+              )}
               
               <button type="submit" disabled={step === 'sending'} className="w-full bg-stone-900 dark:bg-white text-white dark:text-stone-900 py-4 rounded-xl font-medium uppercase tracking-widest text-xs hover:bg-amber-600 dark:hover:bg-amber-500 transition-all flex items-center justify-center gap-2 mt-4 cursor-pointer border-none">
                 {step === 'sending' ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
@@ -535,12 +638,15 @@ const ContactModal = ({ isOpen, onClose, initialStep = 'select', initialService 
 // 🚀 CASE STUDY MODAL
 // ============================================================================
 const CaseStudyModal = ({ activeStudy, onClose }) => {
+  const modalRef = useRef(null);
+  useFocusTrap(!!activeStudy, onClose, modalRef);
+
   if (!activeStudy) return null;
   const Icon = activeStudy.icon;
   return (
     <div className="fixed inset-0 z-[99999] bg-stone-900/60 dark:bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
-      <div className="bg-white dark:bg-stone-900 rounded-[2rem] p-8 md:p-12 max-w-2xl w-full shadow-2xl relative" onClick={e => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 dark:hover:text-white cursor-pointer"><X size={24}/></button>
+      <div ref={modalRef} role="dialog" aria-modal="true" aria-label={`Case study: ${activeStudy.label}`} tabIndex={-1} className="bg-white dark:bg-stone-900 rounded-[2rem] p-8 md:p-12 max-w-2xl w-full shadow-2xl relative outline-none" onClick={e => e.stopPropagation()}>
+        <button onClick={onClose} aria-label="Close case study" className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 dark:hover:text-white cursor-pointer"><X size={24}/></button>
         <div className="flex items-center gap-4 mb-8">
           <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center shrink-0">
             <Icon size={32} className="text-amber-600" />
@@ -778,7 +884,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-[60] flex flex-col items-end gap-4 pointer-events-none">
+    <div className="fixed bottom-24 right-4 md:bottom-8 md:right-8 z-[60] flex flex-col items-end gap-4 pointer-events-none">
       
       {/* Custom Keyframes for Running Cat & Chicken Rain */}
       <style dangerouslySetInnerHTML={{__html: `
@@ -1036,7 +1142,7 @@ const CookieBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 w-full z-[9999] p-4 md:p-6 animate-fade-in-up pointer-events-none">
+    <div className="fixed bottom-20 md:bottom-0 left-0 w-full z-[9999] p-4 md:p-6 animate-fade-in-up pointer-events-none">
       <div className="max-w-4xl mx-auto bg-[#432818] text-white p-6 md:p-8 rounded-[2rem] shadow-2xl border border-white/10 flex flex-col md:flex-row items-center gap-6 pointer-events-auto">
         <div className="bg-white/10 p-4 rounded-2xl"><ShieldCheck size={32} className="text-[#DDA15E]"/></div>
         <div className="flex-1 text-left">
@@ -1051,6 +1157,157 @@ const CookieBanner = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+// ============================================================================
+// ♿ ACCESSIBILITY MENU — text size, contrast, and motion controls (PWD-friendly)
+// ============================================================================
+const A11Y_STORAGE_KEY = 'me_a11y_prefs';
+const FONT_SCALES = [
+  { id: 'default', label: 'Default text', value: '100%' },
+  { id: 'large', label: 'Large text', value: '112%' },
+  { id: 'xl', label: 'Extra large text', value: '125%' },
+];
+
+const AccessibilityMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [prefs, setPrefs] = useState({ fontScale: 'default', highContrast: false, reduceMotion: false, underlineLinks: false });
+  const panelRef = useRef(null);
+  const triggerRef = useRef(null);
+
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(A11Y_STORAGE_KEY) || 'null');
+      if (saved) setPrefs(prev => ({ ...prev, ...saved }));
+    } catch (e) { /* ignore malformed storage */ }
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const scale = FONT_SCALES.find(f => f.id === prefs.fontScale)?.value || '100%';
+    root.style.fontSize = scale;
+    root.classList.toggle('a11y-high-contrast', prefs.highContrast);
+    root.classList.toggle('a11y-reduce-motion', prefs.reduceMotion);
+    root.classList.toggle('a11y-underline-links', prefs.underlineLinks);
+    try { localStorage.setItem(A11Y_STORAGE_KEY, JSON.stringify(prefs)); } catch (e) { /* storage may be unavailable */ }
+  }, [prefs]);
+
+  useFocusTrap(isOpen, () => { setIsOpen(false); triggerRef.current?.focus(); }, panelRef);
+
+  const reset = () => setPrefs({ fontScale: 'default', highContrast: false, reduceMotion: false, underlineLinks: false });
+
+  return (
+    <>
+      <button
+        ref={triggerRef}
+        onClick={() => setIsOpen(o => !o)}
+        aria-haspopup="dialog"
+        aria-expanded={isOpen}
+        aria-label="Accessibility options"
+        className="flex flex-col items-center justify-center gap-1 flex-1 h-full text-stone-500 dark:text-stone-400 hover:text-amber-600 dark:hover:text-amber-500 transition-colors cursor-pointer bg-transparent border-none"
+      >
+        <AccessibilityIcon size={20} />
+        <span className="text-[10px] font-semibold uppercase tracking-wide">Access</span>
+      </button>
+
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-[99999] bg-stone-900/40 dark:bg-black/60 backdrop-blur-sm flex items-end md:items-center justify-center animate-fade-in"
+          onClick={() => setIsOpen(false)}
+        >
+          <div
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Accessibility options"
+            tabIndex={-1}
+            onClick={e => e.stopPropagation()}
+            className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-t-[2rem] md:rounded-[2rem] p-6 md:p-8 w-full md:max-w-sm shadow-2xl outline-none"
+          >
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-lg font-semibold text-stone-900 dark:text-white flex items-center gap-2"><AccessibilityIcon size={18} className="text-amber-600" /> Accessibility</h3>
+              <button onClick={() => setIsOpen(false)} aria-label="Close accessibility options" className="text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer bg-transparent border-none">
+                <X size={20} />
+              </button>
+            </div>
+
+            <fieldset className="mb-5">
+              <legend className="text-[10px] font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-widest mb-2">Text size</legend>
+              <div className="grid grid-cols-3 gap-2">
+                {FONT_SCALES.map(f => (
+                  <button
+                    key={f.id}
+                    onClick={() => setPrefs(p => ({ ...p, fontScale: f.id }))}
+                    aria-pressed={prefs.fontScale === f.id}
+                    className={`px-2 py-2.5 rounded-xl text-xs font-medium border transition-colors cursor-pointer ${prefs.fontScale === f.id ? 'bg-amber-600 border-amber-600 text-white' : 'bg-stone-50 dark:bg-stone-950 border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:border-amber-600/60'}`}
+                  >
+                    {f.label.replace(' text', '')}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+
+            <div className="space-y-2">
+              <label className="flex items-center justify-between gap-4 p-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 cursor-pointer">
+                <span className="text-sm font-medium text-stone-700 dark:text-stone-300">High contrast</span>
+                <input type="checkbox" checked={prefs.highContrast} onChange={(e) => setPrefs(p => ({ ...p, highContrast: e.target.checked }))} className="w-5 h-5 accent-amber-600 cursor-pointer" />
+              </label>
+              <label className="flex items-center justify-between gap-4 p-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 cursor-pointer">
+                <span className="text-sm font-medium text-stone-700 dark:text-stone-300">Reduce motion</span>
+                <input type="checkbox" checked={prefs.reduceMotion} onChange={(e) => setPrefs(p => ({ ...p, reduceMotion: e.target.checked }))} className="w-5 h-5 accent-amber-600 cursor-pointer" />
+              </label>
+              <label className="flex items-center justify-between gap-4 p-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 cursor-pointer">
+                <span className="text-sm font-medium text-stone-700 dark:text-stone-300">Underline links</span>
+                <input type="checkbox" checked={prefs.underlineLinks} onChange={(e) => setPrefs(p => ({ ...p, underlineLinks: e.target.checked }))} className="w-5 h-5 accent-amber-600 cursor-pointer" />
+              </label>
+            </div>
+
+            <button onClick={reset} className="w-full mt-5 text-xs font-semibold text-stone-400 hover:text-stone-900 dark:hover:text-white uppercase tracking-widest cursor-pointer bg-transparent border-none py-2">
+              Reset to default
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+// ============================================================================
+// 📱 PERSISTENT MOBILE QUICK-ACTION BAR — always-reachable core CTAs
+// ============================================================================
+const MobileQuickActionBar = ({ onBookCall }) => {
+  return (
+    <nav
+      aria-label="Quick actions"
+      className="md:hidden fixed bottom-0 left-0 w-full z-[80] bg-white/90 dark:bg-stone-950/90 backdrop-blur-lg border-t border-stone-200 dark:border-stone-800 flex items-stretch h-[64px] pb-[env(safe-area-inset-bottom)]"
+    >
+      <a
+        href={FUNNEL_DATA.brand.contact.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+        className="flex flex-col items-center justify-center gap-1 flex-1 h-full text-[#25D366] active:bg-stone-50 dark:active:bg-stone-900 transition-colors cursor-pointer"
+      >
+        <MessageSquare size={20} />
+        <span className="text-[10px] font-semibold uppercase tracking-wide">WhatsApp</span>
+      </a>
+
+      <div className="w-px bg-stone-200 dark:bg-stone-800 my-2.5"></div>
+
+      <button
+        onClick={onBookCall}
+        aria-label="Book a call"
+        className="flex flex-col items-center justify-center gap-1 flex-1 h-full text-stone-900 dark:text-white active:bg-stone-50 dark:active:bg-stone-900 transition-colors cursor-pointer bg-transparent border-none"
+      >
+        <Calendar size={20} />
+        <span className="text-[10px] font-semibold uppercase tracking-wide">Book a Call</span>
+      </button>
+
+      <div className="w-px bg-stone-200 dark:bg-stone-800 my-2.5"></div>
+
+      <AccessibilityMenu />
+    </nav>
   );
 };
 
@@ -1087,7 +1344,7 @@ const SocialAuditTool = ({ onTriggerContact }) => {
     if (email) {
       setIsSubmitting(true);
       const web3FormData = new FormData();
-      web3FormData.append("access_key", "b87ec373-ca5d-408c-b4ce-c131877257c6");
+      web3FormData.append("access_key", WEB3FORMS_ACCESS_KEY);
       web3FormData.append("subject", "New Lead from Social Audit Tool");
       web3FormData.append("from_name", "Interactive Audit");
       web3FormData.append("email", email);
@@ -1106,7 +1363,7 @@ const SocialAuditTool = ({ onTriggerContact }) => {
         if (GOOGLE_SHEETS_SCRIPT_URL && GOOGLE_SHEETS_SCRIPT_URL.includes("script.google.com")) {
           await fetch(GOOGLE_SHEETS_SCRIPT_URL, { method: "POST", body: sheetFormData, mode: "no-cors" });
         }
-      } catch (err) { console.error("Form submission error", err); }
+      } catch (err) { /* Non-blocking: still show the result even if lead capture failed to send. */ }
       
       setIsSubmitting(false);
       setShowResult(true);
@@ -1189,6 +1446,14 @@ export default function App() {
   const [activeCaseStudy, setActiveCaseStudy] = useState(null);
   const exitIntentTriggered = useRef(false);
 
+  // ♿ Focus traps for the inline overlays rendered directly in this component
+  const exitIntentRef = useRef(null);
+  const lightboxRef = useRef(null);
+  const mobileMenuRef = useRef(null);
+  useFocusTrap(showExitIntent, () => setShowExitIntent(false), exitIntentRef);
+  useFocusTrap(!!lightboxImg, () => setLightboxImg(null), lightboxRef);
+  useFocusTrap(isMobileMenuOpen, () => setIsMobileMenuOpen(false), mobileMenuRef);
+
   // Centralized Contact Modal State
   const [contactModalState, setContactModalState] = useState({ isOpen: false, step: 'select', service: null });
 
@@ -1269,15 +1534,65 @@ export default function App() {
       'hey-ai': "Hey AI | ME digital",
       insights: activePost ? `${activePost.title} | ME digital` : "Insights & Strategy | ME digital"
     };
-    document.title = titles[activePage] || titles.home;
-    
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta');
-      metaDesc.name = "description";
-      document.head.appendChild(metaDesc);
+    const descriptions = {
+      home: FUNNEL_DATA.brand.subheadline,
+      about: `${CV_DATA.profile.name} — ${CV_DATA.profile.title}`,
+      privacy: "How ME digital collects, uses, and protects your data.",
+      'ai-use': "How AI and automation are used responsibly at ME digital.",
+      'hey-ai': "A machine-readable summary of ME digital for AI assistants and agents.",
+      insights: activePost ? activePost.snippet : "Strategies, updates, and digital marketing breakdowns from ME digital."
+    };
+
+    const pageTitle = titles[activePage] || titles.home;
+    const pageDesc = descriptions[activePage] || descriptions.home;
+    // Featured image for the current article if it has one, otherwise a sensible site-wide default.
+    const pageImage = (activePost && activePost.image) || CV_DATA.profile.image;
+    const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
+
+    document.title = pageTitle;
+
+    // Create-or-update a <meta> tag by name or property attribute.
+    const setMeta = (attr, key, content) => {
+      if (!content) return;
+      let tag = document.querySelector(`meta[${attr}="${key}"]`);
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute(attr, key);
+        document.head.appendChild(tag);
+      }
+      tag.setAttribute('content', content);
+    };
+
+    setMeta('name', 'description', pageDesc);
+
+    // Open Graph (Facebook, LinkedIn, WhatsApp link previews, etc.)
+    setMeta('property', 'og:title', pageTitle);
+    setMeta('property', 'og:description', pageDesc);
+    setMeta('property', 'og:type', activePost ? 'article' : 'website');
+    setMeta('property', 'og:url', pageUrl);
+    setMeta('property', 'og:site_name', 'ME digital');
+    setMeta('property', 'og:image', pageImage);
+
+    // Twitter / X Cards
+    setMeta('name', 'twitter:card', pageImage ? 'summary_large_image' : 'summary');
+    setMeta('name', 'twitter:title', pageTitle);
+    setMeta('name', 'twitter:description', pageDesc);
+    setMeta('name', 'twitter:image', pageImage);
+
+    // Canonical URL — helps avoid duplicate-content issues across query params/hashes.
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
     }
-    metaDesc.content = activePost ? activePost.snippet : FUNNEL_DATA.brand.subheadline;
+    canonical.href = pageUrl;
+
+    // Note: this covers crawlers/bots that execute JavaScript (which most modern ones,
+    // including Google, now do). Platforms that unfurl links WITHOUT running JS (some
+    // chat apps, older scrapers) will only ever see the static tags in index.html —
+    // that file lives outside this component, so its <title>/<meta>/OG defaults should
+    // be kept in sync with the "home" values above by hand.
   }, [activePage, activePost]);
 
   const safePushState = (url) => {
@@ -1286,7 +1601,7 @@ export default function App() {
         window.history.pushState({}, '', url);
       }
     } catch (err) {
-      console.warn("History pushState restricted in this iframe environment.");
+      // Silently ignore — pushState is restricted in some sandboxed/iframe environments.
     }
   };
 
@@ -1317,7 +1632,15 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAF9] dark:bg-stone-950 text-stone-900 dark:text-white font-sans flex flex-col selection:bg-amber-600 selection:text-white transition-colors duration-300">
+    <div className="min-h-screen bg-[#FAFAF9] dark:bg-stone-950 text-stone-900 dark:text-white font-sans flex flex-col selection:bg-amber-600 selection:text-white transition-colors duration-300 pb-[72px] md:pb-0">
+
+      {/* ♿ Skip link — first focusable element so keyboard users can bypass the nav */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100000] focus:bg-stone-900 focus:text-white focus:px-5 focus:py-3 focus:rounded-full focus:text-sm focus:font-semibold focus:shadow-xl"
+      >
+        Skip to main content
+      </a>
       
       {/* 🚀 GLOBAL CSS OVERRIDES */}
       <style dangerouslySetInnerHTML={{__html: `
@@ -1333,6 +1656,18 @@ export default function App() {
         .animate-fade-in { animation: fade-in 0.45s ease both; }
         .animate-scale-up { animation: scale-up 0.35s ease both; }
         .animate-fade-in-up { animation: fade-in-up 0.5s ease both; }
+
+        /* ♿ Accessibility toggles (see AccessibilityMenu) */
+        :focus-visible { outline: 2.5px solid #D97706 !important; outline-offset: 2px !important; border-radius: 4px; }
+        .a11y-high-contrast { filter: contrast(1.3) saturate(1.05); }
+        .a11y-high-contrast :focus-visible { outline-width: 3.5px !important; }
+        .a11y-underline-links a { text-decoration: underline !important; text-underline-offset: 3px; }
+        .a11y-reduce-motion, .a11y-reduce-motion *, .a11y-reduce-motion *::before, .a11y-reduce-motion *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
+        }
       `}} />
 
       {/* 🚀 SCROLL PROGRESS BAR */}
@@ -1350,21 +1685,23 @@ export default function App() {
       {/* Exit Intent Modal */}
       {showExitIntent && (
         <div className="fixed inset-0 z-[99999] bg-stone-900/60 dark:bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in" onClick={() => setShowExitIntent(false)}>
-          <div className="bg-white dark:bg-stone-900 rounded-[2rem] p-10 max-w-lg text-center shadow-2xl relative" onClick={e => e.stopPropagation()}>
-            <button onClick={() => setShowExitIntent(false)} className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 dark:hover:text-white cursor-pointer"><X size={24}/></button>
+          <div ref={exitIntentRef} role="dialog" aria-modal="true" aria-label="Before you go" tabIndex={-1} className="bg-white dark:bg-stone-900 rounded-[2rem] p-10 max-w-lg text-center shadow-2xl relative outline-none" onClick={e => e.stopPropagation()}>
+            <button onClick={() => setShowExitIntent(false)} aria-label="Close dialog" className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 dark:hover:text-white cursor-pointer"><X size={24}/></button>
             <div className="w-20 h-20 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6"><TrendingUp size={32} className="text-amber-600" /></div>
-            <h3 className="text-4xl font-bold text-stone-900 dark:text-white mb-4 tracking-tight">Leaving so soon?</h3>
-            <p className="text-stone-500 dark:text-stone-400 mb-8">Don't leave your digital growth to chance. Let's map out a custom AI strategy for your brand—completely free.</p>
-            <MagneticWrapper onClick={() => { setShowExitIntent(false); handleTriggerContact('select', null); }} className="w-full bg-amber-600 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs shadow-lg hover:bg-stone-900 dark:hover:bg-white dark:hover:text-stone-900 transition-all cursor-pointer border-none">Claim Strategy Session</MagneticWrapper>
-            <button onClick={() => setShowExitIntent(false)} className="mt-4 text-xs font-bold text-stone-400 hover:text-stone-900 dark:hover:text-white uppercase tracking-widest cursor-pointer">No thanks, I hate growth</button>
+            <h3 className="text-4xl font-bold text-stone-900 dark:text-white mb-4 tracking-tight">Before you go —</h3>
+            <p className="text-stone-500 dark:text-stone-400 mb-8">Overwhelmed by the algorithm is exactly the problem I solve. Let's map out where automation could save you the most time — no cost, no pressure.</p>
+            <MagneticWrapper onClick={() => { setShowExitIntent(false); handleTriggerContact('select', null); }} className="w-full bg-amber-600 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs shadow-lg hover:bg-stone-900 dark:hover:bg-white dark:hover:text-stone-900 transition-all cursor-pointer border-none">Book a free strategy call</MagneticWrapper>
+            <button onClick={() => setShowExitIntent(false)} className="mt-4 text-xs font-bold text-stone-400 hover:text-stone-900 dark:hover:text-white uppercase tracking-widest cursor-pointer">Not right now</button>
           </div>
         </div>
       )}
 
       {lightboxImg && (
         <div className="fixed inset-0 z-[100] bg-white/95 dark:bg-stone-950/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={() => setLightboxImg(null)}>
-          <button className="absolute top-8 right-8 text-stone-900 dark:text-white cursor-pointer"><X size={32}/></button>
-          <img src={lightboxImg} className="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl border border-stone-200 dark:border-stone-800" alt="Full View" />
+          <div ref={lightboxRef} role="dialog" aria-modal="true" aria-label="Image viewer" tabIndex={-1} className="relative outline-none" onClick={e => e.stopPropagation()}>
+            <button onClick={() => setLightboxImg(null)} aria-label="Close image viewer" className="absolute -top-12 right-0 md:top-8 md:right-[-56px] text-stone-900 dark:text-white cursor-pointer"><X size={32}/></button>
+            <img src={lightboxImg} className="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl border border-stone-200 dark:border-stone-800" alt="Full-size view of the selected work sample" />
+          </div>
         </div>
       )}
 
@@ -1413,7 +1750,7 @@ export default function App() {
             <button onClick={() => setDarkMode(!darkMode)} className="text-stone-900 dark:text-white cursor-pointer">
               {darkMode ? <Sun size={24} /> : <Moon size={24} />}
             </button>
-            <button className="text-stone-900 dark:text-white cursor-pointer" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            <button className="text-stone-900 dark:text-white cursor-pointer" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={isMobileMenuOpen} aria-controls="mobile-nav-menu">
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
@@ -1422,7 +1759,7 @@ export default function App() {
 
       {/* MOBILE MENU */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[49] bg-white dark:bg-stone-950 flex flex-col p-8 space-y-8 md:hidden pt-32 animate-fade-in">
+        <div id="mobile-nav-menu" ref={mobileMenuRef} role="dialog" aria-modal="true" aria-label="Mobile navigation menu" tabIndex={-1} className="fixed inset-0 z-[49] bg-white dark:bg-stone-950 flex flex-col p-8 space-y-8 md:hidden pt-32 animate-fade-in outline-none">
           <button onClick={(e) => navigateTo('home', e)} className="text-4xl font-bold text-left text-stone-900 dark:text-white cursor-pointer">Works</button>
           <button onClick={(e) => navigateTo('about', e)} className="text-4xl font-bold text-left text-stone-900 dark:text-white cursor-pointer">About & CV</button>
           <button onClick={(e) => navigateTo('insights', e)} className="text-4xl font-bold text-left text-stone-900 dark:text-white cursor-pointer">Insights</button>
@@ -1435,8 +1772,9 @@ export default function App() {
 
       <IchigoChatWidget onTriggerContact={handleTriggerContact} />
       <CookieBanner />
+      <MobileQuickActionBar onBookCall={() => handleTriggerContact('call', { id: 'call', label: 'Schedule a Call' })} />
 
-      <main className={`flex-1 transition-all duration-400 ease-in-out ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
+      <main id="main-content" tabIndex={-1} className={`flex-1 transition-all duration-400 ease-in-out outline-none ${isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'}`}>
         
         {activePage === 'home' && (
           <div className="overflow-x-hidden">
@@ -1596,13 +1934,21 @@ export default function App() {
                       <FileText className="text-stone-400 dark:text-stone-500" size={24} />
                       <h4 className="text-xl font-bold text-stone-900 dark:text-white">Articles & Copy</h4>
                     </div>
-                    <ul className="space-y-6">
+                    <ul className="space-y-4">
                       {FUNNEL_DATA.portfolio.writing.articles.map((art, idx) => (
-                        <li key={idx} className="group pb-6 border-b border-stone-100 dark:border-stone-800 last:border-0">
-                          <a href={art.link} target="_blank" rel="noopener noreferrer" className="block">
-                            <h5 className="font-bold text-stone-900 dark:text-white mb-2 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">{art.title}</h5>
-                            <p className="text-sm text-stone-500 dark:text-stone-400 mb-3">{art.snippet}</p>
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-amber-600">Read Sample →</span>
+                        <li key={idx}>
+                          <a href={art.link} target="_blank" rel="noopener noreferrer" className="group flex gap-4 items-center pb-4 border-b border-stone-100 dark:border-stone-800 last:border-0">
+                            <FeaturedImage
+                              src={art.image}
+                              alt={art.title}
+                              icon={FileText}
+                              className="w-20 h-20 rounded-2xl border border-stone-100 dark:border-stone-800 shrink-0"
+                            />
+                            <div className="min-w-0">
+                              <h5 className="font-bold text-stone-900 dark:text-white mb-1 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors truncate">{art.title}</h5>
+                              <p className="text-sm text-stone-500 dark:text-stone-400 mb-2 line-clamp-2">{art.snippet}</p>
+                              <span className="text-[10px] font-bold uppercase tracking-widest text-amber-600">Read Sample →</span>
+                            </div>
                           </a>
                         </li>
                       ))}
@@ -1613,13 +1959,21 @@ export default function App() {
                       <Newspaper className="text-stone-400 dark:text-stone-500" size={24} />
                       <h4 className="text-xl font-bold text-stone-900 dark:text-white">Newsletters</h4>
                     </div>
-                    <ul className="space-y-6">
+                    <ul className="space-y-4">
                       {FUNNEL_DATA.portfolio.writing.newsletters.map((news, idx) => (
-                        <li key={idx} className="group pb-6 border-b border-stone-100 dark:border-stone-800 last:border-0">
-                          <a href={news.link} target="_blank" rel="noopener noreferrer" className="block">
-                            <h5 className="font-bold text-stone-900 dark:text-white mb-2 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">{news.title}</h5>
-                            <p className="text-sm text-stone-500 dark:text-stone-400 mb-3">{news.snippet}</p>
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-amber-600">View Campaign →</span>
+                        <li key={idx}>
+                          <a href={news.link} target="_blank" rel="noopener noreferrer" className="group flex gap-4 items-center pb-4 border-b border-stone-100 dark:border-stone-800 last:border-0">
+                            <FeaturedImage
+                              src={news.image}
+                              alt={news.title}
+                              icon={Newspaper}
+                              className="w-20 h-20 rounded-2xl border border-stone-100 dark:border-stone-800 shrink-0"
+                            />
+                            <div className="min-w-0">
+                              <h5 className="font-bold text-stone-900 dark:text-white mb-1 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors truncate">{news.title}</h5>
+                              <p className="text-sm text-stone-500 dark:text-stone-400 mb-2 line-clamp-2">{news.snippet}</p>
+                              <span className="text-[10px] font-bold uppercase tracking-widest text-amber-600">View Campaign →</span>
+                            </div>
                           </a>
                         </li>
                       ))}
@@ -1839,6 +2193,12 @@ export default function App() {
                     <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-stone-900 dark:text-white leading-tight mb-6">{activePost.title}</h1>
                     <p className="text-xl text-stone-500 dark:text-stone-400 font-medium leading-relaxed">{activePost.snippet}</p>
                   </div>
+                  <FeaturedImage
+                    src={activePost.image}
+                    alt={activePost.title}
+                    icon={Newspaper}
+                    className="w-full aspect-[16/9] rounded-[2rem] border border-stone-200 dark:border-stone-800 mb-12"
+                  />
                   <div className="w-full h-px bg-stone-200 dark:bg-stone-800 mb-12"></div>
                   <div className="prose prose-stone dark:prose-invert max-w-none text-stone-600 dark:text-stone-300 leading-loose text-lg">
                     <p>{activePost.content}</p>
@@ -1867,17 +2227,25 @@ export default function App() {
                     {FUNNEL_DATA.insights.map((post, i) => (
                       <Reveal key={i} delay={i * 100} className="h-full">
                         <TiltCard>
-                          <div onClick={(e) => openPost(post, e)} className="group cursor-pointer bg-white dark:bg-stone-900 rounded-[2rem] p-8 border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-lg hover:border-amber-600/60 dark:hover:border-amber-500/60 transition-all duration-500 h-full flex flex-col justify-between">
-                            <div>
-                              <div className="flex justify-between items-center mb-6">
-                                <p className="text-amber-600 font-semibold text-[10px] uppercase tracking-widest bg-amber-50 dark:bg-amber-900/20 px-3 py-1 rounded-full">{post.readTime}</p>
-                                <p className="text-stone-400 font-medium text-[10px] uppercase tracking-widest">{post.date}</p>
+                          <div onClick={(e) => openPost(post, e)} className="group cursor-pointer bg-white dark:bg-stone-900 rounded-[2rem] border border-stone-200 dark:border-stone-800 shadow-sm hover:shadow-lg hover:border-amber-600/60 dark:hover:border-amber-500/60 transition-all duration-500 h-full flex flex-col justify-between overflow-hidden">
+                            <FeaturedImage
+                              src={post.image}
+                              alt={post.title}
+                              icon={Newspaper}
+                              className="w-full aspect-[16/9] group-hover:scale-[1.03] transition-transform duration-700"
+                            />
+                            <div className="p-8 flex flex-col justify-between flex-1">
+                              <div>
+                                <div className="flex justify-between items-center mb-6">
+                                  <p className="text-amber-600 font-semibold text-[10px] uppercase tracking-widest bg-amber-50 dark:bg-amber-900/20 px-3 py-1 rounded-full">{post.readTime}</p>
+                                  <p className="text-stone-400 font-medium text-[10px] uppercase tracking-widest">{post.date}</p>
+                                </div>
+                                <h3 className="text-2xl font-semibold text-stone-900 dark:text-white mb-4 group-hover:text-amber-600 transition-colors leading-tight">{post.title}</h3>
+                                <p className="text-stone-500 dark:text-stone-400 leading-relaxed mb-8">{post.snippet}</p>
                               </div>
-                              <h3 className="text-2xl font-semibold text-stone-900 dark:text-white mb-4 group-hover:text-amber-600 transition-colors leading-tight">{post.title}</h3>
-                              <p className="text-stone-500 dark:text-stone-400 leading-relaxed mb-8">{post.snippet}</p>
-                            </div>
-                            <div className="flex items-center gap-2 text-xs font-semibold text-stone-900 dark:text-white uppercase tracking-widest group-hover:text-amber-600 transition-colors">
-                              Read Article <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                              <div className="flex items-center gap-2 text-xs font-semibold text-stone-900 dark:text-white uppercase tracking-widest group-hover:text-amber-600 transition-colors">
+                                Read Article <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                              </div>
                             </div>
                           </div>
                         </TiltCard>
