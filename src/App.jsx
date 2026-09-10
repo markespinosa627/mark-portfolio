@@ -1284,7 +1284,8 @@ const AccessibilityMenu = () => {
             aria-label="Accessibility options"
             tabIndex={-1}
             onClick={e => e.stopPropagation()}
-            className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-t-[2rem] md:rounded-[2rem] p-6 md:p-8 w-full md:max-w-sm shadow-2xl outline-none max-h-[85vh] overflow-y-auto"
+            style={{ maxHeight: '85vh', overflowY: 'auto' }}
+            className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-t-[2rem] md:rounded-[2rem] p-6 md:p-8 w-full md:max-w-sm shadow-2xl outline-none"
           >
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg font-semibold text-stone-900 dark:text-white flex items-center gap-2"><AccessibilityIcon size={18} className="text-amber-600" /> Accessibility</h3>
