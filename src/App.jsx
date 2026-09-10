@@ -891,7 +891,7 @@ const IchigoChatWidget = ({ onTriggerContact }) => {
   };
 
   return (
-    <div className="fixed bottom-24 right-4 md:bottom-8 md:right-8 z-[60] flex flex-col items-end gap-4 pointer-events-none">
+    <div className="fixed bottom-24 right-4 md:right-8 z-[60] flex flex-col items-end gap-4 pointer-events-none">
       
       {/* Custom Keyframes for Running Cat & Chicken Rain */}
       <style dangerouslySetInnerHTML={{__html: `
