@@ -8,7 +8,8 @@ import {
   Globe, Laptop, MonitorSmartphone, FileText, Newspaper,
   ShieldAlert, BarChart3, Smartphone, Film, ExternalLink,
   BookOpen, Cpu, DownloadCloud, AtSign, Contact,
-  Moon, Sun, ArrowLeft, Loader2, MessageSquare
+  Moon, Sun, ArrowLeft, Loader2, MessageSquare,
+  Pause, StopCircle, Volume2, BrainCircuit, SpellCheck
 } from 'lucide-react';
 
 // ============================================================================
@@ -264,12 +265,14 @@ const WEB3FORMS_ACCESS_KEY = "b87ec373-ca5d-408c-b4ce-c131877257c6";
 // ============================================================================
 // 🚀 UTILITY COMPONENTS
 // ============================================================================
-const LazyImage = ({ src, alt, className, onError }) => {
+const LazyImage = ({ src, alt, className, onError, width, height }) => {
   const [loaded, setLoaded] = useState(false);
   return (
     <img 
       src={src} 
       alt={alt} 
+      width={width}
+      height={height}
       loading="lazy" 
       decoding="async"
       onLoad={() => setLoaded(true)} 
@@ -379,6 +382,8 @@ const BrandLogo = ({ client }) => {
     <LazyImage 
       src={client.logo} 
       alt={client.name} 
+      width={140}
+      height={56}
       className="h-10 md:h-14 w-auto min-w-[80px] object-contain grayscale opacity-40 dark:opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
       onError={() => setHasError(true)}
     />
@@ -389,7 +394,7 @@ const BrandLogo = ({ client }) => {
 // 🚀 DYNAMIC INTAKE MODAL
 // Shows a real featured image when one is provided; falls back to a branded
 // placeholder tile (never a fabricated stock photo) when it's blank or fails to load.
-const FeaturedImage = ({ src, alt, className = "", icon: IconComp = ImageIcon }) => {
+const FeaturedImage = ({ src, alt, className = "", icon: IconComp = ImageIcon, width = 800, height = 450 }) => {
   const [hasError, setHasError] = useState(false);
   if (!src || hasError) {
     return (
@@ -402,6 +407,8 @@ const FeaturedImage = ({ src, alt, className = "", icon: IconComp = ImageIcon })
     <LazyImage
       src={src}
       alt={alt}
+      width={width}
+      height={height}
       className={`object-cover ${className}`}
       onError={() => setHasError(true)}
     />
@@ -580,29 +587,29 @@ const ContactModal = ({ isOpen, onClose, initialStep = 'select', initialService 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[10px] font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-widest mb-1.5">Name</label>
-                  <input required type="text" name="name" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors text-sm" placeholder="Jane Doe" />
+                  <label htmlFor="contact-name" className="block text-[10px] font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-widest mb-1.5">Name</label>
+                  <input id="contact-name" required type="text" name="name" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors text-sm" placeholder="Jane Doe" />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-widest mb-1.5">Email</label>
-                  <input required type="email" name="email" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors text-sm" placeholder="jane@co.com" />
+                  <label htmlFor="contact-email" className="block text-[10px] font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-widest mb-1.5">Email</label>
+                  <input id="contact-email" required type="email" name="email" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors text-sm" placeholder="jane@co.com" />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[10px] font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-widest mb-1.5">Phone</label>
-                  <input required type="tel" name="phone" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors text-sm" placeholder="+1 234 567" />
+                  <label htmlFor="contact-phone" className="block text-[10px] font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-widest mb-1.5">Phone</label>
+                  <input id="contact-phone" required type="tel" name="phone" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors text-sm" placeholder="+1 234 567" />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-widest mb-1.5">Location</label>
-                  <input required type="text" name="location" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors text-sm" placeholder="City, Country" />
+                  <label htmlFor="contact-location" className="block text-[10px] font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-widest mb-1.5">Location</label>
+                  <input id="contact-location" required type="text" name="location" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors text-sm" placeholder="City, Country" />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[10px] font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-widest mb-1.5">Project Details</label>
-                <textarea required rows={3} name="message" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors resize-none text-sm" placeholder="Tell me about your goals..." />
+                <label htmlFor="contact-message" className="block text-[10px] font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-widest mb-1.5">Project Details</label>
+                <textarea id="contact-message" required rows={3} name="message" className="w-full px-4 py-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white focus:border-amber-600 outline-none transition-colors resize-none text-sm" placeholder="Tell me about your goals..." />
               </div>
 
               {formError && (
@@ -1074,7 +1081,7 @@ const ReviewCarousel = () => {
           </p>
           <div className="flex items-center gap-4">
             {r.image ? (
-              <img src={r.image} alt={r.author} className="w-12 h-12 rounded-full object-cover border border-stone-200 dark:border-stone-800" />
+              <img src={r.image} alt={r.author} width={48} height={48} loading="lazy" decoding="async" className="w-12 h-12 rounded-full object-cover border border-stone-200 dark:border-stone-800" />
             ) : (
               <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${AVATAR_GRADIENTS[index % AVATAR_GRADIENTS.length]} flex items-center justify-center text-white font-bold text-sm shrink-0`}>
                 {getInitials(r.author)}
@@ -1088,7 +1095,7 @@ const ReviewCarousel = () => {
                 </p>
               )}
             </div>
-            {r.logo && <img src={r.logo} alt={r.company} className="h-6 w-auto object-contain ml-1 opacity-70 dark:opacity-80" />}
+            {r.logo && <img src={r.logo} alt={r.company} width={80} height={24} loading="lazy" decoding="async" className="h-6 w-auto object-contain ml-1 opacity-70 dark:opacity-80" />}
           </div>
         </div>
       </div>
@@ -1164,6 +1171,7 @@ const CookieBanner = () => {
 // ♿ ACCESSIBILITY MENU — text size, contrast, and motion controls (PWD-friendly)
 // ============================================================================
 const A11Y_STORAGE_KEY = 'me_a11y_prefs';
+const DARK_MODE_STORAGE_KEY = 'me_dark_mode';
 const FONT_SCALES = [
   { id: 'default', label: 'Default text', value: '100%' },
   { id: 'large', label: 'Large text', value: '112%' },
@@ -1172,7 +1180,14 @@ const FONT_SCALES = [
 
 const AccessibilityMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [prefs, setPrefs] = useState({ fontScale: 'default', highContrast: false, reduceMotion: false, underlineLinks: false });
+  const [prefs, setPrefs] = useState({
+    fontScale: 'default',
+    highContrast: false,
+    reduceMotion: typeof window !== 'undefined' && !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches,
+    underlineLinks: false,
+    adhdMode: false,
+    dyslexicMode: false
+  });
   const panelRef = useRef(null);
   const triggerRef = useRef(null);
 
@@ -1190,12 +1205,58 @@ const AccessibilityMenu = () => {
     root.classList.toggle('a11y-high-contrast', prefs.highContrast);
     root.classList.toggle('a11y-reduce-motion', prefs.reduceMotion);
     root.classList.toggle('a11y-underline-links', prefs.underlineLinks);
+    root.classList.toggle('a11y-adhd-mode', prefs.adhdMode);
+    root.classList.toggle('a11y-dyslexic-mode', prefs.dyslexicMode);
     try { localStorage.setItem(A11Y_STORAGE_KEY, JSON.stringify(prefs)); } catch (e) { /* storage may be unavailable */ }
   }, [prefs]);
 
+  // 🔊 Text-to-speech: reads the main content aloud using the browser's built-in speech engine
+  const [speechState, setSpeechState] = useState('idle'); // 'idle' | 'reading' | 'paused'
+  const speechSupported = typeof window !== 'undefined' && 'speechSynthesis' in window;
+
+  useEffect(() => {
+    // Stop reading if the panel's host unmounts (e.g. navigating away)
+    return () => { if (speechSupported) window.speechSynthesis.cancel(); };
+  }, [speechSupported]);
+
+  const startReading = () => {
+    if (!speechSupported) return;
+    const content = document.getElementById('main-content');
+    const text = (content?.innerText || document.body.innerText || '').trim();
+    if (!text) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.onend = () => setSpeechState('idle');
+    utterance.onerror = () => setSpeechState('idle');
+    window.speechSynthesis.speak(utterance);
+    setSpeechState('reading');
+  };
+
+  const toggleReadAloud = () => {
+    if (!speechSupported) return;
+    if (speechState === 'idle') {
+      startReading();
+    } else if (speechState === 'reading') {
+      window.speechSynthesis.pause();
+      setSpeechState('paused');
+    } else if (speechState === 'paused') {
+      window.speechSynthesis.resume();
+      setSpeechState('reading');
+    }
+  };
+
+  const stopReading = () => {
+    if (!speechSupported) return;
+    window.speechSynthesis.cancel();
+    setSpeechState('idle');
+  };
+
   useFocusTrap(isOpen, () => { setIsOpen(false); triggerRef.current?.focus(); }, panelRef);
 
-  const reset = () => setPrefs({ fontScale: 'default', highContrast: false, reduceMotion: false, underlineLinks: false });
+  const reset = () => {
+    stopReading();
+    setPrefs({ fontScale: 'default', highContrast: false, reduceMotion: false, underlineLinks: false, adhdMode: false, dyslexicMode: false });
+  };
 
   return (
     <>
@@ -1261,7 +1322,37 @@ const AccessibilityMenu = () => {
                 <span className="text-sm font-medium text-stone-700 dark:text-stone-300">Underline links</span>
                 <input type="checkbox" checked={prefs.underlineLinks} onChange={(e) => setPrefs(p => ({ ...p, underlineLinks: e.target.checked }))} className="w-5 h-5 accent-amber-600 cursor-pointer" />
               </label>
+              <label className="flex items-center justify-between gap-4 p-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 cursor-pointer">
+                <span className="text-sm font-medium text-stone-700 dark:text-stone-300 flex items-center gap-2"><BrainCircuit size={16} className="text-stone-400" /> ADHD-friendly mode</span>
+                <input type="checkbox" checked={prefs.adhdMode} onChange={(e) => setPrefs(p => ({ ...p, adhdMode: e.target.checked }))} className="w-5 h-5 accent-amber-600 cursor-pointer" />
+              </label>
+              <label className="flex items-center justify-between gap-4 p-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 cursor-pointer">
+                <span className="text-sm font-medium text-stone-700 dark:text-stone-300 flex items-center gap-2"><SpellCheck size={16} className="text-stone-400" /> Dyslexia-friendly font</span>
+                <input type="checkbox" checked={prefs.dyslexicMode} onChange={(e) => setPrefs(p => ({ ...p, dyslexicMode: e.target.checked }))} className="w-5 h-5 accent-amber-600 cursor-pointer" />
+              </label>
             </div>
+
+            {speechSupported && (
+              <fieldset className="mt-5">
+                <legend className="text-[10px] font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-widest mb-2">Read aloud</legend>
+                <div className="flex items-center gap-2 p-3 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800">
+                  <Volume2 size={16} className="text-stone-400 shrink-0" />
+                  <button
+                    onClick={toggleReadAloud}
+                    aria-pressed={speechState === 'reading'}
+                    className="flex-1 flex items-center justify-center gap-2 text-sm font-medium text-stone-700 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-500 transition-colors cursor-pointer bg-transparent border-none py-1"
+                  >
+                    {speechState === 'reading' ? <Pause size={16} /> : <PlayCircle size={16} />}
+                    {speechState === 'reading' ? 'Pause' : speechState === 'paused' ? 'Resume' : 'Read this page'}
+                  </button>
+                  {speechState !== 'idle' && (
+                    <button onClick={stopReading} aria-label="Stop reading" className="text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer bg-transparent border-none">
+                      <StopCircle size={18} />
+                    </button>
+                  )}
+                </div>
+              </fieldset>
+            )}
 
             <button onClick={reset} className="w-full mt-5 text-xs font-semibold text-stone-400 hover:text-stone-900 dark:hover:text-white uppercase tracking-widest cursor-pointer bg-transparent border-none py-2">
               Reset to default
@@ -1280,7 +1371,7 @@ const MobileQuickActionBar = ({ onBookCall }) => {
   return (
     <nav
       aria-label="Quick actions"
-      className="md:hidden fixed bottom-0 left-0 w-full z-[80] bg-white/90 dark:bg-stone-950/90 backdrop-blur-lg border-t border-stone-200 dark:border-stone-800 flex items-stretch h-[64px] pb-[env(safe-area-inset-bottom)]"
+      className="fixed bottom-0 left-0 w-full z-[80] bg-white/90 dark:bg-stone-950/90 backdrop-blur-lg border-t border-stone-200 dark:border-stone-800 flex items-stretch h-[64px] pb-[env(safe-area-inset-bottom)]"
     >
       <a
         href={FUNNEL_DATA.brand.contact.whatsapp}
@@ -1401,7 +1492,8 @@ const SocialAuditTool = ({ onTriggerContact }) => {
           <h3 className="text-2xl font-bold text-stone-900 dark:text-white mb-4">Audit Complete!</h3>
           <p className="text-stone-500 dark:text-stone-400 font-medium mb-8">Enter your email below to instantly reveal your Growth Grade and custom strategy.</p>
           <form onSubmit={handleEmailSubmit} className="flex flex-col gap-4">
-            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your best email..." className="w-full px-6 py-4 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 focus:border-amber-600 outline-none font-medium text-center text-stone-900 dark:text-white transition-colors" />
+            <label htmlFor="audit-email" className="sr-only">Email address</label>
+            <input id="audit-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your best email..." className="w-full px-6 py-4 rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 focus:border-amber-600 outline-none font-medium text-center text-stone-900 dark:text-white transition-colors" />
             <MagneticWrapper type="submit" disabled={isSubmitting} className="w-full py-4 rounded-xl font-bold text-white bg-stone-900 dark:bg-white dark:text-stone-900 hover:bg-amber-600 dark:hover:bg-amber-500 transition-all uppercase tracking-widest text-sm flex justify-center items-center gap-2 cursor-pointer border-none">
               {isSubmitting ? <Loader2 size={16} className="animate-spin" /> : null}
               {isSubmitting ? 'Processing...' : 'Reveal My Results'}
@@ -1440,7 +1532,15 @@ export default function App() {
   const [lightboxImg, setLightboxImg] = useState(null);
   
   // Modals & Exits
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    try {
+      const saved = localStorage.getItem(DARK_MODE_STORAGE_KEY);
+      if (saved !== null) return saved === 'true';
+      return typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+    } catch (e) {
+      return false;
+    }
+  });
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showExitIntent, setShowExitIntent] = useState(false);
   const [activeCaseStudy, setActiveCaseStudy] = useState(null);
@@ -1457,6 +1557,16 @@ export default function App() {
   // Centralized Contact Modal State
   const [contactModalState, setContactModalState] = useState({ isOpen: false, step: 'select', service: null });
 
+  // Defer non-critical, initially-invisible UI (modals, chat widget) until the browser
+  // is idle, so the first paint isn't competing with their mount/render work.
+  const [deferredReady, setDeferredReady] = useState(false);
+  useEffect(() => {
+    const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 200));
+    const cancelIdle = window.cancelIdleCallback || clearTimeout;
+    const id = idle(() => setDeferredReady(true));
+    return () => cancelIdle(id);
+  }, []);
+
   const handleTriggerContact = (step = 'select', service = null) => {
     setContactModalState({ isOpen: true, step, service });
   };
@@ -1468,7 +1578,20 @@ export default function App() {
   useEffect(() => {
     if (darkMode) document.documentElement.classList.add('dark');
     else document.documentElement.classList.remove('dark');
+    try { localStorage.setItem(DARK_MODE_STORAGE_KEY, String(darkMode)); } catch (e) { /* storage may be unavailable */ }
   }, [darkMode]);
+
+  // Follow the OS-level scheme live, but only until the visitor makes an explicit choice
+  useEffect(() => {
+    try {
+      if (localStorage.getItem(DARK_MODE_STORAGE_KEY) !== null) return;
+    } catch (e) { /* ignore */ }
+    const mql = window.matchMedia?.('(prefers-color-scheme: dark)');
+    if (!mql) return;
+    const handleChange = (e) => setDarkMode(e.matches);
+    mql.addEventListener?.('change', handleChange);
+    return () => mql.removeEventListener?.('change', handleChange);
+  }, []);
 
   useEffect(() => {
     const path = window.location.pathname.replace('/', '') || 'home';
@@ -1489,18 +1612,31 @@ export default function App() {
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       setScrollProgress((winScroll / height) * 100);
     };
-    window.addEventListener('scroll', handleScroll);
+    // Coalesce to one update per animation frame instead of one per scroll event —
+    // scroll fires far faster than the screen can repaint, so this avoids
+    // hundreds of redundant re-renders per second on a fast swipe/scroll.
+    let scrollTicking = false;
+    const onScroll = () => {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        handleScroll();
+        scrollTicking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     const handleMouseMove = (e) => {
       if (e.clientY < 15 && !exitIntentTriggered.current) {
         setShowExitIntent(true);
         exitIntentTriggered.current = true;
+        window.removeEventListener('mousemove', handleMouseMove);
       }
     };
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', onScroll);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('popstate', handlePopState);
     };
@@ -1632,7 +1768,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAF9] dark:bg-stone-950 text-stone-900 dark:text-white font-sans flex flex-col selection:bg-amber-600 selection:text-white transition-colors duration-300 pb-[72px] md:pb-0">
+    <div className="min-h-screen bg-[#FAFAF9] dark:bg-stone-950 text-stone-900 dark:text-white font-sans flex flex-col selection:bg-amber-600 selection:text-white transition-colors duration-300 pb-[72px]">
 
       {/* ♿ Skip link — first focusable element so keyboard users can bypass the nav */}
       <a
@@ -1662,25 +1798,59 @@ export default function App() {
         .a11y-high-contrast { filter: contrast(1.3) saturate(1.05); }
         .a11y-high-contrast :focus-visible { outline-width: 3.5px !important; }
         .a11y-underline-links a { text-decoration: underline !important; text-underline-offset: 3px; }
-        .a11y-reduce-motion, .a11y-reduce-motion *, .a11y-reduce-motion *::before, .a11y-reduce-motion *::after {
+        /* ADHD-friendly mode: cuts visual noise — decorative blurs, glows, and the
+           auto-scrolling logo marquee — and opens up line/paragraph spacing so text
+           is easier to track without losing your place. */
+        .a11y-adhd-mode [class*="blur-"] { opacity: 0 !important; }
+        .a11y-adhd-mode .animate-scroll { animation-play-state: paused !important; }
+        .a11y-adhd-mode p, .a11y-adhd-mode li {
+          line-height: 1.85 !important;
+          max-width: 68ch;
+        }
+        .a11y-adhd-mode p + p, .a11y-adhd-mode li + li { margin-top: 1em; }
+        /* Dyslexia-friendly mode: a more legible, less crowded font stack with
+           extra letter/word spacing. Swap in a self-hosted OpenDyslexic @font-face
+           above this rule if you want the full effect. */
+        .a11y-dyslexic-mode, .a11y-dyslexic-mode * {
+          font-family: 'Comic Sans MS', 'Comic Sans', Verdana, Tahoma, sans-serif !important;
+          letter-spacing: 0.035em !important;
+          word-spacing: 0.12em !important;
+          line-height: 1.7 !important;
+        }
+        .a11y-dyslexic-mode p, .a11y-dyslexic-mode li { max-width: 70ch; }
+        .a11y-reduce-motion, .a11y-reduce-motion *, .a11y-reduce-motion *::before, .a11y-reduce-motion *::after,
+        .a11y-adhd-mode, .a11y-adhd-mode *, .a11y-adhd-mode *::before, .a11y-adhd-mode *::after {
           animation-duration: 0.001ms !important;
           animation-iteration-count: 1 !important;
           transition-duration: 0.001ms !important;
           scroll-behavior: auto !important;
+        }
+        /* Respect the OS-level setting too, not just the manual toggle above */
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after {
+            animation-duration: 0.001ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.001ms !important;
+            scroll-behavior: auto !important;
+          }
         }
       `}} />
 
       {/* 🚀 SCROLL PROGRESS BAR */}
       <div className="fixed top-0 left-0 h-1 bg-amber-600 z-[99999] transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
 
-      {/* 🚀 MODALS */}
-      <ContactModal 
-        isOpen={contactModalState.isOpen} 
-        onClose={() => setContactModalState(prev => ({ ...prev, isOpen: false }))} 
-        initialStep={contactModalState.step}
-        initialService={contactModalState.service}
-      />
-      <CaseStudyModal activeStudy={activeCaseStudy} onClose={() => setActiveCaseStudy(null)} />
+      {/* 🚀 MODALS — deferred until idle unless the visitor has already triggered one */}
+      {(deferredReady || contactModalState.isOpen) && (
+        <ContactModal 
+          isOpen={contactModalState.isOpen} 
+          onClose={() => setContactModalState(prev => ({ ...prev, isOpen: false }))} 
+          initialStep={contactModalState.step}
+          initialService={contactModalState.service}
+        />
+      )}
+      {(deferredReady || activeCaseStudy) && (
+        <CaseStudyModal activeStudy={activeCaseStudy} onClose={() => setActiveCaseStudy(null)} />
+      )}
       
       {/* Exit Intent Modal */}
       {showExitIntent && (
@@ -1770,7 +1940,7 @@ export default function App() {
         </div>
       )}
 
-      <IchigoChatWidget onTriggerContact={handleTriggerContact} />
+      {deferredReady && <IchigoChatWidget onTriggerContact={handleTriggerContact} />}
       <CookieBanner />
       <MobileQuickActionBar onBookCall={() => handleTriggerContact('call', { id: 'call', label: 'Schedule a Call' })} />
 
@@ -1942,6 +2112,8 @@ export default function App() {
                               src={art.image}
                               alt={art.title}
                               icon={FileText}
+                              width={80}
+                              height={80}
                               className="w-20 h-20 rounded-2xl border border-stone-100 dark:border-stone-800 shrink-0"
                             />
                             <div className="min-w-0">
@@ -1967,6 +2139,8 @@ export default function App() {
                               src={news.image}
                               alt={news.title}
                               icon={Newspaper}
+                              width={80}
+                              height={80}
                               className="w-20 h-20 rounded-2xl border border-stone-100 dark:border-stone-800 shrink-0"
                             />
                             <div className="min-w-0">
@@ -2197,6 +2371,8 @@ export default function App() {
                     src={activePost.image}
                     alt={activePost.title}
                     icon={Newspaper}
+                    width={1600}
+                    height={900}
                     className="w-full aspect-[16/9] rounded-[2rem] border border-stone-200 dark:border-stone-800 mb-12"
                   />
                   <div className="w-full h-px bg-stone-200 dark:bg-stone-800 mb-12"></div>
@@ -2232,6 +2408,8 @@ export default function App() {
                               src={post.image}
                               alt={post.title}
                               icon={Newspaper}
+                              width={1600}
+                              height={900}
                               className="w-full aspect-[16/9] group-hover:scale-[1.03] transition-transform duration-700"
                             />
                             <div className="p-8 flex flex-col justify-between flex-1">
@@ -2373,7 +2551,7 @@ export default function App() {
       <div className="bg-[#1c1917] dark:bg-black text-white py-16 px-6 border-t border-stone-200 dark:border-stone-800 mt-12">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
           <div className="w-48 h-48 md:w-72 md:h-72 shrink-0 rounded-[2rem] overflow-hidden border-2 border-stone-800 shadow-2xl">
-            <img src="/Ichigo-Haru-Anko-Yuzu.png" alt="Mark, Partner, and 4 Cats" className="w-full h-full object-cover" />
+            <img src="/Ichigo-Haru-Anko-Yuzu.png" alt="Mark, Partner, and 4 Cats" width={288} height={288} loading="lazy" decoding="async" className="w-full h-full object-cover" />
           </div>
           <div>
             <h3 className="text-3xl md:text-5xl font-bold mb-6 flex items-center justify-center md:justify-start gap-4 tracking-tight">
