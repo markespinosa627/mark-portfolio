@@ -1274,7 +1274,7 @@ const AccessibilityMenu = () => {
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-[99999] bg-stone-900/40 dark:bg-black/60 backdrop-blur-sm flex items-end md:items-center justify-center animate-fade-in"
+          className="fixed inset-0 z-[99999] bg-stone-900/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
           onClick={() => setIsOpen(false)}
         >
           <div
@@ -1285,7 +1285,7 @@ const AccessibilityMenu = () => {
             tabIndex={-1}
             onClick={e => e.stopPropagation()}
             style={{ maxHeight: '85vh', overflowY: 'auto' }}
-            className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-t-[2rem] md:rounded-[2rem] p-6 md:p-8 w-full md:max-w-sm shadow-2xl outline-none"
+            className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-[2rem] p-6 md:p-8 w-full max-w-sm shadow-2xl outline-none"
           >
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg font-semibold text-stone-900 dark:text-white flex items-center gap-2"><AccessibilityIcon size={18} className="text-amber-600" /> Accessibility</h3>
