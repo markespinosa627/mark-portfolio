@@ -198,11 +198,10 @@ const FUNNEL_DATA = {
   // fields left blank are simply hidden, so it's safe to fill these in gradually.
   reviews: [
     { text: "I worked with Mark and was pleased with his thinking and his communication which was the best I have experienced with a VA.", author: "Marc O.", role: "Area Director", company: "CBMC Orange County", logo: "/logos/cbmc.png", image: "" },
-    { text: "Produces copy fast! I have no regrets working with Mark!", author: "Mateo V.", role: "", company: "", logo: "", image: "" },
-    { text: "The best social media guy! Saved me hours of work with AI!", author: "Seth Y.", role: "", company: "", logo: "", image: "" },
-    { text: "Easy to collaborate with and a fast learner!", author: "Madelyn N.", role: "", company: "", logo: "", image: "" },
-    { text: "Mark's digital strategy completely transformed our engagement.", author: "Lucas R.", role: "", company: "", logo: "", image: "" },
-    { text: "Seamless integration of systems into a creative workflow.", author: "Sarah K.", role: "", company: "", logo: "", image: "" }
+    { text: "Produces copy fast! I have no regrets working with Mark!", author: "Mateo V.", role: "Co-Founder", company: "LMIC", logo: "/logos/lmic.png", image: "" },
+    { text: "The best social media guy! Saved me hours of work with AI!", author: "Seth Y.", role: "Owner", company: "Yates Naturopathic Clinic", logo: "/logos/yates.png", image: "" },
+    { text: "Easy to collaborate with and a fast learner!", author: "Madelyn N.", role: "Co-Founder", company: "American's Health", logo: "/logos/AH.png", image: "" },
+    { text: "Mark's digital strategy completely transformed our engagement.", author: "Lucas R.", role: "Marketing Director", company: "Bold BBQ Pit", logo: "logo-bold-bbq-pit_grad-2.png", image: "" },
   ]
 };
 
