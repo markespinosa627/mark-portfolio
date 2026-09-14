@@ -94,11 +94,11 @@ const FUNNEL_DATA = {
     { name: "TOCA", fb: "https://www.facebook.com/TOCA", logo: "/logos/TOCA_SalonGroup_Logo.png" },
     { name: "Domes Canadian Glamping", fb: "https://www.facebook.com/domescanadianglamping", logo: "/logos/domes-cg.png" },
     { name: "Yates Clinic", fb: "https://www.facebook.com/yatesnaturopathic", logo: "/logos/yates.png" },
-    { name: "Bold BBQ Pit", fb: "https://www.facebook.com/BoldBBQPit", logo: "/logos/logo-bold-bbq-pit_grad-2.png" },
+    { name: "Bold BBQ Pit", fb: "https://www.facebook.com/BoldBBQPit", logo: "/logos/bbq.png" },
     { name: "CrossFit Wylie", fb: "https://www.facebook.com/CrossFitWylie", logo: "/logos/cropped-Crossfit_Wylie_Texasblackpng.png" },
     { name: "OMG Creamery", fb: "https://www.facebook.com/OMGCreamery", logo: "/logos/omg-cream-and-fried-pies.png" },
     { name: "Black Meta Agency", fb: "https://www.facebook.com/blackmetaagency", logo: "/logos/bma.png" },
-    { name: "The 216 Scoop", fb: "https://www.facebook.com/the216scoop", logo: "/logos/landscape_The_216_Scoop_-_Horizontal_-_Solid.avif" },
+    { name: "The 216 Scoop", fb: "https://www.facebook.com/the216scoop", logo: "/logos/216.png" },
     { name: "Americans Health", fb: "https://www.facebook.com/AmericansHealth", logo: "/logos/AH.png" },
     { name: "Live Music In Cleveland", fb: "https://www.facebook.com/LMIC", logo: "/logos/LMIC.png" },
     { name: "Woodcreek Family Dental", website: "https://www.yourmurphydoctor.com", logo: "/logos/woodcreek.png" }
@@ -198,10 +198,10 @@ const FUNNEL_DATA = {
   // fields left blank are simply hidden, so it's safe to fill these in gradually.
   reviews: [
     { text: "I worked with Mark and was pleased with his thinking and his communication which was the best I have experienced with a VA.", author: "Marc O.", role: "Area Director", company: "CBMC Orange County", logo: "/logos/cbmc.png", image: "" },
-    { text: "Produces copy fast! I have no regrets working with Mark!", author: "Mateo V.", role: "Co-Founder", company: "LMIC", logo: "/logos/lmic.png", image: "" },
+    { text: "Produces copy fast! I have no regrets working with Mark!", author: "Mateo V.", role: "Co-Founder", company: "The 216 Scoop", logo: "/logos/216.png", image: "" },
     { text: "The best social media guy! Saved me hours of work with AI!", author: "Seth Y.", role: "Owner", company: "Yates Naturopathic Clinic", logo: "/logos/yates.png", image: "" },
     { text: "Easy to collaborate with and a fast learner!", author: "Madelyn N.", role: "Co-Founder", company: "American's Health", logo: "/logos/AH.png", image: "" },
-    { text: "Mark's digital strategy completely transformed our engagement.", author: "Lucas R.", role: "Marketing Director", company: "Bold BBQ Pit", logo: "logo-bold-bbq-pit_grad-2.png", image: "" },
+    { text: "Mark's digital strategy completely transformed our engagement.", author: "Lucas R.", role: "Marketing Director", company: "Bold BBQ Pit", logo: "/logos/bbq.png", image: "" },
   ]
 };
 
