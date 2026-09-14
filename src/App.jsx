@@ -87,7 +87,7 @@ const FUNNEL_DATA = {
   },
   brands: [
     { name: "CBMC Orange County", fb: "https://www.linkedin.com/in/marcottestadchristianceo/", logo: "/logos/cbmc.png" },
-    { name: "Brighter Days Behavioral Health", fb: "https://www.facebook.com/brighterdaysbh", logo: "/logos/bdbh.png" },
+    { name: "Brighter Days Behavioral Health", fb: "https://www.facebook.com/brighterdaysbh", logo: "/logos/bdbhtexas.png" },
     { name: "ZBNI", fb: "https://www.facebook.com/ZBNIofficial", logo: "/logos/zbni.webp" },
     { name: "A2Z", fb: "https://www.facebook.com/A2ZChannel11", logo: "/logos/A2Z_Channel_11_Logo.png" },
     { name: "Light TV", fb: "https://www.facebook.com/LightTVGodsChannelofBlessings", logo: "/logos/Light_TV_Logo_2025.webp" },
