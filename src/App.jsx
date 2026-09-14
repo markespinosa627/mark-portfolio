@@ -86,6 +86,8 @@ const FUNNEL_DATA = {
     }
   },
   brands: [
+    { name: "CBMC Orange County", fb: "https://www.linkedin.com/in/marcottestadchristianceo/", logo: "/logos/cbmc.png" },
+    { name: "Brighter Days Behavioral Health", fb: "https://www.facebook.com/brighterdaysbh", logo: "/logos/bdbh.png" },
     { name: "ZBNI", fb: "https://www.facebook.com/ZBNIofficial", logo: "/logos/zbni.webp" },
     { name: "A2Z", fb: "https://www.facebook.com/A2ZChannel11", logo: "/logos/A2Z_Channel_11_Logo.png" },
     { name: "Light TV", fb: "https://www.facebook.com/LightTVGodsChannelofBlessings", logo: "/logos/Light_TV_Logo_2025.webp" },
@@ -95,10 +97,10 @@ const FUNNEL_DATA = {
     { name: "Bold BBQ Pit", fb: "https://www.facebook.com/BoldBBQPit", logo: "/logos/logo-bold-bbq-pit_grad-2.png" },
     { name: "CrossFit Wylie", fb: "https://www.facebook.com/CrossFitWylie", logo: "/logos/cropped-Crossfit_Wylie_Texasblackpng.png" },
     { name: "OMG Creamery", fb: "https://www.facebook.com/OMGCreamery", logo: "/logos/omg-cream-and-fried-pies.png" },
-    { name: "Black Meta Agency", fb: "https://www.facebook.com/blackmetaagency", logo: "/logos/BMA.webp" },
+    { name: "Black Meta Agency", fb: "https://www.facebook.com/blackmetaagency", logo: "/logos/BMA.png" },
     { name: "The 216 Scoop", fb: "https://www.facebook.com/the216scoop", logo: "/logos/landscape_The_216_Scoop_-_Horizontal_-_Solid.avif" },
     { name: "Americans Health", fb: "https://www.facebook.com/AmericansHealth", logo: "/logos/AH.png" },
-    { name: "Live Music In Cleveland", fb: "https://www.facebook.com/LMIC", logo: "/logos/LMIC.avif" },
+    { name: "Live Music In Cleveland", fb: "https://www.facebook.com/LMIC", logo: "/logos/LMIC.png" },
     { name: "Woodcreek Family Dental", website: "https://www.yourmurphydoctor.com", logo: "/logos/woodcreek.png" }
   ],
   caseStudy: {
@@ -195,6 +197,7 @@ const FUNNEL_DATA = {
   // logo), and `image` (a headshot) to any review below and it'll appear automatically —
   // fields left blank are simply hidden, so it's safe to fill these in gradually.
   reviews: [
+    { text: "I worked with Mark and was pleased with his thinking and his communication which was the best I have experienced with a VA.", author: "Marc O.", role: "Area Director", company: "CBMC Orange County", logo: "/logos/cbmc.png", image: "" },
     { text: "Produces copy fast! I have no regrets working with Mark!", author: "Mateo V.", role: "", company: "", logo: "", image: "" },
     { text: "The best social media guy! Saved me hours of work with AI!", author: "Seth Y.", role: "", company: "", logo: "", image: "" },
     { text: "Easy to collaborate with and a fast learner!", author: "Madelyn N.", role: "", company: "", logo: "", image: "" },
