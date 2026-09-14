@@ -97,7 +97,7 @@ const FUNNEL_DATA = {
     { name: "Bold BBQ Pit", fb: "https://www.facebook.com/BoldBBQPit", logo: "/logos/logo-bold-bbq-pit_grad-2.png" },
     { name: "CrossFit Wylie", fb: "https://www.facebook.com/CrossFitWylie", logo: "/logos/cropped-Crossfit_Wylie_Texasblackpng.png" },
     { name: "OMG Creamery", fb: "https://www.facebook.com/OMGCreamery", logo: "/logos/omg-cream-and-fried-pies.png" },
-    { name: "Black Meta Agency", fb: "https://www.facebook.com/blackmetaagency", logo: "/logos/BMA.png" },
+    { name: "Black Meta Agency", fb: "https://www.facebook.com/blackmetaagency", logo: "/logos/bma.png" },
     { name: "The 216 Scoop", fb: "https://www.facebook.com/the216scoop", logo: "/logos/landscape_The_216_Scoop_-_Horizontal_-_Solid.avif" },
     { name: "Americans Health", fb: "https://www.facebook.com/AmericansHealth", logo: "/logos/AH.png" },
     { name: "Live Music In Cleveland", fb: "https://www.facebook.com/LMIC", logo: "/logos/LMIC.png" },
