@@ -212,7 +212,7 @@ const CV_DATA = {
     email: "hello@markespinosa.com",
     phone: "+63 920 906 2796",
     image: "/me/markespinosa.jpg",
-    cvDownloadLink: "https://drive.google.com/file/d/1g08_2g4dlGtmROYdyneFeJteoRXq7rPT/view" 
+    cvDownloadLink: "https://drive.google.com/file/d/1O4Rie7gtTKtfgiCj_XbL2DQLWfKL3zCQ/view" 
   },
   socials: {
     facebook: "https://facebook.com/markespinosa627",
@@ -2205,7 +2205,7 @@ export default function App() {
                     <a href={CV_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white dark:bg-stone-900 px-6 py-3 rounded-full border border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-300 hover:border-amber-600 hover:text-amber-600 dark:hover:text-amber-500 transition-all font-medium text-xs uppercase tracking-widest shadow-sm cursor-pointer"><LinkedInIcon size={16} /> LinkedIn</a>
                   </div>
                   <MagneticWrapper href={CV_DATA.profile.cvDownloadLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-stone-900 dark:bg-white text-white dark:text-stone-900 px-8 py-4 rounded-full font-medium text-xs uppercase tracking-widest shadow-lg shadow-stone-900/10 hover:bg-amber-600 dark:hover:bg-amber-500 dark:hover:text-white transition-all cursor-pointer">
-                    <DownloadCloud size={16} /> Download Full CV
+                    <DownloadCloud size={16} /> Download Resume
                   </MagneticWrapper>
                 </Reveal>
               </div>
